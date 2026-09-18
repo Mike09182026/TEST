@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>極速工具箱 - 官方網站</title>
+    <title>FastKit - Official Website</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'PingFang TC', 'Microsoft JhengHei', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
         body {
             color: #333;
@@ -49,7 +49,6 @@
         }
         .nav-links a:hover { color: #2563eb; }
 
-        /* 語言選擇下拉選單樣式 */
         .lang-select {
             padding: 6px 12px;
             border-radius: 6px;
@@ -132,6 +131,7 @@
             justify-content: center;
             gap: 10px;
             margin: 20px 0;
+            flex-wrap: wrap;
         }
         .amount-btn {
             background: #fef3c7;
@@ -178,90 +178,93 @@
 </head>
 <body>
 
-    <!-- 1. 頂部選單 -->
+    <!-- 1. Header & Navigation -->
     <header>
         <div class="nav-container">
-            <div class="logo">⚡ <span data-i18n="logo">極速工具箱</span></div>
+            <div class="logo">⚡ <span data-i18n="logo">FastKit</span></div>
             <div class="nav-right">
                 <nav class="nav-links">
-                    <a href="#features" data-i18n="nav_features">產品特色</a>
-                    <a href="#about" data-i18n="nav_about">關於我們</a>
-                    <a href="#download" data-i18n="nav_download">下載軟體</a>
-                    <a href="#donate" style="color: #f59e0b; font-weight: bold;" data-i18n="nav_donate">☕ 贊助我們</a>
+                    <a href="#features" data-i18n="nav_features">Features</a>
+                    <a href="#about" data-i18n="nav_about">About Us</a>
+                    <a href="#download" data-i18n="nav_download">Download</a>
+                    <a href="#donate" style="color: #f59e0b; font-weight: bold;" data-i18n="nav_donate">☕ Donate</a>
                 </nav>
-                <!-- 語言切換選單 -->
                 <select id="languageSelect" class="lang-select" onchange="changeLanguage(this.value)">
-                    <option value="zh">繁體中文</option>
                     <option value="en">English</option>
+                    <option value="zh">繁體中文</option>
                     <option value="ja">日本語</option>
                 </select>
             </div>
         </div>
     </header>
 
-    <!-- 2. 主視覺區 -->
+    <!-- 2. Hero Section -->
     <div class="hero">
-        <h1 data-i18n="hero_title">提升工作效率的最佳利器</h1>
-        <p data-i18n="hero_subtitle">簡單、快速、全免費，專為現代開發者與設計師打造的輔助工具。</p>
-        <a href="#download" class="btn-main" data-i18n="hero_btn">免費下載最新版</a>
+        <h1 data-i18n="hero_title">The Ultimate Productivity Tool</h1>
+        <p data-i18n="hero_subtitle">Simple, fast, and completely free helper tool built for modern developers and creators.</p>
+        <a href="#download" class="btn-main" data-i18n="hero_btn">Download Latest Version</a>
     </div>
 
-    <!-- 3. 產品特色 -->
+    <!-- 3. Features Section -->
     <section id="features">
-        <h2 class="section-title" data-i18n="features_title">核心產品特色</h2>
+        <h2 class="section-title" data-i18n="features_title">Key Features</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <h3 data-i18n="f1_title">🚀 極致效能</h3>
-                <p data-i18n="f1_desc">輕量化架構設計，背景執行不佔用電腦記憶體與系統資源。</p>
+                <h3 data-i18n="f1_title">🚀 High Performance</h3>
+                <p data-i18n="f1_desc">Lightweight architecture with minimal background CPU and memory usage.</p>
             </div>
             <div class="feature-card">
-                <h3 data-i18n="f2_title">🛡️ 安全無毒</h3>
-                <p data-i18n="f2_desc">100% 開源透明，無任何廣告、無惡意追蹤程式，安心使用。</p>
+                <h3 data-i18n="f2_title">🛡️ Safe & Secure</h3>
+                <p data-i18n="f2_desc">100% open-source and transparent. No ads, no bloatware, and no tracking.</p>
             </div>
             <div class="feature-card">
-                <h3 data-i18n="f3_title">🔄 自動更新</h3>
-                <p data-i18n="f3_desc">與 GitHub 雲端同步，隨時享受最新版本的功能優化與修復。</p>
+                <h3 data-i18n="f3_title">🔄 Auto Updates</h3>
+                <p data-i18n="f3_desc">Seamlessly synced with GitHub Cloud to deliver continuous feature improvements.</p>
             </div>
         </div>
     </section>
 
-    <!-- 4. 公司簡介 -->
+    <!-- 4. About Us -->
     <section id="about">
-        <h2 class="section-title" data-i18n="about_title">關於我們</h2>
+        <h2 class="section-title" data-i18n="about_title">About Us</h2>
         <div class="about-box">
-            <p data-i18n="about_desc">我們是一支熱愛開發與創造的獨立團隊。致力於透過簡潔優雅的工具，解決使用者在日常工作中的繁瑣流程。目前所有軟體皆提供免費下載使用。</p>
+            <p data-i18n="about_desc">We are an indie development team passionate about building elegant utilities that eliminate tedious everyday tasks. All tools are free to download and use.</p>
         </div>
     </section>
 
-    <!-- 5. 抖內 / 贊助區塊 -->
+    <!-- 5. Donation Section (USD Currency) -->
     <section id="donate">
-        <h2 class="section-title" data-i18n="donate_title">☕ 支持與贊助</h2>
+        <h2 class="section-title" data-i18n="donate_title">☕ Support & Donate</h2>
         <div class="donate-box">
-            <h3 data-i18n="donate_box_title">請作者喝一杯咖啡</h3>
-            <p style="color: #6b7280; margin-top: 5px; font-size: 14px;" data-i18n="donate_box_desc">您的贊助是我們持續維持軟體更新與維護的最大動力！</p>
+            <h3 data-i18n="donate_box_title">Buy the Author a Coffee</h3>
+            <p style="color: #6b7280; margin-top: 5px; font-size: 14px;" data-i18n="donate_box_desc">Your support empowers us to continuously update and maintain this project!</p>
             
+            <!-- 美金快捷金額按鈕 -->
             <div class="amount-buttons">
-                <button class="amount-btn" onclick="setAmount(50)">$50</button>
-                <button class="amount-btn" onclick="setAmount(100)">$100</button>
-                <button class="amount-btn" onclick="setAmount(500)">$500</button>
+                <button class="amount-btn" onclick="setAmount(5)">$5 USD</button>
+                <button class="amount-btn" onclick="setAmount(10)">$10 USD</button>
+                <button class="amount-btn" onclick="setAmount(25)">$25 USD</button>
+                <button class="amount-btn" onclick="setAmount(50)">$50 USD</button>
+                <button class="amount-btn" onclick="setAmount(100)">$100 USD</button>
             </div>
 
+            <!-- 美金自訂金額輸入框 -->
             <div>
-                <input type="number" id="customAmount" class="custom-amount-input" placeholder="自訂金額" value="100" min="10">
+                <input type="number" id="customAmount" class="custom-amount-input" placeholder="Custom Amount ($ USD)" value="10" min="1">
             </div>
 
-            <button class="btn-donate" onclick="processDonate()" data-i18n="btn_donate_submit">前往贊助</button>
+            <button class="btn-donate" onclick="processDonate()" data-i18n="btn_donate_submit">Proceed to Donate (USD)</button>
         </div>
     </section>
 
-    <!-- 6. 軟體下載 -->
+    <!-- 6. Download Section -->
     <section id="download" style="text-align: center;">
-        <h2 class="section-title" data-i18n="download_title">取得軟體</h2>
+        <h2 class="section-title" data-i18n="download_title">Get the Software</h2>
         <div style="background: white; padding: 40px; border-radius: 12px; border: 1px solid #e5e7eb; display: inline-block;">
             <h3 style="margin-bottom: 10px;">GitHub Release Test (Windows)</h3>
-            <p style="color: #6b7280; margin-bottom: 25px;" data-i18n="download_info">版本：v1.0.0 ｜ 檔案類型：.exe</p>
+            <p style="color: #6b7280; margin-bottom: 25px;" data-i18n="download_info">Version: v1.0.0 | Format: .exe</p>
             <a href="https://github.com/Mike09182026/TEST/releases/latest/download/GitHubReleaseTest.exe" class="btn-main" data-i18n="btn_download_file">
-                免費下載 Windows 版 (.exe)
+                Free Download for Windows (.exe)
             </a>
         </div>
     </section>
@@ -270,10 +273,37 @@
         <p>© 2026 Mike09182026. All rights reserved.</p>
     </footer>
 
-    <!-- 多語言 JavaScript 邏輯 -->
+    <!-- i18n JavaScript Logic -->
     <script>
-        // 1. 定義多語言翻譯字典 (中文 / English / 日本語)
         const translations = {
+            en: {
+                logo: "FastKit",
+                nav_features: "Features",
+                nav_about: "About Us",
+                nav_download: "Download",
+                nav_donate: "☕ Donate",
+                hero_title: "The Ultimate Productivity Tool",
+                hero_subtitle: "Simple, fast, and completely free helper tool built for modern developers and creators.",
+                hero_btn: "Download Latest Version",
+                features_title: "Key Features",
+                f1_title: "🚀 High Performance",
+                f1_desc: "Lightweight architecture with minimal background CPU and memory usage.",
+                f2_title: "🛡️ Safe & Secure",
+                f2_desc: "100% open-source and transparent. No ads, no bloatware, and no tracking.",
+                f3_title: "🔄 Auto Updates",
+                f3_desc: "Seamlessly synced with GitHub Cloud to deliver continuous feature improvements.",
+                about_title: "About Us",
+                about_desc: "We are an indie development team passionate about building elegant utilities that eliminate tedious everyday tasks. All tools are free to download and use.",
+                donate_title: "☕ Support & Donate",
+                donate_box_title: "Buy the Author a Coffee",
+                donate_box_desc: "Your support empowers us to continuously update and maintain this project!",
+                btn_donate_submit: "Proceed to Donate (USD)",
+                download_title: "Get the Software",
+                download_info: "Version: v1.0.0 | Format: .exe",
+                btn_download_file: "Free Download for Windows (.exe)",
+                alert_invalid: "Please enter a valid amount!",
+                alert_thanks: "Thank you for your support! Amount: $"
+            },
             zh: {
                 logo: "極速工具箱",
                 nav_features: "產品特色",
@@ -294,37 +324,13 @@
                 about_desc: "我們是一支熱愛開發與創造的獨立團隊。致力於透過簡潔優雅的工具，解決使用者在日常工作中的繁瑣流程。目前所有軟體皆提供免費下載使用。",
                 donate_title: "☕ 支持與贊助",
                 donate_box_title: "請作者喝一杯咖啡",
-                donate_box_desc: "您的贊助是我們持續維持軟體更新與維護的最大動力！",
-                btn_donate_submit: "前往贊助",
+                donate_box_desc: "您的贊助是我們持續維持軟體更新與維護的最大動力！（美金計價）",
+                btn_donate_submit: "前往贊助 (USD)",
                 download_title: "取得軟體",
                 download_info: "版本：v1.0.0 ｜ 檔案類型：.exe",
-                btn_download_file: "免費下載 Windows 版 (.exe)"
-            },
-            en: {
-                logo: "FastKit",
-                nav_features: "Features",
-                nav_about: "About Us",
-                nav_download: "Download",
-                nav_donate: "☕ Donate",
-                hero_title: "The Ultimate Productivity Tool",
-                hero_subtitle: "Simple, fast, and completely free helper tool for modern developers.",
-                hero_btn: "Download Latest Version",
-                features_title: "Core Features",
-                f1_title: "🚀 High Performance",
-                f1_desc: "Lightweight architecture with minimal system resource consumption.",
-                f2_title: "🛡️ Safe & Secure",
-                f2_desc: "100% open-source, no ads, no malicious tracking software.",
-                f3_title: "🔄 Auto Updates",
-                f3_desc: "Synced with GitHub Cloud for seamless functionality updates.",
-                about_title: "About Us",
-                about_desc: "We are an indie team passionate about creating elegant tools to simplify daily work.",
-                donate_title: "☕ Support & Donate",
-                donate_box_title: "Buy the Author a Coffee",
-                donate_box_desc: "Your support keeps this software updated and maintained!",
-                btn_donate_submit: "Proceed to Donate",
-                download_title: "Get the Software",
-                download_info: "Version: v1.0.0 | Format: .exe",
-                btn_download_file: "Download for Windows (.exe)"
+                btn_download_file: "免費下載 Windows 版 (.exe)",
+                alert_invalid: "請輸入有效的美金金額！",
+                alert_thanks: "感謝您的支持！贊助金額：$"
             },
             ja: {
                 logo: "スピードツールキット",
@@ -346,17 +352,20 @@
                 about_desc: "私たちは、日々の作業を効率化する便利ツールの開発に情熱を注ぐインディーチームです。",
                 donate_title: "☕ 開発を支援",
                 donate_box_title: "開発者にコーヒーを一杯",
-                donate_box_desc: "皆様のご支援が今後のアップデートの最大の駆動源です！",
-                btn_donate_submit: "寄付ページへ",
+                donate_box_desc: "皆様のご支援が今後のアップデートの最大の駆動源です！（米ドル決済）",
+                btn_donate_submit: "寄付ページへ (USD)",
                 download_title: "ソフトウェアの入手",
                 download_info: "バージョン: v1.0.0 ｜ 形式: .exe",
-                btn_download_file: "Windows版をダウンロード (.exe)"
+                btn_download_file: "Windows版をダウンロード (.exe)",
+                alert_invalid: "有効な金額を入力してください！",
+                alert_thanks: "ご支援ありがとうございます！ 寄付額: $"
             }
         };
 
-        // 2. 切換語言函式
+        let currentLang = 'en';
+
         function changeLanguage(lang) {
-            // 尋找帶有 data-i18n 屬性的所有標籤並更換文字
+            currentLang = lang;
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(element => {
                 const key = element.getAttribute('data-i18n');
@@ -364,13 +373,11 @@
                     element.innerText = translations[lang][key];
                 }
             });
-            // 儲存語言偏好到瀏覽器 LocalStorage
             localStorage.setItem('user_lang', lang);
         }
 
-        // 3. 頁面載入時自動設定語言（優先讀取上次選擇）
         window.onload = function() {
-            const savedLang = localStorage.getItem('user_lang') || 'zh';
+            const savedLang = localStorage.getItem('user_lang') || 'en';
             document.getElementById('languageSelect').value = savedLang;
             changeLanguage(savedLang);
         };
@@ -382,10 +389,10 @@
         function processDonate() {
             const amount = document.getElementById('customAmount').value;
             if (!amount || amount <= 0) {
-                alert('請輸入有效的金額！');
+                alert(translations[currentLang].alert_invalid);
                 return;
             }
-            alert(`感謝您的支持！金額：$ ${amount}`);
+            alert(`${translations[currentLang].alert_thanks}${amount} USD`);
         }
     </script>
 </body>
