@@ -3,51 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的軟體下載頁面</title>
+    <title>極速工具箱 - 官方網站</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        /* 全域樣式設定 */
+        * {
+            box-sizing: border-box;
             margin: 0;
-            background-color: #f4f6f9;
+            padding: 0;
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
         }
-        .card {
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9faec;
+        }
+        /* 導覽列 */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1f2937;
+        }
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        /* 主視覺 Banner */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 { font-size: 38px; margin-bottom: 15px; }
+        .hero p { font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
+        .btn-main {
+            background-color: #10b981;
+            color: white;
+            padding: 14px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            display: inline-block;
+            transition: 0.2s;
+        }
+        .btn-main:hover { background-color: #059669; }
+
+        /* 內容區塊通用樣式 */
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: #111827;
+        }
+
+        /* 產品特色卡片 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+        .feature-card h3 { margin-bottom: 10px; color: #1f2937; }
+        .feature-card p { color: #6b7280; font-size: 14px; }
+
+        /* 公司簡介 */
+        .about-box {
             background: white;
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
             text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        h1 { color: #333; margin-bottom: 10px; }
-        p { color: #666; margin-bottom: 30px; }
-        .download-btn {
-            background-color: #2ea44f;
-            color: white;
-            padding: 14px 28px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            border-radius: 6px;
-            transition: background 0.2s;
-            display: inline-block;
-        }
-        .download-btn:hover {
-            background-color: #2c974b;
+
+        /* 頁尾 */
+        footer {
+            background: #111827;
+            color: #9ca3af;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>GitHub Release Test 軟體</h1>
-        <p>點擊下方按鈕即可下載最新版本的安裝包 (.exe)</p>
-        <!-- 下方連結已自動設定為你的最新版軟體 -->
-        <a class="download-btn" href="https://github.com/Mike09182026/TEST/releases/latest/download/GitHubReleaseTest.exe">
-            免費下載 Windows 版 (.exe)
-        </a>
+
+    <!-- 1. 頂部選單 (導覽列) -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">⚡ 極速工具箱</div>
+            <nav class="nav-links">
+                <a href="#features">產品特色</a>
+                <a href="#about">關於我們</a>
+                <a href="#download">下載軟體</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. 主視覺區 -->
+    <div class="hero">
+        <h1>提升工作效率的最佳利器</h1>
+        <p>簡單、快速、全免費，專為現代開發者與設計師打造的輔助工具。</p>
+        <a href="#download" class="btn-main">立即免費下載</a>
     </div>
+
+    <!-- 3. 產品特色介紹區 -->
+    <section id="features">
+        <h2 class="section-title">核心產品特色</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🚀 極致效能</h3>
+                <p>輕量化架構設計，背景執行不佔用電腦記憶體與系統資源。</p>
+            </div>
+            <div class="feature-card">
+                <h3>🛡️ 安全無毒</h3>
+                <p>100% 開源透明，無任何廣告、無惡意追蹤程式，安心使用。</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔄 自動更新</h3>
+                <p>與 GitHub 雲端同步，隨時享受最新版本的功能優化與修復。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 公司簡介區 -->
+    <section id="about">
+        <h2 class="section-title">關於我們</h2>
+        <div class="about-box">
+            <p>我們是一支熱愛開發與創造的獨立團隊。致力於透過簡潔優雅的工具，解決使用者在日常工作中的繁瑣流程。目前所有軟體皆提供免費下載使用。</p>
+        </div>
+    </section>
+
+    <!-- 5. 產品下載區 -->
+    <section id="download" style="text-align: center;">
+        <h2 class="section-title">取得軟體</h2>
+        <div style="background: white; padding: 40px; border-radius: 12px; border: 1px solid #e5e7eb; display: inline-block;">
+            <h3 style="margin-bottom: 10px;">GitHub Release Test (Windows 版)</h3>
+            <p style="color: #6b7280; margin-bottom: 25px;">版本：v1.0.0 ｜ 檔案類型：.exe</p>
+            <!-- 你的軟體下載直鏈 -->
+            <a href="https://github.com/Mike09182026/TEST/releases/latest/download/GitHubReleaseTest.exe" class="btn-main">
+                下載 Windows 版 (.exe)
+            </a>
+        </div>
+    </section>
+
+    <!-- 6. 頁尾 -->
+    <footer>
+        <p>© 2026 Mike09182026. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
