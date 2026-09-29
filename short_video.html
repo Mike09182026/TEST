@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JBA128G3 Storage Shield - 30秒爆款短影音預覽</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+    }
+    body {
+      background: #080c14;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .page-title {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: #00f0ff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge {
+      background: rgba(0, 240, 255, 0.2);
+      border: 1px solid #00f0ff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+    /* 9:16 模擬器外框 */
+    .video-viewport {
+      width: 360px;
+      height: 640px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 50px rgba(0, 240, 255, 0.25), 0 20px 40px rgba(0,0,0,0.8);
+      border: 3px solid #1a2936;
+      background: #000;
+    }
+    /* 背景圖片與動態遮罩 */
+    .video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('video_bg.jpg') center/cover no-repeat;
+      filter: brightness(0.65) contrast(1.1);
+      transition: transform 0.8s ease, filter 0.5s ease;
+      z-index: 1;
+    }
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0, 15, 30, 0.2) 0%, rgba(0, 5, 12, 0.88) 100%);
+      z-index: 2;
+    }
+    /* 網格雷達掃描線動畫 */
+    .scan-line {
+      position: absolute;
+      top: -20%;
+      left: 0;
+      width: 100%;
+      height: 15%;
+      background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.4), transparent);
+      z-index: 3;
+      opacity: 0.6;
+      animation: scanAnim 4s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes scanAnim {
+      0% { top: -20%; }
+      100% { top: 110%; }
+    }
+    /* 頂部進度條 */
+    .progress-bar-container {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 2px;
+      overflow: hidden;
+      z-index: 10;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00f0ff, #00ff88);
+      box-shadow: 0 0 10px #00f0ff;
+      transition: width 0.1s linear;
+    }
+    /* 頂部品牌標識 */
+    .top-brand {
+      position: absolute;
+      top: 28px;
+      left: 20px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+    .top-brand span {
+      color: #00f0ff;
+    }
+    /* 右側 TikTok 風格按鈕 */
+    .side-actions {
+      position: absolute;
+      right: 12px;
+      bottom: 120px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+    .side-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.7rem;
+      color: #e0e0e0;
+      gap: 4px;
+    }
+    .side-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(20, 30, 45, 0.8);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      backdrop-filter: blur(4px);
+    }
+    /* 畫面主視覺內容容器 */
+    .scene-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 24px 100px 24px;
+      text-align: center;
+    }
+    /* 動態視覺標籤 */
+    .scene-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid #00f0ff;
+      color: #00f0ff;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: inline-block;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+      animation: pulseGlow 1.5s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 8px rgba(0, 240, 255, 0.3); }
+      to { box-shadow: 0 0 20px rgba(0, 240, 255, 0.7); }
+    }
+    /* 核心視覺展示大圖示/特效 */
+    .scene-visual {
+      font-size: 4.5rem;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.8));
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    /* 爆款短影音必備：大字報動態彈跳字幕 */
+    .caption-box {
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .caption-main {
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1.35;
+      color: #ffffff;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.9);
+      letter-spacing: 0.5px;
+    }
+    .highlight-yellow {
+      color: #ffe600;
+      text-shadow: 0 0 15px rgba(255, 230, 0, 0.8);
+      font-size: 1.8rem;
+    }
+    .highlight-cyan {
+      color: #00f0ff;
+      text-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
+      font-size: 1.8rem;
+    }
+    .highlight-red {
+      color: #ff3366;
+      text-shadow: 0 0 15px rgba(255, 51, 102, 0.8);
+      font-size: 1.8rem;
+    }
+    .caption-sub {
+      font-size: 0.95rem;
+      color: #a0aec0;
+      font-weight: 500;
+      line-height: 1.4;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    }
+    /* 底部引流浮條 */
+    .bottom-cta-banner {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      background: rgba(10, 20, 35, 0.9);
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      padding: 10px 14px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+    .cta-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .cta-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .cta-subtitle {
+      font-size: 0.65rem;
+      color: #00f0ff;
+    }
+    .cta-btn-mini {
+      background: linear-gradient(135deg, #00f0ff, #0077ff);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    /* 外部播放控制板 */
+    .controls-panel {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .control-btn {
+      background: #152232;
+      border: 1px solid #00f0ff;
+      color: #00f0ff;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .control-btn:hover {
+      background: #00f0ff;
+      color: #000;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+    }
+    .control-btn.primary {
+      background: linear-gradient(135deg, #00f0ff, #0088ff);
+      color: #000;
+      border: none;
+    }
+    .voice-toggle {
+      font-size: 0.85rem;
+      color: #8899aa;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .voice-toggle input {
+      accent-color: #00f0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-title">
+    <span>🎬 JBA128G3 Storage Shield</span>
+    <span class="badge">9:16 短影音生成播放器</span>
+  </div>
+
+  <!-- 9:16 直式影音視窗 -->
+  <div class="video-viewport" id="viewport">
+    <div class="video-bg" id="videoBg"></div>
+    <div class="video-overlay"></div>
+    <div class="scan-line"></div>
+
+    <!-- 頂部進度條 -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- 頂部品牌標記 -->
+    <div class="top-brand">
+      <span style="font-size:1.1rem;">🛡️</span>
+      <div>JBA128G3 <span>STORAGE SHIELD</span></div>
+    </div>
+
+    <!-- 右側互動裝飾 (抖音/Reels風格) -->
+    <div class="side-actions">
+      <div class="side-btn"><div class="side-icon">❤️</div><span>24.8W</span></div>
+      <div class="side-btn"><div class="side-icon">💬</div><span>3,620</span></div>
+      <div class="side-btn"><div class="side-icon">⭐</div><span>1.8W</span></div>
+      <div class="side-btn"><div class="side-icon">🔗</div><span>分享</span></div>
+    </div>
+
+    <!-- 中央核心視覺與分鏡切換 -->
+    <div class="scene-container" id="sceneContent">
+      <div class="scene-tag" id="sceneTag">⚠️ 機密洩密警報</div>
+      <div class="scene-visual" id="sceneVisual">💾💥</div>
+      <div class="caption-box">
+        <div class="caption-main" id="captionMain">你以為把檔案丟進垃圾桶<br><span class="highlight-red">就真的安全了嗎？</span></div>
+        <div class="caption-sub" id="captionSub">資料救援軟體 3 秒就能還原你的商業機密！</div>
+      </div>
+    </div>
+
+    <!-- 底部行動召喚條 -->
+    <div class="bottom-cta-banner">
+      <div class="cta-text">
+        <div class="cta-title">JBA128G3 Storage Shield v1.0.3</div>
+        <div class="cta-subtitle">100% 離線・解密永久免費</div>
+      </div>
+      <button class="cta-btn-mini" onclick="restartVideo()">立即領取</button>
+    </div>
+  </div>
+
+  <!-- 播放控制器 -->
+  <div class="controls-panel">
+    <button class="control-btn primary" id="playBtn" onclick="togglePlay()">
+      <span id="playIcon">▶</span> <span id="playText">播放 30秒短影音</span>
+    </button>
+    <button class="control-btn" onclick="restartVideo()">🔄 重播</button>
+    <label class="voice-toggle">
+      <input type="checkbox" id="voiceCheckbox" checked> 開啟真人語音旁白 (TTS)
+    </label>
+  </div>
+
+  <p style="margin-top:14px; font-size:0.8rem; color:#607085; text-align:center;">
+    💡 提示：點擊「播放 30秒短影音」將啟動聲光音效、卡點字幕跳轉與 AI 語音旁白。<br>
+    您可使用電腦內建錄影（Win + G）直接將此視窗錄製為直式 MP4 影片上傳至 TikTok / Reels / Shorts！
+  </p>
+
+  <script>
+    // 6 段爆款短影音分鏡數據（時間軸、標籤、視覺、主字幕、副字幕、語音旁白）
+    const scenes = [
+      {
+        start: 0,
+        duration: 4.5,
+        tag: "⚠️ 機密洩密警報",
+        visual: "🗑️💥",
+        main: "你以為把機密檔案丟進垃圾桶<br><span class='highlight-red'>就真的徹底安全了嗎？</span>",
+        sub: "錯！任何救援軟體 3 秒鐘就能挖出你的全部隱私！",
+        speech: "你以為把機密檔案丟進垃圾桶就真的安全了嗎？錯！普通救援軟體三秒就能挖出你的底牌！",
+        scale: 1.0,
+        pitch: 120
+      },
+      {
+        start: 4.5,
+        duration: 5.5,
+        tag: "🛡️ 後量子加密黑科技",
+        visual: "🔒⚡",
+        main: "拒絕雲端洩露！<br><span class='highlight-cyan'>JBA128G3 檔案安全盾</span>",
+        sub: "CB Tec 後量子幾何流式加密，單機無後門！",
+        speech: "拒絕雲端洩密！最新 JBA128G3 檔案安全盾，搭載後量子幾何流式加密，單機完全無後門！",
+        scale: 1.15,
+        pitch: 240
+      },
+      {
+        start: 10,
+        duration: 5.5,
+        tag: "🚀 20GB 極限容量怪獸",
+        visual: "📁📦",
+        main: "整包資料夾直接拖入！<br><span class='highlight-yellow'>單檔狂吞 20 GB！</span>",
+        sub: "64MB 零拷貝串流，記憶體佔用全程低於 200MB",
+        speech: "專案資料夾直接拖入，單檔狂吞 20GB！獨家 64MB 零拷貝串流，記憶體全程不爆表！",
+        scale: 1.25,
+        pitch: 320
+      },
+      {
+        start: 15.5,
+        duration: 5.0,
+        tag: "🔥 物理級徹底毀滅",
+        visual: "⚙️🌪️",
+        main: "JBA-Shredder <span class='highlight-red'>物理粉碎</span><br>抹除覆寫未加密原檔！",
+        sub: "加密完成自動抹除，神仙級救援軟體也救不回！",
+        speech: "內建粉碎機制！加密校驗後自動覆寫抹除原檔，讓頂級救援軟體也徹底絕望！",
+        scale: 1.1,
+        pitch: 180
+      },
+      {
+        start: 20.5,
+        duration: 5.0,
+        tag: "🤝 病毒式協同傳播",
+        visual: "💎✨",
+        main: "二進制 Bit-Perfect 吻合<br><span class='highlight-yellow'>解密功能 永久免費！</span>",
+        sub: "傳給客戶或同事，對方零門檻一鍵解密！",
+        speech: "解密還原百分之百精準吻合，重點是：解密永久免費！傳給任何人都能無痛開啟！",
+        scale: 1.2,
+        pitch: 440
+      },
+      {
+        start: 25.5,
+        duration: 4.5,
+        tag: "🎁 立即下載體驗",
+        visual: "🏆🛡️",
+        main: "100% 離線・零遙測<br><span class='highlight-cyan'>立即下載 v1.0.3 正式版</span>",
+        sub: "點擊下方連結，為你的檔案裝上軍工級護盾！",
+        speech: "百分之百離線運行，零遙測無依賴。立即下載，為你的珍貴資產鎖上最強防護盾！",
+        scale: 1.3,
+        pitch: 520
+      }
+    ];
+
+    const TOTAL_DURATION = 30.0; // 總時長 30 秒
+    let isPlaying = false;
+    let currentTime = 0;
+    let lastTimestamp = null;
+    let currentSceneIndex = -1;
+    let audioCtx = null;
+
+    // Web Audio 音效合成器
+    function playBeep(freq, type = 'sine', duration = 0.15) {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch(e) {}
+    }
+
+    // Web Speech API 語音朗讀
+    function speakText(text) {
+      const voiceEnabled = document.getElementById('voiceCheckbox').checked;
+      if (!voiceEnabled || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel(); // 停止上一段
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'zh-TW';
+      utterance.rate = 1.15; // 略微加快，符合短影音節奏
+      utterance.pitch = 1.05;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function updateScene(index) {
+      if (index === currentSceneIndex) return;
+      currentSceneIndex = index;
+      const s = scenes[index];
+
+      // 觸發音效與旁白
+      playBeep(s.pitch, 'triangle', 0.2);
+      speakText(s.speech);
+
+      // 更新 DOM
+      document.getElementById('sceneTag').innerHTML = s.tag;
+      const visualEl = document.getElementById('sceneVisual');
+      visualEl.innerHTML = s.visual;
+      visualEl.style.transform = 'scale(1.4)';
+      setTimeout(() => { visualEl.style.transform = 'scale(1.0)'; }, 200);
+
+      document.getElementById('captionMain').innerHTML = s.main;
+      document.getElementById('captionSub').innerHTML = s.sub;
+
+      // 背景微縮放動態
+      const bg = document.getElementById('videoBg');
+      bg.style.transform = `scale(${s.scale})`;
+    }
+
+    function loop(timestamp) {
+      if (!isPlaying) return;
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const delta = (timestamp - lastTimestamp) / 1000;
+      lastTimestamp = timestamp;
+
+      currentTime += delta;
+
+      if (currentTime >= TOTAL_DURATION) {
+        currentTime = TOTAL_DURATION;
+        pauseVideo();
+        return;
+      }
+
+      // 計算目前分鏡
+      let activeIndex = scenes.findIndex((sc, idx) => {
+        const next = scenes[idx + 1];
+        return currentTime >= sc.start && (!next || currentTime < next.start);
+      });
+      if (activeIndex !== -1) {
+        updateScene(activeIndex);
+      }
+
+      // 更新進度條
+      const pct = (currentTime / TOTAL_DURATION) * 100;
+      document.getElementById('progressBar').style.width = pct + '%';
+
+      requestAnimationFrame(loop);
+    }
+
+    function togglePlay() {
+      if (isPlaying) {
+        pauseVideo();
+      } else {
+        playVideo();
+      }
+    }
+
+    function playVideo() {
+      if (currentTime >= TOTAL_DURATION) {
+        currentTime = 0;
+        currentSceneIndex = -1;
+      }
+      isPlaying = true;
+      lastTimestamp = null;
+      document.getElementById('playIcon').textContent = '⏸';
+      document.getElementById('playText').textContent = '暫停';
+      requestAnimationFrame(loop);
+    }
+
+    function pauseVideo() {
+      isPlaying = false;
+      document.getElementById('playIcon').textContent = '▶';
+      document.getElementById('playText').textContent = '繼續播放';
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    function restartVideo() {
+      pauseVideo();
+      currentTime = 0;
+      currentSceneIndex = -1;
+      document.getElementById('progressBar').style.width = '0%';
+      updateScene(0);
+      playVideo();
+    }
+
+    // 初始化第一畫面
+    window.addEventListener('DOMContentLoaded', () => {
+      updateScene(0);
+    });
+  </script>
+</body>
+</html>
