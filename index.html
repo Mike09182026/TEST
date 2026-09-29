@@ -213,29 +213,48 @@
         .feature-card h3 { margin-bottom: 10px; color: #fff; font-size: 18px; }
         .feature-card p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
 
-        /* 4. 短影音展示區 */
+        /* 4. 短影音展示區 - 寬敞大氣版 */
         .video-box {
-            background: linear-gradient(180deg, #09111c, #060a10);
+            background: linear-gradient(180deg, #0a121e, #060a12);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 40px 30px;
+            border-radius: 24px;
+            padding: 50px 40px;
             display: flex;
             align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
+            gap: 60px;
             justify-content: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
         }
-        .video-wrapper {
-            width: 300px;
-            height: 533px;
-            border-radius: 24px;
-            border: 3px solid #1a2936;
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+        @media (max-width: 860px) {
+            .video-box {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 30px;
+            }
+        }
+        /* 現代旗艦智慧手機外框 */
+        .phone-mockup {
+            width: 320px;
+            height: 575px;
+            border-radius: 36px;
+            border: 8px solid #1a2638;
+            box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.5), 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 240, 255, 0.2);
             overflow: hidden;
+            position: relative;
             background: #000;
+            flex-shrink: 0;
         }
-        .video-wrapper iframe { width: 100%; height: 100%; border: none; }
-        .video-info { flex: 1; min-width: 300px; }
+        .phone-mockup iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .video-info {
+            flex: 1;
+            min-width: 300px;
+            max-width: 520px;
+        }
 
         /* 5. 競品對比表格 */
         .table-wrapper {
@@ -582,7 +601,7 @@
         <h2 class="section-title" data-i18n="video_title">30 秒看懂：為什麼丟垃圾桶不安全？</h2>
         <p class="section-desc" data-i18n="video_desc">專為 TikTok / Shorts / Reels 量身打造的直式動態短影音播放器</p>
         <div class="video-box">
-            <div class="video-wrapper">
+            <div class="phone-mockup">
                 <iframe src="./short_video.html" title="Short Video Player"></iframe>
             </div>
             <div class="video-info">
@@ -811,10 +830,10 @@
                 f3_desc: "加密驗證完成後，自動覆寫抹除未加密原檔，頂級資料救援軟體（如 Recuva）亦徹底無效。",
                 f4_title: "解密永久免費・無限制",
                 f4_desc: "加密檔案發給客戶或同仁，對方無需付費、無需註冊即可自由解密，打造零阻力協同流轉。",
-                video_title: "30 秒看懂：為什麼丟垃圾桶不安全？",
-                video_desc: "專為 TikTok / Shorts / Reels 量身打造的直式動態短影音播放器",
-                video_h3: "高穿透力視覺呈現",
-                video_p: "左側短影音內嵌真人中文語音旁白 (TTS)、重低音卡點音效與大字報跳轉。點擊播放即可在線體驗高科技安全護盾震撼效果！",
+                video_title: "30 秒全球宣傳短影音展示",
+                video_desc: "專為 TikTok、YouTube Shorts 與 Reels 打造之 9:16 直式動態宣傳片（全英文旁白版）",
+                video_h3: "高穿透力全球行銷視覺",
+                video_p: "全英文 AI 真人語音旁白 (TTS)、重低音卡點音效與大字報跳轉。點擊畫面中央 ▶ 即可在線播放，體驗純本機後量子安全防護！",
                 btn_get_shield: "立即領取 JBA128G3",
                 compare_title: "同樣是保護檔案，為什麼選擇 JBA128G3？",
                 compare_desc: "解決「原檔殘留」、「雲端洩漏」與「大檔崩潰」三大傳統資安痛點",
@@ -897,10 +916,10 @@
                 f3_desc: "Automatically overwrites and destroys unencrypted source files upon verification. Leaves data recovery tools completely helpless.",
                 f4_title: "Decryption 100% Free Forever",
                 f4_desc: "Recipients can decrypt files with zero cost and no account needed, ensuring frictionless B2B collaboration.",
-                video_title: "30s Explainer: Why the Recycle Bin isn't Safe?",
-                video_desc: "Tailored 9:16 vertical video player for TikTok, YouTube Shorts, and Instagram Reels.",
-                video_h3: "High-Impact Visual Demonstration",
-                video_p: "Features AI voiceover, cyberpunk beat drops, and kinetic typography. Click play to experience the security shield in real time!",
+                video_title: "30s Global Viral Explainer Video",
+                video_desc: "Tailored 9:16 vertical short video for TikTok, YouTube Shorts & Instagram Reels (English Edition)",
+                video_h3: "High-Impact Global Marketing",
+                video_p: "Featuring native English AI voiceover, cyberpunk beat drops, and kinetic typography. Tap ▶ in the center to preview the ultimate local data shield!",
                 btn_get_shield: "Get JBA128G3 Now",
                 compare_title: "Why Choose JBA128G3 Over Alternatives?",
                 compare_desc: "Eliminates the three fatal flaws: residue files, cloud leaks, and massive-file crashes.",
@@ -983,10 +1002,10 @@
                 f3_desc: "暗号化検証後、未暗号化の元ファイルを自動上書き抹消。最新のデータ復旧ソフトでも復元不可能。",
                 f4_title: "復号機能は永久無料・無制限",
                 f4_desc: "取引先や同僚へ送付しても、相手側は課金・登録不要で自由に復号可能。シームレスな共有を実現。",
-                video_title: "30秒解説：なぜゴミ箱に捨てるだけでは危険なのか？",
-                video_desc: "TikTok、YouTube Shorts、Reels向けに最適化された9:16縦型動画プレイヤー",
-                video_h3: "圧倒的なビジュアル表現",
-                video_p: "AI音声ナレーション、サイバーパンク調の重低音、テロップ演出を搭載。再生をクリックして最先端のセキュリティ効果を体感してください！",
+                video_title: "30秒グローバルショート動画展示",
+                video_desc: "TikTok、YouTube Shorts、Reels向け9:16縦型動画（英語ナレーション版）",
+                video_h3: "グローバルマーケティング映像",
+                video_p: "ネイティブ英語AI音声ナレーション、重低音ビート、躍動感ある字幕を搭載。中央の ▶ をクリックして再生可能です！",
                 btn_get_shield: "JBA128G3 を今すぐ入手",
                 compare_title: "他社ツールと何が違うのか？",
                 compare_desc: "「元データの残留」「クラウド漏洩」「大容量クラッシュ」の3大課題を根本解決",
