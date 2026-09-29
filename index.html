@@ -1,755 +1,976 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JBA128G3 Storage Shield (v1.0.3) - 官方網站與產品展示</title>
-  <meta name="description" content="新一代桌面端單機檔案安全與本機加解密工具，基於 CB Tec 後量子幾何流式加密，支援 20GB 大檔串流與物理粉碎。">
-  <style>
-    :root {
-      --primary: #00f0ff;
-      --primary-glow: rgba(0, 240, 255, 0.4);
-      --secondary: #00ff88;
-      --bg: #06090f;
-      --card-bg: #0d1522;
-      --card-border: #1a2a3d;
-      --text-main: #f0f4f8;
-      --text-muted: #8a99ad;
-      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-family);
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    /* 頂部導航欄 */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(6, 9, 15, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
-      padding: 16px 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.15rem;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: 1px;
-    }
-    .brand span {
-      color: var(--primary);
-    }
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--primary), #0077ff);
-      color: #000 !important;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-weight: 800;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JBA128G3 Storage Shield - Official Website</title>
+    <style>
+        :root {
+            --primary: #00f0ff;
+            --primary-dark: #0077ff;
+            --secondary: #00ff88;
+            --accent: #f59e0b;
+            --bg: #070b12;
+            --card-bg: #0d1522;
+            --card-border: #1a2a3d;
+            --text-main: #f0f4f8;
+            --text-muted: #8a99ad;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            color: var(--text-main);
+            background-color: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        /* 1. 頂部導航 */
+        header {
+            background: rgba(13, 21, 34, 0.9);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 1px;
+        }
+        .logo span { color: var(--primary); }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .nav-links a {
+            margin-left: 14px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .lang-select {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--card-border);
+            background-color: #0b1320;
+            color: #00f0ff;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
 
-    /* 容器公用樣式 */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    section {
-      padding: 80px 0;
-      position: relative;
-    }
-    .badge {
-      display: inline-block;
-      padding: 6px 16px;
-      border-radius: 30px;
-      background: rgba(0, 240, 255, 0.1);
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-    }
-    .sec-title {
-      font-size: 2.3rem;
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 14px;
-      letter-spacing: 0.5px;
-    }
-    .sec-desc {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 50px auto;
-    }
+        /* 2. Hero 區域 */
+        .hero {
+            background: radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+            padding: 90px 20px 70px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 30px;
+            background: rgba(0, 240, 255, 0.12);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #00f0ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-main {
+            background: linear-gradient(135deg, var(--primary), #0077ff);
+            color: #000;
+            padding: 14px 32px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 800;
+            border-radius: 30px;
+            display: inline-block;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+            transition: 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.7);
+        }
+        .btn-outline {
+            background: rgba(13, 21, 34, 0.8);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 13px 26px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 30px;
+            display: inline-block;
+            margin-left: 12px;
+            transition: 0.2s;
+        }
+        .btn-outline:hover { background: rgba(0, 240, 255, 0.15); }
 
-    /* Hero 首屏 */
-    .hero {
-      padding: 100px 0 80px 0;
-      text-align: center;
-      position: relative;
-      background: radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.12) 0%, transparent 60%);
-    }
-    .hero-h1 {
-      font-size: 3.2rem;
-      font-weight: 900;
-      line-height: 1.25;
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
-    }
-    .hero-h1 span {
-      background: linear-gradient(135deg, #00f0ff, #00ff88);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-p {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      max-width: 820px;
-      margin: 0 auto 36px auto;
-      line-height: 1.6;
-    }
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .btn-main {
-      background: linear-gradient(135deg, #00f0ff, #0088ff);
-      color: #000;
-      padding: 14px 34px;
-      border-radius: 30px;
-      font-size: 1.1rem;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-main:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 35px rgba(0, 240, 255, 0.7);
-    }
-    .btn-outline {
-      background: rgba(15, 25, 40, 0.8);
-      color: #00f0ff;
-      border: 1px solid rgba(0, 240, 255, 0.4);
-      padding: 14px 28px;
-      border-radius: 30px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-outline:hover {
-      background: rgba(0, 240, 255, 0.15);
-      border-color: #00f0ff;
-    }
-    .checksum-bar {
-      display: inline-flex;
-      align-items: center;
-      background: rgba(13, 21, 34, 0.9);
-      border: 1px solid #1a2a3d;
-      border-radius: 12px;
-      padding: 8px 18px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      gap: 12px;
-      max-width: 90%;
-      word-break: break-all;
-    }
-    .checksum-code {
-      font-family: monospace;
-      color: #00ff88;
-    }
+        .checksum-bar {
+            margin-top: 30px;
+            display: inline-flex;
+            align-items: center;
+            background: rgba(13, 21, 34, 0.9);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--text-muted);
+            gap: 10px;
+            max-width: 90%;
+            word-break: break-all;
+        }
+        .checksum-code { font-family: monospace; color: var(--secondary); }
 
-    /* 亮點卡片 Grid */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 20px;
-    }
-    .feature-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 30px 24px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
-      position: relative;
-    }
-    .feature-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-    }
-    .feature-icon {
-      font-size: 2.2rem;
-      margin-bottom: 16px;
-      display: inline-block;
-    }
-    .feature-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-      color: #fff;
-    }
-    .feature-card p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
+        /* 通用章節 */
+        section {
+            padding: 70px 20px;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .section-desc {
+            text-align: center;
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
 
-    /* 短影音與動態演示區 */
-    .video-showcase-box {
-      background: linear-gradient(180deg, #09111c, #060a10);
-      border: 1px solid #1a2a3d;
-      border-radius: 24px;
-      padding: 50px 30px;
-      display: flex;
-      align-items: center;
-      gap: 50px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .video-mockup-wrapper {
-      width: 320px;
-      height: 568px;
-      border-radius: 28px;
-      border: 3px solid #1a2936;
-      box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
-      overflow: hidden;
-      position: relative;
-      background: #000;
-    }
-    .video-mockup-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .video-text-content {
-      flex: 1;
-      min-width: 320px;
-    }
-    .video-text-content h3 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-      color: #fff;
-    }
-    .video-tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 20px 0;
-    }
-    .video-tag {
-      background: rgba(0, 240, 255, 0.1);
-      border: 1px solid rgba(0, 240, 255, 0.3);
-      color: #00f0ff;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
+        /* 3. 特性網格 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px 24px;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            text-align: left;
+            transition: 0.2s;
+        }
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+        .feature-icon { font-size: 32px; margin-bottom: 14px; }
+        .feature-card h3 { margin-bottom: 10px; color: #fff; font-size: 18px; }
+        .feature-card p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
 
-    /* 競品對比表格專區 */
-    .compare-section-box {
-      background: #09101a;
-      border: 1px solid #162436;
-      border-radius: 24px;
-      padding: 50px 36px;
-      box-shadow: 0 0 40px rgba(0, 240, 255, 0.08);
-    }
-    .table-wrapper {
-      overflow-x: auto;
-      margin-top: 30px;
-    }
-    .compare-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      border-radius: 16px;
-      background: #0d1522;
-      border: 1px solid #1a2a3d;
-      min-width: 800px;
-    }
-    th, td {
-      padding: 20px 22px;
-      text-align: left;
-      vertical-align: middle;
-      border-bottom: 1px solid #162436;
-    }
-    th {
-      font-size: 0.95rem;
-      color: #a0aec0;
-      font-weight: 700;
-      background: #0f1928;
-    }
-    .col-highlight {
-      background: rgba(0, 240, 255, 0.05);
-      border-left: 2px solid #00f0ff;
-      border-right: 2px solid #00f0ff;
-    }
-    th.col-highlight {
-      background: #0c2738;
-      border-top: 2px solid #00f0ff;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-    }
-    tr:last-child td.col-highlight {
-      border-bottom: 2px solid #00f0ff;
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
-    }
-    .cell-title {
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-    .cell-desc {
-      font-size: 0.85rem;
-      color: #718096;
-    }
+        /* 4. 短影音展示區 */
+        .video-box {
+            background: linear-gradient(180deg, #09111c, #060a10);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .video-wrapper {
+            width: 300px;
+            height: 533px;
+            border-radius: 24px;
+            border: 3px solid #1a2936;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+            overflow: hidden;
+            background: #000;
+        }
+        .video-wrapper iframe { width: 100%; height: 100%; border: none; }
+        .video-info { flex: 1; min-width: 300px; }
 
-    /* 版本定價對比 */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .pricing-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 40px 32px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-    .pricing-card.featured {
-      border-color: var(--primary);
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
-    }
-    .pricing-card h3 {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
-    }
-    .pricing-price {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #00ff88;
-      margin: 16px 0 24px 0;
-    }
-    .pricing-list {
-      list-style: none;
-      margin-bottom: 30px;
-      flex: 1;
-    }
-    .pricing-list li {
-      margin-bottom: 12px;
-      font-size: 0.95rem;
-      color: #cbd5e0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        /* 5. 競品對比表格 */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.06);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: 820px;
+        }
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #162436;
+            font-size: 14px;
+        }
+        th { background: #0b1320; color: #a0aec0; font-weight: 700; }
+        .col-hl {
+            background: rgba(0, 240, 255, 0.05);
+            border-left: 2px solid var(--primary);
+            border-right: 2px solid var(--primary);
+        }
+        th.col-hl {
+            background: #0c2738;
+            border-top: 2px solid var(--primary);
+            color: var(--primary);
+            font-size: 16px;
+        }
+        tr:last-child td.col-hl { border-bottom: 2px solid var(--primary); }
 
-    /* 頁尾 */
-    footer {
-      border-top: 1px solid #162436;
-      padding: 40px 24px;
-      text-align: center;
-      color: #4a5568;
-      font-size: 0.9rem;
-    }
-    footer a {
-      color: #00f0ff;
-      text-decoration: none;
-    }
-  </style>
+        /* 6. 贊助區塊 (原有支援) */
+        .donate-box {
+            background: var(--card-bg);
+            padding: 35px 25px;
+            border-radius: 16px;
+            border: 2px solid var(--accent);
+            text-align: center;
+            max-width: 580px;
+            margin: 0 auto;
+            box-shadow: 0 4px 25px rgba(245, 158, 11, 0.15);
+        }
+        .donate-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 12px;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--text-muted);
+            padding: 8px 18px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        .tab-btn.active {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .amount-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .amount-btn {
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid var(--accent);
+            color: #fbbf24;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .amount-btn:hover { background: rgba(245, 158, 11, 0.25); }
+        .custom-amount-input {
+            width: 80%;
+            padding: 10px;
+            background: #080e18;
+            color: #fff;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-donate {
+            background-color: var(--accent);
+            color: #000;
+            padding: 12px 28px;
+            border: none;
+            font-size: 16px;
+            font-weight: 800;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 80%;
+        }
+        .btn-donate:hover { background-color: #d97706; }
+
+        .crypto-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+            margin-top: 15px;
+        }
+        .crypto-item {
+            background: #09101b;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+        }
+        .crypto-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        .crypto-addr-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #05080f;
+            padding: 6px 10px;
+            border: 1px solid #1a2a3d;
+            border-radius: 6px;
+        }
+        .crypto-addr {
+            font-family: monospace;
+            font-size: 12px;
+            color: #00ff88;
+            word-break: break-all;
+            flex-grow: 1;
+        }
+        .btn-copy {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* 7. 下載彈窗 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(6px);
+        }
+        .modal-box {
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 35px 25px;
+            max-width: 480px;
+            text-align: center;
+            margin: 20px;
+            box-shadow: 0 0 40px rgba(0,240,255,0.4);
+        }
+
+        footer {
+            background: #05080e;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 13px;
+            border-top: 1px solid var(--card-border);
+        }
+    </style>
 </head>
 <body>
 
-  <!-- 頂部導航 -->
-  <header>
-    <div class="brand">
-      <span style="font-size:1.4rem;">🛡️</span>
-      <div>JBA128G3 <span>STORAGE SHIELD</span></div>
+    <!-- 1. 頂部導航 -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <span>🛡️</span> <span data-i18n="logo">JBA128G3 Shield</span>
+            </div>
+            <div class="nav-right">
+                <nav class="nav-links">
+                    <a href="#features" data-i18n="nav_features">產品特色</a>
+                    <a href="#video" data-i18n="nav_video">30秒短影音</a>
+                    <a href="#compare" data-i18n="nav_compare">競品對比</a>
+                    <a href="#donate" style="color: var(--accent);" data-i18n="nav_donate">☕ 贊助支持</a>
+                    <a href="#download" data-i18n="nav_download">下載專區</a>
+                </nav>
+                <select id="languageSelect" class="lang-select" onchange="changeLanguage(this.value)">
+                    <option value="zh">繁體中文</option>
+                    <option value="en">English</option>
+                    <option value="ja">日本語</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero 區塊 -->
+    <div class="hero">
+        <div class="badge" data-i18n="hero_badge">正式發行版本 v1.0.3 ｜ 100% 離線運行</div>
+        <h1 data-i18n="hero_title">重掌本機資料主權<br>為<span>極限機密</span>而生的安全盾</h1>
+        <p data-i18n="hero_subtitle">拒絕雲端洩露，無懼數據救援。基於 CB Tec 後量子幾何流式加密，支援 20GB 大檔串流與 JBA-Shredder 物理粉碎。</p>
+        <div>
+            <button class="btn-main" onclick="showDemoAlert()" data-i18n="hero_btn">免費下載 v1.0.3</button>
+            <a href="#compare" class="btn-outline" data-i18n="hero_compare_btn">查看競品規格對比</a>
+        </div>
+        <div class="checksum-bar">
+            <span>🔒 SHA-256:</span>
+            <span class="checksum-code">7CC61018682F18D15A4E38A3B8F4539850C4B3707CCEB764E604D85211B853AB</span>
+        </div>
     </div>
-    <ul class="nav-links">
-      <li><a href="#features">核心優勢</a></li>
-      <li><a href="#video">30秒短影音</a></li>
-      <li><a href="#compare">競品深度對比</a></li>
-      <li><a href="#pricing">版本方案</a></li>
-      <li><a href="#download" class="nav-cta">立即體驗 v1.0.3</a></li>
-    </ul>
-  </header>
 
-  <!-- Hero 首屏 -->
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="badge">正式發行版本 v1.0.3 ｜ 100% 離線運行</div>
-      <h1 class="hero-h1">
-        重掌本機資料主權<br>
-        為<span>極限機密</span>而生的安全盾
-      </h1>
-      <p class="hero-p">
-        拒絕雲端洩露，無懼數據救援。基於 CB Tec 後量子幾何流式加密，支援 20GB 大檔與整包資料夾原位封裝。搭配 JBA-Shredder 物理粉碎，為您鎖定二進制級別的純粹安全。
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#download" class="btn-main">
-          <span>⚡</span> 免費下載體驗 (v1.0.3)
-        </a>
-        <a href="#compare" class="btn-outline">
-          查看競品規格對比
-        </a>
-      </div>
-
-      <div class="checksum-bar">
-        <span>🔒 官方 SHA-256：</span>
-        <span class="checksum-code">7CC61018682F18D15A4E38A3B8F4539850C4B3707CCEB764E604D85211B853AB</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 核心四大亮點 -->
-  <section id="features">
-    <div class="container">
-      <div style="text-align: center;"><div class="badge">CORE ARCHITECTURE</div></div>
-      <h2 class="sec-title">四大核心硬核防護體系</h2>
-      <p class="sec-desc">為專業研發、財務審計、高機密商業環境量身打造的單機資安架構</p>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🛡️</div>
-          <h3>後量子幾何流式加密</h3>
-          <p>突破傳統公開 AES 架構，基於 CB Tec 後量子技術，單機無預留後門，防禦暴力算力撞庫。</p>
+    <!-- 3. 特性網格 -->
+    <section id="features">
+        <h2 class="section-title" data-i18n="features_title">四大硬核防護體系</h2>
+        <p class="section-desc" data-i18n="features_desc">突破傳統加密局限，為個人與企業打造最嚴苛的本機安全壁壘</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3 data-i18n="f1_title">後量子幾何流式加密</h3>
+                <p data-i18n="f1_desc">非公開 AES 家族，由 J Will 團隊與 CB Tec 自研，單機無預留後門，防範未來暴力算力破譯。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📁</div>
+                <h3 data-i18n="f2_title">20GB 巨型資料夾封裝</h3>
+                <p data-i18n="f2_desc">內建 64MB 零拷貝串流架構，記憶體全程 < 200MB，解密 100% Bit-Perfect 原位還原目錄層級。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3 data-i18n="f3_title">JBA-Shredder 物理粉碎</h3>
+                <p data-i18n="f3_desc">加密驗證完成後，自動覆寫抹除未加密原檔，頂級資料救援軟體（如 Recuva）亦徹底無效。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌟</div>
+                <h3 data-i18n="f4_title">解密永久免費・無限制</h3>
+                <p data-i18n="f4_desc">加密檔案發給客戶或同仁，對方無需付費、無需註冊即可自由解密，打造零阻力協同流轉。</p>
+            </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">📁</div>
-          <h3>20GB 巨型資料夾封裝</h3>
-          <p>獨家 64MB 零拷貝串流架構，記憶體全程低於 200MB，多層專案目錄解密 100% Bit-Perfect 原位還原。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚙️</div>
-          <h3>JBA-Shredder 物理粉碎</h3>
-          <p>加密驗證完成後，自動執行底層位元組覆寫抹除未加密原檔，即使頂級數據救援軟體也無從下手。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🌟</div>
-          <h3>解密永久免費・無限制</h3>
-          <p>打破商業加密軟體生態壁壘，傳送給客戶或同仁，對方無需付費或註冊即可自由解密還原。</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 30 秒爆款短影音體驗區 -->
-  <section id="video" style="background:#04070c;">
-    <div class="container">
-      <div style="text-align: center;"><div class="badge">VIRAL SHORT VIDEO</div></div>
-      <h2 class="sec-title">30 秒看懂：為什麼丟垃圾桶不安全？</h2>
-      <p class="sec-desc">點擊播放體驗為 TikTok / YouTube Shorts / Reels 量身打造的直式動態短影音</p>
-
-      <div class="video-showcase-box">
-        <!-- 嵌入 9:16 短影音播放器 -->
-        <div class="video-mockup-wrapper">
-          <iframe src="./short_video.html" title="JBA128G3 短影音播放器"></iframe>
+    <!-- 4. 30 秒爆款短影音體驗 -->
+    <section id="video" style="max-width:1100px;">
+        <h2 class="section-title" data-i18n="video_title">30 秒看懂：為什麼丟垃圾桶不安全？</h2>
+        <p class="section-desc" data-i18n="video_desc">專為 TikTok / Shorts / Reels 量身打造的直式動態短影音播放器</p>
+        <div class="video-box">
+            <div class="video-wrapper">
+                <iframe src="./short_video.html" title="Short Video Player"></iframe>
+            </div>
+            <div class="video-info">
+                <h3 style="font-size:24px; color:#fff; margin-bottom:12px;" data-i18n="video_h3">高穿透力視覺呈現</h3>
+                <p style="color:var(--text-muted); font-size:15px; margin-bottom:20px;" data-i18n="video_p">
+                    左側短影音內嵌真人中文語音旁白 (TTS)、重低音卡點音效與大字報跳轉。點擊播放即可在線體驗高科技安全護盾震撼效果！
+                </p>
+                <button class="btn-main" onclick="showDemoAlert()" data-i18n="btn_get_shield">立即領取 JBA128G3</button>
+            </div>
         </div>
-        <div class="video-text-content">
-          <h3>高穿透力・視覺化呈現</h3>
-          <p style="color:var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
-            結合當前爆款短影音傳播邏輯：黃金 3 秒痛點警報、暴力大檔容量演示、物理粉碎粒子特效與免費用戶裂變呼籲，將艱深密碼學轉化為大眾秒懂的資安剛需。
-          </p>
-          <div class="video-tag-list">
-            <span class="video-tag">⚡ 9:16 直式標準</span>
-            <span class="video-tag">🎙️ 中文真人語音 TTS</span>
-            <span class="video-tag">💥 卡點字幕跳轉</span>
-            <span class="video-tag">📱 全終端響應式</span>
-          </div>
-          <p style="font-size:0.85rem; color:#718096;">
-            💡 提示：左側播放器支援直接在線播放！手機端或電腦端均可直接預覽音效與畫面。
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 競品深度對比專區 -->
-  <section id="compare">
-    <div class="container">
-      <div style="text-align: center;"><div class="badge">COMPETITIVE MATRIX</div></div>
-      <h2 class="sec-title">同樣是保護檔案，為什麼選擇 JBA128G3？</h2>
-      <p class="sec-desc">不只加密，更徹底解決「原檔殘留」、「雲端洩漏」與「大檔崩潰」三大傳統硬傷</p>
-
-      <div class="compare-section-box">
+    <!-- 5. 競品深度對比表格 -->
+    <section id="compare">
+        <h2 class="section-title" data-i18n="compare_title">同樣是保護檔案，為什麼選擇 JBA128G3？</h2>
+        <p class="section-desc" data-i18n="compare_desc">解決「原檔殘留」、「雲端洩漏」與「大檔崩潰」三大傳統資安痛點</p>
         <div class="table-wrapper">
-          <table class="compare-table">
-            <thead>
-              <tr>
-                <th style="width: 22%;">安全防護指標</th>
-                <th class="col-highlight" style="width: 28%;">
-                  <span style="font-size:0.75rem; background:#00ff88; color:#000; padding:2px 8px; border-radius:4px; font-weight:800;">官方推薦旗艦</span>
-                  <div style="font-size:1.15rem; color:#00f0ff; font-weight:900; margin-top:4px;">JBA128G3 Storage Shield</div>
-                </th>
-                <th style="width: 17%;">傳統壓縮加密<br><span style="font-size:0.75rem; color:#718096;">(WinRAR / 7-Zip)</span></th>
-                <th style="width: 17%;">商業付費加密<br><span style="font-size:0.75rem; color:#718096;">(AxCrypt / FolderLock)</span></th>
-                <th style="width: 16%;">雲端保險箱<br><span style="font-size:0.75rem; color:#718096;">(NordLocker / MEGA)</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="cell-title">離線與隱私承諾</div>
-                  <div class="cell-desc">純本機主權與遙測監控</div>
-                </td>
-                <td class="col-highlight">
-                  <div class="cell-title" style="color:#00f0ff;">✅ 100% 物理離線</div>
-                  <div class="cell-desc" style="color:#a0d2eb;">純本機執行 / 零數據遙測，無聯網模組</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#cbd5e0;">✅ 離線運行</div>
-                  <div class="cell-desc">無雲端依賴</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#f56565;">❌ 強制聯網帳號</div>
-                  <div class="cell-desc">需登入、金鑰雲端備份</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#f56565;">❌ 深度依賴雲端</div>
-                  <div class="cell-desc">中繼資料由伺服器掌控</div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="cell-title">防數據救援還原</div>
-                  <div class="cell-desc">原檔物理覆寫粉碎</div>
-                </td>
-                <td class="col-highlight">
-                  <div class="cell-title" style="color:#00f0ff;">✅ JBA-Shredder 自動粉碎</div>
-                  <div class="cell-desc" style="color:#a0d2eb;">校驗後覆寫抹除未加密原檔，防救援軟體</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#f56565;">❌ 原檔完好無損</div>
-                  <div class="cell-desc">丟垃圾桶，救援軟體 3 秒挖出</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#cbd5e0;">⚠️ 需手動右鍵粉碎</div>
-                  <div class="cell-desc">非自動流程，極易遺漏洩密</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#f56565;">❌ 無原檔自動抹除</div>
-                  <div class="cell-desc">使用者需自行清理殘存原檔</div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="cell-title">20GB 巨型專案支援</div>
-                  <div class="cell-desc">大檔案與多層資料夾封裝</div>
-                </td>
-                <td class="col-highlight">
-                  <div class="cell-title" style="color:#ffe600;">✅ 64MB 零拷貝串流</div>
-                  <div class="cell-desc" style="color:#a0d2eb;">記憶體佔用全程低於 200MB，原位還原</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#cbd5e0;">⚠️ 壓縮耗時極長</div>
-                  <div class="cell-desc">大檔案高頻率記憶體溢出 (OOM)</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#cbd5e0;">⚠️ 大檔性能衰退</div>
-                  <div class="cell-desc">數 GB 以上容易卡頓崩潰</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#f56565;">❌ 上傳受限頻寬</div>
-                  <div class="cell-desc">受網路速度與流量配額限制</div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="cell-title">底層密碼演算法</div>
-                  <div class="cell-desc">抗量子攻擊與暴力破譯</div>
-                </td>
-                <td class="col-highlight">
-                  <div class="cell-title" style="color:#00f0ff;">✅ CB Tec 後量子幾何流式</div>
-                  <div class="cell-desc" style="color:#a0d2eb;">非公開 AES 家族，單機無後門</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#cbd5e0;">⚠️ 傳統公開 AES-256</div>
-                  <div class="cell-desc">算力撞庫工具普及</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#cbd5e0;">⚠️ 傳統 AES-128/256</div>
-                  <div class="cell-desc">存在廠商金鑰託管風險</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#cbd5e0;">⚠️ 傳統 AES + 雲端金鑰</div>
-                  <div class="cell-desc">受跨國監管調取風險</div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="cell-title">接收方協同成本</div>
-                  <div class="cell-desc">外發給客戶或跨部門同事</div>
-                </td>
-                <td class="col-highlight">
-                  <div class="cell-title" style="color:#ffe600;">🌟 解密永久免費、無限制！</div>
-                  <div class="cell-desc" style="color:#a0d2eb;">對方免付費、免註冊，二進制 100% 吻合</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#cbd5e0;">⚠️ 需特定解壓軟體</div>
-                  <div class="cell-desc">目錄編碼與檔名容易損壞</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#f56565;">❌ 對方也必須付費/註冊</div>
-                  <div class="cell-desc">接收方門檻高，協同阻力大</div>
-                </td>
-                <td>
-                  <div class="cell-title" style="color:#f56565;">❌ 雙方均需註冊雲端</div>
-                  <div class="cell-desc">綁定封閉雲端生態</div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th style="width:22%;" data-i18n="th_metric">安全防護指標</th>
+                        <th class="col-hl" style="width:28%;">🛡️ JBA128G3 Storage Shield</th>
+                        <th style="width:17%;" data-i18n="th_zip">傳統壓縮 (7-Zip/WinRAR)</th>
+                        <th style="width:17%;" data-i18n="th_commercial">商業加密 (AxCrypt等)</th>
+                        <th style="width:16%;" data-i18n="th_cloud">雲端保險箱 (NordLocker)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-i18n="row1_title"><strong>離線隱私承諾</strong></td>
+                        <td class="col-hl" style="color:var(--primary);" data-i18n="row1_jba">✅ 100% 物理離線 / 零數據遙測</td>
+                        <td data-i18n="row1_zip">✅ 離線運行</td>
+                        <td style="color:#f87171;" data-i18n="row1_commercial">❌ 強制聯網帳號登入</td>
+                        <td style="color:#f87171;" data-i18n="row1_cloud">❌ 深度依賴雲端伺服器</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="row2_title"><strong>防救援軟體還原 (物理粉碎)</strong></td>
+                        <td class="col-hl" style="color:var(--primary);" data-i18n="row2_jba">✅ JBA-Shredder 自動覆寫原檔</td>
+                        <td style="color:#f87171;" data-i18n="row2_zip">❌ 原檔完好，救援軟體 3 秒挖出</td>
+                        <td data-i18n="row2_commercial">⚠️ 需手動右鍵粉碎 (易遺漏)</td>
+                        <td style="color:#f87171;" data-i18n="row2_cloud">❌ 無原檔自動抹除</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="row3_title"><strong>20GB 巨型專案支援</strong></td>
+                        <td class="col-hl" style="color:#ffe600;" data-i18n="row3_jba">✅ 64MB 零拷貝串流 (RAM < 200M)</td>
+                        <td data-i18n="row3_zip">⚠️ 壓縮耗時，大檔高頻溢出當機</td>
+                        <td data-i18n="row3_commercial">⚠️ 大檔性能顯著衰退</td>
+                        <td style="color:#f87171;" data-i18n="row3_cloud">❌ 上傳痛苦受限網路頻寬</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="row4_title"><strong>底層密碼演算法</strong></td>
+                        <td class="col-hl" style="color:var(--primary);" data-i18n="row4_jba">✅ CB Tec 後量子幾何流式 (無後門)</td>
+                        <td data-i18n="row4_zip">⚠️ 傳統公開 AES (算力撞庫成熟)</td>
+                        <td data-i18n="row4_commercial">⚠️ 傳統 AES (金鑰雲端託管風險)</td>
+                        <td data-i18n="row4_cloud">⚠️ 傳統 AES + 雲端金鑰</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="row5_title"><strong>接收方協同成本</strong></td>
+                        <td class="col-hl" style="color:#ffe600;" data-i18n="row5_jba">🌟 解密永久免費、無限制！</td>
+                        <td data-i18n="row5_zip">⚠️ 需特定解壓工具，易損壞</td>
+                        <td style="color:#f87171;" data-i18n="row5_commercial">❌ 對方也必須付費或註冊</td>
+                        <td style="color:#f87171;" data-i18n="row5_cloud">❌ 雙方均需註冊雲端平台</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 版本與定價方案 -->
-  <section id="pricing">
-    <div class="container">
-      <div style="text-align: center;"><div class="badge">BUSINESS TIERING</div></div>
-      <h2 class="sec-title">版本階梯規劃</h2>
-      <p class="sec-desc">解密零門檻、加密按需升級，打造健康的 B2B 成長漏斗</p>
+    <!-- 6. 贊助支持區塊 (保留並升級) -->
+    <section id="donate">
+        <h2 class="section-title" data-i18n="donate_title">☕ 支持與贊助團隊</h2>
+        <p class="section-desc" data-i18n="donate_desc">您的支持是 J Will 團隊持續研發後量子加密與維護更新的最大動力！</p>
+        <div class="donate-box">
+            <h3 data-i18n="donate_box_title" style="color:#fff; margin-bottom:8px;">請開發者喝一杯咖啡</h3>
+            
+            <div class="donate-tabs">
+                <button class="tab-btn active" onclick="switchTab('fiat')" data-i18n="tab_fiat">💳 信用卡 / 美金 (USD)</button>
+                <button class="tab-btn" onclick="switchTab('crypto')" data-i18n="tab_crypto">🪙 虛擬貨幣贊助</button>
+            </div>
 
-      <div class="pricing-grid">
-        <div class="pricing-card featured">
-          <div class="badge" style="width:fit-content;">當前版本</div>
-          <h3>個人免費體驗版 (v1.0.3)</h3>
-          <p style="color:var(--text-muted);">適合初次評估、個人緊急防護與協同解密驗證</p>
-          <div class="pricing-price">免費 (Freeware)</div>
-          <ul class="pricing-list">
-            <li>✅ <strong>解密功能永久免費、無次數限制</strong></li>
-            <li>✅ 完整具備 20GB 大檔與資料夾封裝能力</li>
-            <li>✅ 1~20 個混合佇列批次加解密</li>
-            <li>✅ JBA-Shredder 物理覆寫抹除</li>
-            <li>⚠️ 加密功能提供 2 次完整體驗上限</li>
-          </ul>
-          <a href="#download" class="btn-main" style="text-align:center; justify-content:center;">立即下載免費體驗</a>
+            <!-- 法幣 USD -->
+            <div id="fiat-tab" class="tab-content active">
+                <div class="amount-buttons">
+                    <button class="amount-btn" onclick="setAmount(5)">$5 USD</button>
+                    <button class="amount-btn" onclick="setAmount(10)">$10 USD</button>
+                    <button class="amount-btn" onclick="setAmount(25)">$25 USD</button>
+                    <button class="amount-btn" onclick="setAmount(50)">$50 USD</button>
+                    <button class="amount-btn" onclick="setAmount(100)">$100 USD</button>
+                </div>
+                <div>
+                    <input type="number" id="customAmount" class="custom-amount-input" placeholder="Custom Amount ($ USD)" value="10" min="1">
+                </div>
+                <button class="btn-donate" onclick="processDonate()" data-i18n="btn_donate_submit">前往贊助 (USD)</button>
+            </div>
+
+            <!-- 虛擬貨幣 Crypto -->
+            <div id="crypto-tab" class="tab-content">
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;" data-i18n="crypto_tip">轉帳時請務必選擇對應的區塊鏈網路！</p>
+                <div class="crypto-list">
+                    <div class="crypto-item">
+                        <div class="crypto-header">
+                            <span style="color:#fff;">USDT</span>
+                            <span style="color: #10b981;">TRC-20 (TRON)</span>
+                        </div>
+                        <div class="crypto-addr-box">
+                            <span class="crypto-addr" id="addr-usdt-trc20">TY1234567890abcdef1234567890SampleTRC20Addr</span>
+                            <button class="btn-copy" onclick="copyAddress('addr-usdt-trc20')" data-i18n="btn_copy">複製</button>
+                        </div>
+                    </div>
+                    <div class="crypto-item">
+                        <div class="crypto-header">
+                            <span style="color:#fff;">USDT / USDC / ETH</span>
+                            <span style="color: #6366f1;">ERC-20 (Ethereum)</span>
+                        </div>
+                        <div class="crypto-addr-box">
+                            <span class="crypto-addr" id="addr-eth">0x1234567890abcdef1234567890SampleERC20Addr</span>
+                            <button class="btn-copy" onclick="copyAddress('addr-eth')" data-i18n="btn_copy">複製</button>
+                        </div>
+                    </div>
+                    <div class="crypto-item">
+                        <div class="crypto-header">
+                            <span style="color:#fff;">Bitcoin (BTC)</span>
+                            <span style="color: #f59e0b;">BTC Network</span>
+                        </div>
+                        <div class="crypto-addr-box">
+                            <span class="crypto-addr" id="addr-btc">bc1q1234567890abcdef1234567890SampleBTCAddr</span>
+                            <button class="btn-copy" onclick="copyAddress('addr-btc')" data-i18n="btn_copy">複製</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="pricing-card">
-          <div class="badge" style="width:fit-content; background:rgba(255,230,0,0.1); border-color:#ffe600; color:#ffe600;">後續規劃</div>
-          <h3>企業專業商業版 (Pro)</h3>
-          <p style="color:var(--text-muted);">為高機密研發、律師會計與高頻資安防護打造</p>
-          <div class="pricing-price" style="color:#00f0ff;">即將推出</div>
-          <ul class="pricing-list">
-            <li>🌟 <strong>解鎖無限次加密商業授權</strong></li>
-            <li>🌟 <strong>獨家雙向混合寄生隱寫模式</strong><br>(機密檔案偽裝寄生於普通圖片/影片)</li>
-            <li>🌟 4 通道極速滿速併發支援</li>
-            <li>🌟 無上限批次處理佇列</li>
-            <li>🌟 優先企業技術支援與升級保障</li>
-          </ul>
-          <a href="#download" class="btn-outline" style="text-align:center; justify-content:center;">預約專業版發布通知</a>
+    <!-- 7. 下載專區 -->
+    <section id="download" style="text-align: center;">
+        <h2 class="section-title" data-i18n="download_title">取得 JBA128G3 官方軟體</h2>
+        <p class="section-desc" data-i18n="download_desc">支援 Windows 10 / Windows 11 (64-bit) ｜ 100% 離線運行零遙測</p>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 16px; border: 1px solid var(--card-border); display: inline-block;">
+            <h3 style="margin-bottom: 10px; color:#fff;" data-i18n="download_box_h3">JBA128G3 Storage Shield (v1.0.3)</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px;" data-i18n="download_box_p">版本：v1.0.3 ｜ 大小：約 73.5 MB ｜ 性質：個人免費版</p>
+            <button class="btn-main" onclick="showDemoAlert()" data-i18n="btn_download_file" style="font-size:16px;">
+                ⚡ 免費下載 Windows 安裝包 (.exe)
+            </button>
         </div>
-      </div>
+    </section>
+
+    <!-- 8. 展示用彈窗 -->
+    <div id="demoModal" class="modal">
+        <div class="modal-box">
+            <div style="font-size:3rem; margin-bottom:12px;">🛡️</div>
+            <h3 style="font-size:1.4rem; color:#fff; margin-bottom:12px;" data-i18n="modal_title">官方網站效果展示中</h3>
+            <p style="color:var(--text-muted); font-size:14px; line-height:1.6; margin-bottom:24px;" data-i18n="modal_desc">
+                您當前正在瀏覽 JBA128G3 官方網站線上效果！<br>
+                本站點為純前端展示架構，無需上傳任何 .EXE 檔案即可完美預覽所有視覺、短影音與多語系功能。
+            </p>
+            <button onclick="closeDemoAlert()" class="btn-main" style="padding:10px 24px; font-size:14px;" data-i18n="modal_btn">
+                太棒了，繼續瀏覽
+            </button>
+        </div>
     </div>
-  </section>
 
-  <!-- 底部下載引導 -->
-  <section id="download" style="text-align:center; background: radial-gradient(circle at 50% 80%, rgba(0, 240, 255, 0.15) 0%, transparent 70%);">
-    <div class="container">
-      <h2 class="sec-title">立即為您的機密資產裝上安全防護盾</h2>
-      <p class="sec-desc">10 秒完成安裝，告別雲端洩露風險，純本機 100% 離線運行。</p>
-      
-      <div style="margin-bottom: 24px;">
-        <a href="javascript:void(0)" onclick="showDemoAlert()" class="btn-main" style="font-size:1.2rem; padding:16px 42px;">
-          ⬇️ 下載 JBA128G3 Storage Shield (v1.0.3)
-        </a>
-      </div>
-      <p style="color:#718096; font-size:0.85rem;">
-        支援系統：Windows 10 / Windows 11 (64-bit) ｜ 安裝檔大小約 73.5 MB（展示站點無需上傳 EXE）
-      </p>
-    </div>
-  </section>
+    <!-- 頁尾 -->
+    <footer>
+        <p>© 2026 J Will Team & CB Tec. All rights reserved. ｜ JBA128G3 Storage Shield</p>
+    </footer>
 
-  <!-- 展示用優雅彈窗 -->
-  <div id="demoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center; backdrop-filter:blur(6px);">
-    <div style="background:#0d1522; border:2px solid #00f0ff; border-radius:20px; padding:32px; max-width:480px; text-align:center; box-shadow:0 0 40px rgba(0,240,255,0.4); margin:20px;">
-      <div style="font-size:3rem; margin-bottom:12px;">🛡️</div>
-      <h3 style="font-size:1.4rem; color:#fff; margin-bottom:12px;">官方網站效果預覽展示</h3>
-      <p style="color:#a0aec0; font-size:0.95rem; line-height:1.6; margin-bottom:24px;">
-        您當前正在瀏覽 <strong style="color:#00f0ff;">JBA128G3 Storage Shield (v1.0.3)</strong> 官方網站線上效果！<br>
-        本站點為純前端展示架構，無需上傳任何 .EXE 檔案即可完美預覽所有視覺、短影音與競品對比互動效果。
-      </p>
-      <button onclick="closeDemoAlert()" style="background:linear-gradient(135deg, #00f0ff, #0077ff); border:none; color:#000; font-weight:800; padding:12px 30px; border-radius:30px; font-size:1rem; cursor:pointer;">
-        太棒了，繼續預覽
-      </button>
-    </div>
-  </div>
+    <!-- 多語系與互動 JS 邏輯 -->
+    <script>
+        const translations = {
+            zh: {
+                logo: "JBA128G3 安全盾",
+                nav_features: "產品特色",
+                nav_video: "30秒短影音",
+                nav_compare: "競品對比",
+                nav_donate: "☕ 贊助支持",
+                nav_download: "下載專區",
+                hero_badge: "正式發行版本 v1.0.3 ｜ 100% 離線運行",
+                hero_title: "重掌本機資料主權\n為極限機密而生的安全盾",
+                hero_subtitle: "拒絕雲端洩露，無懼數據救援。基於 CB Tec 後量子幾何流式加密，支援 20GB 大檔串流與 JBA-Shredder 物理粉碎。",
+                hero_btn: "免費下載 v1.0.3",
+                hero_compare_btn: "查看競品規格對比",
+                features_title: "四大硬核防護體系",
+                features_desc: "突破傳統加密局限，為個人與企業打造最嚴苛的本機安全壁壘",
+                f1_title: "後量子幾何流式加密",
+                f1_desc: "非公開 AES 家族，由 J Will 團隊與 CB Tec 自研，單機無預留後門，防範未來暴力算力破譯。",
+                f2_title: "20GB 巨型資料夾封裝",
+                f2_desc: "內建 64MB 零拷貝串流架構，記憶體全程 < 200MB，解密 100% Bit-Perfect 原位還原目錄層級。",
+                f3_title: "JBA-Shredder 物理粉碎",
+                f3_desc: "加密驗證完成後，自動覆寫抹除未加密原檔，頂級資料救援軟體（如 Recuva）亦徹底無效。",
+                f4_title: "解密永久免費・無限制",
+                f4_desc: "加密檔案發給客戶或同仁，對方無需付費、無需註冊即可自由解密，打造零阻力協同流轉。",
+                video_title: "30 秒看懂：為什麼丟垃圾桶不安全？",
+                video_desc: "專為 TikTok / Shorts / Reels 量身打造的直式動態短影音播放器",
+                video_h3: "高穿透力視覺呈現",
+                video_p: "左側短影音內嵌真人中文語音旁白 (TTS)、重低音卡點音效與大字報跳轉。點擊播放即可在線體驗高科技安全護盾震撼效果！",
+                btn_get_shield: "立即領取 JBA128G3",
+                compare_title: "同樣是保護檔案，為什麼選擇 JBA128G3？",
+                compare_desc: "解決「原檔殘留」、「雲端洩漏」與「大檔崩潰」三大傳統資安痛點",
+                th_metric: "安全防護指標",
+                th_zip: "傳統壓縮 (7-Zip/WinRAR)",
+                th_commercial: "商業加密 (AxCrypt等)",
+                th_cloud: "雲端保險箱 (NordLocker)",
+                row1_title: "離線隱私承諾",
+                row1_jba: "✅ 100% 物理離線 / 零數據遙測",
+                row1_zip: "✅ 離線運行",
+                row1_commercial: "❌ 強制聯網帳號登入",
+                row1_cloud: "❌ 深度依賴雲端伺服器",
+                row2_title: "防救援還原 (物理粉碎)",
+                row2_jba: "✅ JBA-Shredder 自動覆寫原檔",
+                row2_zip: "❌ 原檔完好，救援軟體 3 秒挖出",
+                row2_commercial: "⚠️ 需手動右鍵粉碎 (易遺漏)",
+                row2_cloud: "❌ 無原檔自動抹除",
+                row3_title: "20GB 巨型專案支援",
+                row3_jba: "✅ 64MB 零拷貝串流 (RAM < 200M)",
+                row3_zip: "⚠️ 壓縮耗時，大檔高頻溢出當機",
+                row3_commercial: "⚠️ 大檔性能顯著衰退",
+                row3_cloud: "❌ 上傳痛苦受限網路頻寬",
+                row4_title: "底層密碼演算法",
+                row4_jba: "✅ CB Tec 後量子幾何流式 (無後門)",
+                row4_zip: "⚠️ 傳統公開 AES (算力撞庫成熟)",
+                row4_commercial: "⚠️ 傳統 AES (金鑰雲端託管風險)",
+                row4_cloud: "⚠️ 傳統 AES + 雲端金鑰",
+                row5_title: "接收方協同成本",
+                row5_jba: "🌟 解密永久免費、無限制！",
+                row5_zip: "⚠️ 需特定解壓工具，易損壞",
+                row5_commercial: "❌ 對方也必須付費或註冊",
+                row5_cloud: "❌ 雙方均需註冊雲端平台",
+                donate_title: "☕ 支持與贊助團隊",
+                donate_desc: "您的支持是 J Will 團隊持續研發後量子加密與維護更新的最大動力！",
+                donate_box_title: "請開發者喝一杯咖啡",
+                tab_fiat: "💳 信用卡 / 美金 (USD)",
+                tab_crypto: "🪙 虛擬貨幣贊助",
+                crypto_tip: "轉帳時請務必選擇對應的區塊鏈網路！",
+                btn_copy: "複製",
+                btn_donate_submit: "前往贊助 (USD)",
+                download_title: "取得 JBA128G3 官方軟體",
+                download_desc: "支援 Windows 10 / Windows 11 (64-bit) ｜ 100% 離線運行零遙測",
+                download_box_h3: "JBA128G3 Storage Shield (v1.0.3)",
+                download_box_p: "版本：v1.0.3 ｜ 大小：約 73.5 MB ｜ 性質：個人免費版",
+                btn_download_file: "⚡ 免費下載 Windows 安裝包 (.exe)",
+                modal_title: "官方網站效果展示中",
+                modal_desc: "您當前正在瀏覽 JBA128G3 官方網站線上效果！\n本站點為純前端展示架構，無需上傳任何 .EXE 檔案即可完美預覽所有視覺、短影音與多語系功能。",
+                modal_btn: "太棒了，繼續瀏覽",
+                alert_invalid: "請輸入有效的美金金額！",
+                alert_thanks: "感謝您的支持！贊助金額：$",
+                copied_msg: "錢包地址已成功複製！"
+            },
+            en: {
+                logo: "JBA128G3 Shield",
+                nav_features: "Features",
+                nav_video: "Short Video",
+                nav_compare: "Comparison",
+                nav_donate: "☕ Donate",
+                nav_download: "Download",
+                hero_badge: "Official Release v1.0.3 | 100% Offline Run",
+                hero_title: "Reclaim Local Data Sovereignty\nBuilt for Ultimate Confidentiality",
+                hero_subtitle: "Say no to cloud leaks and data recovery. Powered by CB Tec Post-Quantum Geometric Stream Encryption with 20GB streaming and JBA-Shredder physical wiping.",
+                hero_btn: "Free Download v1.0.3",
+                hero_compare_btn: "View Comparison Specs",
+                features_title: "4 Hardcore Defense Pillars",
+                features_desc: "Breaking traditional encryption limits to build the strictest local defense for individuals and enterprises.",
+                f1_title: "Post-Quantum Geometric Encryption",
+                f1_desc: "Non-public AES architecture developed by J Will Team & CB Tec. Standalone with zero backdoors, immune to brute-force compute.",
+                f2_title: "20GB Massive Folder Packaging",
+                f2_desc: "Built-in 64MB zero-copy streaming, RAM usage < 200MB throughout. Decrypts with 100% Bit-Perfect folder hierarchy restoration.",
+                f3_title: "JBA-Shredder Physical Wiping",
+                f3_desc: "Automatically overwrites and destroys unencrypted source files upon verification. Leaves data recovery tools completely helpless.",
+                f4_title: "Decryption 100% Free Forever",
+                f4_desc: "Recipients can decrypt files with zero cost and no account needed, ensuring frictionless B2B collaboration.",
+                video_title: "30s Explainer: Why the Recycle Bin isn't Safe?",
+                video_desc: "Tailored 9:16 vertical video player for TikTok, YouTube Shorts, and Instagram Reels.",
+                video_h3: "High-Impact Visual Demonstration",
+                video_p: "Features AI voiceover, cyberpunk beat drops, and kinetic typography. Click play to experience the security shield in real time!",
+                btn_get_shield: "Get JBA128G3 Now",
+                compare_title: "Why Choose JBA128G3 Over Alternatives?",
+                compare_desc: "Eliminates the three fatal flaws: residue files, cloud leaks, and massive-file crashes.",
+                th_metric: "Security Metric",
+                th_zip: "Traditional Zip (7-Zip/WinRAR)",
+                th_commercial: "Commercial Tools (AxCrypt, etc.)",
+                th_cloud: "Cloud Vaults (NordLocker)",
+                row1_title: "Offline Privacy Guarantee",
+                row1_jba: "✅ 100% Physical Offline / Zero Telemetry",
+                row1_zip: "✅ Offline execution",
+                row1_commercial: "❌ Mandatory account cloud login",
+                row1_cloud: "❌ Deep cloud dependency",
+                row2_title: "Anti-Recovery (Physical Shredding)",
+                row2_jba: "✅ JBA-Shredder Auto Overwrite",
+                row2_zip: "❌ Original files intact, easily recovered",
+                row2_commercial: "⚠️ Manual shredding required",
+                row2_cloud: "❌ No auto source wiping",
+                row3_title: "20GB Massive Project Support",
+                row3_jba: "✅ 64MB Zero-Copy Streaming (RAM < 200M)",
+                row3_zip: "⚠️ Slow compression, OOM crashes",
+                row3_commercial: "⚠️ Significant lag on large files",
+                row3_cloud: "❌ Painful bandwidth throttling",
+                row4_title: "Core Cryptographic Algorithm",
+                row4_jba: "✅ CB Tec Post-Quantum Stream (No Backdoors)",
+                row4_zip: "⚠️ Public AES (Vulnerable to brute compute)",
+                row4_commercial: "⚠️ Standard AES (Cloud key custody risk)",
+                row4_cloud: "⚠️ AES with cloud-stored keys",
+                row5_title: "Collaboration & Recipient Cost",
+                row5_jba: "🌟 Decryption 100% Free & Unlimited!",
+                row5_zip: "⚠️ Requires software, filenames corrupted",
+                row5_commercial: "❌ Recipient must pay or register",
+                row5_cloud: "❌ Both parties forced into cloud eco",
+                donate_title: "☕ Support & Donate",
+                donate_desc: "Your support fuels J Will Team to continuously innovate post-quantum algorithms and maintain updates!",
+                donate_box_title: "Buy the Developer a Coffee",
+                tab_fiat: "💳 Credit Card / USD",
+                tab_crypto: "🪙 Cryptocurrency",
+                crypto_tip: "Please make sure to select the correct blockchain network!",
+                btn_copy: "Copy",
+                btn_donate_submit: "Proceed to Donate (USD)",
+                download_title: "Get JBA128G3 Software",
+                download_desc: "Compatible with Windows 10 / Windows 11 (64-bit) | 100% Offline with Zero Telemetry",
+                download_box_h3: "JBA128G3 Storage Shield (v1.0.3)",
+                download_box_p: "Version: v1.0.3 | Size: ~73.5 MB | License: Freeware",
+                btn_download_file: "⚡ Free Download for Windows (.exe)",
+                modal_title: "Official Website Demo Preview",
+                modal_desc: "You are currently viewing the online preview of JBA128G3 Storage Shield!\nThis is a pure frontend demo, allowing you to preview all visual, short-video, and multi-language features without uploading any .EXE files.",
+                modal_btn: "Awesome, Keep Browsing",
+                alert_invalid: "Please enter a valid amount!",
+                alert_thanks: "Thank you for your generous support! Amount: $",
+                copied_msg: "Wallet address copied to clipboard!"
+            },
+            ja: {
+                logo: "JBA128G3 防護シールド",
+                nav_features: "特徴",
+                nav_video: "ショート動画",
+                nav_compare: "他社比較",
+                nav_donate: "☕ 支援する",
+                nav_download: "ダウンロード",
+                hero_badge: "公式リリース v1.0.3 ｜ 100% オフライン稼働",
+                hero_title: "ローカルデータの主権を取り戻す\n極限の機密のために生まれた防護盾",
+                hero_subtitle: "クラウド漏洩とデータ復旧を徹底排除。CB Tec耐量子幾何ストリーム暗号化を搭載し、20GBのストリーミング処理とJBA-Shredderによる物理抹消に対応。",
+                hero_btn: "無料ダウンロード v1.0.3",
+                hero_compare_btn: "スペック比較表を見る",
+                features_title: "4大セキュリティ防護体系",
+                features_desc: "従来の暗号化の限界を打破し、個人と企業に最も強固なローカル防壁を構築します。",
+                f1_title: "耐量子幾何ストリーム暗号化",
+                f1_desc: "非公開AESアーキテクチャ。J WillチームとCB Tecが独自開発し、バックドア皆無で総当たり計算攻撃を防御。",
+                f2_title: "20GB 巨大フォルダ一括パッケージ",
+                f2_desc: "64MBゼロコピーストリーミング搭載、メモリ消費は常時200MB以下。復号時は100%完全原位置復元。",
+                f3_title: "JBA-Shredder 物理シュレッダー",
+                f3_desc: "暗号化検証後、未暗号化の元ファイルを自動上書き抹消。最新のデータ復旧ソフトでも復元不可能。",
+                f4_title: "復号機能は永久無料・無制限",
+                f4_desc: "取引先や同僚へ送付しても、相手側は課金・登録不要で自由に復号可能。シームレスな共有を実現。",
+                video_title: "30秒解説：なぜゴミ箱に捨てるだけでは危険なのか？",
+                video_desc: "TikTok、YouTube Shorts、Reels向けに最適化された9:16縦型動画プレイヤー",
+                video_h3: "圧倒的なビジュアル表現",
+                video_p: "AI音声ナレーション、サイバーパンク調の重低音、テロップ演出を搭載。再生をクリックして最先端のセキュリティ効果を体感してください！",
+                btn_get_shield: "JBA128G3 を今すぐ入手",
+                compare_title: "他社ツールと何が違うのか？",
+                compare_desc: "「元データの残留」「クラウド漏洩」「大容量クラッシュ」の3大課題を根本解決",
+                th_metric: "セキュリティ指標",
+                th_zip: "従来の圧縮 (7-Zip/WinRAR)",
+                th_commercial: "商用暗号化 (AxCrypt等)",
+                th_cloud: "クラウド保管庫 (NordLocker)",
+                row1_title: "オフラインプライバシー保証",
+                row1_jba: "✅ 100% 物理オフライン / テレメトリ皆無",
+                row1_zip: "✅ オフライン稼働",
+                row1_commercial: "❌ アカウントでのクラウドログイン必須",
+                row1_cloud: "❌ クラウドサーバーへの深い依存",
+                row2_title: "復元ソフト対策 (物理抹消)",
+                row2_jba: "✅ JBA-Shredder 自動上書き抹消",
+                row2_zip: "❌ 元データが残り、3秒で復元可能",
+                row2_commercial: "⚠️ 手動での右クリック粉砕が必要",
+                row2_cloud: "❌ 元データの自動抹消なし",
+                row3_title: "20GB 巨大プロジェクト対応",
+                row3_jba: "✅ 64MB ゼロコピー (メモリ < 200MB)",
+                row3_zip: "⚠️ 圧縮に時間がかかりメモリ不足でクラッシュ",
+                row3_commercial: "⚠️ 大容量ファイルで性能が大幅低下",
+                row3_cloud: "❌ アップロード回線速度の制限",
+                row4_title: "暗号化コアアルゴリズム",
+                row4_jba: "✅ CB Tec 耐量子幾何ストリーム (裏口なし)",
+                row4_zip: "⚠️ 公開AES (計算力による総当たり耐性低下)",
+                row4_commercial: "⚠️ 従来型AES (クラウドでの鍵保管リスク)",
+                row4_cloud: "⚠️ AES ＋ クラウド鍵管理",
+                row5_title: "受信側の導入コスト",
+                row5_jba: "🌟 復号機能は永久無料・回数無制限！",
+                row5_zip: "⚠️ 専用解凍ソフトが必要で文字化けリスクあり",
+                row5_commercial: "❌ 相手も有料ライセンスまたは登録が必要",
+                row5_cloud: "❌ 双方がクラウドプラットフォームに登録必須",
+                donate_title: "☕ 開発チームを支援",
+                donate_desc: "皆様のご支援が、耐量子暗号の継続的な研究開発とアップデートの原動力です！",
+                donate_box_title: "開発者にコーヒーを一杯",
+                tab_fiat: "💳 クレジットカード / USD",
+                tab_crypto: "🪙 暗号資産 (仮想通貨)",
+                crypto_tip: "送金の際は対応するブロックチェーンネットワークを必ずご確認ください！",
+                btn_copy: "コピー",
+                btn_donate_submit: "寄付ページへ (USD)",
+                download_title: "JBA128G3 公式ソフトの入手",
+                download_desc: "Windows 10 / Windows 11 (64-bit) 対応 ｜ 100% オフライン・テレメトリゼロ",
+                download_box_h3: "JBA128G3 Storage Shield (v1.0.3)",
+                download_box_p: "バージョン: v1.0.3 ｜ サイズ: 約 73.5 MB ｜ ライセンス: フリーウェア",
+                btn_download_file: "⚡ Windows版を無料ダウンロード (.exe)",
+                modal_title: "公式サイト デモプレビュー中",
+                modal_desc: "現在、JBA128G3 Storage Shield のオンラインプレビューを閲覧中です！\n当サイトは純粋なフロントエンド構成となっており、.EXEファイルをアップロードすることなく、すべてのビジュアル、ショート動画、多言語機能を体験いただけます。",
+                modal_btn: "了解、プレビューを続ける",
+                alert_invalid: "有効な金額を入力してください！",
+                alert_thanks: "温かいご支援ありがとうございます！ 寄付額: $",
+                copied_msg: "アドレスをクリップボードにコピーしました！"
+            }
+        };
 
-  <script>
-    function showDemoAlert() {
-      const modal = document.getElementById('demoModal');
-      modal.style.display = 'flex';
-    }
-    function closeDemoAlert() {
-      const modal = document.getElementById('demoModal');
-      modal.style.display = 'none';
-    }
-  </script>
+        let currentLang = 'zh';
 
-  <!-- 頁尾 -->
-  <footer>
-    <div class="container">
-      <p style="margin-bottom: 8px;">JBA128G3 Storage Shield (v1.0.3) ｜ 基於 CB Tec 後量子幾何加密技術，由 J Will 團隊開發與版權所有</p>
-      <p>© 2026 J Will Team & CB Tec. All Rights Reserved.</p>
-    </div>
-  </footer>
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerText = translations[lang][key];
+                }
+            });
+            localStorage.setItem('jba_user_lang', lang);
+        }
 
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            if(tabName === 'fiat') {
+                event.target.classList.add('active');
+                document.getElementById('fiat-tab').classList.add('active');
+            } else {
+                event.target.classList.add('active');
+                document.getElementById('crypto-tab').classList.add('active');
+            }
+        }
+
+        function copyAddress(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert(translations[currentLang].copied_msg);
+            });
+        }
+
+        function setAmount(value) {
+            document.getElementById('customAmount').value = value;
+        }
+
+        function processDonate() {
+            const amount = document.getElementById('customAmount').value;
+            if (!amount || amount <= 0) {
+                alert(translations[currentLang].alert_invalid);
+                return;
+            }
+            alert(`${translations[currentLang].alert_thanks}${amount} USD`);
+        }
+
+        function showDemoAlert() {
+            document.getElementById('demoModal').style.display = 'flex';
+        }
+
+        function closeDemoAlert() {
+            document.getElementById('demoModal').style.display = 'none';
+        }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem('jba_user_lang') || 'zh';
+            document.getElementById('languageSelect').value = savedLang;
+            changeLanguage(savedLang);
+        };
+    </script>
 </body>
 </html>
