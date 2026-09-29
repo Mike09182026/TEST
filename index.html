@@ -573,98 +573,647 @@
         }
 
         /* 6.7 極簡上手指南 (How It Works) 樣式 */
-        .how-box {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-        .how-tabs {
+        /* === 3.8 真實軟體介面展示 (Real Software UI Showcase) === */
+        .software-guide-controls {
             display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 35px;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
         }
-        .how-tab-btn {
-            background: #09111c;
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            color: #8a99ad;
-            font-size: 15px;
-            font-weight: 800;
+        .sw-mode-tabs {
+            display: flex;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            border-radius: 40px;
+            border: 1px solid var(--card-border);
+            gap: 8px;
+        }
+        .sw-mode-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
             padding: 10px 24px;
             border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sw-mode-btn.active#swModeEnc {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(0, 119, 255, 0.25));
+            color: #00f0ff;
+            border: 1px solid #00f0ff;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+        }
+        .sw-mode-btn.active#swModeDec {
+            background: linear-gradient(135deg, rgba(191, 90, 242, 0.25), rgba(255, 45, 85, 0.25));
+            color: #bf5af2;
+            border: 1px solid #bf5af2;
+            box-shadow: 0 0 20px rgba(191, 90, 242, 0.35);
+        }
+        .sw-step-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .sw-step-btn {
+            background: #09111c;
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13.5px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .how-tab-btn.active {
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(0, 119, 255, 0.2));
+        .sw-step-btn:hover {
+            border-color: #00f0ff;
+            color: #fff;
+        }
+        .sw-step-btn.active {
+            background: rgba(0, 240, 255, 0.15);
             border-color: #00f0ff;
             color: #00f0ff;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
         }
-        .how-step-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-            position: relative;
-        }
-        .how-card {
-            background: #09101b;
-            border: 1px solid #1a2a3d;
-            border-radius: 18px;
-            padding: 30px 22px;
-            position: relative;
-            transition: all 0.2s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .how-card:hover {
-            border-color: #00f0ff;
-            transform: translateY(-4px);
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
-        }
-        .how-badge {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #00f0ff, #0077ff);
-            color: #000;
+        .sw-step-badge {
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-weight: 900;
-            font-size: 14px;
-            margin-bottom: 16px;
-        }
-        .how-icon {
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
-        .how-card h4 {
-            font-size: 17px;
-            color: #fff;
-            margin-bottom: 8px;
+            font-size: 11px;
             font-weight: 800;
         }
-        .how-card p {
-            font-size: 13.5px;
-            color: var(--text-muted);
-            line-height: 1.55;
-            flex-grow: 1;
+        .sw-step-btn.active .sw-step-badge {
+            background: #00f0ff;
+            color: #000;
         }
-        .how-tag {
+
+        /* 雙欄主舞台 */
+        .software-stage-wrapper {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 28px;
+            align-items: start;
+        }
+        @media (max-width: 960px) {
+            .software-stage-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 擬真軟體視窗 */
+        .software-window {
+            background: linear-gradient(135deg, #0a0e1a 0%, #060810 100%);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.15);
+            overflow: hidden;
+            font-family: system-ui, -apple-system, sans-serif;
+            position: relative;
+        }
+        .sw-win-bar {
+            height: 38px;
+            background: rgba(0, 0, 0, 0.35);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+        }
+        .sw-win-controls {
+            display: flex;
+            gap: 7px;
+        }
+        .sw-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        .sw-win-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #8c9ba5;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .sw-win-title svg {
+            color: #00f0ff;
+        }
+        .sw-win-badge {
+            font-size: 11px;
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.12);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .sw-win-body {
+            padding: 16px 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* 軟體頂部步驟指示 (Steps Bar) */
+        .sw-steps-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            padding: 8px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .sw-step-node {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            opacity: 0.45;
+            transition: all 0.3s ease;
+        }
+        .sw-step-node.active {
+            opacity: 1;
+        }
+        .sw-node-num {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 11px;
             font-weight: bold;
+        }
+        .sw-step-node.active .sw-node-num {
+            background: #00f0ff;
+            color: #000;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        .sw-node-txt {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .sw-step-divider {
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0 10px;
+        }
+        .sw-step-divider.active {
+            background: #00f0ff;
+        }
+
+        /* Tab 選擇器 (加密 / 解密) */
+        .sw-tab-bar {
+            display: flex;
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 10px;
+            padding: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .sw-tab-pill {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #8c9ba5;
+            padding: 8px 0;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+        }
+        .sw-tab-pill.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 視窗主內容區 */
+        .sw-main-display {
+            min-height: 270px;
+            position: relative;
+        }
+        .sw-step-view {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .sw-step-view.active {
+            display: block;
+        }
+
+        /* Step 1: 拖曳區 */
+        .sw-drop-zone {
+            border: 2px dashed rgba(0, 240, 255, 0.35);
+            border-radius: 14px;
+            background: rgba(0, 240, 255, 0.03);
+            padding: 20px 14px;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+        .sw-drop-zone.dec-zone {
+            border-color: rgba(191, 90, 242, 0.45);
+            background: rgba(191, 90, 242, 0.04);
+        }
+        .sw-drop-icon {
+            color: #00f0ff;
+            margin-bottom: 8px;
+        }
+        .sw-drop-icon.dec-icon {
+            color: #bf5af2;
+        }
+        .sw-drop-title {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .sw-drop-sub {
+            font-size: 12px;
+            color: #8c9ba5;
+            margin-bottom: 12px;
+        }
+        .sw-chips {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .sw-chips span {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 10.5px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            color: #cbd5e1;
+        }
+        .sw-queue-preview {
+            margin-top: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+        .sw-queue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+        .sw-tag-files {
+            color: #00f0ff;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        .sw-tag-ram {
             color: #00ff88;
             background: rgba(0, 255, 136, 0.1);
-            padding: 4px 10px;
-            border-radius: 12px;
-            width: fit-content;
+            padding: 1px 6px;
+            border-radius: 4px;
+        }
+        .sw-conc-select {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #8c9ba5;
+        }
+        .sw-conc-btn {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+        .sw-conc-btn.active {
+            background: #00f0ff;
+            color: #000;
+            font-weight: bold;
+        }
+        .sw-file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 8px 10px;
+        }
+        .sw-file-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+        .sw-file-name {
+            color: #fff;
+            font-weight: 600;
+        }
+        .sw-file-size {
+            color: #8c9ba5;
+            font-size: 11px;
+        }
+        .sw-file-status.ready {
+            color: #00ff88;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Step 2: 認證 Modal 畫面 */
+        .sw-modal-preview {
+            background: rgba(13, 21, 34, 0.95);
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            border-radius: 14px;
+            padding: 22px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+        .sw-modal-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 10px;
+        }
+        .sw-modal-head h4 {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .sw-modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .sw-field label {
+            display: block;
+            font-size: 11.5px;
+            color: #8c9ba5;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        .sw-input-box {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 8px 12px;
+            gap: 8px;
+        }
+        .sw-input-box input {
+            background: transparent;
+            border: none;
+            color: #00f0ff;
+            font-size: 13px;
+            font-family: monospace;
+            width: 100%;
+            outline: none;
+        }
+        .sw-auth-tip {
+            font-size: 11px;
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+        .sw-auth-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 6px;
+        }
+        .sw-btn-cancel {
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: #8c9ba5;
+            padding: 7px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .sw-btn-confirm {
+            background: linear-gradient(135deg, #00f0ff, #0077ff);
+            border: none;
+            color: #000;
+            font-weight: 700;
+            padding: 7px 18px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        /* Step 3: 執行畫面 */
+        .sw-exec-preview {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            border-radius: 14px;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .sw-exec-stats-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sw-exec-status {
+            font-size: 13px;
+            color: #00f0ff;
+            font-weight: 600;
+        }
+        .sw-fps-tag {
+            font-size: 10.5px;
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            padding: 2px 7px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        .sw-progress-outer {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .sw-progress-bar-glow {
+            height: 100%;
+            background: linear-gradient(90deg, #0077ff, #00f0ff);
+            box-shadow: 0 0 16px #00f0ff;
+            border-radius: 8px;
+            transition: width 0.4s ease;
+        }
+        .sw-progress-val {
+            position: absolute;
+            right: 8px;
+            font-size: 10px;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 1px 2px #000;
+        }
+        .sw-exec-detail-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #8c9ba5;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .sw-shred-tag {
+            color: #f59e0b;
+        }
+        .sw-stream-tag {
+            color: #00ff88;
+        }
+        .sw-exec-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 12px;
+            color: #cbd5e1;
+        }
+        .sw-card-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sw-action-btn.active {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(0, 119, 255, 0.2));
+            border: 1px solid #00f0ff;
+            color: #00f0ff;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+        }
+
+        /* 解密專用視窗樣式 */
+        .sw-dec-success-box {
             margin-top: 14px;
+            background: rgba(191, 90, 242, 0.08);
+            border: 1px solid rgba(191, 90, 242, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .sw-dec-badge {
+            display: inline-block;
+            background: #bf5af2;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .sw-dec-h4 {
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+        .sw-dec-p {
+            font-size: 12.5px;
+            color: #8c9ba5;
+            line-height: 1.5;
+        }
+
+        /* 右側資訊面板 (Info Panel) */
+        .software-info-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+        .sw-info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 32px 26px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.3s ease;
+        }
+        .sw-info-badge {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #000;
+            background: #00f0ff;
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+        .sw-info-card h3 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+        .sw-info-card > p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+        .sw-info-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 18px;
+        }
+        .sw-hl-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .sw-hl-icon {
+            font-size: 20px;
+            margin-top: 2px;
+        }
+        .sw-hl-item strong {
+            display: block;
+            font-size: 13.5px;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .sw-hl-item p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.45;
+            margin: 0;
         }
 
         /* 7. 安裝安心指引樣式 */
@@ -916,69 +1465,308 @@
         </div>
     </section>
 
-    <!-- 3.8 極簡上手指南 (How It Works) -->
+    <!-- 3.8 真實軟體操作介面展示 (Real Software UI Showcase) -->
     <section id="howitworks">
-        <div style="text-align: center;"><div class="badge" data-i18n="how_badge">HOW IT WORKS</div></div>
-        <h2 class="section-title" data-i18n="how_title">3 秒極簡上手指南</h2>
-        <p class="section-desc" data-i18n="how_desc">拋棄繁瑣設定，享受比壓縮檔案還簡單的極致體驗</p>
+        <div style="text-align: center;"><div class="badge" data-i18n="how_badge">SOFTWARE UI SHOWCASE</div></div>
+        <h2 class="section-title" data-i18n="how_title">真實軟體操作介面展示</h2>
+        <p class="section-desc" data-i18n="how_desc">真實還原 JBA128G3 桌面端軟體介面，直覺三步驟完成極限機密防護</p>
 
-        <div class="how-box">
-            <!-- 雙分頁切換 -->
-            <div class="how-tabs">
-                <button class="how-tab-btn active" id="tabEncHow" onclick="switchHowTab('enc')">
-                    <span>🔒</span> <span data-i18n="how_tab_enc">【加密】只需 3 步</span>
+        <!-- 模式與步驟切換按鈕列 -->
+        <div class="software-guide-controls">
+            <!-- 模式切換 (加密 / 解密) -->
+            <div class="sw-mode-tabs">
+                <button class="sw-mode-btn active" id="swModeEnc" onclick="switchSoftwareMode('enc')">
+                    <span>🔒</span> <span data-i18n="sw_mode_enc">【加密模式】3 步防護</span>
                 </button>
-                <button class="how-tab-btn" id="tabDecHow" onclick="switchHowTab('dec')">
-                    <span>🔓</span> <span data-i18n="how_tab_dec">【解密】只需 1 步</span>
+                <button class="sw-mode-btn" id="swModeDec" onclick="switchSoftwareMode('dec')">
+                    <span>🔓</span> <span data-i18n="sw_mode_dec">【解密模式】1 步還原</span>
                 </button>
             </div>
 
-            <!-- 加密流程內容 -->
-            <div id="howEncContent" class="how-step-grid">
-                <div class="how-card">
-                    <div class="how-badge">01</div>
-                    <div class="how-icon">📁</div>
-                    <h4 data-i18n="how_enc_s1_t">拖曳即辨識</h4>
-                    <p data-i18n="how_enc_s1_p">將單一檔案或 20GB 大資料夾直接拖入軟體視窗，智慧引擎自動載入並切換至【加密】分頁。</p>
-                    <div class="how-tag" data-i18n="how_enc_s1_tag">⚡ 免手動壓縮打包</div>
+            <!-- 步驟切換按鈕 (1, 2, 3) -->
+            <div class="sw-step-tabs" id="swStepTabs">
+                <button class="sw-step-btn active" id="swStepBtn1" onclick="switchSoftwareStep(1)">
+                    <span class="sw-step-badge">1</span>
+                    <span data-i18n="sw_step1_nav">步驟 1：選擇檔案 (Drop Zone)</span>
+                </button>
+                <button class="sw-step-btn" id="swStepBtn2" onclick="switchSoftwareStep(2)">
+                    <span class="sw-step-badge">2</span>
+                    <span data-i18n="sw_step2_nav">步驟 2：安全認證 (Authenticate)</span>
+                </button>
+                <button class="sw-step-btn" id="swStepBtn3" onclick="switchSoftwareStep(3)">
+                    <span class="sw-step-badge">3</span>
+                    <span data-i18n="sw_step3_nav">步驟 3：串流執行 (Execute & Shred)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 雙欄佈局：左側為擬真軟體視窗，右側為當前步驟深度說明 -->
+        <div class="software-stage-wrapper">
+            <!-- 左側：1:1 原生軟體視窗渲染 -->
+            <div class="software-window">
+                <!-- 視窗頂部標題列 (Window Title Bar) -->
+                <div class="sw-win-bar">
+                    <div class="sw-win-controls">
+                        <span class="sw-dot dot-red"></span>
+                        <span class="sw-dot dot-yellow"></span>
+                        <span class="sw-dot dot-green"></span>
+                    </div>
+                    <div class="sw-win-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span>JBA128G3 Storage Shield (v1.0.3)</span>
+                    </div>
+                    <div class="sw-win-badge" data-i18n="sw_offline_tag">100% 離線隔離</div>
                 </div>
-                <div class="how-card">
-                    <div class="how-badge">02</div>
-                    <div class="how-icon">⚡</div>
-                    <h4 data-i18n="how_enc_s2_t">一鍵滿速串流</h4>
-                    <p data-i18n="how_enc_s2_p">點擊開始，64MB 零拷貝架構高速運算，記憶體全程 < 200MB，真實進度條透明掌握。</p>
-                    <div class="how-tag" data-i18n="how_enc_s2_tag">🚀 記憶體不卡頓</div>
-                </div>
-                <div class="how-card">
-                    <div class="how-badge">03</div>
-                    <div class="how-icon">🛡️</div>
-                    <h4 data-i18n="how_enc_s3_t">安全封裝 & 原檔粉碎</h4>
-                    <p data-i18n="how_enc_s3_p">生成 .JBS 加密容器，JBA-Shredder 自動多次覆寫抹除未加密原檔，救援軟體亦徹底無解。</p>
-                    <div class="how-tag" data-i18n="how_enc_s3_tag">💥 物理抹除防救援</div>
+
+                <!-- 軟體內部主容器 -->
+                <div class="sw-win-body">
+                    <!-- 頂部使用步驟指示 (Steps Bar) -->
+                    <div class="sw-steps-bar">
+                        <div class="sw-step-node active" id="swNode1">
+                            <span class="sw-node-num">1</span>
+                            <span class="sw-node-txt" data-i18n="sw_node1">Select Files</span>
+                        </div>
+                        <div class="sw-step-divider" id="swDivider1"></div>
+                        <div class="sw-step-node" id="swNode2">
+                            <span class="sw-node-num">2</span>
+                            <span class="sw-node-txt" data-i18n="sw_node2">Authenticate</span>
+                        </div>
+                        <div class="sw-step-divider" id="swDivider2"></div>
+                        <div class="sw-step-node" id="swNode3">
+                            <span class="sw-node-num">3</span>
+                            <span class="sw-node-txt" data-i18n="sw_node3">Execute</span>
+                        </div>
+                    </div>
+
+                    <!-- Tab 選擇器 (加密 / 解密) -->
+                    <div class="sw-tab-bar">
+                        <button class="sw-tab-pill active" id="swTabPillEnc" onclick="switchSoftwareMode('enc')">
+                            <span data-i18n="sw_tab_enc">加密 Encrypt</span>
+                        </button>
+                        <button class="sw-tab-pill" id="swTabPillDec" onclick="switchSoftwareMode('dec')">
+                            <span data-i18n="sw_tab_dec">解密 Decrypt</span>
+                        </button>
+                    </div>
+
+                    <!-- 視窗主內容區 (依步驟切換) -->
+                    <div class="sw-main-display">
+                        <!-- Step 1: 拖曳選檔畫面 -->
+                        <div class="sw-step-view active" id="swView1">
+                            <div class="sw-drop-zone">
+                                <div class="sw-drop-icon">
+                                    <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                                    </svg>
+                                </div>
+                                <div class="sw-drop-title" data-i18n="sw_drop_main">拖曳 1~20 個檔案至此 (支援 20GB 大檔)</div>
+                                <div class="sw-drop-sub" data-i18n="sw_drop_sub">支援市場所有主流影音、文件、壓縮包與二進位檔案</div>
+                                <div class="sw-chips">
+                                    <span>📄 PDF/DOCX</span>
+                                    <span>🎬 MP4/MKV</span>
+                                    <span>🖼️ JPG/PNG/RAW</span>
+                                    <span>📦 ZIP/7Z/ISO</span>
+                                    <span>⚙️ EXE/BIN</span>
+                                </div>
+                            </div>
+
+                            <!-- 檔案清單模擬 -->
+                            <div class="sw-queue-preview">
+                                <div class="sw-queue-header">
+                                    <div class="sw-queue-stats">
+                                        <span class="sw-tag-files">1 / 20 檔案</span>
+                                        <span class="sw-tag-ram">RAM: ~168MB</span>
+                                    </div>
+                                    <div class="sw-conc-select">
+                                        <span data-i18n="sw_conc_label">活躍通道:</span>
+                                        <span class="sw-conc-btn">1</span>
+                                        <span class="sw-conc-btn active">2 (推薦)</span>
+                                        <span class="sw-conc-btn">3</span>
+                                    </div>
+                                </div>
+                                <div class="sw-file-item">
+                                    <div class="sw-file-info">
+                                        <span class="sw-file-icon">📁</span>
+                                        <span class="sw-file-name">機密研發原始碼_2026/</span>
+                                        <span class="sw-file-size">20.4 GB (14,200 檔案)</span>
+                                    </div>
+                                    <span class="sw-file-status ready" data-i18n="sw_status_ready">● 就緒</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: 身份安全防護認證 Modal 畫面 -->
+                        <div class="sw-step-view" id="swView2">
+                            <div class="sw-modal-preview">
+                                <div class="sw-modal-head">
+                                    <span class="sw-modal-icon">🛡️</span>
+                                    <h4 data-i18n="sw_auth_title">身份安全防護認證</h4>
+                                </div>
+                                <div class="sw-modal-form">
+                                    <div class="sw-field">
+                                        <label data-i18n="sw_auth_user_label">使用者名稱</label>
+                                        <div class="sw-input-box">
+                                            <span class="sw-input-icon">👤</span>
+                                            <input type="text" value="JBA_Admin_User" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="sw-field">
+                                        <label data-i18n="sw_auth_pass_label">加密密鑰密碼</label>
+                                        <div class="sw-input-box">
+                                            <span class="sw-input-icon">🔑</span>
+                                            <input type="password" value="SuperSecurePass2026!" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="sw-auth-tip" data-i18n="sw_auth_tip">⚠️ 帳密大小寫有別 / 支援中文輸入 / 單機推導絕不上傳</div>
+                                    <div class="sw-auth-actions">
+                                        <button class="sw-btn-cancel" data-i18n="sw_btn_cancel">取消</button>
+                                        <button class="sw-btn-confirm" data-i18n="sw_btn_confirm">確認執行</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: 串流執行與粉碎畫面 -->
+                        <div class="sw-step-view" id="swView3">
+                            <div class="sw-exec-preview">
+                                <div class="sw-exec-stats-row">
+                                    <div class="sw-exec-status" data-i18n="sw_exec_status">CB Tec 後量子幾何流式加密運算中...</div>
+                                    <div class="sw-fps-tag">60 FPS</div>
+                                </div>
+                                <div class="sw-progress-outer">
+                                    <div class="sw-progress-bar-glow" style="width: 86%;"></div>
+                                    <span class="sw-progress-val">86%</span>
+                                </div>
+                                <div class="sw-exec-detail-row">
+                                    <span class="sw-shred-tag">💥 JBA-Shredder: 正在物理覆寫抹除未加密原檔痕跡...</span>
+                                    <span class="sw-stream-tag">64MB 零拷貝串流 ｜ RAM: 152MB</span>
+                                </div>
+                                <div class="sw-exec-card">
+                                    <div class="sw-card-head">
+                                        <span>輸出密文: <strong>機密研發原始碼_2026.JBS</strong></span>
+                                        <span style="color:#00ff88;">✅ 100% Bit-Perfect 校驗中</span>
+                                    </div>
+                                </div>
+                                <div class="sw-action-btn active" data-i18n="sw_btn_shield_active">🛡️ 防護盾高速運轉中</div>
+                            </div>
+                        </div>
+
+                        <!-- 解密模式視窗畫面 (Decrypt View) -->
+                        <div class="sw-step-view" id="swViewDec">
+                            <div class="sw-drop-zone dec-zone">
+                                <div class="sw-drop-icon dec-icon">
+                                    <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6">
+                                        <path d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm10-10V7a4 4 0 0 0-8 0v4h8z"/>
+                                    </svg>
+                                </div>
+                                <div class="sw-drop-title" data-i18n="sw_dec_drop_title">拖曳 .JBS 密文檔案至此處</div>
+                                <div class="sw-drop-sub" data-i18n="sw_dec_drop_sub">智慧引擎瞬間辨識並切換至解密分頁 ｜ 零阻力原位還原</div>
+                            </div>
+                            <div class="sw-dec-success-box">
+                                <div class="sw-dec-badge" data-i18n="sw_dec_badge">🌟 永久免費・無次數限制</div>
+                                <h4 data-i18n="sw_dec_h4">接收方無需註冊、無需付費</h4>
+                                <p data-i18n="sw_dec_p">將加密檔案發給客戶或合作夥伴，對方下載軟體即可自由解密還原全部目錄與二進制檔案，SHA-256 驗證零損壞。</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- 解密流程內容 -->
-            <div id="howDecContent" class="how-step-grid" style="display:none;">
-                <div class="how-card" style="border-color: rgba(0, 255, 136, 0.4);">
-                    <div class="how-badge" style="background:#00ff88;">01</div>
-                    <div class="how-icon">🔑</div>
-                    <h4 data-i18n="how_dec_s1_t">拖入 .JBS 密文檔</h4>
-                    <p data-i18n="how_dec_s1_p">收到同事或客戶發來的 .JBS 檔案，直接拖入軟體視窗，智慧引擎秒切至【解密】分頁。</p>
-                    <div class="how-tag" data-i18n="how_dec_s1_tag">🎯 智慧辨識自動切換</div>
+            <!-- 右側：當前步驟核心技術深度解說 -->
+            <div class="software-info-panel">
+                <div class="sw-info-card" id="swInfo1">
+                    <div class="sw-info-badge">STEP 01 / 選擇與辨識</div>
+                    <h3 data-i18n="sw_info1_t">拖曳即辨識，拒絕手動打包</h3>
+                    <p data-i18n="sw_info1_p">傳統加密（如 AxCrypt、7-Zip）需要使用者先花費大量時間將大資料夾壓縮成 zip 包再加密，極易因快取不足當機。JBA128G3 支援將多達 20GB 的專案資料夾直接拖入，智慧引擎原生掃描樹狀結構並直接串流。</p>
+                    <div class="sw-info-highlights">
+                        <div class="sw-hl-item">
+                            <span class="sw-hl-icon">⚡</span>
+                            <div>
+                                <strong data-i18n="sw_hl1_1_t">原生支援 20GB 大檔</strong>
+                                <p data-i18n="sw_hl1_1_p">不挑副檔名，影音、大資料庫、原始碼一次容納</p>
+                            </div>
+                        </div>
+                        <div class="sw-hl-item">
+                            <span class="sw-hl-icon">📂</span>
+                            <div>
+                                <strong data-i18n="sw_hl1_2_t">自動封裝為單一 .JBS 檔</strong>
+                                <p data-i18n="sw_hl1_2_p">免去繁瑣壓縮程序，傳輸備份一氣呵成</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="how-card" style="border-color: rgba(0, 255, 136, 0.4);">
-                    <div class="how-badge" style="background:#00ff88;">02</div>
-                    <div class="how-icon">💎</div>
-                    <h4 data-i18n="how_dec_s2_t">100% 原位原貌還原</h4>
-                    <p data-i18n="how_dec_s2_p">一鍵解密還原，多層級目錄與所有子檔案原位重生。SHA-256 驗證二進制 Bit-Perfect 零誤差！</p>
-                    <div class="how-tag" style="color:#00f0ff; background:rgba(0,240,255,0.1);" data-i18n="how_dec_s2_tag">🌟 永久免費・無次數限制</div>
+
+                <div class="sw-info-card" id="swInfo2" style="display:none;">
+                    <div class="sw-info-badge">STEP 02 / 安全認證</div>
+                    <h3 data-i18n="sw_info2_t">100% 單機離線推導，無任何後門</h3>
+                    <p data-i18n="sw_info2_p">拒絕雲端金鑰代管！JBA128G3 在使用者輸入帳密後，於本機記憶體瞬間完成幾何流式金鑰演算法（CB Tec）初始化。無任何雲端遙測、無中繼伺服器，即使拔除網路線亦完美運作。</p>
+                    <div class="sw-info-highlights">
+                        <div class="sw-hl-item">
+                            <span class="sw-hl-icon">🔒</span>
+                            <div>
+                                <strong data-i18n="sw_hl2_1_t">純本機幾何金鑰演算法</strong>
+                                <p data-i18n="sw_hl2_1_p">不經過第三方伺服器，徹底杜絕金鑰外洩或政府調取後門</p>
+                            </div>
+                        </div>
+                        <div class="sw-hl-item">
+                            <span class="sw-hl-icon">🌏</span>
+                            <div>
+                                <strong data-i18n="sw_hl2_2_t">支援多語系與中文帳密</strong>
+                                <p data-i18n="sw_hl2_2_p">高容錯密碼體系，滿足不同地域機密保管需求</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sw-info-card" id="swInfo3" style="display:none;">
+                    <div class="sw-info-badge">STEP 03 / 串流與粉碎</div>
+                    <h3 data-i18n="sw_info3_t">64MB 零拷貝串流 & 原檔物理抹除</h3>
+                    <p data-i18n="sw_info3_p">傳統加密處理 20GB 檔案動輒佔用 8GB~16GB 記憶體導致電腦卡死。JBA128G3 採用 64MB 環形串流緩衝，記憶體全程 < 200MB。加密完成後，JBA-Shredder 自動覆寫原始磁區，連頂級救援軟體亦無從還原。</p>
+                    <div class="sw-info-highlights">
+                        <div class="sw-hl-item">
+                            <span class="sw-hl-icon">🚀</span>
+                            <div>
+                                <strong data-i18n="sw_hl3_1_t">記憶體全程鎖定 < 200MB</strong>
+                                <p data-i18n="sw_hl3_1_p">邊加密邊工作，電腦絲滑不卡頓、60 FPS 流暢回饋</p>
+                            </div>
+                        </div>
+                        <div class="sw-hl-item">
+                            <span class="sw-hl-icon">💥</span>
+                            <div>
+                                <strong data-i18n="sw_hl3_2_t">JBA-Shredder 物理粉碎</strong>
+                                <p data-i18n="sw_hl3_2_p">徹底解決「原檔殘留在資源回收筒」的致命資安盲區</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sw-info-card" id="swInfoDec" style="display:none;">
+                    <div class="sw-info-badge" style="background:#bf5af2; color:#fff;">DECRYPT / 解密模式</div>
+                    <h3 data-i18n="sw_info_dec_t">一鍵原位還原，解密永久免費</h3>
+                    <p data-i18n="sw_info_dec_p">協同流轉的最大阻力在於「對方沒有付費軟體」。JBA128G3 承諾解密功能永久免費且不限次數！客戶收到 .JBS 檔案，拖入軟體輸入密碼，即可 100% 完整原位還原所有目錄階層與檔案。</p>
+                    <div class="sw-info-highlights">
+                        <div class="sw-hl-item">
+                            <span class="sw-hl-icon">💎</span>
+                            <div>
+                                <strong data-i18n="sw_hldec_1_t">Bit-Perfect 二進制精確校驗</strong>
+                                <p data-i18n="sw_hldec_1_p">SHA-256 逐位元檢驗，檔案不損壞、不漏檔</p>
+                            </div>
+                        </div>
+                        <div class="sw-hl-item">
+                            <span class="sw-hl-icon">🤝</span>
+                            <div>
+                                <strong data-i18n="sw_hldec_2_t">零成本商務協同</strong>
+                                <p data-i18n="sw_hldec_2_p">夥伴無需購買付費授權，自由解密流轉</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. 30 秒爆款短影音體驗 -->
+
     <section id="video" style="max-width:1100px;">
         <h2 class="section-title" data-i18n="video_title">30 秒看懂：為什麼丟垃圾桶不安全？</h2>
         <p class="section-desc" data-i18n="video_desc">專為 TikTok / Shorts / Reels 量身打造的直式動態短影音播放器</p>
@@ -1351,6 +2139,63 @@
                 sim_step2: "CB Tec 後量子幾何流式加密中 (64MB 零拷貝)...",
                 sim_step3: "JBA-Shredder 物理覆寫粉碎抹除未加密原檔...",
                 sim_step4: "SHA-256 二進制校驗：100% Bit-Perfect 吻合！",
+
+                how_badge: "真實軟體操作介面",
+                how_title: "實際軟體操作介面展示",
+                how_desc: "真實還原 JBA128G3 桌面端軟體介面，直覺三步驟完成極限機密防護",
+                sw_mode_enc: "【加密模式】3 步防護",
+                sw_mode_dec: "【解密模式】1 步還原",
+                sw_step1_nav: "步驟 1：選擇檔案 (Drop Zone)",
+                sw_step2_nav: "步驟 2：安全認證 (Authenticate)",
+                sw_step3_nav: "步驟 3：串流執行 (Execute & Shred)",
+                sw_offline_tag: "100% 離線隔離",
+                sw_node1: "Select Files",
+                sw_node2: "Authenticate",
+                sw_node3: "Execute",
+                sw_tab_enc: "加密 Encrypt",
+                sw_tab_dec: "解密 Decrypt",
+                sw_drop_main: "拖曳 1~20 個檔案至此 (支援 20GB 大檔)",
+                sw_drop_sub: "支援市場所有主流影音、文件、壓縮包與二進位檔案",
+                sw_conc_label: "活躍通道:",
+                sw_status_ready: "● 就緒",
+                sw_auth_title: "身份安全防護認證",
+                sw_auth_user_label: "使用者名稱",
+                sw_auth_pass_label: "加密密鑰密碼",
+                sw_auth_tip: "⚠️ 帳密大小寫有別 / 支援中文輸入 / 單機推導絕不上傳",
+                sw_btn_cancel: "取消",
+                sw_btn_confirm: "確認執行",
+                sw_exec_status: "CB Tec 後量子幾何流式加密運算中...",
+                sw_btn_shield_active: "🛡️ 防護盾高速運轉中",
+                sw_dec_drop_title: "拖曳 .JBS 密文檔案至此處",
+                sw_dec_drop_sub: "智慧引擎瞬間辨識並切換至解密分頁 ｜ 零阻力原位還原",
+                sw_dec_badge: "🌟 永久免費・無次數限制",
+                sw_dec_h4: "接收方無需註冊、無需付費",
+                sw_dec_p: "將加密檔案發給客戶或合作夥伴，對方下載軟體即可自由解密還原全部目錄與二進制檔案，SHA-256 驗證零損壞。",
+                sw_info1_t: "拖曳即辨識，拒絕手動打包",
+                sw_info1_p: "傳統加密（如 AxCrypt、7-Zip）需要使用者先花費大量時間將大資料夾壓縮成 zip 包再加密，極易因快取不足當機。JBA128G3 支援將多達 20GB 的專案資料夾直接拖入，智慧引擎原生掃描樹狀結構並直接串流。",
+                sw_hl1_1_t: "原生支援 20GB 大檔",
+                sw_hl1_1_p: "不挑副檔名，影音、大資料庫、原始碼一次容納",
+                sw_hl1_2_t: "自動封裝為單一 .JBS 檔",
+                sw_hl1_2_p: "免去繁瑣壓縮程序，傳輸備份一氣呵成",
+                sw_info2_t: "100% 單機離線推導，無任何後門",
+                sw_info2_p: "拒絕雲端金鑰代管！JBA128G3 在使用者輸入帳密後，於本機記憶體瞬間完成幾何流式金鑰演算法（CB Tec）初始化。無任何雲端遙測、無中繼伺服器，即使拔除網路線亦完美運作。",
+                sw_hl2_1_t: "純本機幾何金鑰演算法",
+                sw_hl2_1_p: "不經過第三方伺服器，徹底杜絕金鑰外洩或政府調取後門",
+                sw_hl2_2_t: "支援多語系與中文帳密",
+                sw_hl2_2_p: "高容錯密碼體系，滿足不同地域機密保管需求",
+                sw_info3_t: "64MB 零拷貝串流 & 原檔物理抹除",
+                sw_info3_p: "傳統加密處理 20GB 檔案動輒佔用 8GB~16GB 記憶體導致電腦卡死。JBA128G3 採用 64MB 環形串流緩衝，記憶體全程 < 200MB。加密完成後，JBA-Shredder 自動覆寫原始磁區，連頂級救援軟體亦無從還原。",
+                sw_hl3_1_t: "記憶體全程鎖定 < 200MB",
+                sw_hl3_1_p: "邊加密邊工作，電腦絲滑不卡頓、60 FPS 流暢回饋",
+                sw_hl3_2_t: "JBA-Shredder 物理粉碎",
+                sw_hl3_2_p: "徹底解決「原檔殘留在資源回收筒」的致命資安盲區",
+                sw_info_dec_t: "一鍵原位還原，解密永久免費",
+                sw_info_dec_p: "協同流轉的最大阻力在於「對方沒有付費軟體」。JBA128G3 承諾解密功能永久免費且不限次數！客戶收到 .JBS 檔案，拖入軟體輸入密碼，即可 100% 完整原位還原所有目錄階層與檔案。",
+                sw_hldec_1_t: "Bit-Perfect 二進制精確校驗",
+                sw_hldec_1_p: "SHA-256 逐位元檢驗，檔案不損壞、不漏檔",
+                sw_hldec_2_t: "零成本商務協同",
+                sw_hldec_2_p: "夥伴無需購買付費授權，自由解密流轉",
+
                 nav_howitworks: "操作指南",
                 how_badge: "HOW IT WORKS",
                 how_title: "3 秒極簡上手指南",
@@ -1492,6 +2337,63 @@
                 sim_step2: "CB Tec Post-Quantum Geometric Streaming (64MB Zero-Copy)...",
                 sim_step3: "JBA-Shredder physically overwriting unencrypted source files...",
                 sim_step4: "SHA-256 binary verification: 100% Bit-Perfect match!",
+
+                how_badge: "ACTUAL SOFTWARE UI",
+                how_title: "Real Software Interface Showcase",
+                how_desc: "A 1:1 authentic replica of the JBA128G3 desktop application. Extreme confidentiality in 3 intuitive steps.",
+                sw_mode_enc: "[Encrypt Mode] 3-Step Shield",
+                sw_mode_dec: "[Decrypt Mode] 1-Step Restore",
+                sw_step1_nav: "Step 1: Select Files (Drop Zone)",
+                sw_step2_nav: "Step 2: Authenticate",
+                sw_step3_nav: "Step 3: Execute & Shred",
+                sw_offline_tag: "100% Offline Isolated",
+                sw_node1: "Select Files",
+                sw_node2: "Authenticate",
+                sw_node3: "Execute",
+                sw_tab_enc: "Encrypt",
+                sw_tab_dec: "Decrypt",
+                sw_drop_main: "Drag 1-20 files here (Supports 20GB files)",
+                sw_drop_sub: "Supports all mainstream video, document, archive, and binary files",
+                sw_conc_label: "Active Workers:",
+                sw_status_ready: "● Ready",
+                sw_auth_title: "Security Identity Authentication",
+                sw_auth_user_label: "Username",
+                sw_auth_pass_label: "Master Encryption Password",
+                sw_auth_tip: "⚠️ Case-sensitive / Multi-language support / Local derivation only",
+                sw_btn_cancel: "Cancel",
+                sw_btn_confirm: "Confirm & Execute",
+                sw_exec_status: "CB Tec Post-Quantum Stream Encryption Running...",
+                sw_btn_shield_active: "🛡️ Storage Shield Operating at Wire Speed",
+                sw_dec_drop_title: "Drop .JBS Ciphertext File Here",
+                sw_dec_drop_sub: "Smart engine instantly detects format and switches to Decrypt tab",
+                sw_dec_badge: "🌟 Free Forever · Unlimited",
+                sw_dec_h4: "Recipients Require No Registration & Zero Fee",
+                sw_dec_p: "Send encrypted packages to clients or coworkers. They can decrypt and restore all subfiles and directory trees freely with SHA-256 Bit-Perfect integrity.",
+                sw_info1_t: "Instant Drop Detection, Zero Pre-Packaging",
+                sw_info1_p: "Traditional tools (AxCrypt, 7-Zip) force users to spend minutes archiving giant folders into .zip before encrypting, often overflowing RAM. JBA128G3 takes 20GB folders directly, recursively streaming files on the fly.",
+                sw_hl1_1_t: "Native 20GB Giant File Support",
+                sw_hl1_1_p: "No filetype restrictions: 4K video, massive databases, and code repositories",
+                sw_hl1_2_t: "Auto-Package into Single .JBS Container",
+                sw_hl1_2_p: "Eliminates compression hassles; streamline transfers and backups effortlessly",
+                sw_info2_t: "100% Local Key Derivation, Zero Backdoors",
+                sw_info2_p: "Say no to cloud key escrows! JBA128G3 generates geometric stream cipher keys in RAM upon credential entry. No telemetry, no relay servers, functioning flawlessly even if offline.",
+                sw_hl2_1_t: "Pure Offline Geometric Key Derivation",
+                sw_hl2_1_p: "Bypasses all third-party servers, preventing leaks or government backdoors",
+                sw_hl2_2_t: "Multi-Language & Unicode Passphrase Support",
+                sw_hl2_2_p: "High-tolerance credential framework for international privacy needs",
+                sw_info3_t: "64MB Zero-Copy Streaming & Physical Wipe",
+                sw_info3_p: "Encrypting 20GB typically eats 8GB-16GB RAM in legacy tools. JBA128G3 locks RAM < 200MB via a 64MB circular buffer. Upon completion, JBA-Shredder overwrites raw sectors, invalidating forensic tools.",
+                sw_hl3_1_t: "RAM Locked Strictly Below 200MB",
+                sw_hl3_1_p: "Encrypt in background without system stutter; smooth 60 FPS feedback",
+                sw_hl3_2_t: "JBA-Shredder Physical Shredding",
+                sw_hl3_2_p: "Eliminates the critical security flaw of 'raw files left in Recycle Bin'",
+                sw_info_dec_t: "One-Click In-Place Restore, Always Free",
+                sw_info_dec_p: "Collaboration fails when partners lack paid licenses. JBA128G3 ensures decryption is permanently free with zero limitations. Recipients drop the file, type credentials, and restore 100% structure.",
+                sw_hldec_1_t: "Bit-Perfect Binary Integrity",
+                sw_hldec_1_p: "SHA-256 byte-by-byte verification: zero corruption, zero missing files",
+                sw_hldec_2_t: "Zero-Cost Enterprise Collaboration",
+                sw_hldec_2_p: "Clients never pay to decrypt, removing operational friction",
+
                 nav_howitworks: "How It Works",
                 how_badge: "HOW IT WORKS",
                 how_title: "3-Step Quick Start Guide",
@@ -1633,6 +2535,63 @@
                 sim_step2: "CB Tec 耐量子幾何ストリーミング暗号化中 (64MB ゼロコピー)...",
                 sim_step3: "JBA-Shredder により未暗号化元ファイルを物理上書き抹消中...",
                 sim_step4: "SHA-256 バイナリ検証：100% Bit-Perfect 完全一致！",
+
+                how_badge: "実際のソフト画面",
+                how_title: "実際のソフトウェア操作画面",
+                how_desc: "JBA128G3デスクトップアプリの画面をリアルに再現。直感的な3ステップで究極の機密保護を実現。",
+                sw_mode_enc: "【暗号化モード】3ステップ保護",
+                sw_mode_dec: "【復号化モード】1ステップ復元",
+                sw_step1_nav: "ステップ1：ファイル選択 (Drop Zone)",
+                sw_step2_nav: "ステップ2：本人認証 (Authenticate)",
+                sw_step3_nav: "ステップ3：ストリーム実行 (Execute & Shred)",
+                sw_offline_tag: "100% オフライン完全隔離",
+                sw_node1: "Select Files",
+                sw_node2: "Authenticate",
+                sw_node3: "Execute",
+                sw_tab_enc: "暗号化 Encrypt",
+                sw_tab_dec: "復号化 Decrypt",
+                sw_drop_main: "1〜20個のファイルをここにドラッグ (20GB対応)",
+                sw_drop_sub: "動画、ドキュメント、圧縮ファイル、バイナリ全形式対応",
+                sw_conc_label: "アクティブチャンネル:",
+                sw_status_ready: "● 待機中",
+                sw_auth_title: "セキュリティ本人認証",
+                sw_auth_user_label: "ユーザー名",
+                sw_auth_pass_label: "暗号化マスターパスワード",
+                sw_auth_tip: "⚠️ 大小文字区別 / 日本語・多言語対応 / ローカル推導のみ",
+                sw_btn_cancel: "キャンセル",
+                sw_btn_confirm: "確認して実行",
+                sw_exec_status: "CB Tec 耐量子ストリーム暗号化演算中...",
+                sw_btn_shield_active: "🛡️ シールド高速稼働中",
+                sw_dec_drop_title: ".JBS暗号化ファイルをここにドラッグ",
+                sw_dec_drop_sub: "スマートエンジンが自動判別して復号化タブへ切り替えます",
+                sw_dec_badge: "🌟 完全無料・無制限利用",
+                sw_dec_h4: "受信者は登録不要・課金ゼロ",
+                sw_dec_p: "暗号化ファイルをクライアントや同僚に送信しても、相手はソフトをダウンロードするだけで全階層をBit-Perfectに無料復元可能。",
+                sw_info1_t: "ドラッグで即認識、事前圧縮は一切不要",
+                sw_info1_p: "従来のツール（AxCrypt、7-Zip等）は大容量フォルダを事前にzip圧縮する必要があり、メモリ不足でクラッシュしがちでした。JBA128G3は最大20GBのフォルダを直接ドラッグ投入でき、直接ストリーム処理します。",
+                sw_hl1_1_t: "20GBの大容量ファイルをネイティブ対応",
+                sw_hl1_1_p: "拡張子不問：4K映像、巨大データベース、ソースコードを一括処理",
+                sw_hl1_2_t: "単一の.JBSコンテナへ自動パッケージ",
+                sw_hl1_2_p: "煩わしい事前圧縮の手間を省き、バックアップや転送を迅速化",
+                sw_info2_t: "100% 単機オフライン推導、バックドア皆無",
+                sw_info2_p: "クラウドへの鍵預託は完全拒否！JBA128G3はユーザー情報入力後、ローカルメモリ内で即座に鍵生成アルゴリズム（CB Tec）を実行。ネット遮断環境でも完全に動作します。",
+                sw_hl2_1_t: "完全ローカル幾何学的暗号アルゴリズム",
+                sw_hl2_1_p: "サードパーティサーバーを経由せず、漏洩や政府バックドアを完全排除",
+                sw_hl2_2_t: "多言語およびUnicodeパスワード対応",
+                sw_hl2_2_p: "グローバルな機密管理ニーズに応える強固な認証システム",
+                sw_info3_t: "64MB ゼロコピーストリーム＆物理抹消",
+                sw_info3_p: "20GBの暗号化で従来は8GB〜16GBのRAMを消費していましたが、JBA128G3はリングバッファ技術によりRAMを常時200MB未満に抑えます。完了後はJBA-Shredderが元データを上書き抹消します。",
+                sw_hl3_1_t: "メモリ消費を厳格に200MB未満に固定",
+                sw_hl3_1_p: "暗号化中もPCが重くならず、60FPSのスムーズな操作感を維持",
+                sw_hl3_2_t: "JBA-Shredder 物理破砕技術",
+                sw_hl3_2_p: "「ゴミ箱に平文が残る」という致命的なセキュリティ盲点を根絶",
+                sw_info_dec_t: "ワンクリック復元、復号化は永久無料",
+                sw_info_dec_p: "共同作業の最大の障壁は「相手が有料ソフトを持っていないこと」。JBA128G3の復号化機能は永久無料・回数無制限です。パスワードを入力するだけで元のフォルダ構成を100%復元します。",
+                sw_hldec_1_t: "Bit-Perfect バイナリ完全一致検証",
+                sw_hldec_1_p: "SHA-256による1ビット単位の検証でデータの破損や欠落を防止",
+                sw_hldec_2_t: "摩擦ゼロのビジネスコラボレーション",
+                sw_hldec_2_p: "取引先にライセンス購入を強いることなくスムーズな運用が可能",
+
                 nav_howitworks: "操作ガイド",
                 how_badge: "HOW IT WORKS",
                 how_title: "3ステップ簡単操作ガイド",
@@ -1722,25 +2681,76 @@
         }
 
 
-        // How It Works 分頁切換
-        function switchHowTab(type) {
-            const tabEnc = document.getElementById('tabEncHow');
-            const tabDec = document.getElementById('tabDecHow');
-            const encContent = document.getElementById('howEncContent');
-            const decContent = document.getElementById('howDecContent');
+                // 真實軟體操作介面互動控制
+        function switchSoftwareMode(mode) {
+            const btnEnc = document.getElementById('swModeEnc');
+            const btnDec = document.getElementById('swModeDec');
+            const pillEnc = document.getElementById('swTabPillEnc');
+            const pillDec = document.getElementById('swTabPillDec');
+            const stepTabs = document.getElementById('swStepTabs');
+            const viewDec = document.getElementById('swViewDec');
+            const infoDec = document.getElementById('swInfoDec');
 
-            if (type === 'enc') {
-                tabEnc.classList.add('active');
-                tabDec.classList.remove('active');
-                encContent.style.display = 'grid';
-                decContent.style.display = 'none';
+            if (mode === 'enc') {
+                btnEnc.classList.add('active');
+                btnDec.classList.remove('active');
+                pillEnc.classList.add('active');
+                pillDec.classList.remove('active');
+                stepTabs.style.display = 'flex';
+                viewDec.style.display = 'none';
+                infoDec.style.display = 'none';
+                switchSoftwareStep(1);
             } else {
-                tabDec.classList.add('active');
-                tabEnc.classList.remove('active');
-                encContent.style.display = 'none';
-                decContent.style.display = 'grid';
+                btnDec.classList.add('active');
+                btnEnc.classList.remove('active');
+                pillDec.classList.add('active');
+                pillEnc.classList.remove('active');
+                stepTabs.style.display = 'none';
+
+                // 隱藏加密步驟視窗與卡片
+                [1, 2, 3].forEach(s => {
+                    document.getElementById('swView' + s).style.display = 'none';
+                    document.getElementById('swInfo' + s).style.display = 'none';
+                    document.getElementById('swNode' + s).classList.remove('active');
+                });
+                document.getElementById('swNode1').classList.add('active');
+                document.getElementById('swDivider1').className = 'sw-step-divider';
+                document.getElementById('swDivider2').className = 'sw-step-divider';
+
+                viewDec.style.display = 'block';
+                infoDec.style.display = 'block';
             }
         }
+
+        function switchSoftwareStep(step) {
+            // 切換步驟按鈕
+            [1, 2, 3].forEach(s => {
+                const btn = document.getElementById('swStepBtn' + s);
+                const view = document.getElementById('swView' + s);
+                const info = document.getElementById('swInfo' + s);
+                const node = document.getElementById('swNode' + s);
+
+                if (s === step) {
+                    btn.classList.add('active');
+                    view.style.display = 'block';
+                    info.style.display = 'block';
+                    node.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                    view.style.display = 'none';
+                    info.style.display = 'none';
+                    if (s > step) node.classList.remove('active');
+                    else node.classList.add('active');
+                }
+            });
+
+            document.getElementById('swDivider1').className = step >= 2 ? 'sw-step-divider active' : 'sw-step-divider';
+            document.getElementById('swDivider2').className = step >= 3 ? 'sw-step-divider active' : 'sw-step-divider';
+
+            document.getElementById('swViewDec').style.display = 'none';
+            document.getElementById('swInfoDec').style.display = 'none';
+        }
+
         // FAQ 手風琴切換
         function toggleFaq(element) {
             const isActive = element.classList.contains('active');
