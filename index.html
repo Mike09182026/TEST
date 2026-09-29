@@ -396,7 +396,85 @@
             white-space: nowrap;
         }
 
-        /* 7. 下載彈窗 */
+        /* 7. 安裝安心指引樣式 */
+        .install-guide-box {
+            margin-top: 40px;
+            background: #09111c;
+            border: 1px solid #1f3147;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: left;
+            max-width: 840px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+        }
+        .guide-badge {
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid #f59e0b;
+            color: #fbbf24;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .guide-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .step-card {
+            background: #0c1624;
+            border: 1px solid #1c2c40;
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+        }
+        .step-num {
+            background: var(--primary);
+            color: #000;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .screen-mockup {
+            background: #005a9e;
+            border-radius: 6px;
+            padding: 10px 12px;
+            color: #fff;
+            font-size: 11px;
+            line-height: 1.4;
+            margin-top: 12px;
+            border-left: 3px solid #00f0ff;
+        }
+        .screen-link {
+            color: #a6d8ff;
+            text-decoration: underline;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .screen-btn {
+            background: #e6e6e6;
+            color: #000;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+        /* 8. 下載彈窗 */
         .modal {
             display: none;
             position: fixed;
@@ -650,6 +728,42 @@
                 ⚡ 免費下載 Windows 安裝包 (.exe)
             </button>
         </div>
+
+        <!-- Windows 安裝安心指引 -->
+        <div class="install-guide-box">
+            <div class="guide-badge" data-i18n="guide_badge">⚠️ Windows 安裝安心指引</div>
+            <h3 style="color:#fff; font-size:18px; margin-bottom:8px;" data-i18n="guide_title">若出現「Windows 已保護您的電腦」提示，請安心使用</h3>
+            <p style="color:var(--text-muted); font-size:14px; line-height:1.6;" data-i18n="guide_desc">
+                JBA128G3 為獨立團隊自研之本機原生檔案安全工具，尚未購買微軟高額商業代碼簽名證書，因此初次安裝時 Windows SmartScreen 會彈出防護提醒。本軟體 100% 離線純淨無後門，絕非惡意病毒，請依照下方 2 步驟即可順利安裝：
+            </p>
+            <div class="guide-steps">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <div style="font-weight:bold; color:#fff; font-size:14px; margin-bottom:4px;" data-i18n="guide_step1_title">步驟一：點擊「其他資訊」</div>
+                    <div style="color:var(--text-muted); font-size:13px;" data-i18n="guide_step1_desc">在彈出的藍色視窗中，點擊底下的文字連結。</div>
+                    <div class="screen-mockup">
+                        <div>Windows 已保護您的電腦</div>
+                        <div style="margin-top:4px; font-size:10px; opacity:0.8;">Microsoft Defender SmartScreen 已防止未辨識的應用程式啟動...</div>
+                        <div style="margin-top:6px;"><span class="screen-link">其他資訊 (More info) 👈</span></div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <div style="font-weight:bold; color:#fff; font-size:14px; margin-bottom:4px;" data-i18n="guide_step2_title">步驟二：點擊「仍要執行」</div>
+                    <div style="color:var(--text-muted); font-size:13px;" data-i18n="guide_step2_desc">右下方會出現按鈕，點擊即可正常啟動安裝程序。</div>
+                    <div class="screen-mockup">
+                        <div style="font-size:10px; opacity:0.8;">應用程式：JBA128G3_Setup_v1.0.3...</div>
+                        <div style="margin-top:8px; display:flex; justify-content:flex-end;">
+                            <span class="screen-btn" style="background:#00f0ff; color:#000;">仍要執行 (Run anyway) 👈</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="font-size:12px; color:#718096; border-top:1px solid #1a2a3d; padding-top:12px; display:flex; align-items:center; gap:8px;">
+                <span>🔒</span>
+                <span data-i18n="guide_verify">您可隨時透過上方官方 SHA-256 校驗碼比對安裝包雜湊值，驗證二進制代碼 100% 原裝無篡改。</span>
+            </div>
+        </div>
     </section>
 
     <!-- 8. 展示用彈窗 -->
@@ -749,6 +863,14 @@
                 modal_title: "官方網站效果展示中",
                 modal_desc: "您當前正在瀏覽 JBA128G3 官方網站線上效果！\n本站點為純前端展示架構，無需上傳任何 .EXE 檔案即可完美預覽所有視覺、短影音與多語系功能。",
                 modal_btn: "太棒了，繼續瀏覽",
+                guide_badge: "⚠️ Windows 安裝安心指引",
+                guide_title: "若出現「Windows 已保護您的電腦」提示，請安心使用",
+                guide_desc: "JBA128G3 為獨立團隊自研之本機原生檔案安全工具，尚未購買微軟高額商業代碼簽名證書，因此初次安裝時 Windows SmartScreen 會彈出防護提醒。本軟體 100% 離線純淨無後門，絕非惡意病毒，請依照下方 2 步驟即可順利安裝：",
+                guide_step1_title: "步驟一：點擊「其他資訊」",
+                guide_step1_desc: "在彈出的藍色視窗中，點擊底下的文字連結。",
+                guide_step2_title: "步驟二：點擊「仍要執行」",
+                guide_step2_desc: "右下方會出現按鈕，點擊即可正常啟動安裝程序。",
+                guide_verify: "您可隨時透過上方官方 SHA-256 校驗碼比對安裝包雜湊值，驗證二進制代碼 100% 原裝無篡改。",
                 alert_invalid: "請輸入有效的美金金額！",
                 alert_thanks: "感謝您的支持！贊助金額：$",
                 copied_msg: "錢包地址已成功複製！"
@@ -827,6 +949,14 @@
                 modal_title: "Official Website Demo Preview",
                 modal_desc: "You are currently viewing the online preview of JBA128G3 Storage Shield!\nThis is a pure frontend demo, allowing you to preview all visual, short-video, and multi-language features without uploading any .EXE files.",
                 modal_btn: "Awesome, Keep Browsing",
+                guide_badge: "⚠️ Windows Installation & Safety Guide",
+                guide_title: "If 'Windows protected your PC' prompt appears, please proceed with confidence",
+                guide_desc: "JBA128G3 is an independently developed native local security utility that has not yet purchased expensive commercial EV code signing certificates. Windows SmartScreen may show an initial warning. The software is 100% offline, zero-telemetry, and virus-free. Follow these 2 simple steps to install:",
+                guide_step1_title: "Step 1: Click 'More info'",
+                guide_step1_desc: "Click the text link at the bottom of the blue pop-up window.",
+                guide_step2_title: "Step 2: Click 'Run anyway'",
+                guide_step2_desc: "The 'Run anyway' button will appear in the bottom right corner. Click it to launch the installer.",
+                guide_verify: "You can always verify the official SHA-256 checksum against your installer to guarantee binary integrity with zero tampering.",
                 alert_invalid: "Please enter a valid amount!",
                 alert_thanks: "Thank you for your generous support! Amount: $",
                 copied_msg: "Wallet address copied to clipboard!"
@@ -905,6 +1035,14 @@
                 modal_title: "公式サイト デモプレビュー中",
                 modal_desc: "現在、JBA128G3 Storage Shield のオンラインプレビューを閲覧中です！\n当サイトは純粋なフロントエンド構成となっており、.EXEファイルをアップロードすることなく、すべてのビジュアル、ショート動画、多言語機能を体験いただけます。",
                 modal_btn: "了解、プレビューを続ける",
+                guide_badge: "⚠️ Windows インストール安心ガイド",
+                guide_title: "「WindowsによってPCが保護されました」と表示された場合",
+                guide_desc: "JBA128G3は独自開発された純粋なローカルセキュリティツールであり、高額な商用コード署名証明書を購入していないため、初回インストール時にWindows SmartScreenの警告が表示される場合があります。本ソフトは100%オフライン動作し、ウイルスや裏口は一切存在しません。以下の2ステップで安全にインストールできます：",
+                guide_step1_title: "ステップ 1：「詳細情報」をクリック",
+                guide_step1_desc: "青い警告画面内の下部にあるリンクテキストをクリックします。",
+                guide_step2_title: "ステップ 2：「実行」をクリック",
+                guide_step2_desc: "右下に「実行」ボタンが表示されますので、クリックしてインストールを開始してください。",
+                guide_verify: "上記の公式SHA-256チェックサムと照合することで、改ざんのない100%純正バイナリであることをいつでも検証可能です。",
                 alert_invalid: "有効な金額を入力してください！",
                 alert_thanks: "温かいご支援ありがとうございます！ 寄付額: $",
                 copied_msg: "アドレスをクリップボードにコピーしました！"
