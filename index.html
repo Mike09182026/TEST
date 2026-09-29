@@ -415,6 +415,163 @@
             white-space: nowrap;
         }
 
+        /* 6.5 互動拖曳模擬器樣式 */
+        .simulator-box {
+            background: linear-gradient(180deg, #0b1422, #070d18);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 30px rgba(0, 240, 255, 0.1);
+        }
+        .sim-grid {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .sim-drag-source {
+            background: #0d1726;
+            border: 2px dashed rgba(0, 240, 255, 0.4);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            width: 260px;
+            cursor: grab;
+            transition: all 0.2s ease;
+        }
+        .sim-drag-source:hover {
+            border-color: #00f0ff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+        .sim-window {
+            flex: 1;
+            min-width: 320px;
+            max-width: 600px;
+            background: #09101b;
+            border: 1px solid #1a2a3d;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .sim-window-header {
+            background: #0f1a2a;
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1a2a3d;
+        }
+        .sim-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .sim-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .sim-tabs {
+            display: flex;
+            gap: 4px;
+        }
+        .sim-tab {
+            padding: 4px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #8a99ad;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .sim-tab.active {
+            background: #14243b;
+            color: #00f0ff;
+        }
+        .sim-dropzone {
+            padding: 40px 24px;
+            text-align: center;
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .sim-dropzone.dragover {
+            background: rgba(0, 240, 255, 0.08);
+            border: 2px dashed #00f0ff;
+        }
+        .sim-progress-bar {
+            width: 80%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 16px 0 8px 0;
+            display: none;
+        }
+        .sim-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00f0ff, #00ff88);
+            box-shadow: 0 0 10px #00f0ff;
+            transition: width 0.1s linear;
+        }
+
+        /* 6.6 FAQ 手風琴樣式 */
+        .faq-box {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .faq-item:hover {
+            border-color: rgba(0, 240, 255, 0.4);
+        }
+        .faq-question {
+            padding: 18px 22px;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .faq-icon {
+            font-size: 18px;
+            color: var(--primary);
+            transition: transform 0.25s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 22px;
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 250px;
+            padding: 0 22px 20px 22px;
+        }
+
         /* 7. 安裝安心指引樣式 */
         .install-guide-box {
             margin-top: 40px;
@@ -539,8 +696,10 @@
             <div class="nav-right">
                 <nav class="nav-links">
                     <a href="#features" data-i18n="nav_features">產品特色</a>
+                    <a href="#simulator" data-i18n="nav_simulator">模擬體驗</a>
                     <a href="#video" data-i18n="nav_video">30秒短影音</a>
                     <a href="#compare" data-i18n="nav_compare">競品對比</a>
+                    <a href="#faq" data-i18n="nav_faq">常見問題</a>
                     <a href="#donate" style="color: var(--accent);" data-i18n="nav_donate">☕ 贊助支持</a>
                     <a href="#download" data-i18n="nav_download">下載專區</a>
                 </nav>
@@ -592,6 +751,71 @@
                 <div class="feature-icon">🌟</div>
                 <h3 data-i18n="f4_title">解密永久免費・無限制</h3>
                 <p data-i18n="f4_desc">加密檔案發給客戶或同仁，對方無需付費、無需註冊即可自由解密，打造零阻力協同流轉。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3.5 線上拖曳加密互動模擬器 -->
+    <section id="simulator">
+        <div style="text-align: center;"><div class="badge" data-i18n="sim_badge">INTERACTIVE DEMO</div></div>
+        <h2 class="section-title" data-i18n="sim_title">親手體驗：3 秒完成 20GB 資料夾加密</h2>
+        <p class="section-desc" data-i18n="sim_desc">無需下載安裝！試著拖曳左側的模擬專案資料夾，親自感受 JBA128G3 的極簡拖曳與高速串流</p>
+
+        <div class="simulator-box">
+            <div class="sim-grid">
+                <!-- 模擬拖曳源檔案 -->
+                <div class="sim-drag-source" id="dragItem" draggable="true" ondragstart="handleDragStart(event)" onclick="simulateAutoDrag()">
+                    <div style="font-size: 40px; margin-bottom: 8px;">📁</div>
+                    <div style="font-weight: 800; color: #fff; font-size: 15px;" data-i18n="sim_folder_name">機密研發專案 (20.4 GB)</div>
+                    <div style="font-size: 12px; color: #00f0ff; margin-top: 4px;" data-i18n="sim_folder_tip">含 14,200 個原始原始碼</div>
+                    <div style="margin-top: 14px; background: rgba(0, 240, 255, 0.15); color: #00f0ff; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">
+                        👆 <span data-i18n="sim_click_drag">點擊或拖曳至右側</span>
+                    </div>
+                </div>
+
+                <!-- 模擬軟體視窗 -->
+                <div class="sim-window">
+                    <div class="sim-window-header">
+                        <div class="sim-dots">
+                            <div class="sim-dot" style="background:#ff5f56;"></div>
+                            <div class="sim-dot" style="background:#ffbd2e;"></div>
+                            <div class="sim-dot" style="background:#27c93f;"></div>
+                        </div>
+                        <div class="sim-tabs">
+                            <button class="sim-tab active" id="simTabEncrypt" data-i18n="sim_tab_enc">加密 Encrypt</button>
+                            <button class="sim-tab" id="simTabDecrypt" onclick="alert(translations[currentLang].sim_dec_tip)" data-i18n="sim_tab_dec">解密 Decrypt</button>
+                        </div>
+                        <div style="font-size: 11px; color: #718096; font-family: monospace;">v1.0.3</div>
+                    </div>
+
+                    <!-- 放置區 -->
+                    <div class="sim-dropzone" id="simDropzone" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)" onclick="simulateAutoDrag()">
+                        <div id="simIdleState">
+                            <div style="font-size: 38px; margin-bottom: 8px; opacity: 0.85;">🛡️</div>
+                            <div style="font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px;" data-i18n="sim_drop_prompt">將檔案或資料夾拖曳至此處</div>
+                            <div style="font-size: 12px; color: #718096;" data-i18n="sim_drop_sub">支援 20GB 大檔 ｜ 自動打包封裝為單一 .JBS 檔</div>
+                        </div>
+
+                        <!-- 進行中狀態 -->
+                        <div id="simProcessingState" style="display:none; width: 100%;">
+                            <div id="simStepText" style="font-size: 14px; font-weight: 800; color: #00f0ff; margin-bottom: 6px;">正在打包封裝中...</div>
+                            <div style="font-size: 12px; color: #a0aec0;" id="simSpeedText">CB Tec 後量子流式加密 ｜ 記憶體佔用: 142 MB</div>
+                            <div class="sim-progress-bar" id="simProgressBar" style="display:block; margin: 15px auto;">
+                                <div class="sim-progress-fill" id="simProgressFill"></div>
+                            </div>
+                            <div style="font-size: 12px; font-family: monospace; color: #00ff88;" id="simPctText">0%</div>
+                        </div>
+
+                        <!-- 完成狀態 -->
+                        <div id="simSuccessState" style="display:none;">
+                            <div style="font-size: 42px; margin-bottom: 8px;">💎</div>
+                            <div style="font-size: 16px; font-weight: 900; color: #00ff88; margin-bottom: 6px;" data-i18n="sim_done_title">加密封裝完成！</div>
+                            <div style="font-size: 13px; color: #fff; margin-bottom: 4px;">機密研發專案.JBS (20.4 GB)</div>
+                            <div style="font-size: 11px; color: #00f0ff; margin-bottom: 12px;" data-i18n="sim_done_tip">✅ SHA-256 二進制 100% Bit-Perfect 吻合 ｜ 原檔已物理粉碎抹除</div>
+                            <button onclick="event.stopPropagation(); resetSim();" style="background:#14243b; border:1px solid #00f0ff; color:#00f0ff; padding:6px 16px; border-radius:20px; font-size:12px; font-weight:bold; cursor:pointer;" data-i18n="sim_replay_btn">🔄 再次模擬體驗</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -731,6 +955,65 @@
                             <button class="btn-copy" onclick="copyAddress('addr-btc')" data-i18n="btn_copy">複製</button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.5 常見問題 FAQ 手風琴 -->
+    <section id="faq">
+        <div style="text-align: center;"><div class="badge" data-i18n="faq_badge">FREQUENTLY ASKED QUESTIONS</div></div>
+        <h2 class="section-title" data-i18n="faq_title">常見問題解答 (FAQ)</h2>
+        <p class="section-desc" data-i18n="faq_desc">關於授權、密碼學架構、原檔粉碎與大檔傳輸的完整解答</p>
+
+        <div class="faq-box">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span data-i18n="faq_q1">我把加密後的 .JBS 檔案發給客戶或同事，對方需要付費才能解密嗎？</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a1">
+                    完全不需要！JBA128G3 的理念是「確保機密安全暢通流轉」。解密功能「永久免費、無次數限制」。您的合作夥伴或客戶只需下載本工具，即可零門檻、100% 完整還原您加密的專案目錄與全部檔案。
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span data-i18n="faq_q2">為什麼 JBA128G3 不使用傳統的 AES-256 加密？</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a2">
+                    AES 家族雖然廣泛，但在現今分散式算力與未來量子運算發展下，面臨理論上的暴力破譯挑戰；此外，大量現成軟體易受既有攻擊庫針對。JBA128G3 採用 CB Tec 後量子幾何流式加密架構，無預留後門，專為防範未來算力攻擊設計。
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span data-i18n="faq_q3">加密後的「原檔自動物理粉碎 (JBA-Shredder)」是什麼意思？</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a3">
+                    一般手動「刪除」或「移至資源回收桶」只是抹去檔頭索引，數據仍完整留在硬碟中，他人用免費救援軟體（如 Recuva）3 秒鐘就能挖回原檔。JBA-Shredder 機制在校驗 .JBS 密文寫入完整後，自動以二進制亂數多次覆寫未加密原檔區塊，徹底杜絕物理層面救援洩密。
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span data-i18n="faq_q4">處理 20GB 巨型專案目錄時，會不會導致電腦卡死或記憶體崩潰？</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a4">
+                    絕不卡死！普通壓縮工具在大檔案下容易發生記憶體溢出 (OOM)。JBA128G3 研發了獨家「64MB 零拷貝串流架構」，記憶體運算佔用全程穩定低於 200MB，即使在普通配置的筆電上也能流暢運行。
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span data-i18n="faq_q5">免費版限制加密 2 次，如果我有多個檔案該怎麼辦？</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" data-i18n="faq_a5">
+                    免費版單次支援高達 20 個檔案或資料夾混合排隊批次處理！您可以將需要防護的多個資料夾一次性放入批次佇列中執行加密。若需要長期高頻率日常加密，可關注我們即將推出的 Pro 企業專業版商業授權。
                 </div>
             </div>
         </div>
@@ -890,6 +1173,39 @@
                 guide_step2_title: "步驟二：點擊「仍要執行」",
                 guide_step2_desc: "右下方會出現按鈕，點擊即可正常啟動安裝程序。",
                 guide_verify: "您可隨時透過上方官方 SHA-256 校驗碼比對安裝包雜湊值，驗證二進制代碼 100% 原裝無篡改。",
+                nav_simulator: "模擬體驗",
+                nav_faq: "常見問題",
+                sim_badge: "INTERACTIVE DEMO",
+                sim_title: "親手體驗：3 秒完成 20GB 資料夾加密",
+                sim_desc: "無需下載安裝！試著拖曳左側的模擬專案資料夾，親自感受 JBA128G3 的極簡拖曳與高速串流",
+                sim_folder_name: "機密研發專案 (20.4 GB)",
+                sim_folder_tip: "含 14,200 個原始檔案",
+                sim_click_drag: "點擊或拖曳至右側",
+                sim_tab_enc: "加密 Encrypt",
+                sim_tab_dec: "解密 Decrypt",
+                sim_drop_prompt: "將檔案或資料夾拖曳至此處",
+                sim_drop_sub: "支援 20GB 大檔 ｜ 自動打包封裝為單一 .JBS 檔",
+                sim_done_title: "加密封裝完成！",
+                sim_done_tip: "✅ SHA-256 二進制 100% Bit-Perfect 吻合 ｜ 原檔已物理粉碎抹除",
+                sim_replay_btn: "🔄 再次模擬體驗",
+                sim_dec_tip: "解密功能永久免費且無需付費！只要把 .JBS 拖入即可一鍵原位還原。",
+                sim_step1: "正在打包封裝 14,200 個檔案 (20.4 GB)...",
+                sim_step2: "CB Tec 後量子幾何流式加密中 (64MB 零拷貝)...",
+                sim_step3: "JBA-Shredder 物理覆寫粉碎抹除未加密原檔...",
+                sim_step4: "SHA-256 二進制校驗：100% Bit-Perfect 吻合！",
+                faq_badge: "FREQUENTLY ASKED QUESTIONS",
+                faq_title: "常見問題解答 (FAQ)",
+                faq_desc: "關於授權機制、密碼學架構、原檔物理粉碎與大檔傳輸的完整解答",
+                faq_q1: "我把加密後的 .JBS 檔案發給客戶或同事，對方需要付費才能解密嗎？",
+                faq_a1: "完全不需要！JBA128G3 的理念是「確保機密安全暢通流轉」。解密功能「永久免費、無次數限制」。您的合作夥伴或客戶只需下載本工具，即可零門檻、100% 完整還原您加密的專案目錄與全部檔案。",
+                faq_q2: "為什麼 JBA128G3 不使用傳統的 AES-256 加密？",
+                faq_a2: "AES 家族雖然廣泛，但在現今分散式算力與未來量子運算發展下，面臨理論上的暴力破譯挑戰；此外，大量現成軟體易受既有攻擊庫針對。JBA128G3 採用 CB Tec 後量子幾何流式加密架構，無預留後門，專為防範未來算力攻擊設計。",
+                faq_q3: "加密後的「原檔自動物理粉碎 (JBA-Shredder)」是什麼意思？",
+                faq_a3: "一般手動「刪除」或「移至資源回收桶」只是抹去檔頭索引，數據仍完整留在硬碟中，他人用免費救援軟體（如 Recuva）3 秒鐘就能挖回原檔。JBA-Shredder 機制在校驗 .JBS 密文寫入完整後，自動以二進制亂數多次覆寫未加密原檔區塊，徹底杜絕物理層面救援洩密。",
+                faq_q4: "處理 20GB 巨型專案目錄時，會不會導致電腦卡死或記憶體崩潰？",
+                faq_a4: "絕不卡死！普通壓縮工具在大檔案下容易發生記憶體溢出 (OOM)。JBA128G3 研發了獨家「64MB 零拷貝串流架構」，記憶體運算佔用全程穩定低於 200MB，即使在普通配置的筆電上也能流暢運行。",
+                faq_q5: "免費版限制加密 2 次，如果我有多個檔案該怎麼辦？",
+                faq_a5: "免費版單次支援高達 20 個檔案或資料夾混合排隊批次處理！您可以將需要防護的多個資料夾一次性放入批次佇列中執行加密。若需要長期高頻率日常加密，可關注我們即將推出的 Pro 企業專業版商業授權。",
                 alert_invalid: "請輸入有效的美金金額！",
                 alert_thanks: "感謝您的支持！贊助金額：$",
                 copied_msg: "錢包地址已成功複製！"
@@ -976,6 +1292,39 @@
                 guide_step2_title: "Step 2: Click 'Run anyway'",
                 guide_step2_desc: "The 'Run anyway' button will appear in the bottom right corner. Click it to launch the installer.",
                 guide_verify: "You can always verify the official SHA-256 checksum against your installer to guarantee binary integrity with zero tampering.",
+                nav_simulator: "Simulator",
+                nav_faq: "FAQ",
+                sim_badge: "INTERACTIVE DEMO",
+                sim_title: "Hands-on Experience: Encrypt 20GB Folder in 3s",
+                sim_desc: "No installation required! Drag the mock project folder on the left to experience JBA128G3's effortless drag-and-drop and ultra-fast streaming.",
+                sim_folder_name: "Confidential Project (20.4 GB)",
+                sim_folder_tip: "Contains 14,200 source files",
+                sim_click_drag: "Click or Drag to Right",
+                sim_tab_enc: "Encrypt",
+                sim_tab_dec: "Decrypt",
+                sim_drop_prompt: "Drag & Drop Files or Folders Here",
+                sim_drop_sub: "Supports 20GB files | Auto-packs into a single .JBS container",
+                sim_done_title: "Encryption Complete!",
+                sim_done_tip: "✅ SHA-256 binary 100% Bit-Perfect Match | Source files shredded",
+                sim_replay_btn: "🔄 Try Again",
+                sim_dec_tip: "Decryption is 100% free with no limits! Simply drag .JBS files in to restore everything.",
+                sim_step1: "Packaging 14,200 source files (20.4 GB)...",
+                sim_step2: "CB Tec Post-Quantum Geometric Streaming (64MB Zero-Copy)...",
+                sim_step3: "JBA-Shredder physically overwriting unencrypted source files...",
+                sim_step4: "SHA-256 binary verification: 100% Bit-Perfect match!",
+                faq_badge: "FREQUENTLY ASKED QUESTIONS",
+                faq_title: "Frequently Asked Questions (FAQ)",
+                faq_desc: "Comprehensive answers regarding licensing, cryptography, physical shredding, and large file transmission.",
+                faq_q1: "Do my clients or teammates need to pay to decrypt .JBS files?",
+                faq_a1: "Absolutely not! JBA128G3 is designed for seamless secure collaboration. Decryption is 100% free forever with zero limits. Any recipient can download the tool and restore your encrypted directories with no barrier.",
+                faq_q2: "Why doesn't JBA128G3 use standard AES-256 encryption?",
+                faq_a2: "While AES is ubiquitous, its public architecture is increasingly vulnerable to distributed compute and quantum cryptanalysis. JBA128G3 uses CB Tec Post-Quantum Geometric Stream Encryption with zero backdoors, purpose-built to withstand brute-force attacks.",
+                faq_q3: "What does 'Automatic Physical Shredding (JBA-Shredder)' mean?",
+                faq_a3: "Standard 'Recycle Bin' deletion only removes file headers, leaving actual data on disk where free recovery tools can restore it in seconds. JBA-Shredder automatically overwrites unencrypted blocks with random binary data once encrypted integrity is verified.",
+                faq_q4: "Will encrypting 20GB massive directories crash my PC or memory?",
+                faq_a4: "Never! Ordinary tools frequently suffer from Out-Of-Memory (OOM) crashes on large files. JBA128G3's proprietary 64MB zero-copy streaming architecture keeps RAM usage strictly under 200MB even on modest laptops.",
+                faq_q5: "The Free tier limits encryption to 2 times. What if I have multiple files?",
+                faq_a5: "The Free tier supports queuing up to 20 files or folders in a single batch! You can place all your directories into one queue to encrypt them together. For high-frequency commercial use, look out for our upcoming Pro commercial tier.",
                 alert_invalid: "Please enter a valid amount!",
                 alert_thanks: "Thank you for your generous support! Amount: $",
                 copied_msg: "Wallet address copied to clipboard!"
@@ -1062,6 +1411,39 @@
                 guide_step2_title: "ステップ 2：「実行」をクリック",
                 guide_step2_desc: "右下に「実行」ボタンが表示されますので、クリックしてインストールを開始してください。",
                 guide_verify: "上記の公式SHA-256チェックサムと照合することで、改ざんのない100%純正バイナリであることをいつでも検証可能です。",
+                nav_simulator: "体験デモ",
+                nav_faq: "よくある質問",
+                sim_badge: "INTERACTIVE DEMO",
+                sim_title: "体験：20GBフォルダを3秒で暗号化",
+                sim_desc: "インストール不要！左側の模擬プロジェクトフォルダをドラッグして、JBA128G3の軽快なドラッグ＆ドロップと高速ストリーミングを体験してください。",
+                sim_folder_name: "機密開発プロジェクト (20.4 GB)",
+                sim_folder_tip: "ソースコード14,200個を含む",
+                sim_click_drag: "クリックまたは右へドラッグ",
+                sim_tab_enc: "暗号化 Encrypt",
+                sim_tab_dec: "復号 Decrypt",
+                sim_drop_prompt: "ファイルまたはフォルダをここへドラッグ",
+                sim_drop_sub: "20GB大容量対応 ｜ 単一の.JBSファイルへ自動パッケージ",
+                sim_done_title: "暗号化パッケージ完了！",
+                sim_done_tip: "✅ SHA-256 バイナリ 100% Bit-Perfect 一致 ｜ 元ファイル物理抹消済み",
+                sim_replay_btn: "🔄 もう一度体験する",
+                sim_dec_tip: "復号機能は完全永久無料・無制限です！.JBSファイルをドラッグするだけで原位置復元されます。",
+                sim_step1: "14,200個のソースファイルをパッケージ中 (20.4 GB)...",
+                sim_step2: "CB Tec 耐量子幾何ストリーミング暗号化中 (64MB ゼロコピー)...",
+                sim_step3: "JBA-Shredder により未暗号化元ファイルを物理上書き抹消中...",
+                sim_step4: "SHA-256 バイナリ検証：100% Bit-Perfect 完全一致！",
+                faq_badge: "FREQUENTLY ASKED QUESTIONS",
+                faq_title: "よくあるご質問 (FAQ)",
+                faq_desc: "ライセンス体系、暗号化技術、元ファイルの物理抹消、大容量転送に関する回答",
+                faq_q1: "暗号化された .JBS ファイルを受信した側は課金が必要ですか？",
+                faq_a1: "一切不要です！JBA128G3は円滑な機密共有を重視しています。復号機能は「永久無料・回数無制限」です。受信相手はソフトを導入するだけで、制限なく安全に復元可能です。",
+                faq_q2: "なぜ標準的な AES-256 を採用しないのですか？",
+                faq_a2: "AESは広く普及していますが、アルゴリズムが公開されており、将来的な量子計算や分散クラスタによる総当たり攻撃の懸念があります。JBA128G3はバックドアを一切排除した独自の耐量子幾何ストリーム暗号を採用しています。",
+                faq_q3: "「元ファイルの物理シュレッダー抹消 (JBA-Shredder)」とは？",
+                faq_a3: "通常の「ごみ箱へ移動」はヘッダー情報を消すだけで、市販の復元ソフトで容易に復旧されてしまいます。JBA-Shredderは暗号化整合性確認後、乱数バイナリで物理セクタを多重上書きし、完全復元不能にします。",
+                faq_q4: "20GBもの巨大フォルダを処理するとPCがクラッシュしませんか？",
+                faq_a4: "クラッシュしません！独自の「64MBゼロコピーストリーミング設計」により、メモリ消費を常時200MB以下に抑制。標準的なノートPCでも軽快に動作します。",
+                faq_q5: "無料版は暗号化2回の上限がありますが、複数ファイルがある場合は？",
+                faq_a5: "無料版でも1回のバッチ処理で最大20個のファイル・フォルダを一括キューに追加可能です。日常的な高頻度利用には、今後リリース予定のPro商用ライセンスをご検討ください。",
                 alert_invalid: "有効な金額を入力してください！",
                 alert_thanks: "温かいご支援ありがとうございます！ 寄付額: $",
                 copied_msg: "アドレスをクリップボードにコピーしました！"
@@ -1113,6 +1495,90 @@
                 return;
             }
             alert(`${translations[currentLang].alert_thanks}${amount} USD`);
+        }
+
+        // FAQ 手風琴切換
+        function toggleFaq(element) {
+            const isActive = element.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+
+        // 互動拖曳模擬器邏輯
+        let simInProgress = false;
+
+        function handleDragStart(e) {
+            e.dataTransfer.setData('text/plain', 'folder_20gb');
+        }
+        function handleDragOver(e) {
+            e.preventDefault();
+            document.getElementById('simDropzone').classList.add('dragover');
+        }
+        function handleDragLeave(e) {
+            document.getElementById('simDropzone').classList.remove('dragover');
+        }
+        function handleDrop(e) {
+            e.preventDefault();
+            document.getElementById('simDropzone').classList.remove('dragover');
+            startSimProcess();
+        }
+        function simulateAutoDrag() {
+            if (simInProgress) return;
+            startSimProcess();
+        }
+
+        function startSimProcess() {
+            if (simInProgress) return;
+            simInProgress = true;
+
+            document.getElementById('simIdleState').style.display = 'none';
+            document.getElementById('simSuccessState').style.display = 'none';
+            document.getElementById('simProcessingState').style.display = 'block';
+
+            let progress = 0;
+            const fill = document.getElementById('simProgressFill');
+            const pct = document.getElementById('simPctText');
+            const stepText = document.getElementById('simStepText');
+            const speedText = document.getElementById('simSpeedText');
+
+            const steps = [
+                { limit: 30, text: translations[currentLang].sim_step1 || "正在打包封裝 14,200 個檔案 (20.4 GB)...", speed: "原生高效串流打包中..." },
+                { limit: 75, text: translations[currentLang].sim_step2 || "CB Tec 後量子流式加密運算中 (64MB 零拷貝)...", speed: "記憶體佔用: 148 MB ｜ 滿速併發中" },
+                { limit: 95, text: translations[currentLang].sim_step3 || "JBA-Shredder 物理覆寫粉碎抹除未加密原檔...", speed: "正在擦除原始磁區殘留痕跡..." },
+                { limit: 100, text: translations[currentLang].sim_step4 || "SHA-256 二進制位元組校驗中...", speed: "100% Bit-Perfect 驗證通過！" }
+            ];
+
+            const interval = setInterval(() => {
+                progress += 2;
+                if (progress > 100) progress = 100;
+
+                fill.style.width = progress + '%';
+                pct.innerText = progress + '%';
+
+                const curStep = steps.find(s => progress <= s.limit) || steps[steps.length - 1];
+                stepText.innerText = curStep.text;
+                speedText.innerText = curStep.speed;
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        document.getElementById('simProcessingState').style.display = 'none';
+                        document.getElementById('simSuccessState').style.display = 'block';
+                        simInProgress = false;
+                    }, 400);
+                }
+            }, 45);
+        }
+
+        function resetSim() {
+            simInProgress = false;
+            document.getElementById('simProgressFill').style.width = '0%';
+            document.getElementById('simPctText').innerText = '0%';
+            document.getElementById('simSuccessState').style.display = 'none';
+            document.getElementById('simProcessingState').style.display = 'none';
+            document.getElementById('simIdleState').style.display = 'block';
         }
 
         function showDemoAlert() {
