@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1349,8 +1349,8 @@
                     <a href="#download" data-i18n="nav_download">下載專區</a>
                 </nav>
                 <select id="languageSelect" class="lang-select" onchange="changeLanguage(this.value)">
+                    <option value="en" selected>English</option>
                     <option value="zh">繁體中文</option>
-                    <option value="en">English</option>
                     <option value="ja">日本語</option>
                 </select>
             </div>
@@ -2633,7 +2633,7 @@
             }
         };
 
-        let currentLang = 'zh';
+        let currentLang = 'en';
 
         function changeLanguage(lang) {
             currentLang = lang;
@@ -2843,10 +2843,15 @@
             document.getElementById('demoModal').style.display = 'none';
         }
 
+                // 預設為全英文 (Option 1: English Default)
+        const initialLang = localStorage.getItem('jba_user_lang') || 'en';
+        currentLang = initialLang;
+        changeLanguage(initialLang);
+
         window.onload = function() {
-            const savedLang = localStorage.getItem('jba_user_lang') || 'zh';
-            document.getElementById('languageSelect').value = savedLang;
-            changeLanguage(savedLang);
+            const selectEl = document.getElementById('languageSelect');
+            if (selectEl) selectEl.value = currentLang;
+            changeLanguage(currentLang);
         };
     </script>
 </body>
