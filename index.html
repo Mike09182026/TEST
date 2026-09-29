@@ -572,6 +572,101 @@
             padding: 0 22px 20px 22px;
         }
 
+        /* 6.7 極簡上手指南 (How It Works) 樣式 */
+        .how-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .how-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+        .how-tab-btn {
+            background: #09111c;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: #8a99ad;
+            font-size: 15px;
+            font-weight: 800;
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .how-tab-btn.active {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(0, 119, 255, 0.2));
+            border-color: #00f0ff;
+            color: #00f0ff;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+        .how-step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            position: relative;
+        }
+        .how-card {
+            background: #09101b;
+            border: 1px solid #1a2a3d;
+            border-radius: 18px;
+            padding: 30px 22px;
+            position: relative;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .how-card:hover {
+            border-color: #00f0ff;
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+        }
+        .how-badge {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #00f0ff, #0077ff);
+            color: #000;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        .how-icon {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+        .how-card h4 {
+            font-size: 17px;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+        .how-card p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.55;
+            flex-grow: 1;
+        }
+        .how-tag {
+            font-size: 11px;
+            font-weight: bold;
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            padding: 4px 10px;
+            border-radius: 12px;
+            width: fit-content;
+            margin-top: 14px;
+        }
+
         /* 7. 安裝安心指引樣式 */
         .install-guide-box {
             margin-top: 40px;
@@ -697,6 +792,7 @@
                 <nav class="nav-links">
                     <a href="#features" data-i18n="nav_features">產品特色</a>
                     <a href="#simulator" data-i18n="nav_simulator">模擬體驗</a>
+                    <a href="#howitworks" data-i18n="nav_howitworks">操作指南</a>
                     <a href="#video" data-i18n="nav_video">30秒短影音</a>
                     <a href="#compare" data-i18n="nav_compare">競品對比</a>
                     <a href="#faq" data-i18n="nav_faq">常見問題</a>
@@ -815,6 +911,68 @@
                             <button onclick="event.stopPropagation(); resetSim();" style="background:#14243b; border:1px solid #00f0ff; color:#00f0ff; padding:6px 16px; border-radius:20px; font-size:12px; font-weight:bold; cursor:pointer;" data-i18n="sim_replay_btn">🔄 再次模擬體驗</button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3.8 極簡上手指南 (How It Works) -->
+    <section id="howitworks">
+        <div style="text-align: center;"><div class="badge" data-i18n="how_badge">HOW IT WORKS</div></div>
+        <h2 class="section-title" data-i18n="how_title">3 秒極簡上手指南</h2>
+        <p class="section-desc" data-i18n="how_desc">拋棄繁瑣設定，享受比壓縮檔案還簡單的極致體驗</p>
+
+        <div class="how-box">
+            <!-- 雙分頁切換 -->
+            <div class="how-tabs">
+                <button class="how-tab-btn active" id="tabEncHow" onclick="switchHowTab('enc')">
+                    <span>🔒</span> <span data-i18n="how_tab_enc">【加密】只需 3 步</span>
+                </button>
+                <button class="how-tab-btn" id="tabDecHow" onclick="switchHowTab('dec')">
+                    <span>🔓</span> <span data-i18n="how_tab_dec">【解密】只需 1 步</span>
+                </button>
+            </div>
+
+            <!-- 加密流程內容 -->
+            <div id="howEncContent" class="how-step-grid">
+                <div class="how-card">
+                    <div class="how-badge">01</div>
+                    <div class="how-icon">📁</div>
+                    <h4 data-i18n="how_enc_s1_t">拖曳即辨識</h4>
+                    <p data-i18n="how_enc_s1_p">將單一檔案或 20GB 大資料夾直接拖入軟體視窗，智慧引擎自動載入並切換至【加密】分頁。</p>
+                    <div class="how-tag" data-i18n="how_enc_s1_tag">⚡ 免手動壓縮打包</div>
+                </div>
+                <div class="how-card">
+                    <div class="how-badge">02</div>
+                    <div class="how-icon">⚡</div>
+                    <h4 data-i18n="how_enc_s2_t">一鍵滿速串流</h4>
+                    <p data-i18n="how_enc_s2_p">點擊開始，64MB 零拷貝架構高速運算，記憶體全程 < 200MB，真實進度條透明掌握。</p>
+                    <div class="how-tag" data-i18n="how_enc_s2_tag">🚀 記憶體不卡頓</div>
+                </div>
+                <div class="how-card">
+                    <div class="how-badge">03</div>
+                    <div class="how-icon">🛡️</div>
+                    <h4 data-i18n="how_enc_s3_t">安全封裝 & 原檔粉碎</h4>
+                    <p data-i18n="how_enc_s3_p">生成 .JBS 加密容器，JBA-Shredder 自動多次覆寫抹除未加密原檔，救援軟體亦徹底無解。</p>
+                    <div class="how-tag" data-i18n="how_enc_s3_tag">💥 物理抹除防救援</div>
+                </div>
+            </div>
+
+            <!-- 解密流程內容 -->
+            <div id="howDecContent" class="how-step-grid" style="display:none;">
+                <div class="how-card" style="border-color: rgba(0, 255, 136, 0.4);">
+                    <div class="how-badge" style="background:#00ff88;">01</div>
+                    <div class="how-icon">🔑</div>
+                    <h4 data-i18n="how_dec_s1_t">拖入 .JBS 密文檔</h4>
+                    <p data-i18n="how_dec_s1_p">收到同事或客戶發來的 .JBS 檔案，直接拖入軟體視窗，智慧引擎秒切至【解密】分頁。</p>
+                    <div class="how-tag" data-i18n="how_dec_s1_tag">🎯 智慧辨識自動切換</div>
+                </div>
+                <div class="how-card" style="border-color: rgba(0, 255, 136, 0.4);">
+                    <div class="how-badge" style="background:#00ff88;">02</div>
+                    <div class="how-icon">💎</div>
+                    <h4 data-i18n="how_dec_s2_t">100% 原位原貌還原</h4>
+                    <p data-i18n="how_dec_s2_p">一鍵解密還原，多層級目錄與所有子檔案原位重生。SHA-256 驗證二進制 Bit-Perfect 零誤差！</p>
+                    <div class="how-tag" style="color:#00f0ff; background:rgba(0,240,255,0.1);" data-i18n="how_dec_s2_tag">🌟 永久免費・無次數限制</div>
                 </div>
             </div>
         </div>
@@ -1193,6 +1351,28 @@
                 sim_step2: "CB Tec 後量子幾何流式加密中 (64MB 零拷貝)...",
                 sim_step3: "JBA-Shredder 物理覆寫粉碎抹除未加密原檔...",
                 sim_step4: "SHA-256 二進制校驗：100% Bit-Perfect 吻合！",
+                nav_howitworks: "操作指南",
+                how_badge: "HOW IT WORKS",
+                how_title: "3 秒極簡上手指南",
+                how_desc: "拋棄繁瑣設定，享受比壓縮檔案還簡單的極致體驗",
+                how_tab_enc: "【加密】只需 3 步",
+                how_tab_dec: "【解密】只需 1 步",
+                how_enc_s1_t: "拖曳即辨識",
+                how_enc_s1_p: "將單一檔案或 20GB 大資料夾直接拖入軟體視窗，智慧引擎自動載入並切換至【加密】分頁。",
+                how_enc_s1_tag: "⚡ 免手動壓縮打包",
+                how_enc_s2_t: "一鍵滿速串流",
+                how_enc_s2_p: "點擊開始，64MB 零拷貝架構高速運算，記憶體全程 < 200MB，真實進度條透明掌握。",
+                how_enc_s2_tag: "🚀 記憶體不卡頓",
+                how_enc_s3_t: "安全封裝 & 原檔粉碎",
+                how_enc_s3_p: "生成 .JBS 加密容器，JBA-Shredder 自動多次覆寫抹除未加密原檔，救援軟體亦徹底無解。",
+                how_enc_s3_tag: "💥 物理抹除防救援",
+                how_dec_s1_t: "拖入 .JBS 密文檔",
+                how_dec_s1_p: "收到同事或客戶發來的 .JBS 檔案，直接拖入軟體視窗，智慧引擎秒切至【解密】分頁。",
+                how_dec_s1_tag: "🎯 智慧辨識自動切換",
+                how_dec_s2_t: "100% 原位原貌還原",
+                how_dec_s2_p: "一鍵解密還原，多層級目錄與所有子檔案原位重生。SHA-256 驗證二進制 Bit-Perfect 零誤差！",
+                how_dec_s2_tag: "🌟 永久免費・無次數限制",
+
                 faq_badge: "FREQUENTLY ASKED QUESTIONS",
                 faq_title: "常見問題解答 (FAQ)",
                 faq_desc: "關於授權機制、密碼學架構、原檔物理粉碎與大檔傳輸的完整解答",
@@ -1312,6 +1492,28 @@
                 sim_step2: "CB Tec Post-Quantum Geometric Streaming (64MB Zero-Copy)...",
                 sim_step3: "JBA-Shredder physically overwriting unencrypted source files...",
                 sim_step4: "SHA-256 binary verification: 100% Bit-Perfect match!",
+                nav_howitworks: "How It Works",
+                how_badge: "HOW IT WORKS",
+                how_title: "3-Step Quick Start Guide",
+                how_desc: "No complicated setups. Smoother and simpler than traditional zip tools.",
+                how_tab_enc: "[Encrypt] Just 3 Steps",
+                how_tab_dec: "[Decrypt] Just 1 Step",
+                how_enc_s1_t: "Drag & Instant Detect",
+                how_enc_s1_p: "Drag any file or 20GB project folder directly into the window. Smart engine automatically switches to Encrypt tab.",
+                how_enc_s1_tag: "⚡ No Pre-Compression Needed",
+                how_enc_s2_t: "One-Click Full-Speed Stream",
+                how_enc_s2_p: "Hit start and let the 64MB zero-copy pipeline stream at wire speed. RAM stays < 200MB throughout.",
+                how_enc_s2_tag: "🚀 Zero Memory Lag",
+                how_enc_s3_t: "Secure Archive & File Shredding",
+                how_enc_s3_p: "Generates .JBS encrypted container. JBA-Shredder overwrites the raw files so undelete tools find nothing.",
+                how_enc_s3_tag: "💥 Anti-Recovery Shredding",
+                how_dec_s1_t: "Drop .JBS Cipher File",
+                how_dec_s1_p: "Received a .JBS file from a client or coworker? Drop it into the window; it instantly activates the Decrypt tab.",
+                how_dec_s1_tag: "🎯 Smart Format Auto-Switch",
+                how_dec_s2_t: "100% Bit-Perfect In-Place Restore",
+                how_dec_s2_p: "One-click decrypt restores the full directory tree and every subfile. Verified with SHA-256 Bit-Perfect accuracy!",
+                how_dec_s2_tag: "🌟 Free Forever · Unlimited",
+
                 faq_badge: "FREQUENTLY ASKED QUESTIONS",
                 faq_title: "Frequently Asked Questions (FAQ)",
                 faq_desc: "Comprehensive answers regarding licensing, cryptography, physical shredding, and large file transmission.",
@@ -1431,6 +1633,28 @@
                 sim_step2: "CB Tec 耐量子幾何ストリーミング暗号化中 (64MB ゼロコピー)...",
                 sim_step3: "JBA-Shredder により未暗号化元ファイルを物理上書き抹消中...",
                 sim_step4: "SHA-256 バイナリ検証：100% Bit-Perfect 完全一致！",
+                nav_howitworks: "操作ガイド",
+                how_badge: "HOW IT WORKS",
+                how_title: "3ステップ簡単操作ガイド",
+                how_desc: "煩わしい設定は不要。圧縮ツールよりもシンプルで直感的な操作感。",
+                how_tab_enc: "【暗号化】わずか3ステップ",
+                how_tab_dec: "【復号化】わずか1ステップ",
+                how_enc_s1_t: "ドラッグで自動認識",
+                how_enc_s1_p: "単一ファイルや20GBの大容量フォルダをウィンドウにドラッグするだけで、自動で【暗号化】タブへ切り替わります。",
+                how_enc_s1_tag: "⚡ 事前圧縮不要",
+                how_enc_s2_t: "ワンクリック高速ストリーミング",
+                how_enc_s2_p: "開始を押すだけで64MBゼロコピー技術が高速処理。メモリ使用量は常に200MB未満をキープします。",
+                how_enc_s2_tag: "🚀 メモリ圧迫ゼロ",
+                how_enc_s3_t: "安全パッケージング＆物理破砕",
+                how_enc_s3_p: ".JBS暗号化コンテナを生成後、JBA-Shredderが元の平文データを上書き消去。復元ソフトも完全に無力化。",
+                how_enc_s3_tag: "💥 復元不能な物理抹消",
+                how_dec_s1_t: ".JBS暗号化ファイルを投入",
+                how_dec_s1_p: "同僚やクライアントから受け取った.JBSファイルをドラッグするだけで、瞬時に【復号化】タブへ切り替わります。",
+                how_dec_s1_tag: "🎯 自動判別スマート切り替え",
+                how_dec_s2_t: "100% 元通りにディレクトリー復元",
+                how_dec_s2_p: "ワンクリックで元の階層構造ごと完全復元。SHA-256検証によりBit-Perfectな精度を保証します！",
+                how_dec_s2_tag: "🌟 完全無料・無制限利用",
+
                 faq_badge: "FREQUENTLY ASKED QUESTIONS",
                 faq_title: "よくあるご質問 (FAQ)",
                 faq_desc: "ライセンス体系、暗号化技術、元ファイルの物理抹消、大容量転送に関する回答",
@@ -1497,6 +1721,26 @@
             alert(`${translations[currentLang].alert_thanks}${amount} USD`);
         }
 
+
+        // How It Works 分頁切換
+        function switchHowTab(type) {
+            const tabEnc = document.getElementById('tabEncHow');
+            const tabDec = document.getElementById('tabDecHow');
+            const encContent = document.getElementById('howEncContent');
+            const decContent = document.getElementById('howDecContent');
+
+            if (type === 'enc') {
+                tabEnc.classList.add('active');
+                tabDec.classList.remove('active');
+                encContent.style.display = 'grid';
+                decContent.style.display = 'none';
+            } else {
+                tabDec.classList.add('active');
+                tabEnc.classList.remove('active');
+                encContent.style.display = 'none';
+                decContent.style.display = 'grid';
+            }
+        }
         // FAQ 手風琴切換
         function toggleFaq(element) {
             const isActive = element.classList.contains('active');
