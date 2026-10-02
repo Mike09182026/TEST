@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>JBA128G3 Storage Shield - 30s Explainer Video</title>
+  <title>JBA128G3 Storage Shield - 45s Motion Graphics Explainer</title>
   <style>
     * {
       box-sizing: border-box;
@@ -18,7 +18,6 @@
       overflow: hidden;
       background: #000;
     }
-    /* 100% 填滿視窗，9:16 無黑邊或滾動條 */
     .video-viewport {
       width: 100%;
       height: 100%;
@@ -35,8 +34,8 @@
       width: 100%;
       height: 100%;
       background: url('video_bg.jpg') center/cover no-repeat;
-      filter: brightness(0.65) contrast(1.15);
-      transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+      filter: brightness(0.55) contrast(1.2);
+      transition: transform 1s cubic-bezier(0.25, 0.8, 0.25, 1);
       z-index: 1;
     }
     .video-overlay {
@@ -45,7 +44,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(0, 15, 30, 0.2) 0%, rgba(2, 6, 14, 0.94) 100%);
+      background: radial-gradient(circle at center, rgba(0, 15, 30, 0.2) 0%, rgba(2, 6, 14, 0.95) 100%);
       z-index: 2;
     }
 
@@ -66,7 +65,7 @@
       100% { top: 110%; }
     }
 
-    /* 頂部 6 段式 Stories 進度條 (Instagram / TikTok 經典分段條) */
+    /* 頂部 6 段分段 Stories 進度條 */
     .stories-bar-container {
       position: absolute;
       top: 10px;
@@ -75,7 +74,7 @@
       height: 4px;
       display: flex;
       gap: 5px;
-      z-index: 15;
+      z-index: 20;
     }
     .story-seg {
       flex: 1;
@@ -99,7 +98,7 @@
       position: absolute;
       top: 22px;
       left: 14px;
-      z-index: 10;
+      z-index: 15;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -116,7 +115,7 @@
       position: absolute;
       top: 20px;
       right: 14px;
-      z-index: 15;
+      z-index: 20;
       background: rgba(0, 0, 0, 0.65);
       border: 1px solid rgba(0, 240, 255, 0.45);
       color: #00f0ff;
@@ -141,7 +140,7 @@
       position: absolute;
       right: 10px;
       bottom: 85px;
-      z-index: 10;
+      z-index: 15;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -174,7 +173,7 @@
       border-color: #00f0ff;
     }
 
-    /* 中央分鏡容器 */
+    /* 中央主舞台容器 */
     .scene-container {
       position: absolute;
       top: 0;
@@ -186,21 +185,21 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 40px 18px 80px 18px;
+      padding: 45px 16px 85px 16px;
       text-align: center;
       transition: filter 0.2s ease;
     }
 
-    /* 震撼故障與震動特效 (Screen Shake & Glitch) */
+    /* 震撼震動特效 (Screen Shake & Glitch) */
     .glitch-shake {
-      animation: screenShake 0.4s ease;
+      animation: screenShake 0.45s ease;
     }
     @keyframes screenShake {
       0%, 100% { transform: translate(0, 0) scale(1); }
-      15% { transform: translate(-6px, 4px) scale(1.02); filter: drop-shadow(0 0 15px #ff0055); }
-      35% { transform: translate(6px, -4px) scale(0.99); filter: hue-rotate(90deg); }
-      55% { transform: translate(-4px, 3px) scale(1.01); filter: drop-shadow(0 0 15px #00f0ff); }
-      75% { transform: translate(3px, -2px) scale(1); filter: none; }
+      15% { transform: translate(-7px, 5px) scale(1.02); filter: drop-shadow(0 0 16px #ff0055); }
+      35% { transform: translate(7px, -5px) scale(0.99); filter: hue-rotate(90deg); }
+      55% { transform: translate(-5px, 4px) scale(1.01); filter: drop-shadow(0 0 16px #00f0ff); }
+      75% { transform: translate(4px, -2px) scale(1); filter: none; }
     }
 
     /* 紅色警報邊框脈衝 (Scene 1) */
@@ -210,15 +209,15 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border: 3px solid rgba(255, 51, 102, 0.7);
-      box-shadow: inset 0 0 40px rgba(255, 51, 102, 0.5);
+      border: 3px solid rgba(255, 51, 102, 0.75);
+      box-shadow: inset 0 0 45px rgba(255, 51, 102, 0.55);
       z-index: 4;
       pointer-events: none;
       animation: alertPulse 0.8s ease infinite alternate;
     }
     @keyframes alertPulse {
       0% { opacity: 0.3; }
-      100% { opacity: 0.9; }
+      100% { opacity: 0.95; }
     }
 
     /* 場景標籤 */
@@ -230,7 +229,7 @@
       background: rgba(0, 240, 255, 0.15);
       border: 1px solid #00f0ff;
       color: #00f0ff;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       display: inline-block;
@@ -242,31 +241,252 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    /* 動態視覺主體 */
-    .scene-visual-wrapper {
-      min-height: 100px;
+    /* === 核心視覺動態舞台 (Motion Graphics Centerpiece) === */
+    .motion-stage {
+      width: 100%;
+      height: 140px;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
-    .scene-visual {
-      font-size: 4.2rem;
-      filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.85));
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* 1. 左右分屏殘酷對比動態 (Scene 0) */
+    .split-screen-box {
+      width: 95%;
+      height: 125px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
     }
+    .split-half {
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .half-danger {
+      background: rgba(255, 51, 102, 0.12);
+      border-right: 2px dashed rgba(255, 51, 102, 0.4);
+    }
+    .half-secure {
+      background: rgba(0, 240, 255, 0.1);
+    }
+    .split-icon { font-size: 2.2rem; margin-bottom: 4px; }
+    .split-label { font-size: 0.7rem; font-weight: 800; color: #fff; text-transform: uppercase; }
+    .split-status-bad {
+      font-size: 0.62rem;
+      color: #ff3366;
+      font-weight: 800;
+      margin-top: 4px;
+      animation: flashText 1s infinite alternate;
+    }
+    .split-status-good {
+      font-size: 0.62rem;
+      color: #00ff88;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+    @keyframes flashText {
+      0% { opacity: 0.4; } 100% { opacity: 1; }
+    }
+    .radar-beam {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #ff3366;
+      box-shadow: 0 0 10px #ff3366;
+      animation: radarScan 1.8s linear infinite;
+    }
+    @keyframes radarScan {
+      0% { top: 0%; } 100% { top: 100%; }
+    }
+
+    /* 2. 後量子幾何旋轉光盾 (Scene 1) */
+    .quantum-shield-box {
+      width: 130px;
+      height: 130px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .shield-ring-outer {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 2px dashed #00f0ff;
+      border-radius: 50%;
+      animation: rotateClockwise 8s linear infinite;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    }
+    .shield-ring-inner {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border: 2px solid #bf5af2;
+      border-radius: 50%;
+      animation: rotateCounter 6s linear infinite;
+      box-shadow: 0 0 15px rgba(191, 90, 242, 0.5);
+    }
+    .shield-center-core {
+      font-size: 3rem;
+      z-index: 5;
+      filter: drop-shadow(0 0 20px #00f0ff);
+      animation: pulseCore 2s ease infinite alternate;
+    }
+    @keyframes rotateClockwise { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes rotateCounter { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
+    @keyframes pulseCore { 0% { transform: scale(0.95); } 100% { transform: scale(1.1); } }
+
+    /* 3. 20GB 大專案無卡頓串流動態 (Scene 2) */
+    .vault-stream-box {
+      width: 92%;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .stream-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .stream-pipe {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .stream-flow-bar {
+      height: 100%;
+      width: 88%;
+      background: linear-gradient(90deg, #0077ff, #00f0ff, #00ff88);
+      box-shadow: 0 0 15px #00f0ff;
+      border-radius: 6px;
+      animation: flowGlow 1.2s linear infinite;
+    }
+    @keyframes flowGlow {
+      0% { filter: brightness(1); } 50% { filter: brightness(1.5); } 100% { filter: brightness(1); }
+    }
+    .stream-metrics {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      color: #8c9ba5;
+    }
+    .metric-chip {
+      color: #00ff88;
+      background: rgba(0, 255, 136, 0.1);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    /* 4. JBA-Shredder 物理粉碎粒子動態 (Scene 3) */
+    .shredder-box {
+      width: 92%;
+      background: rgba(20, 5, 10, 0.6);
+      border: 1px solid rgba(255, 51, 102, 0.4);
+      border-radius: 12px;
+      padding: 12px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .binary-stream {
+      font-family: monospace;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: #ff3366;
+      font-weight: 900;
+      margin-bottom: 6px;
+      text-shadow: 0 0 10px #ff3366;
+    }
+    .shred-laser {
+      width: 100%;
+      height: 2px;
+      background: #ffe600;
+      box-shadow: 0 0 12px #ff3366, 0 0 20px #ffe600;
+      animation: laserSweep 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes laserSweep { 0% { transform: translateY(-5px); } 100% { transform: translateY(15px); } }
+    .shred-dust-text {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      margin-top: 6px;
+    }
+
+    /* 5. 100% Bit-Perfect 綠寶石認證 (Scene 4) */
+    .bit-perfect-badge-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .emerald-seal {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 240, 255, 0.25));
+      border: 2px solid #00ff88;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+      animation: sealGlow 2s ease infinite alternate;
+    }
+    @keyframes sealGlow { 0% { transform: scale(0.95); } 100% { transform: scale(1.08); } }
+    .seal-text {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #00ff88;
+      letter-spacing: 1px;
+    }
+
+    /* 6. 終極榮耀與下載 CTA (Scene 5) */
+    .sovereignty-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .trophy-icon {
+      font-size: 3.6rem;
+      filter: drop-shadow(0 0 25px rgba(255, 230, 0, 0.7));
+      animation: trophyFloat 2s ease infinite alternate;
+    }
+    @keyframes trophyFloat { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
 
     /* 爆款英文彈跳動態大字報 */
     .caption-box {
-      min-height: 95px;
+      min-height: 90px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .caption-main {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 900;
       line-height: 1.28;
       color: #ffffff;
@@ -282,20 +502,20 @@
     .highlight-yellow {
       color: #ffe600;
       text-shadow: 0 0 18px rgba(255, 230, 0, 0.9);
-      font-size: 1.55rem;
+      font-size: 1.48rem;
     }
     .highlight-cyan {
       color: #00f0ff;
       text-shadow: 0 0 18px rgba(0, 240, 255, 0.9);
-      font-size: 1.55rem;
+      font-size: 1.48rem;
     }
     .highlight-red {
       color: #ff3366;
       text-shadow: 0 0 18px rgba(255, 51, 102, 0.9);
-      font-size: 1.55rem;
+      font-size: 1.48rem;
     }
     .caption-sub {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: #a0aec0;
       line-height: 1.45;
       max-width: 320px;
@@ -310,10 +530,10 @@
       background: rgba(0, 0, 0, 0.5);
       border: 1px solid rgba(0, 255, 136, 0.4);
       color: #00ff88;
-      font-size: 0.72rem;
-      padding: 4px 10px;
+      font-size: 0.7rem;
+      padding: 3px 10px;
       border-radius: 12px;
-      margin-top: 10px;
+      margin-top: 8px;
       font-weight: 700;
       box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
     }
@@ -364,7 +584,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 10;
+      z-index: 15;
       box-shadow: 0 8px 24px rgba(0,0,0,0.6);
       cursor: pointer;
       transition: all 0.2s ease;
@@ -438,12 +658,13 @@
       </div>
     </div>
 
-    <!-- 中央分鏡資訊與大字報 -->
+    <!-- 中央分鏡資訊與動態舞台 -->
     <div class="scene-container" id="sceneContainer">
-      <div class="scene-tag" id="sceneTag">⚠️ DATA LEAK ALERT</div>
+      <div class="scene-tag" id="sceneTag">⚠️ SPLIT-SCREEN REALITY CHECK</div>
       
-      <div class="scene-visual-wrapper">
-        <div class="scene-visual" id="sceneVisual">🗑️💥</div>
+      <!-- 動態視覺核心舞台 -->
+      <div class="motion-stage" id="motionStage">
+        <!-- 動態由 JavaScript updateScene 實時渲染各場景專屬動畫組件 -->
       </div>
 
       <div class="caption-box">
@@ -475,88 +696,88 @@
   </div>
 
   <script>
-    // 6 段全英文爆款短影音分鏡數據
+    // 6 段 45 秒旗艦級動態動畫分鏡數據 (節奏從容舒適，資訊充分展示)
     const scenes = [
       {
         start: 0,
-        duration: 4.5,
-        tag: "⚠️ DATA LEAK ALERT",
-        visual: "🗑️💥",
+        duration: 7.5,
+        tag: "⚠️ SPLIT-SCREEN REALITY CHECK",
+        animType: "split-screen",
         main: "Think Deleting Files<br><span class='highlight-red'>Makes Them Safe?</span>",
-        sub: "Wrong! Recovery tools can uncover your secrets in 3 seconds!",
-        speech: "Think moving confidential files to the Recycle Bin makes them safe? Wrong! Ordinary recovery tools can expose your secrets in three seconds!",
+        sub: "Reality check! Ordinary recovery tools can expose your secrets in three seconds. JBA-Shredder leaves zero trace!",
+        speech: "Think pressing Delete or emptying the Recycle Bin makes your data safe? Reality check! Watch the left screen: recovery tools extract your secrets in three seconds. But with JBA128G3 on the right, physical shredding leaves zero trace!",
         scale: 1.0,
         pitch: 130,
-        chip: "⚠️ 0% Safe in Recycle Bin",
+        chip: "💥 Left: 3s Recovery Leak ｜ Right: Zero Trace",
         shake: true,
         redAlert: true
       },
       {
-        start: 4.5,
-        duration: 5.5,
-        tag: "🛡️ POST-QUANTUM SHIELD",
-        visual: "🔒⚡",
+        start: 7.5,
+        duration: 7.5,
+        tag: "🛡️ POST-QUANTUM GEOMETRIC CIPHER",
+        animType: "quantum-shield",
         main: "Stop Cloud Leaks!<br><span class='highlight-cyan'>JBA128G3 Storage Shield</span>",
-        sub: "CB Tec Post-Quantum Geometric Stream Encryption. Zero backdoors.",
-        speech: "Stop cloud leaks now! JBA128G3 Storage Shield features post-quantum geometric stream encryption with zero backdoors.",
+        sub: "CB Tec Post-Quantum Geometric Stream Encryption. Zero backdoors and air-gapped isolation.",
+        speech: "Stop cloud surveillance today! Powered by CB Tec, JBA128G3 deploys post-quantum geometric stream ciphering. Independent from public AES standards, with zero backdoors and pure offline isolation.",
         scale: 1.15,
         pitch: 240,
-        chip: "⚡ Post-Quantum Geometric Cipher",
+        chip: "⚡ Non-AES Architecture ｜ Air-Gapped",
         subBass: true
       },
       {
-        start: 10.0,
-        duration: 5.5,
-        tag: "🚀 20 GB PROJECT VAULT",
-        visual: "📁📦",
+        start: 15.0,
+        duration: 8.0,
+        tag: "🚀 20 GB ZERO-COPY STREAMING",
+        animType: "vault-stream",
         main: "Drag & Drop Folders!<br><span class='highlight-yellow'>20 GB Massive Files</span>",
-        sub: "64MB Zero-Copy Streaming. RAM usage strictly under 200MB!",
-        speech: "Drag and drop massive project folders! Handles up to 20 gigabytes with zero-copy streaming, keeping RAM usage below 200 megabytes!",
+        sub: "64MB Zero-Copy Streaming. RAM usage strictly locked below 200MB!",
+        speech: "Tired of zipping huge folders and crashing your PC? Simply drag and drop massive 20GB project folders directly. Our 64MB zero-copy pipeline processes at wire speed while locking RAM strictly below 200 megabytes!",
         scale: 1.25,
         pitch: 320,
-        chip: "🚀 RAM < 200MB ｜ 64MB Zero-Copy"
+        chip: "🚀 RAM < 200MB ｜ No Pre-Zipping Required"
       },
       {
-        start: 15.5,
-        duration: 5.0,
-        tag: "🔥 PHYSICAL DATA WIPING",
-        visual: "⚙️🌪️",
+        start: 23.0,
+        duration: 8.0,
+        tag: "🔥 JBA-SHREDDER PHYSICAL WIPING",
+        animType: "shredder",
         main: "JBA-Shredder <span class='highlight-red'>Destroys</span><br>Unencrypted Source Files!",
-        sub: "Automatic physical overwrite upon verification. Zero forensic recovery.",
-        speech: "Built-in physical shredder! Automatically overwrites and destroys source files upon verification, leaving forensic tools completely helpless!",
+        sub: "Automatic multi-pass physical overwrite upon verification. Zero forensic recovery.",
+        speech: "Built-in physical shredder! Upon verification, JBA-Shredder executes multi-pass random overwrites on raw disk sectors, turning unencrypted source files into digital dust. Forensic recovery is mathematically impossible!",
         scale: 1.1,
         pitch: 180,
-        chip: "💥 Anti-Recovery Physical Wipe",
+        chip: "💥 Anti-Forensic 3-Pass Physical Overwrite",
         shake: true,
         subBass: true
       },
       {
-        start: 20.5,
-        duration: 5.0,
-        tag: "💎 VIRAL COLLABORATION",
-        visual: "💎✨",
+        start: 31.0,
+        duration: 7.0,
+        tag: "💎 ZERO-FRICTION COLLABORATION",
+        animType: "bit-perfect",
         main: "100% Bit-Perfect Match<br><span class='highlight-yellow'>Decryption Free Forever!</span>",
-        sub: "Send to clients or teammates. Decrypt with zero cost and no account!",
-        speech: "Bit-perfect binary restoration. Best of all: decryption is completely free forever with no limits!",
+        sub: "Send to clients or teammates. Decrypt with zero cost, zero account, and zero friction!",
+        speech: "Bit-perfect binary restoration ensures every directory and file is restored with zero loss. Best of all: recipients decrypt permanently free with zero paywalls, zero accounts, and zero friction!",
         scale: 1.2,
         pitch: 440,
-        chip: "🌟 Free Forever · Unlimited Decrypt"
+        chip: "🌟 Decryption Permanently Free for Everyone"
       },
       {
-        start: 25.5,
-        duration: 4.5,
+        start: 38.0,
+        duration: 7.0,
         tag: "🏆 RECLAIM DATA SOVEREIGNTY",
-        visual: "🏆🛡️",
+        animType: "sovereignty",
         main: "100% Offline & Pure<br><span class='highlight-cyan'>Get v1.0.3 Release</span>",
-        sub: "Zero telemetry. Download now and shield your valuable assets!",
-        speech: "One hundred percent offline, zero telemetry. Download version 1.0.3 today and reclaim your local data sovereignty!",
+        sub: "Zero telemetry. Download now and shield your most valuable digital assets!",
+        speech: "Reclaim your local data sovereignty. One hundred percent offline, zero telemetry, and ultimate peace of mind. Download JBA128G3 version 1.0.3 today and shield your valuable assets!",
         scale: 1.3,
         pitch: 520,
-        chip: "🛡️ Official v1.0.3 Release Available"
+        chip: "🛡️ Official v1.0.3 Release Available Now"
       }
     ];
 
-    const TOTAL_DURATION = 30.0;
+    const TOTAL_DURATION = 45.0;
     let isPlaying = false;
     let soundEnabled = true;
     let currentTime = 0;
@@ -573,7 +794,7 @@
       if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         bgmMasterGain = audioCtx.createGain();
-        bgmMasterGain.gain.setValueAtTime(soundEnabled ? 0.35 : 0, audioCtx.currentTime);
+        bgmMasterGain.gain.setValueAtTime(soundEnabled ? 0.32 : 0, audioCtx.currentTime);
         bgmMasterGain.connect(audioCtx.destination);
       }
       if (audioCtx.state === 'suspended') {
@@ -590,9 +811,9 @@
         const now = audioCtx.currentTime;
 
         osc.frequency.setValueAtTime(140, now);
-        osc.frequency.exponentialRampToValueAtTime(38, now + 0.18);
+        osc.frequency.exponentialRampToValueAtTime(36, now + 0.18);
 
-        gain.gain.setValueAtTime(0.4, now);
+        gain.gain.setValueAtTime(0.35, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
 
         osc.connect(gain);
@@ -612,9 +833,9 @@
         const now = audioCtx.currentTime;
 
         osc.type = 'highpass';
-        osc.frequency.setValueAtTime(8000, now);
+        osc.frequency.setValueAtTime(8500, now);
 
-        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.setValueAtTime(0.07, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
 
         osc.connect(gain);
@@ -637,7 +858,7 @@
         osc.frequency.setValueAtTime(260, now);
         osc.frequency.exponentialRampToValueAtTime(32, now + 0.45);
 
-        gain.gain.setValueAtTime(0.5, now);
+        gain.gain.setValueAtTime(0.48, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
 
         osc.connect(gain);
@@ -653,7 +874,6 @@
       stopBgmEngine();
       initAudioContext();
       beatStep = 0;
-      // 120 BPM = 0.5s 一拍，每 0.25s 走半拍
       bgmInterval = setInterval(() => {
         if (!isPlaying || !soundEnabled) return;
         if (beatStep % 2 === 0) {
@@ -678,12 +898,11 @@
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
-      utterance.rate = 1.08;
-      utterance.pitch = 1.04;
+      utterance.rate = 1.02; // 從容優雅的科技行銷語速
+      utterance.pitch = 1.02;
 
       const voices = window.speechSynthesis.getVoices();
       if (voices.length > 0) {
-        // 優先挑選微軟 Natural、Google US 或高音質美式發音
         const naturalVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Natural') || v.name.includes('Christopher') || v.name.includes('Guy') || v.name.includes('Jenny') || v.name.includes('Google US')));
         if (naturalVoice) {
           utterance.voice = naturalVoice;
@@ -699,12 +918,79 @@
       soundEnabled = !soundEnabled;
       document.getElementById('soundBtn').innerHTML = soundEnabled ? "🔊 Audio: ON" : "🔇 Audio: OFF";
       if (bgmMasterGain && audioCtx) {
-        bgmMasterGain.gain.setValueAtTime(soundEnabled ? 0.35 : 0, audioCtx.currentTime);
+        bgmMasterGain.gain.setValueAtTime(soundEnabled ? 0.32 : 0, audioCtx.currentTime);
       }
       if (!soundEnabled && 'speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       } else if (soundEnabled && isPlaying && currentSceneIndex >= 0) {
         speakEnglishText(scenes[currentSceneIndex].speech);
+      }
+    }
+
+    // 動態渲染場景動畫組件 (Dynamic Component Injection)
+    function renderMotionGraphic(type) {
+      const stage = document.getElementById('motionStage');
+      if (type === 'split-screen') {
+        stage.innerHTML = `
+          <div class="split-screen-box">
+            <div class="split-half half-danger">
+              <div class="radar-beam"></div>
+              <div class="split-icon">🗑️</div>
+              <div class="split-label">Recycle Bin</div>
+              <div class="split-status-bad">⚠️ LEAKED IN 3s!</div>
+            </div>
+            <div class="split-half half-secure">
+              <div class="split-icon">🛡️</div>
+              <div class="split-label">JBA128G3</div>
+              <div class="split-status-good">✅ 0 BYTES FOUND</div>
+            </div>
+          </div>
+        `;
+      } else if (type === 'quantum-shield') {
+        stage.innerHTML = `
+          <div class="quantum-shield-box">
+            <div class="shield-ring-outer"></div>
+            <div class="shield-ring-inner"></div>
+            <div class="shield-center-core">🔒</div>
+          </div>
+        `;
+      } else if (type === 'vault-stream') {
+        stage.innerHTML = `
+          <div class="vault-stream-box">
+            <div class="stream-header">
+              <span>📁 20.4 GB Project Folder</span>
+              <span style="color:#00ff88;">64MB Streaming</span>
+            </div>
+            <div class="stream-pipe">
+              <div class="stream-flow-bar"></div>
+            </div>
+            <div class="stream-metrics">
+              <span class="metric-chip">RAM: 148 MB [LOCKED]</span>
+              <span style="color:#00f0ff;">60 FPS Wire-Speed</span>
+            </div>
+          </div>
+        `;
+      } else if (type === 'shredder') {
+        stage.innerHTML = `
+          <div class="shredder-box">
+            <div class="binary-stream">01101001 11010010 00110101</div>
+            <div class="shred-laser"></div>
+            <div class="shred-dust-text">💥 JBA-Shredder: 3-Pass Physical Overwrite Active</div>
+          </div>
+        `;
+      } else if (type === 'bit-perfect') {
+        stage.innerHTML = `
+          <div class="bit-perfect-badge-box">
+            <div class="emerald-seal">💎</div>
+            <div class="seal-text">100% BIT-PERFECT RESTORE</div>
+          </div>
+        `;
+      } else if (type === 'sovereignty') {
+        stage.innerHTML = `
+          <div class="sovereignty-box">
+            <div class="trophy-icon">🏆</div>
+          </div>
+        `;
       }
     }
 
@@ -718,6 +1004,9 @@
         playSceneTransitionDrop();
       }
       speakEnglishText(s.speech);
+
+      // 動態動畫渲染
+      renderMotionGraphic(s.animType);
 
       // 震撼震動特效 (Screen Shake & Glitch)
       const container = document.getElementById('sceneContainer');
@@ -736,11 +1025,6 @@
 
       // 標籤、視覺與文字更新
       document.getElementById('sceneTag').innerHTML = s.tag;
-      const visualEl = document.getElementById('sceneVisual');
-      visualEl.innerHTML = s.visual;
-      visualEl.style.transform = 'scale(1.35)';
-      setTimeout(() => { visualEl.style.transform = 'scale(1.0)'; }, 220);
-
       document.getElementById('captionMain').innerHTML = s.main;
       document.getElementById('captionSub').innerHTML = s.sub;
 
