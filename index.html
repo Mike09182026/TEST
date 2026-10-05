@@ -192,26 +192,111 @@
         }
 
         /* 3. 特性網格 */
+        /* 3. 特色區 (四大體系 + 可摺疊深度技術展開) */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+            align-items: start;
         }
         .feature-card {
             background: var(--card-bg);
-            padding: 30px 24px;
+            padding: 26px 20px;
             border-radius: 16px;
             border: 1px solid var(--card-border);
             text-align: left;
-            transition: 0.2s;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
         .feature-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-4px);
+            border-color: rgba(0, 240, 255, 0.45);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.12);
         }
-        .feature-icon { font-size: 32px; margin-bottom: 14px; }
-        .feature-card h3 { margin-bottom: 10px; color: #fff; font-size: 18px; }
-        .feature-card p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
+        .feature-icon { font-size: 32px; margin-bottom: 12px; }
+        .feature-card h3 { margin-bottom: 8px; color: #fff; font-size: 17px; font-weight: 800; }
+        .feature-card > p { color: var(--text-muted); font-size: 13.5px; line-height: 1.55; }
+
+        .feat-toggle-btn {
+            margin-top: 16px;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: #00f0ff;
+            padding: 7px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+        }
+        .feat-toggle-btn:hover {
+            background: rgba(0, 240, 255, 0.2);
+            border-color: #00f0ff;
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+        }
+        .feat-btn-icon {
+            font-size: 13px;
+            transition: transform 0.3s ease;
+        }
+        .feature-card.open .feat-btn-icon {
+            transform: rotate(180deg);
+        }
+        .feature-card.open .feat-toggle-btn {
+            background: rgba(0, 240, 255, 0.25);
+            border-color: #00f0ff;
+        }
+
+        /* 深度抽屜展開 */
+        .feat-drawer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        .feature-card.open .feat-drawer {
+            max-height: 750px;
+            opacity: 1;
+        }
+        .feat-drawer-inner {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+        .feat-detail-point {
+            display: flex;
+            gap: 9px;
+            align-items: flex-start;
+        }
+        .feat-pt-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00f0ff;
+            margin-top: 5px;
+            flex-shrink: 0;
+            box-shadow: 0 0 8px #00f0ff;
+        }
+        .feat-detail-point strong {
+            display: block;
+            font-size: 12.5px;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .feat-detail-point p {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
 
         /* 4. 短影音展示區 - 寬敞大氣版 */
         .video-box {
@@ -1269,29 +1354,153 @@
     </div>
 
     <!-- 3. 特性網格 -->
+        <!-- 3. Features Section (四大硬核防護體系 - 支援摺疊技術深度展開) -->
     <section id="features">
         <h2 class="section-title" data-i18n="features_title">四大硬核防護體系</h2>
         <p class="section-desc" data-i18n="features_desc">突破傳統加密局限，為個人與企業打造最嚴苛的本機安全壁壘</p>
         <div class="features-grid">
-            <div class="feature-card">
+            <!-- 體系 1 -->
+            <div class="feature-card" id="featCard1">
                 <div class="feature-icon">🛡️</div>
                 <h3 data-i18n="f1_title">後量子幾何流式加密</h3>
                 <p data-i18n="f1_desc">非公開 AES 家族，由 J Will 團隊與 CB Tec 自研，單機無預留後門，防範未來暴力算力破譯。</p>
+                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard1')">
+                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
+                    <span class="feat-btn-icon">▾</span>
+                </button>
+                <div class="feat-drawer">
+                    <div class="feat-drawer-inner">
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f1_p1_t">幾何流式密碼學架構</strong>
+                                <p data-i18n="f1_p1_d">採用 CB Tec 自研多維幾何狀態轉移演算法，避開傳統公開 AES 分組密碼結構，防範未來量子運算 Shor/Grover 演算法的已知弱點攻擊。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f1_p2_t">100% 單機離線，拒絕金鑰託管</strong>
+                                <p data-i18n="f1_p2_d">密鑰由本機記憶體即時演算法推導，無中繼伺服器、無任何形式的金鑰託管，徹底杜絕伺服器被駭或後門調取風險。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f1_p3_t">防彩虹表與動態混淆</strong>
+                                <p data-i18n="f1_p3_d">整合動態高熵隨機鹽值與多輪非線性位元擴展置換，使任何預先算好的彩虹表或 GPU/FPGA 碰撞叢集完全失效。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="feature-card">
+
+            <!-- 體系 2 -->
+            <div class="feature-card" id="featCard2">
                 <div class="feature-icon">📁</div>
                 <h3 data-i18n="f2_title">20GB 巨型資料夾封裝</h3>
                 <p data-i18n="f2_desc">內建 64MB 零拷貝串流架構，記憶體全程 < 200MB，解密 100% Bit-Perfect 原位還原目錄層級。</p>
+                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard2')">
+                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
+                    <span class="feat-btn-icon">▾</span>
+                </button>
+                <div class="feat-drawer">
+                    <div class="feat-drawer-inner">
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f2_p1_t">64MB 環形零拷貝緩衝</strong>
+                                <p data-i18n="f2_p1_d">獨家零拷貝流式讀寫架構，將記憶體消耗固定在 O(1) 常數級別，無論加密 500MB 或 20GB 大檔，RAM 全程鎖定 < 200MB。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f2_p2_t">遞迴目錄樹無損還原</strong>
+                                <p data-i18n="f2_p2_d">支援海量深層子目錄與 14,000+ 檔案原位封裝為單一 .JBS 密文容器，解密後 100% 原位原貌重建所有資料夾樹狀結構。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f2_p3_t">1~4 多工作通道併發</strong>
+                                <p data-i18n="f2_p3_d">支援智慧循序磁碟通道讀寫，避開傳統壓縮軟體頻繁磁碟搜尋（Disk Thrashing）與高頻快取溢出導致的電腦死機。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="feature-card">
+
+            <!-- 體系 3 -->
+            <div class="feature-card" id="featCard3">
                 <div class="feature-icon">⚙️</div>
                 <h3 data-i18n="f3_title">JBA-Shredder 物理粉碎</h3>
                 <p data-i18n="f3_desc">加密驗證完成後，自動覆寫抹除未加密原檔，頂級資料救援軟體（如 Recuva）亦徹底無效。</p>
+                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard3')">
+                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
+                    <span class="feat-btn-icon">▾</span>
+                </button>
+                <div class="feat-drawer">
+                    <div class="feat-drawer-inner">
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f3_p1_t">告別假刪除（打破作業系統盲區）</strong>
+                                <p data-i18n="f3_p1_d">傳統「刪除」或「清空回收筒」僅移除檔案系統索引指針，磁區平文完好如初。JBA-Shredder 深入實體磁區進行覆寫。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f3_p2_t">多輪隨機數據覆寫</strong>
+                                <p data-i18n="f3_p2_d">加密完成並通過校驗後，自動觸發 3 次隨機高熵二進位位元組反覆覆寫抹除，徹底破壞磁性或電荷殘留痕跡。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f3_p3_t">硬體級快取強制落盤</strong>
+                                <p data-i18n="f3_p3_d">調用底層 FlushFileBuffers 強制穿透硬體快取寫入實體磁盤，Recuva、Disk Drill 等頂級資料救援工具搜尋結果一律為 0 位元組。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="feature-card">
+
+            <!-- 體系 4 -->
+            <div class="feature-card" id="featCard4">
                 <div class="feature-icon">🌟</div>
                 <h3 data-i18n="f4_title">解密永久免費・無限制</h3>
                 <p data-i18n="f4_desc">加密檔案發給客戶或同仁，對方無需付費、無需註冊即可自由解密，打造零阻力協同流轉。</p>
+                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard4')">
+                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
+                    <span class="feat-btn-icon">▾</span>
+                </button>
+                <div class="feat-drawer">
+                    <div class="feat-drawer-inner">
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f4_p1_t">不對稱商務模型</strong>
+                                <p data-i18n="f4_p1_d">傳送端（加密）負責極限保護，接收端（解密）永遠 100% 免費、不限次數、無任何隱藏收費與訂閱牆。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f4_p2_t">SHA-256 二進制零誤差</strong>
+                                <p data-i18n="f4_p2_d">整合 SHA-256 二進位逐位元完整性校驗，確保解密後的檔案與原始檔案二進位位元組 100% 絕對吻合，零遺失、零損壞。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f4_p3_t">免註冊・免聯網・即開即用</strong>
+                                <p data-i18n="f4_p3_d">客戶或合作夥伴下載便攜檔即可離線解密，無須綁定 Email、無個資追蹤、無跨國合規摩擦。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1800,14 +2009,40 @@
                 hero_compare_btn: "查看競品規格對比",
                 features_title: "四大硬核防護體系",
                 features_desc: "突破傳統加密局限，為個人與企業打造最嚴苛的本機安全壁壘",
-                f1_title: "後量子幾何流式加密",
-                f1_desc: "非公開 AES 家族，由 J Will 團隊與 CB Tec 自研，單機無預留後門，防範未來暴力算力破譯。",
+                f1_title: "CB-GSC-128 後量子幾何流式加密",
+                f1_desc: "基於 CB Tec 核心技術，由 J Will 團隊專有技術所有（專利申請中：CB-PiRAP-G3），單機無後門，防範未來暴力算力破譯。",
                 f2_title: "20GB 巨型資料夾封裝",
-                f2_desc: "內建 64MB 零拷貝串流架構，記憶體全程 < 200MB，解密 100% Bit-Perfect 原位還原目錄層級。",
+                f2_desc: "內建 64MB 零拷貝串流架構，記憶體全程 < 200MB，NVMe 吞吐達 350~550 MB/s，解密 100% 原位還原。",
                 f3_title: "JBA-Shredder 物理粉碎",
-                f3_desc: "加密驗證完成後，自動覆寫抹除未加密原檔，頂級資料救援軟體（如 Recuva）亦徹底無效。",
+                f3_desc: "嚴格遵循 DoD 5220.22-M 三次覆寫標準，穿透硬體快取，徹底抹除未加密原檔，頂級資料救援軟體亦無效。",
                 f4_title: "解密永久免費・無限制",
-                f4_desc: "加密檔案發給客戶或同仁，對方無需付費、無需註冊即可自由解密，打造零阻力協同流轉。",
+                f4_desc: "雙重二進位驗證 100% Bit-Perfect，提供 1.2MB 輕量 CLI 與跨平台桌面端，打造零阻力協同流轉。",
+                feat_more_btn: "技術深度詳解",
+                f1_p1_t: "PiRAP 幾何密鑰織造引擎 v3.0（抗量子攻擊）",
+                f1_p1_d: "核心採用非線性、非阿貝爾（Non-Abelian）超越數晶格空間與剛性張量跳轉。等效 128-bit 密碼學安全強度（暴力破譯空間 2^128），使量子傅立葉轉換無法構造有效週期性，破除 Grover 演算法加速威脅。",
+                f1_p2_t: "JBA-Hash-256 雙輪銜尾蛇 KDF 機制",
+                f1_p2_d: "自研多維幾何混淆置換演算法，融合 Chen 氏混沌混淆（Chen Scrambler）、超越數常數（π 與 √7）動態晶格投影與 Miller-Rabin 大質數模冪運算，徹底杜絕 GPU/ASIC 暴力碰撞與彩虹表攻擊。",
+                f1_p3_t: "軟硬體混合高熵真隨機池（16-Byte IV）",
+                f1_p3_d: "結合系統微秒時間戳、網卡 MAC 晶片指紋、進程 PID 與幾何混沌狀態機，動態注入生成 16-Byte（128-bit）不可預測的真隨機初始向量（IV），100% 本機記憶體推導，零雲端金鑰託管。",
+                f2_p1_t: "64MB 零拷貝環形緩衝（O(1) 常數記憶體）",
+                f2_p1_d: "獨創 chunk_size = 64MB 流式讀寫架構，將記憶體消耗固定在常數級別。無論處理 100MB 或 20GB（14,000+ 檔案），記憶體全程嚴格鎖定於 < 150MB ~ 200MB，絕無記憶體溢出（OOM）風險。",
+                f2_p2_t: "實測 20GB 僅需 65 秒（350~550 MB/s 吞吐）",
+                f2_p2_d: "NVMe M.2 實測 20GB 專案：打包 15 秒 ➔ 串流加密 50 秒 ➔ 磁碟校驗 5 秒（解密僅 50~70 秒）。幾何運算 CPU 損耗極低，充分釋放實體磁碟極限讀寫效能。",
+                f2_p3_t: "32-Byte 精簡標頭與全路徑密文封裝",
+                f2_p3_d: "固定 32-Byte 標頭（16-Byte 隨機 IV + 16-Byte 金鑰簽章）。整顆目錄經 POSIX 容器打包後自第 32 Byte 起全檔串流加密，多進程工作池結合 Windows IOCP 排程，外部工具無法窺探目錄樹或子檔名。",
+                f3_p1_t: "美軍國防部 DoD 5220.22-M 3 次實體覆寫",
+                f3_p1_d: "通過加密校驗後自動觸發：Pass 1 寫入 0x00 ➔ Pass 2 寫入 0xFF ➔ Pass 3 注入 JBA 超越數混沌偽隨機噪訊（Chaos Noise），徹底破壞磁性與電子電荷殘留痕跡。",
+                f3_p2_t: "FlushFileBuffers 底層快取強制落盤",
+                f3_p2_d: "每次覆寫均呼叫 Win32 API FlushFileBuffers（搭配 C Runtime fsync/_commit），強制穿透作業系統快取與磁碟實體 DRAM Cache，直接寫入磁區顆粒，Recuva、Disk Drill 搜尋結果一律為 0 位元組。",
+                f3_p3_t: "NTFS 目錄樹與 MFT 原檔名指針混淆消除",
+                f3_p3_d: "抹除完成後，先透過亂數將檔名重命名為隨機高熵字串，破壞 NTFS 目錄樹中的原檔名記錄與 $MFT 節點索引殘留，確認消除原檔痕跡後方執行最終 unlink 釋放節點。",
+                f4_p1_t: "雙重校驗：簽章預檢 + SHA-256 逐位元完整性",
+                f4_p1_d: "內建 16-Byte JBA 簽章快速驗證與 SHA-256 逐位元完整性校驗，解密還原產物達到 100% Bit-Perfect 二進位絕對零誤差，完整保留原目錄結構與檔案位元組。",
+                f4_p2_t: "1.2MB 原生極簡 CLI 與 73.5MB 完整桌面端",
+                f4_p2_d: "提供免安裝桌面端與僅約 1.2MB 的極速原生 CLI（jba128g3_cli.exe），支援企業客戶在伺服器端進行無介面（Silent Mode）自動化批次解密，零帳號綁定、免註冊。",
+                f4_p3_t: "Windows 全系列相容與 POSIX 藍圖規劃",
+                f4_p3_d: "完美支援 Windows 10/11 64-bit 與 Windows Server 2016-2025，底層代碼已內建 Darwin/Linux POSIX 相容架構；具備 VirusTotal 0 誤報清潔認證與 Authenticode 簽章流水線預留。",
+
                 video_title: "45 秒旗艦動態動畫展示",
                 video_desc: "融合左右分屏對比、後量子幾何光盾、串流計數器與物理粉碎之旗艦動態動畫（全英文旁白版）",
                 video_h3: "高穿透力全球行銷視覺",
@@ -2006,14 +2241,40 @@
                 hero_compare_btn: "View Comparison Specs",
                 features_title: "4 Hardcore Defense Pillars",
                 features_desc: "Breaking traditional encryption limits to build the strictest local defense for individuals and enterprises.",
-                f1_title: "Post-Quantum Geometric Encryption",
-                f1_desc: "Non-public AES architecture developed by J Will Team & CB Tec. Standalone with zero backdoors, immune to brute-force compute.",
-                f2_title: "20GB Massive Folder Packaging",
-                f2_desc: "Built-in 64MB zero-copy streaming, RAM usage < 200MB throughout. Decrypts with 100% Bit-Perfect folder hierarchy restoration.",
+                f1_title: "CB-GSC-128 Post-Quantum Geometric Stream Cipher",
+                f1_desc: "Powered by CB Tec core proprietary technology developed by J Will team (Patent Pending: CB-PiRAP-G3). Zero backdoors, unyielding against brute-force attacks.",
+                f2_title: "20GB Massive Project Vault",
+                f2_desc: "Engineered with a 64MB zero-copy ring buffer, strictly locking RAM < 200MB. NVMe throughput reaches 350-550 MB/s with 100% Bit-Perfect folder hierarchy restoration.",
                 f3_title: "JBA-Shredder Physical Wiping",
-                f3_desc: "Automatically overwrites and destroys unencrypted source files upon verification. Leaves data recovery tools completely helpless.",
-                f4_title: "Decryption 100% Free Forever",
-                f4_desc: "Recipients can decrypt files with zero cost and no account needed, ensuring frictionless B2B collaboration.",
+                f3_desc: "Complies with DoD 5220.22-M 3-pass sanitization standard. Bypasses hardware caches to permanently overwrite unencrypted originals, rendering file recovery tools useless.",
+                f4_title: "Decryption Free Forever",
+                f4_desc: "Dual-verification ensures 100% Bit-Perfect fidelity. Includes an ultra-compact 1.2MB native CLI and cross-platform desktop app for frictionless collaboration.",
+                feat_more_btn: "Deep Technical Details",
+                f1_p1_t: "PiRAP Geometric Key Weaving Engine v3.0 (Quantum-Resistant)",
+                f1_p1_d: "Employs non-linear, non-Abelian transcendental lattice spaces and rigid tensor hopping. Equivalent to 128-bit cryptographic security strength (2^128 brute-force space). Quantum Fourier transform cannot construct periodicities, breaking Grover attack acceleration.",
+                f1_p2_t: "JBA-Hash-256 Dual-Round Ouroboros KDF",
+                f1_p2_d: "Proprietary geometric scrambling KDF combining Chen Scrambler chaos permutation, transcendental lattice projections (pi and sqrt(7)), and Miller-Rabin dynamic prime modular exponentiation to completely neutralize GPU/ASIC collision and rainbow table attacks.",
+                f1_p3_t: "Hybrid Hardware/Software CSPRNG (16-Byte True IV)",
+                f1_p3_d: "Dynamically fuses microsecond timestamps, physical NIC MAC hardware fingerprints, process PIDs, and geometric chaos state machines into a 16-Byte (128-bit) unpredictable IV. 100% air-gapped RAM derivation, zero cloud key escrow.",
+                f2_p1_t: "64MB Zero-Copy Ring Buffer (O(1) Constant RAM)",
+                f2_p1_d: "Proprietary chunk_size = 64MB streaming pipeline locks memory consumption at constant scale. Whether processing 100MB or 20GB (14,000+ files), RAM stays strictly within < 150MB ~ 200MB, eliminating Out-of-Memory (OOM) risks.",
+                f2_p2_t: "Benchmark: 20GB Encrypted in 65-80s (350-550 MB/s)",
+                f2_p2_d: "Tested on NVMe M.2 SSD with 20GB payloads: Native container packaging 15s -> Streaming encryption 50s -> Disk verification 5s (Decryption takes only 50-70s). Negligible CPU crypto overhead unleashes raw physical disk I/O.",
+                f2_p3_t: "32-Byte Header & Full Tree Encapsulation",
+                f2_p3_d: "Fixed 32-Byte header (16-Byte random IV + 16-Byte dynamic key signature). Entire directory tree is streamed into a POSIX container and encrypted from byte 32 onward. Multi-worker pool with Windows IOCP scheduling conceals subfile names and hierarchy.",
+                f3_p1_t: "DoD 5220.22-M 3-Pass Physical Overwrite",
+                f3_p1_d: "Triggered automatically upon cryptographic verification: Pass 1 writes 0x00 -> Pass 2 writes 0xFF -> Pass 3 injects JBA transcendental chaotic pseudo-random noise, completely obliterating magnetic and electrical charge footprints.",
+                f3_p2_t: "Hardware Cache Flush via FlushFileBuffers",
+                f3_p2_d: "Every pass calls Win32 API FlushFileBuffers (with C Runtime fsync/_commit), forcing data through OS buffers and drive DRAM caches directly into physical storage cells. Recuva and Disk Drill detect 0 recoverable bytes.",
+                f3_p3_t: "NTFS MFT Pointer Scrambling & Clean Unlink",
+                f3_p3_d: "Prior to unlinking, files are renamed to high-entropy random strings to scramble original directory tree references and $MFT node index entries. Final unlink is only executed after complete trace obliteration.",
+                f4_p1_t: "Dual Check: Signature Pre-Check + SHA-256 Bit-Perfect",
+                f4_p1_d: "Integrates a 16-Byte JBA signature check with SHA-256 bit-by-bit integrity validation. Restored files achieve 100% Bit-Perfect exact match with zero corruption and intact folder hierarchy.",
+                f4_p2_t: "1.2MB Ultra-Light Native CLI & 73.5MB Desktop GUI",
+                f4_p2_d: "Comes with a portable GUI and an ultra-fast 1.2MB native binary CLI (jba128g3_cli.exe), empowering enterprise clients to run automated silent-mode batch decryption on servers with zero account friction.",
+                f4_p3_t: "Windows & Server Certified with POSIX Roadmap",
+                f4_p3_d: "Full compatibility across Windows 10/11 64-bit and Windows Server 2016-2025. Core architecture includes built-in Darwin/Linux POSIX code. Certified with VirusTotal 0-detection and Authenticode signing pipeline integration.",
+
                 video_title: "45s Motion Graphics Explainer Video",
                 video_desc: "Tailored 9:16 vertical short video for TikTok, YouTube Shorts & Instagram Reels (English Edition)",
                 video_h3: "High-Impact Global Marketing",
@@ -2212,14 +2473,40 @@
                 hero_compare_btn: "スペック比較表を見る",
                 features_title: "4大セキュリティ防護体系",
                 features_desc: "従来の暗号化の限界を打破し、個人と企業に最も強固なローカル防壁を構築します。",
-                f1_title: "耐量子幾何ストリーム暗号化",
-                f1_desc: "非公開AESアーキテクチャ。J WillチームとCB Tecが独自開発し、バックドア皆無で総当たり計算攻撃を防御。",
+                f1_title: "CB-GSC-128 耐量子幾何学的ストリーム暗号",
+                f1_desc: "CB Tecコア技術を基盤とし、J Willチームが独自開発（特許出願中：CB-PiRAP-G3）。バックドア皆無、将来の総当たり解析を完全無力化。",
                 f2_title: "20GB 巨大フォルダ一括パッケージ",
-                f2_desc: "64MBゼロコピーストリーミング搭載、メモリ消費は常時200MB以下。復号時は100%完全原位置復元。",
-                f3_title: "JBA-Shredder 物理シュレッダー",
-                f3_desc: "暗号化検証後、未暗号化の元ファイルを自動上書き抹消。最新のデータ復旧ソフトでも復元不可能。",
-                f4_title: "復号機能は永久無料・無制限",
-                f4_desc: "取引先や同僚へ送付しても、相手側は課金・登録不要で自由に復号可能。シームレスな共有を実現。",
+                f2_desc: "64MBゼロコピーストリーム構造により、RAM消費を200MB未満に常時抑制。NVMeスループット350〜550MB/s、復号時は100%原位置階層復元。",
+                f3_title: "JBA-Shredder 物理シュレッダー抹消",
+                f3_desc: "米国国防総省 DoD 5220.22-M 3回上書き基準に準拠。ハードウェアキャッシュを貫通し平文原ファイルを徹底消去、復元ソフトを無力化。",
+                f4_title: "復号は永久完全無料・無制限",
+                f4_desc: "二重バイナリ検証で100% Bit-Perfect精度を保証。1.2MB軽量CLIとデスクトップ版を提供し、摩擦ゼロの共同作業を実現。",
+                feat_more_btn: "技術詳細を展開",
+                f1_p1_t: "PiRAP 幾何学的鍵織成エンジン v3.0（量子耐性）",
+                f1_p1_d: "非線形かつ非アーベル（Non-Abelian）超越数格子空間と剛性テンソルホッピングを採用。128ビット暗号強度（探索空間 2^128）を維持し、量子フーリエ変換による周期性検出を阻止、Groverアルゴリズムの高速化を無力化。",
+                f1_p2_t: "JBA-Hash-256 二重ウロボロス KDF 機構",
+                f1_p2_d: "Chenカオススクランブラー、超越数定数（πおよび√7）の動的格子射影、Miller-Rabin動的大素数べき乗剰余演算を融合した独自KDF。GPU/ASICによる高速衝突やレインボーテーブル攻撃を完全防御。",
+                f1_p3_t: "ハード・ソフト混成高エントロピー真乱数プール（16バイト IV）",
+                f1_p3_d: "マイクロ秒タイムスタンプ、NICのMACアドレス、プロセスPID、幾何カオス状態マシンを動的融合し、16バイト（128ビット）の予測不可能な真乱数IVを生成。100%ローカルメモリ導出、鍵預託ゼロ。",
+                f2_p1_t: "64MB ゼロコピーリングバッファ（O(1) 定数メモリ）",
+                f2_p1_d: "独自chunk_size = 64MBストリーミング技術によりメモリ消費を一定に固定。100MBでも20GB（14,000以上のファイル）でも、RAM消費は常時150MB〜200MB未満を厳格維持し、OOMクラッシュを根絶。",
+                f2_p2_t: "実測20GBを約65秒で暗号化（350〜550 MB/sスループット）",
+                f2_p2_d: "NVMe M.2実測：パッケージング15秒 ➔ ストリーム暗号化50秒 ➔ 検証5秒（復号はわずか50〜70秒）。幾何暗号演算のCPU負荷が極めて低く、物理ディスクの限界性能を最大限に発揮。",
+                f2_p3_t: "32バイト極小ヘッダー＆完全暗号化コンテナ",
+                f2_p3_d: "固定32バイトヘッダー（16バイト乱数IV＋16バイト動的署名）。POSIXコンテナ化後、32バイト以降の全データを完全ストリーム暗号化。Windows IOCP非同期I/Oスケジューリングにより、外部ツールからファイル名や階層の閲覧を遮断。",
+                f3_p1_t: "米国国防総省 DoD 5220.22-M 3回物理上書き",
+                f3_p1_d: "暗号化検証後に自動起動：Pass 1で0x00書き込み ➔ Pass 2で0xFF書き込み ➔ Pass 3でJBA超越数カオス擬似乱数ノイズを注入し、磁気や電荷の残留パターンを根絶。",
+                f3_p2_t: "FlushFileBuffers によるキャッシュ強制貫通",
+                f3_p2_d: "全PassでWin32 API FlushFileBuffers（C Runtime fsync/_commit）を呼び出し、OSおよびドライブのDRAMキャッシュをバイパスして物理セクタへ直接書き込み。RecuvaやDisk Drillでも検出結果は0バイト。",
+                f3_p3_t: "NTFSディレクトリツリー＆MFTノードの難読化消去",
+                f3_p3_d: "抹消完了後、ファイル名を高エントロピー乱数に置換してNTFSディレクトリツリーや$MFTインデックス参照を破壊。原ファイル名の痕跡消去を確認した後に最終unlinkを実行。",
+                f4_p1_t: "二重検証：署名高速チェック＋SHA-256 ビット完全一致",
+                f4_p1_d: "16バイトJBA署名による高速事前検証とSHA-256による1ビット単位の完全性検証を統合。復号後のファイルは原本とバイナリレベルで100%完全一致（Bit-Perfect）し、フォルダ階層も無損復元。",
+                f4_p2_t: "1.2MB ネイティブCLI ＆ 73.5MB デスクトップGUI",
+                f4_p2_d: "インストール不要のGUI版に加え、わずか1.2MBの超高速ネイティブCLI（jba128g3_cli.exe）を同梱。サーバー環境でのサイレントバッチ復号にネイティブ対応し、アカウント登録不要で即座に利用可能。",
+                f4_p3_t: "Windows / Server フル対応とPOSIX展開計画",
+                f4_p3_d: "Windows 10/11 64-bitおよびWindows Server 2016-2025に完全対応。コアコードにはDarwin/Linux POSIX互換構造を実装済み。VirusTotal 0検出のクリーン認定とAuthenticode署名連携を完備。",
+
                 video_title: "45秒モーショングラフィックス動画展示",
                 video_desc: "分割画面比較、幾何学的光シールド、ストリーム計測器、物理的データ破砕を搭載した旗艦アニメーション。",
                 video_h3: "グローバルマーケティング映像",
@@ -2522,6 +2809,13 @@
 
             document.getElementById('swViewDec').style.display = 'none';
             document.getElementById('swInfoDec').style.display = 'none';
+        }
+
+                // 四大核心體系「更多技術詳解」摺疊展開控制
+        function toggleFeatureCard(cardId) {
+            const card = document.getElementById(cardId);
+            if (!card) return;
+            card.classList.toggle('open');
         }
 
         // FAQ 手風琴切換
