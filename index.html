@@ -342,38 +342,277 @@
         }
 
         /* 5. 競品對比表格 */
-        .table-wrapper {
-            overflow-x: auto;
-            border-radius: 16px;
+        /* 5. 顛覆傳統認知：對比滑塊 (方向一) + 雙軌真實時間軸 (方向四) */
+        .paradigm-container {
+            margin-bottom: 50px;
+        }
+        .paradigm-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .paradigm-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-size: 14.5px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             border: 1px solid var(--card-border);
+            background: rgba(13, 21, 34, 0.9);
+            color: #8a99ad;
+        }
+        .paradigm-pill:hover {
+            transform: translateY(-2px);
+            color: #fff;
+        }
+        .p-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .red-dot { background: #f87171; box-shadow: 0 0 8px #f87171; }
+        .cyan-dot { background: #00f0ff; box-shadow: 0 0 10px #00f0ff; }
+
+        .paradigm-pill.active#pBtnLegacy {
+            border-color: rgba(248, 113, 113, 0.6);
+            background: rgba(248, 113, 113, 0.12);
+            color: #f87171;
+            box-shadow: 0 0 25px rgba(248, 113, 113, 0.25);
+        }
+        .paradigm-pill.active#pBtnJba {
+            border-color: rgba(0, 240, 255, 0.7);
+            background: rgba(0, 240, 255, 0.15);
+            color: #00f0ff;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+        }
+
+        .paradigm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .paradigm-card {
             background: var(--card-bg);
-            box-shadow: 0 0 35px rgba(0, 240, 255, 0.06);
-        }
-        .compare-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            min-width: 820px;
-        }
-        th, td {
-            padding: 16px 20px;
+            border-radius: 16px;
+            padding: 24px 20px;
+            border: 1px solid var(--card-border);
             text-align: left;
-            border-bottom: 1px solid #162436;
-            font-size: 14px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
         }
-        th { background: #0b1320; color: #a0aec0; font-weight: 700; }
-        .col-hl {
-            background: rgba(0, 240, 255, 0.05);
-            border-left: 2px solid var(--primary);
-            border-right: 2px solid var(--primary);
+        .paradigm-card.legacy-active {
+            border-color: rgba(248, 113, 113, 0.35);
+            background: linear-gradient(180deg, rgba(248, 113, 113, 0.05) 0%, rgba(13, 21, 34, 0.95) 100%);
+            box-shadow: 0 8px 25px rgba(248, 113, 113, 0.08);
         }
-        th.col-hl {
-            background: #0c2738;
-            border-top: 2px solid var(--primary);
-            color: var(--primary);
+        .paradigm-card.jba-active {
+            border-color: rgba(0, 240, 255, 0.45);
+            background: linear-gradient(180deg, rgba(0, 240, 255, 0.08) 0%, rgba(13, 21, 34, 0.95) 100%);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15);
+        }
+
+        .p-badge {
+            display: inline-block;
+            font-size: 11.5px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 14px;
+            transition: all 0.3s;
+        }
+        .paradigm-card.legacy-active .p-badge {
+            background: rgba(248, 113, 113, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(248, 113, 113, 0.3);
+        }
+        .paradigm-card.jba-active .p-badge {
+            background: rgba(0, 240, 255, 0.15);
+            color: #00f0ff;
+            border: 1px solid rgba(0, 240, 255, 0.4);
+        }
+
+        .p-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .p-icon { font-size: 24px; transition: transform 0.3s; }
+        .p-header h4 {
             font-size: 16px;
+            font-weight: 800;
+            color: #fff;
+            margin: 0;
         }
-        tr:last-child td.col-hl { border-bottom: 2px solid var(--primary); }
+        .p-metric {
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            transition: color 0.3s;
+        }
+        .paradigm-card.legacy-active .p-metric { color: #fca5a5; }
+        .paradigm-card.jba-active .p-metric { color: #ffe600; }
+
+        .p-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+            min-height: 58px;
+        }
+
+        /* 方向四：雙軌真實情境時間軸 */
+        .timeline-section {
+            margin-top: 60px;
+            margin-bottom: 45px;
+            background: rgba(13, 21, 34, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 36px 26px;
+        }
+        .timeline-header-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .timeline-header-desc {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 34px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .realities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px;
+        }
+        @media (max-width: 820px) {
+            .realities-grid { grid-template-columns: 1fr; }
+        }
+        .reality-column {
+            border-radius: 16px;
+            padding: 24px 20px;
+            background: rgba(11, 19, 32, 0.85);
+            border: 1px solid var(--card-border);
+            position: relative;
+        }
+        .reality-legacy {
+            border-top: 3px solid #f87171;
+        }
+        .reality-jba {
+            border-top: 3px solid #00f0ff;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.08);
+        }
+        .reality-col-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .reality-icon { font-size: 24px; }
+        .reality-col-header h4 {
+            font-size: 16.5px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        .reality-sub {
+            font-size: 11.5px;
+            color: var(--text-muted);
+        }
+
+        .timeline-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            position: relative;
+        }
+        .timeline-step {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            position: relative;
+        }
+        .step-time {
+            font-family: monospace;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .reality-legacy .step-time {
+            background: rgba(248, 113, 113, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(248, 113, 113, 0.3);
+        }
+        .reality-jba .step-time {
+            background: rgba(0, 240, 255, 0.15);
+            color: #00f0ff;
+            border: 1px solid rgba(0, 240, 255, 0.35);
+        }
+        .step-content strong {
+            display: block;
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .step-content p {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* 手風琴摺疊表格 */
+        .compare-drawer-wrap {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .compare-toggle-btn {
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: #00f0ff;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .compare-toggle-btn:hover {
+            background: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 16px rgba(0, 240, 255, 0.25);
+            transform: translateY(-2px);
+        }
+        .compare-table-drawer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        .compare-table-drawer.open {
+            max-height: 1000px;
+            opacity: 1;
+        }
+
 
         /* 6. 贊助區塊 (原有支援) */
         .donate-box {
@@ -1742,59 +1981,205 @@
         </div>
     </section>
 
-    <!-- 5. 競品深度對比表格 -->
+        <!-- 5. 顛覆傳統認知：互動式對比滑塊 (方向一) + 雙軌真實情境時間軸 (方向四) + 完整對照表 -->
     <section id="compare">
+        <div style="text-align: center;"><div class="badge" data-i18n="compare_badge">PARADIGM SHIFT / 顛覆傳統認知</div></div>
         <h2 class="section-title" data-i18n="compare_title">同樣是保護檔案，為什麼選擇 JBA128G3？</h2>
-        <p class="section-desc" data-i18n="compare_desc">解決「原檔殘留」、「雲端洩漏」與「大檔崩潰」三大傳統資安痛點</p>
-        <div class="table-wrapper">
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th style="width:22%;" data-i18n="th_metric">安全防護指標</th>
-                        <th class="col-hl" style="width:28%;">🛡️ JBA128G3 Storage Shield</th>
-                        <th style="width:17%;" data-i18n="th_zip">傳統壓縮 (7-Zip/WinRAR)</th>
-                        <th style="width:17%;" data-i18n="th_commercial">商業加密 (AxCrypt等)</th>
-                        <th style="width:16%;" data-i18n="th_cloud">雲端保險箱 (NordLocker)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-i18n="row1_title"><strong>離線隱私承諾</strong></td>
-                        <td class="col-hl" style="color:var(--primary);" data-i18n="row1_jba">✅ 100% 物理離線 / 零數據遙測</td>
-                        <td data-i18n="row1_zip">✅ 離線運行</td>
-                        <td style="color:#f87171;" data-i18n="row1_commercial">❌ 強制聯網帳號登入</td>
-                        <td style="color:#f87171;" data-i18n="row1_cloud">❌ 深度依賴雲端伺服器</td>
-                    </tr>
-                    <tr>
-                        <td data-i18n="row2_title"><strong>防救援軟體還原 (物理粉碎)</strong></td>
-                        <td class="col-hl" style="color:var(--primary);" data-i18n="row2_jba">✅ JBA-Shredder 自動覆寫原檔</td>
-                        <td style="color:#f87171;" data-i18n="row2_zip">❌ 原檔完好，救援軟體 3 秒挖出</td>
-                        <td data-i18n="row2_commercial">⚠️ 需手動右鍵粉碎 (易遺漏)</td>
-                        <td style="color:#f87171;" data-i18n="row2_cloud">❌ 無原檔自動抹除</td>
-                    </tr>
-                    <tr>
-                        <td data-i18n="row3_title"><strong>20GB 巨型專案支援</strong></td>
-                        <td class="col-hl" style="color:#ffe600;" data-i18n="row3_jba">✅ 64MB 零拷貝串流 (RAM < 200M)</td>
-                        <td data-i18n="row3_zip">⚠️ 壓縮耗時，大檔高頻溢出當機</td>
-                        <td data-i18n="row3_commercial">⚠️ 大檔性能顯著衰退</td>
-                        <td style="color:#f87171;" data-i18n="row3_cloud">❌ 上傳痛苦受限網路頻寬</td>
-                    </tr>
-                    <tr>
-                        <td data-i18n="row4_title"><strong>底層密碼演算法</strong></td>
-                        <td class="col-hl" style="color:var(--primary);" data-i18n="row4_jba">✅ CB Tec 後量子幾何流式 (無後門)</td>
-                        <td data-i18n="row4_zip">⚠️ 傳統公開 AES (算力撞庫成熟)</td>
-                        <td data-i18n="row4_commercial">⚠️ 傳統 AES (金鑰雲端託管風險)</td>
-                        <td data-i18n="row4_cloud">⚠️ 傳統 AES + 雲端金鑰</td>
-                    </tr>
-                    <tr>
-                        <td data-i18n="row5_title"><strong>接收方協同成本</strong></td>
-                        <td class="col-hl" style="color:#ffe600;" data-i18n="row5_jba">🌟 解密永久免費、無限制！</td>
-                        <td data-i18n="row5_zip">⚠️ 需特定解壓工具，易損壞</td>
-                        <td style="color:#f87171;" data-i18n="row5_commercial">❌ 對方也必須付費或註冊</td>
-                        <td style="color:#f87171;" data-i18n="row5_cloud">❌ 雙方均需註冊雲端平台</td>
-                    </tr>
-                </tbody>
-            </table>
+        <p class="section-desc" data-i18n="compare_desc">直擊傳統工具的 4 大致命盲區，體驗真正的主權級資料防護</p>
+
+        <!-- 方向一：互動式 Before / After 對比滑塊 -->
+        <div class="paradigm-container">
+            <div class="paradigm-switcher">
+                <button id="pBtnLegacy" class="paradigm-pill active" onclick="setParadigm('legacy')">
+                    <span class="p-dot red-dot"></span>
+                    <span data-i18n="p_tab_legacy">傳統做法 (7-Zip / 雲端硬碟 / 商業加密)</span>
+                </button>
+                <button id="pBtnJba" class="paradigm-pill" onclick="setParadigm('jba')">
+                    <span class="p-dot cyan-dot"></span>
+                    <span data-i18n="p_tab_jba">🛡️ JBA128G3 主權防護 (推薦)</span>
+                </button>
+            </div>
+
+            <div class="paradigm-grid" id="paradigmGrid">
+                <!-- 卡片 1: 物理抹除與防救援 -->
+                <div class="paradigm-card legacy-active" id="pCard1">
+                    <div class="p-badge" id="pCard1Badge" >🚨 假刪除・嚴重外洩隱患</div>
+                    <div class="p-header">
+                        <span class="p-icon" id="pCard1Icon">🔍</span>
+                        <h4 data-i18n="p1_title">Recuva 資料救援軟體實測</h4>
+                    </div>
+                    <div class="p-metric" id="pCard1Metric" >發現 14,280 個平文檔案・100% 完整無缺裸奔</div>
+                    <p class="p-desc" id="pCard1Desc" >傳統「清空回收筒」僅移除檔案系統索引指針，實體磁區平文完好如初，任何人用免費救援工具 3 秒就能挖出機密圖紙。</p>
+                </div>
+
+                <!-- 卡片 2: 20GB 巨型專案效能 -->
+                <div class="paradigm-card legacy-active" id="pCard2">
+                    <div class="p-badge" id="pCard2Badge" >🚨 記憶體溢出・系統當機</div>
+                    <div class="p-header">
+                        <span class="p-icon" id="pCard2Icon">⏳</span>
+                        <h4 data-i18n="p2_title">20GB 巨型專案封裝實測</h4>
+                    </div>
+                    <div class="p-metric" id="pCard2Metric" >耗時 45+ 分鐘・RAM 飆升至 3.8GB+</div>
+                    <p class="p-desc" id="pCard2Desc" >傳統壓縮缺乏零拷貝流式讀寫架構，大檔頻繁引發磁碟搜尋衝突（Disk Thrashing）與高頻快取溢出，極易導致工作死機。</p>
+                </div>
+
+                <!-- 卡片 3: 接收方協同摩擦 -->
+                <div class="paradigm-card legacy-active" id="pCard3">
+                    <div class="p-badge" id="pCard3Badge" >🚨 跨企業協同障礙</div>
+                    <div class="p-header">
+                        <span class="p-icon" id="pCard3Icon">💸</span>
+                        <h4 data-i18n="p3_title">客戶與合作夥伴解密體驗</h4>
+                    </div>
+                    <div class="p-metric" id="pCard3Metric" >強制註冊帳號・付費訂閱牆阻攔</div>
+                    <p class="p-desc" id="pCard3Desc" >客戶收到加密檔案彈出付費提示或因無特定軟體無法打開，造成溝通障礙與客訴，最後被迫冒險妥協寄送未加密明文。</p>
+                </div>
+
+                <!-- 卡片 4: 密鑰主權與後門防禦 -->
+                <div class="paradigm-card legacy-active" id="pCard4">
+                    <div class="p-badge" id="pCard4Badge" >🚨 雲端金鑰託管與後門風險</div>
+                    <div class="p-header">
+                        <span class="p-icon" id="pCard4Icon">☁️</span>
+                        <h4 data-i18n="p4_title">底層密碼體系與抗量子算力</h4>
+                    </div>
+                    <div class="p-metric" id="pCard4Metric" >公開 AES 算力撞庫・金鑰雲端留底</div>
+                    <p class="p-desc" id="pCard4Desc" >傳統公開加密庫易遭 GPU/ASIC 碰撞攻擊；雲端保險箱將金鑰備份於中繼伺服器，隨時面臨被駭、政府調取或預留後門風險。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 方向四：雙軌真實情境時間軸 (The Two Realities Timeline) -->
+        <div class="timeline-section">
+            <h3 class="timeline-header-title" data-i18n="timeline_title">真實工作場景：機密專案交付的一天</h3>
+            <p class="timeline-header-desc" data-i18n="timeline_desc">兩種截然不同的技術選擇，決定了企業資料是走向「外洩危機」還是「絕對主權」</p>
+
+            <div class="realities-grid">
+                <!-- 傳統流程的一天 (危機四伏) -->
+                <div class="reality-column reality-legacy">
+                    <div class="reality-col-header">
+                        <span class="reality-icon">❌</span>
+                        <div>
+                            <h4 data-i18n="time_leg_h">傳統流程的一天（暗藏外洩危機）</h4>
+                            <span class="reality-sub" data-i18n="time_leg_sub">7-Zip / 商業加密 / 雲端硬碟</span>
+                        </div>
+                    </div>
+                    <div class="timeline-steps">
+                        <div class="timeline-step">
+                            <div class="step-time">10:00 AM</div>
+                            <div class="step-content">
+                                <strong data-i18n="time_leg_s1_t">打包卡死・風扇狂轉 45 分鐘</strong>
+                                <p data-i18n="time_leg_s1_d">使用 7-Zip 壓縮 20GB 專案，RAM 飆升至 95%，電腦嚴重卡頓，滑鼠延遲，專案交付進度受阻。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-time">11:00 AM</div>
+                            <div class="step-content">
+                                <strong data-i18n="time_leg_s2_t">客戶抱怨・被迫改傳明文</strong>
+                                <p data-i18n="time_leg_s2_d">將加密檔寄出後，客戶因未裝軟體打不開，甚至要求轉成一般檔案。雙方反覆溝通，最後冒險透過 Email 寄送未加密明文。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-time">02:00 PM</div>
+                            <div class="step-content">
+                                <strong data-i18n="time_leg_s3_t">假刪除・舊電腦成機密未爆彈</strong>
+                                <p data-i18n="time_leg_s3_d">同仁「清空回收筒」刪除原檔以釋出空間；半年後公司舊電腦退役，二手買家使用免費救援軟體挖出整套機密圖紙。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JBA-128G3 的一天 (從容高效) -->
+                <div class="reality-column reality-jba">
+                    <div class="reality-col-header">
+                        <span class="reality-icon">✅</span>
+                        <div>
+                            <h4 data-i18n="time_jba_h">JBA-128G3 的一天（極速・零阻力・無痕）</h4>
+                            <span class="reality-sub" data-i18n="time_jba_sub">CB-GSC-128 幾何流 ＋ JBA-Shredder 物理粉碎</span>
+                        </div>
+                    </div>
+                    <div class="timeline-steps">
+                        <div class="timeline-step">
+                            <div class="step-time">10:00 AM</div>
+                            <div class="step-content">
+                                <strong data-i18n="time_jba_s1_t">65 秒極速封裝・自動物理抹除</strong>
+                                <p data-i18n="time_jba_s1_d">拖曳 20GB 專案，65 秒完成封裝（550MB/s，RAM < 200MB）。校驗通過後自動執行 DoD 5220.22-M 3 次實體覆寫抹除原檔。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-time">10:05 AM</div>
+                            <div class="step-content">
+                                <strong data-i18n="time_jba_s2_t">客戶零摩擦・秒級 Bit-Perfect 還原</strong>
+                                <p data-i18n="time_jba_s2_d">客戶收到檔案雙擊 1.2MB 免安裝便攜版，免註冊免登入，50 秒完成解密，SHA-256 逐位元校驗 100% 原貌重建目錄樹。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-time">02:00 PM</div>
+                            <div class="step-content">
+                                <strong data-i18n="time_jba_s3_t">實體徹底湮滅・高枕無憂</strong>
+                                <p data-i18n="time_jba_s3_d">FlushFileBuffers 強制穿透硬碟快取，NTFS 節點與檔名徹底消除。頂級救援軟體深度掃描結果均為 0 位元組，商業機密永久零痕跡。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 保留：完整 5 大資安指標技術對照表 (可摺疊手風琴展開) -->
+        <div class="compare-drawer-wrap">
+            <button class="compare-toggle-btn" onclick="toggleCompareTable()">
+                <span id="compTableBtnText" data-i18n="comp_tbl_btn">📊 查看完整 5 大資安指標技術對照表 ▾</span>
+            </button>
+            <div class="compare-table-drawer" id="compareTableDrawer">
+                <div class="table-wrapper" style="margin-top:16px;">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th style="width:22%;" data-i18n="th_metric">安全防護指標</th>
+                                <th class="col-hl" style="width:28%;">🛡️ JBA128G3 Storage Shield</th>
+                                <th style="width:17%;" data-i18n="th_zip">傳統壓縮 (7-Zip/WinRAR)</th>
+                                <th style="width:17%;" data-i18n="th_commercial">商業加密 (AxCrypt等)</th>
+                                <th style="width:16%;" data-i18n="th_cloud">雲端保險箱 (NordLocker)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-i18n="row1_title"><strong>離線隱私承諾</strong></td>
+                                <td class="col-hl" style="color:var(--primary);" data-i18n="row1_jba">✅ 100% 物理離線 / 零數據遙測</td>
+                                <td data-i18n="row1_zip">✅ 離線運行</td>
+                                <td style="color:#f87171;" data-i18n="row1_commercial">❌ 強制聯網帳號登入</td>
+                                <td style="color:#f87171;" data-i18n="row1_cloud">❌ 深度依賴雲端伺服器</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="row2_title"><strong>防救援軟體還原 (物理粉碎)</strong></td>
+                                <td class="col-hl" style="color:var(--primary);" data-i18n="row2_jba">✅ DoD 5220.22-M 3-Pass 物理粉碎 (Recuva 0位元組)</td>
+                                <td style="color:#f87171;" data-i18n="row2_zip">❌ 原檔完好，救援軟體 3 秒挖出</td>
+                                <td data-i18n="row2_commercial">⚠️ 需手動右鍵粉碎 (易遺漏)</td>
+                                <td style="color:#f87171;" data-i18n="row2_cloud">❌ 無原檔自動抹除</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="row3_title"><strong>20GB 巨型專案支援</strong></td>
+                                <td class="col-hl" style="color:#ffe600;" data-i18n="row3_jba">✅ 20GB 僅 65 秒 (350~550MB/s | RAM < 200MB)</td>
+                                <td data-i18n="row3_zip">⚠️ 壓縮耗時，大檔高頻溢出當機</td>
+                                <td data-i18n="row3_commercial">⚠️ 大檔性能顯著衰退</td>
+                                <td style="color:#f87171;" data-i18n="row3_cloud">❌ 上傳痛苦受限網路頻寬</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="row4_title"><strong>底層密碼演算法</strong></td>
+                                <td class="col-hl" style="color:var(--primary);" data-i18n="row4_jba">✅ CB-GSC-128 幾何流 (PiRAP v3.0 抗量子/無後門)</td>
+                                <td data-i18n="row4_zip">⚠️ 傳統公開 AES (算力撞庫成熟)</td>
+                                <td data-i18n="row4_commercial">⚠️ 傳統 AES (金鑰雲端託管風險)</td>
+                                <td data-i18n="row4_cloud">⚠️ 傳統 AES + 雲端金鑰</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="row5_title"><strong>接收方協同成本</strong></td>
+                                <td class="col-hl" style="color:#ffe600;" data-i18n="row5_jba">🌟 永久免費・1.2MB 輕量 CLI / 桌面端秒解密</td>
+                                <td data-i18n="row5_zip">⚠️ 需特定解壓工具，易損壞</td>
+                                <td style="color:#f87171;" data-i18n="row5_commercial">❌ 對方也必須付費或註冊</td>
+                                <td style="color:#f87171;" data-i18n="row5_cloud">❌ 雙方均需註冊雲端平台</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2050,6 +2435,33 @@
                 btn_get_shield: "立即領取 JBA128G3",
                 compare_title: "同樣是保護檔案，為什麼選擇 JBA128G3？",
                 compare_desc: "解決「原檔殘留」、「雲端洩漏」與「大檔崩潰」三大傳統資安痛點",
+                compare_badge: "PARADIGM SHIFT / 顛覆傳統認知",
+                p_tab_legacy: "傳統做法 (7-Zip / 雲端硬碟 / 商業加密)",
+                p_tab_jba: "🛡️ JBA128G3 主權防護 (推薦)",
+                p1_title: "Recuva 資料救援軟體實測",
+                p2_title: "20GB 巨型專案封裝實測",
+                p3_title: "客戶與合作夥伴解密體驗",
+                p4_title: "底層密碼體系與抗量子算力",
+                timeline_title: "真實工作場景：機密專案交付的一天",
+                timeline_desc: "兩種截然不同的技術選擇，決定了企業資料是走向「外洩危機」還是「絕對主權」",
+                time_leg_h: "傳統流程的一天（暗藏外洩危機）",
+                time_leg_sub: "7-Zip / 商業加密 / 雲端硬碟",
+                time_leg_s1_t: "打包卡死・風扇狂轉 45 分鐘",
+                time_leg_s1_d: "使用 7-Zip 壓縮 20GB 專案，RAM 飆升至 95%，電腦嚴重卡頓，滑鼠延遲，專案交付進度受阻。",
+                time_leg_s2_t: "客戶抱怨・被迫改傳明文",
+                time_leg_s2_d: "將加密檔寄出後，客戶因未裝軟體打不開，甚至要求轉成一般檔案。雙方反覆溝通，最後冒險透過 Email 寄送未加密明文。",
+                time_leg_s3_t: "假刪除・舊電腦成機密未爆彈",
+                time_leg_s3_d: "同仁「清空回收筒」刪除原檔以釋出空間；半年後公司舊電腦退役，二手買家使用免費救援軟體挖出整套機密圖紙。",
+                time_jba_h: "JBA-128G3 的一天（極速・零阻力・無痕）",
+                time_jba_sub: "CB-GSC-128 幾何流 ＋ JBA-Shredder 物理粉碎",
+                time_jba_s1_t: "65 秒極速封裝・自動物理抹除",
+                time_jba_s1_d: "拖曳 20GB 專案，65 秒完成封裝（550MB/s，RAM < 200MB）。校驗通過後自動執行 DoD 5220.22-M 3 次實體覆寫抹除原檔。",
+                time_jba_s2_t: "客戶零摩擦・秒級 Bit-Perfect 還原",
+                time_jba_s2_d: "客戶收到檔案雙擊 1.2MB 免安裝便攜版，免註冊免登入，50 秒完成解密，SHA-256 逐位元校驗 100% 原貌重建目錄樹。",
+                time_jba_s3_t: "實體徹底湮滅・高枕無憂",
+                time_jba_s3_d: "FlushFileBuffers 強制穿透硬碟快取，NTFS 節點與檔名徹底消除。頂級救援軟體深度掃描結果均為 0 位元組，商業機密永久零痕跡。",
+                comp_tbl_btn: "📊 查看完整 5 大資安指標技術對照表 ▾",
+
                 th_metric: "安全防護指標",
                 th_zip: "傳統壓縮 (7-Zip/WinRAR)",
                 th_commercial: "商業加密 (AxCrypt等)",
@@ -2060,22 +2472,22 @@
                 row1_commercial: "❌ 強制聯網帳號登入",
                 row1_cloud: "❌ 深度依賴雲端伺服器",
                 row2_title: "防救援還原 (物理粉碎)",
-                row2_jba: "✅ JBA-Shredder 自動覆寫原檔",
+                row2_jba: "✅ DoD 5220.22-M 3-Pass 物理粉碎 (Recuva 0位元組)",
                 row2_zip: "❌ 原檔完好，救援軟體 3 秒挖出",
                 row2_commercial: "⚠️ 需手動右鍵粉碎 (易遺漏)",
                 row2_cloud: "❌ 無原檔自動抹除",
                 row3_title: "20GB 巨型專案支援",
-                row3_jba: "✅ 64MB 零拷貝串流 (RAM < 200M)",
+                row3_jba: "✅ 20GB 僅 65 秒 (350~550MB/s | RAM < 200MB)",
                 row3_zip: "⚠️ 壓縮耗時，大檔高頻溢出當機",
                 row3_commercial: "⚠️ 大檔性能顯著衰退",
                 row3_cloud: "❌ 上傳痛苦受限網路頻寬",
                 row4_title: "底層密碼演算法",
-                row4_jba: "✅ CB Tec 後量子幾何流式 (無後門)",
+                row4_jba: "✅ CB-GSC-128 幾何流 (PiRAP v3.0 抗量子/無後門)",
                 row4_zip: "⚠️ 傳統公開 AES (算力撞庫成熟)",
                 row4_commercial: "⚠️ 傳統 AES (金鑰雲端託管風險)",
                 row4_cloud: "⚠️ 傳統 AES + 雲端金鑰",
                 row5_title: "接收方協同成本",
-                row5_jba: "🌟 解密永久免費、無限制！",
+                row5_jba: "🌟 永久免費・1.2MB 輕量 CLI / 桌面端秒解密",
                 row5_zip: "⚠️ 需特定解壓工具，易損壞",
                 row5_commercial: "❌ 對方也必須付費或註冊",
                 row5_cloud: "❌ 雙方均需註冊雲端平台",
@@ -2282,6 +2694,33 @@
                 btn_get_shield: "Get JBA128G3 Now",
                 compare_title: "Why Choose JBA128G3 Over Alternatives?",
                 compare_desc: "Eliminates the three fatal flaws: residue files, cloud leaks, and massive-file crashes.",
+                compare_badge: "PARADIGM SHIFT / BEYOND CONVENTIONAL",
+                p_tab_legacy: "Legacy Workflow (7-Zip / Cloud / Commercial)",
+                p_tab_jba: "🛡️ JBA128G3 Sovereign Shield (Recommended)",
+                p1_title: "Recuva File Recovery Benchmark",
+                p2_title: "20GB Massive Project Packaging",
+                p3_title: "Client & Partner Decryption Friction",
+                p4_title: "Cryptographic Model & PQC Resilience",
+                timeline_title: "Real-World Workflow: A Day in Data Security",
+                timeline_desc: "Two distinct technological pathways determine whether enterprise data faces vulnerability or absolute sovereignty.",
+                time_leg_h: "A Vulnerable Day with Legacy Tools",
+                time_leg_sub: "7-Zip / Commercial Encryptors / Cloud Drives",
+                time_leg_s1_t: "System Frozen・Fans Screaming for 45 Mins",
+                time_leg_s1_d: "Compressing 20GB with 7-Zip spikes RAM to 95%. System freezes, mouse stutters, and project deliveries are delayed.",
+                time_leg_s2_t: "Client Complaints・Forced Plaintext Fallback",
+                time_leg_s2_d: "Recipients cannot open packages without matching software. Under tight deadlines, teams reluctantly email unencrypted raw files.",
+                time_leg_s3_t: "Fake Deletion・Retired PCs as Ticking Time Bombs",
+                time_leg_s3_d: "Originals were sent to the Recycle Bin. Months later, decommissioned drives are scanned by buyers, exposing blueprints via free tools.",
+                time_jba_h: "A Sovereign Day with JBA128G3",
+                time_jba_sub: "CB-GSC-128 Geometric Stream + JBA-Shredder Physical Wiping",
+                time_jba_s1_t: "65-Second Encapsulation・Auto Physical Overwrite",
+                time_jba_s1_d: "Drag-and-drop 20GB project finishes in 65s (550MB/s, RAM < 200MB). Triggers automatic DoD 5220.22-M 3-pass wiping upon verification.",
+                time_jba_s2_t: "Zero Friction・Sub-Minute Bit-Perfect Restoration",
+                time_jba_s2_d: "Partners launch the 1.2MB portable binary with zero accounts. Restores 100% hierarchy in 50s with byte-by-byte SHA-256 validation.",
+                time_jba_s3_t: "Physical Obliteration・Zero Residual Traces",
+                time_jba_s3_d: "FlushFileBuffers bypasses hardware caches, obliterating NTFS pointers and filenames. Forensic recovery tools detect zero recoverable bytes.",
+                comp_tbl_btn: "📊 View Full 5-Metric Comparison Matrix ▾",
+
                 th_metric: "Security Metric",
                 th_zip: "Traditional Zip (7-Zip/WinRAR)",
                 th_commercial: "Commercial Tools (AxCrypt, etc.)",
@@ -2292,7 +2731,7 @@
                 row1_commercial: "❌ Mandatory account cloud login",
                 row1_cloud: "❌ Deep cloud dependency",
                 row2_title: "Anti-Recovery (Physical Shredding)",
-                row2_jba: "✅ JBA-Shredder Auto Overwrite",
+                row2_jba: "✅ DoD 5220.22-M 3-Pass Wiping (Recuva detects 0 Bytes)",
                 row2_zip: "❌ Original files intact, easily recovered",
                 row2_commercial: "⚠️ Manual shredding required",
                 row2_cloud: "❌ No auto source wiping",
@@ -2514,6 +2953,33 @@
                 btn_get_shield: "JBA128G3 を今すぐ入手",
                 compare_title: "他社ツールと何が違うのか？",
                 compare_desc: "「元データの残留」「クラウド漏洩」「大容量クラッシュ」の3大課題を根本解決",
+                compare_badge: "PARADIGM SHIFT / 従来の常識を覆す",
+                p_tab_legacy: "従来の手法 (7-Zip / クラウド / 市販暗号化)",
+                p_tab_jba: "🛡️ JBA128G3 主権保護 (推奨)",
+                p1_title: "Recuva データ復元ツール実測検証",
+                p2_title: "20GB 巨大プロジェクト封入実測",
+                p3_title: "取引先・顧客の復号体験",
+                p4_title: "暗号基盤と耐量子計算性能",
+                timeline_title: "実務シーン：機密プロジェクト受け渡しの一日",
+                timeline_desc: "2つの全く異なる技術選択が、企業の機密データを「情報漏洩の危機」か「絶対的主権」へと導きます。",
+                time_leg_h: "従来ツールの脆弱な一日（漏洩の危機）",
+                time_leg_sub: "7-Zip / 市販暗号ソフト / クラウドストレージ",
+                time_leg_s1_t: "PCフリーズ・ファン轟音で45分浪費",
+                time_leg_s1_d: "7-Zipで20GBを圧縮するとRAMが95%に急上昇。PC全体が激しくフリーズし、プロジェクト納期が大幅に遅延。",
+                time_leg_s2_t: "顧客からの不満・危険な平文送信へ妥協",
+                time_leg_s2_d: "暗号化ファイルを送るも、相手が対応ツールを持たず開けない事態に。納期に迫られ、危険を承知で未暗号化平文をメール送付。",
+                time_leg_s3_t: "見せかけの削除・廃棄PCが漏洩の時限爆弾に",
+                time_leg_s3_d: "原ファイルをゴミ箱で消去。半年後に退役した旧PCのSSDを中古業者が復元ツールで走査し、機密設計図が丸ごと流出。",
+                time_jba_h: "JBA128G3の快適な一日（爆速・摩擦ゼロ・完全無痕）",
+                time_jba_sub: "CB-GSC-128 幾何暗号 ＋ JBA-Shredder 物理シュレッダー",
+                time_jba_s1_t: "65秒の爆速封入・自動物理抹消",
+                time_jba_s1_d: "20GBをドラッグ＆ドロップし65秒で完了（550MB/s、RAM < 200MB）。検証成功後、米軍DoD 3回上書きで原ファイルを自動完全消去。",
+                time_jba_s2_t: "摩擦ゼロ・50秒で完全復元",
+                time_jba_s2_d: "取引先は1.2MBの極小ツールで登録不要で即座に復号。SHA-256完全一致により、フォルダ階層を狂いなく100%原位置再現。",
+                time_jba_s3_t: "物理的完全消滅・痕跡ゼロで安心",
+                time_jba_s3_d: "FlushFileBuffersでハードウェアキャッシュを強制貫通し、NTFSノードとファイル名を完全消去。復元ツールでも0バイト検出。",
+                comp_tbl_btn: "📊 5大指標の完全比較表を展開 ▾",
+
                 th_metric: "セキュリティ指標",
                 th_zip: "従来の圧縮 (7-Zip/WinRAR)",
                 th_commercial: "商用暗号化 (AxCrypt等)",
@@ -2524,7 +2990,7 @@
                 row1_commercial: "❌ アカウントでのクラウドログイン必須",
                 row1_cloud: "❌ クラウドサーバーへの深い依存",
                 row2_title: "復元ソフト対策 (物理抹消)",
-                row2_jba: "✅ JBA-Shredder 自動上書き抹消",
+                row2_jba: "✅ 米軍DoD 5220.22-M 3回上書き (Recuvaで0バイト検出)",
                 row2_zip: "❌ 元データが残り、3秒で復元可能",
                 row2_commercial: "⚠️ 手動での右クリック粉砕が必要",
                 row2_cloud: "❌ 元データの自動抹消なし",
@@ -2811,7 +3277,194 @@
             document.getElementById('swInfoDec').style.display = 'none';
         }
 
-                // 四大核心體系「更多技術詳解」摺疊展開控制
+                        // 方向一：互動式 Before/After 狀態切換
+        let currentParadigm = 'legacy';
+        function setParadigm(mode) {
+            currentParadigm = mode;
+            const btnLegacy = document.getElementById('pBtnLegacy');
+            const btnJba = document.getElementById('pBtnJba');
+            const cards = [
+                document.getElementById('pCard1'),
+                document.getElementById('pCard2'),
+                document.getElementById('pCard3'),
+                document.getElementById('pCard4')
+            ];
+
+            if (mode === 'legacy') {
+                btnLegacy.classList.add('active');
+                btnJba.classList.remove('active');
+                cards.forEach(card => {
+                    card.classList.remove('jba-active');
+                    card.classList.add('legacy-active');
+                });
+            } else {
+                btnJba.classList.add('active');
+                btnLegacy.classList.remove('active');
+                cards.forEach(card => {
+                    card.classList.remove('legacy-active');
+                    card.classList.add('jba-active');
+                });
+            }
+            updateParadigmText();
+        }
+
+        function updateParadigmText() {
+            const lang = currentLang || 'en';
+            const data = paradigmTranslations[lang][currentParadigm];
+
+            document.getElementById('pCard1Badge').textContent = data.p1_badge;
+            document.getElementById('pCard1Icon').textContent = data.p1_icon;
+            document.getElementById('pCard1Metric').textContent = data.p1_metric;
+            document.getElementById('pCard1Desc').textContent = data.p1_desc;
+
+            document.getElementById('pCard2Badge').textContent = data.p2_badge;
+            document.getElementById('pCard2Icon').textContent = data.p2_icon;
+            document.getElementById('pCard2Metric').textContent = data.p2_metric;
+            document.getElementById('pCard2Desc').textContent = data.p2_desc;
+
+            document.getElementById('pCard3Badge').textContent = data.p3_badge;
+            document.getElementById('pCard3Icon').textContent = data.p3_icon;
+            document.getElementById('pCard3Metric').textContent = data.p3_metric;
+            document.getElementById('pCard3Desc').textContent = data.p3_desc;
+
+            document.getElementById('pCard4Badge').textContent = data.p4_badge;
+            document.getElementById('pCard4Icon').textContent = data.p4_icon;
+            document.getElementById('pCard4Metric').textContent = data.p4_metric;
+            document.getElementById('pCard4Desc').textContent = data.p4_desc;
+        }
+
+        // 對照表手風琴展開收合
+        function toggleCompareTable() {
+            const drawer = document.getElementById('compareTableDrawer');
+            const btnText = document.getElementById('compTableBtnText');
+            drawer.classList.toggle('open');
+            const lang = currentLang || 'en';
+            const isOpen = drawer.classList.contains('open');
+            if (isOpen) {
+                btnText.textContent = lang === 'zh' ? '📊 收合 5 大資安指標技術對照表 ▴' : (lang === 'ja' ? '📊 5大指標比較表を閉じる ▴' : '📊 Collapse Full Comparison Matrix ▴');
+            } else {
+                btnText.textContent = lang === 'zh' ? '📊 查看完整 5 大資安指標技術對照表 ▾' : (lang === 'ja' ? '📊 5大指標の完全比較表を展開 ▾' : '📊 View Full 5-Metric Comparison Matrix ▾');
+            }
+        }
+
+                const paradigmTranslations = {
+            zh: {
+                legacy: {
+                    p1_badge: "🚨 假刪除・嚴重外洩隱患",
+                    p1_icon: "🔍",
+                    p1_metric: "發現 14,280 個平文檔案・100% 完整無缺裸奔",
+                    p1_desc: "傳統「清空回收筒」僅移除檔案系統索引指針，實體磁區平文完好如初，任何人用免費救援工具 3 秒就能挖出機密圖紙。",
+                    p2_badge: "🚨 記憶體溢出・系統當機",
+                    p2_icon: "⏳",
+                    p2_metric: "耗時 45+ 分鐘・RAM 飆升至 3.8GB+",
+                    p2_desc: "傳統壓縮缺乏零拷貝流式讀寫架構，大檔頻繁引發磁碟搜尋衝突（Disk Thrashing）與高頻快取溢出，極易導致工作死機。",
+                    p3_badge: "🚨 跨企業協同障礙",
+                    p3_icon: "💸",
+                    p3_metric: "強制註冊帳號・付費訂閱牆阻攔",
+                    p3_desc: "客戶收到加密檔案彈出付費提示或因無特定軟體無法打開，造成溝通障礙與客訴，最後被迫冒險妥協寄送未加密明文。",
+                    p4_badge: "🚨 雲端金鑰託管與後門風險",
+                    p4_icon: "☁️",
+                    p4_metric: "公開 AES 算力撞庫・金鑰雲端留底",
+                    p4_desc: "傳統公開加密庫易遭 GPU/ASIC 碰撞攻擊；雲端保險箱將金鑰備份於中繼伺服器，隨時面臨被駭、政府調取或預留後門風險。"
+                },
+                jba: {
+                    p1_badge: "🛡️ DoD 5220.22-M 實體粉碎",
+                    p1_icon: "💥",
+                    p1_metric: "Recuva 掃描結果：0 位元組（平文永久湮滅）",
+                    p1_desc: "3-Pass 覆寫抹除＋FlushFileBuffers 穿透硬體快取＋NTFS 檔名混淆，頂級資料救援工具徹底失效，杜絕任何還原可能。",
+                    p2_badge: "⚡ 64MB 零拷貝環形緩衝",
+                    p2_icon: "🚀",
+                    p2_metric: "20GB 僅需 65 秒・RAM 恆定 < 200MB",
+                    p2_desc: "NVMe 讀寫吞吐達 350~550 MB/s，O(1) 常數記憶體架構，解密僅需 50 秒，完全釋放現代固態硬碟極限讀寫效能。",
+                    p3_badge: "🌟 零阻力不對稱商務模型",
+                    p3_icon: "🤝",
+                    p3_metric: "永久完全免費・1.2MB 輕量免安裝",
+                    p3_desc: "接收端永遠 100% 免費、不限次數、無任何隱藏收費與訂閱牆。提供 1.2MB 原生極速 CLI 與綠色桌面端，秒開即解。",
+                    p4_badge: "🛡️ 100% 本機記憶體推導",
+                    p4_icon: "🔒",
+                    p4_metric: "CB-GSC-128 幾何流・抗量子 Grover 威脅",
+                    p4_desc: "自研 PiRAP 幾何密鑰織造引擎 v3.0，零雲端託管，超越數晶格空間無有效週期性，斷絕後門與外部伺服器外洩通道。"
+                }
+            },
+            en: {
+                legacy: {
+                    p1_badge: "🚨 Fake Deletion・Severe Data Leak Hazard",
+                    p1_icon: "🔍",
+                    p1_metric: "Found 14,280 Plaintext Files・100% Fully Recoverable",
+                    p1_desc: "Standard OS deletion only unlinks filesystem pointers, leaving raw plaintext completely intact on physical sectors. Free tools recover it in 3 seconds.",
+                    p2_badge: "🚨 Memory Overflow・System Freeze",
+                    p2_icon: "⏳",
+                    p2_metric: "Takes 45+ mins・RAM surges to 3.8GB+",
+                    p2_desc: "Legacy arch lacks zero-copy streaming. Packaging large directories triggers severe disk thrashing and memory overflow, freezing entire workstations.",
+                    p3_badge: "🚨 Cross-Enterprise Collaboration Friction",
+                    p3_icon: "💸",
+                    p3_metric: "Mandatory Accounts & Paywall Traps",
+                    p3_desc: "Partners open encrypted packages only to encounter paywalls or missing tools. Frustrated recipients force teams to risk sending plaintext.",
+                    p4_badge: "🚨 Cloud Escrow & Backdoor Vulnerabilities",
+                    p4_icon: "☁️",
+                    p4_metric: "Public AES Brute-Force & Cloud Escrow",
+                    p4_desc: "Public algorithms are vulnerable to ASIC clusters; cloud vaults store keys on relay servers, exposing data to subpoenas, breaches, and backdoors."
+                },
+                jba: {
+                    p1_badge: "🛡️ DoD 5220.22-M Physical Shredding",
+                    p1_icon: "💥",
+                    p1_metric: "Recuva Result: 0 Bytes Found (Permanent Sanitization)",
+                    p1_desc: "3-Pass overwrite + FlushFileBuffers cache penetration + NTFS filename scrambling render tools like Recuva and Disk Drill completely useless.",
+                    p2_badge: "⚡ 64MB Zero-Copy Ring Buffer",
+                    p2_icon: "🚀",
+                    p2_metric: "20GB in 65s・RAM strictly locked < 200MB",
+                    p2_desc: "Delivers 350-550 MB/s NVMe throughput with O(1) constant memory scale. Decrypts in 50s, unlocking the physical limit of solid-state storage.",
+                    p3_badge: "🌟 Zero-Friction Asymmetric Ecosystem",
+                    p3_icon: "🤝",
+                    p3_metric: "100% Free Forever・1.2MB Ultra-Light CLI",
+                    p3_desc: "Recipients decrypt 100% free with unlimited usage and zero paywalls. Portable GUI and 1.2MB CLI binary provide instant air-gapped restoration.",
+                    p4_badge: "🛡️ 100% Volatile RAM Key Derivation",
+                    p4_icon: "🔒",
+                    p4_metric: "CB-GSC-128 Geometric Stream・Resists Grover Attacks",
+                    p4_desc: "Proprietary PiRAP Geometric Key Weaving Engine v3.0 runs in non-Abelian transcendental lattice spaces with zero periodic structure and zero cloud escrow."
+                }
+            },
+            ja: {
+                legacy: {
+                    p1_badge: "🚨 見せかけの削除・深刻な漏洩リスク",
+                    p1_icon: "🔍",
+                    p1_metric: "14,280件の平文ファイルを検出・100%完全露出",
+                    p1_desc: "通常のゴミ箱削除はインデックスを外すだけで、実セクタの平文データは完全に残存。無料復元ツールでわずか3秒で機密が掘り起こされます。",
+                    p2_badge: "🚨 メモリオーバーフロー・PCフリーズ",
+                    p2_icon: "⏳",
+                    p2_metric: "45分以上浪費・RAM消費が3.8GB超へ急上昇",
+                    p2_desc: "従来の圧縮ツールはストリーム構造を持たず、大容量処理時に激しいディスクトラッシングとバッファ溢れを起こし、作業PCをフリーズさせます。",
+                    p3_badge: "🚨 企業間コラボレーションの摩擦",
+                    p3_icon: "💸",
+                    p3_metric: "強制アカウント登録・有料課金ウォール",
+                    p3_desc: "取引先がファイルを開くと課金画面や未対応エラーが発生。やり取りに手間取り、納期に追われて危険な平文送付を余儀なくされます。",
+                    p4_badge: "🚨 クラウド鍵預託とバックドアの危険",
+                    p4_icon: "☁️",
+                    p4_metric: "公開AESの総当たり・クラウド上の鍵保管",
+                    p4_desc: "公開暗号はASIC衝突攻撃を受けやすく、クラウド保管庫は中継サーバーに鍵を預託するため、外部ハッキングや政府要請による漏洩リスクを抱えます。"
+                },
+                jba: {
+                    p1_badge: "🛡️ 米軍DoD 5220.22-M 物理シュレッダー",
+                    p1_icon: "💥",
+                    p1_metric: "Recuvaスキャン結果：0バイト（完全消滅）",
+                    p1_desc: "3回物理上書き＋FlushFileBuffersキャッシュ強制貫通＋NTFSファイル名難読化により、Recuva等の復元ツールでも0バイト検出を達成。",
+                    p2_badge: "⚡ 64MB ゼロコピーリングバッファ",
+                    p2_icon: "🚀",
+                    p2_metric: "20GBを約65秒で暗号化・RAM常時200MB未満",
+                    p2_desc: "NVMe実効350〜550MB/sの爆速スループット、O(1)定数メモリにより復号も50秒で完了。現代SSDの限界性能をフルに解放します。",
+                    p3_badge: "🌟 摩擦ゼロの非対称ビジネスモデル",
+                    p3_icon: "🤝",
+                    p3_metric: "永久完全無料・1.2MB超軽量ポータブルCLI",
+                    p3_desc: "受信者は無制限・完全無料・サブスクなしで復号可能。1.2MBの極小ネイティブCLIとGUIで、アカウント登録なしに即座に復元完了。",
+                    p4_badge: "🛡️ 100% ローカルメモリ導出",
+                    p4_icon: "🔒",
+                    p4_metric: "CB-GSC-128 幾何暗号・Grover量子攻撃を無力化",
+                    p4_desc: "独自開発のPiRAP幾何鍵織成エンジンv3.0を搭載。非アーベル超越数空間には有効な周期性がなく、バックドアもクラウド預託もゼロ。"
+                }
+            }
+        };
+
+        // 四大核心體系「更多技術詳解」摺疊展開控制
         function toggleFeatureCard(cardId) {
             const card = document.getElementById(cardId);
             if (!card) return;
