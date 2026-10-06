@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JBA128G3 Storage Shield - Official Website</title>
+    <title>ZeroTrace – 極致隱私加密 | Official Website</title>
     <style>
         :root {
             --primary: #00f0ff;
@@ -1548,16 +1548,246 @@
             font-size: 13px;
             border-top: 1px solid var(--card-border);
         }
-    </style>
+    
+        /* === ZeroTrace Backer / Investor Portal === */
+        .backer-section {
+            background: linear-gradient(180deg, rgba(0,240,255,0.04) 0%, rgba(13,21,34,0.98) 100%);
+            border: 1px solid rgba(0,240,255,0.18);
+            border-radius: 22px;
+            padding: 48px 32px;
+        }
+        .backer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+        @media(max-width:760px){ .backer-grid{ grid-template-columns:1fr; } }
+        .backer-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            border: 1px solid var(--card-border);
+            padding: 28px 24px;
+            transition: all .3s;
+        }
+        .backer-card:hover {
+            border-color: rgba(0,240,255,.45);
+            box-shadow: 0 10px 32px rgba(0,240,255,.1);
+            transform: translateY(-3px);
+        }
+        .backer-card-icon { font-size: 30px; margin-bottom: 12px; }
+        .backer-card h4 { color:#fff; font-size:18px; font-weight:900; margin-bottom:10px; }
+        .backer-card p  { color:var(--text-muted); font-size:13px; line-height:1.7; }
+        .backer-perks {
+            list-style: none;
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .backer-perks li {
+            font-size: 13px;
+            color: #c8d8e8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .backer-perks li::before {
+            content: '✦';
+            color: var(--primary);
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+        .backer-btn {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 22px;
+            border-radius: 30px;
+            background: rgba(0,240,255,.1);
+            border: 1px solid rgba(0,240,255,.45);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: .2s;
+            text-decoration: none;
+        }
+        .backer-btn:hover {
+            background: rgba(0,240,255,.22);
+            box-shadow: 0 0 18px rgba(0,240,255,.25);
+        }
+
+        /* === ZeroTrace Upcoming Labs === */
+        .labs-section {
+            margin-top: 60px;
+        }
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .lab-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all .3s;
+        }
+        .lab-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity .3s;
+        }
+        .lab-card:hover { border-color: rgba(0,240,255,.4); transform:translateY(-3px); }
+        .lab-card:hover::before { opacity: 1; }
+        .lab-icon { font-size: 34px; margin-bottom: 12px; }
+        .lab-card h4 { color:#fff; font-size:15px; font-weight:900; margin-bottom:8px; }
+        .lab-card p  { color:var(--text-muted); font-size:12.5px; line-height:1.6; }
+        .lab-soon-badge {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(245,158,11,.12);
+            border: 1px solid rgba(245,158,11,.35);
+            color: #fbbf24;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        
+        /* === ZeroTrace Backer / Investor Portal === */
+        .backer-section {
+            background: linear-gradient(180deg, rgba(0,240,255,0.04) 0%, rgba(13,21,34,0.98) 100%);
+            border: 1px solid rgba(0,240,255,0.18);
+            border-radius: 22px;
+            padding: 48px 32px;
+        }
+        .backer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+        @media(max-width:760px){ .backer-grid{ grid-template-columns:1fr; } }
+        .backer-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            border: 1px solid var(--card-border);
+            padding: 28px 24px;
+            transition: all .3s;
+        }
+        .backer-card:hover {
+            border-color: rgba(0,240,255,.45);
+            box-shadow: 0 10px 32px rgba(0,240,255,.1);
+            transform: translateY(-3px);
+        }
+        .backer-card-icon { font-size: 30px; margin-bottom: 12px; }
+        .backer-card h4 { color:#fff; font-size:18px; font-weight:900; margin-bottom:10px; }
+        .backer-card p  { color:var(--text-muted); font-size:13px; line-height:1.7; }
+        .backer-perks {
+            list-style: none;
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .backer-perks li {
+            font-size: 13px;
+            color: #c8d8e8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .backer-perks li::before {
+            content: '✦';
+            color: var(--primary);
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+        .backer-btn {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 22px;
+            border-radius: 30px;
+            background: rgba(0,240,255,.1);
+            border: 1px solid rgba(0,240,255,.45);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: .2s;
+            text-decoration: none;
+        }
+        .backer-btn:hover {
+            background: rgba(0,240,255,.22);
+            box-shadow: 0 0 18px rgba(0,240,255,.25);
+        }
+
+        /* === ZeroTrace Upcoming Labs === */
+        .labs-section {
+            margin-top: 60px;
+        }
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .lab-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all .3s;
+        }
+        .lab-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity .3s;
+        }
+        .lab-card:hover { border-color: rgba(0,240,255,.4); transform:translateY(-3px); }
+        .lab-card:hover::before { opacity: 1; }
+        .lab-icon { font-size: 34px; margin-bottom: 12px; }
+        .lab-card h4 { color:#fff; font-size:15px; font-weight:900; margin-bottom:8px; }
+        .lab-card p  { color:var(--text-muted); font-size:12.5px; line-height:1.6; }
+        .lab-soon-badge {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(245,158,11,.12);
+            border: 1px solid rgba(245,158,11,.35);
+            color: #fbbf24;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        </style>
 </head>
 <body>
 
     <!-- 1. 頂部導航 -->
     <header>
         <div class="nav-container">
-            <div class="logo">
-                <span>🛡️</span> <span data-i18n="logo">JBA128G3 Shield</span>
-            </div>
+            <div class="logo">🛡️ <span>Zero</span>Trace</div>
             <div class="nav-right">
                 <nav class="nav-links">
                     <a href="#features" data-i18n="nav_features">產品特色</a>
@@ -2373,6 +2603,164 @@
     </div>
 
     <!-- 頁尾 -->
+    
+    <!-- === ZeroTrace Pioneer Backer & Investor Portal === -->
+    <section id="support" style="padding:70px 20px;">
+        <div class="backer-section">
+            <div style="text-align:center;">
+                <div class="badge" data-i18n="backer_badge">PIONEER SUPPORT</div>
+            </div>
+            <h2 class="section-title" style="margin-top:14px;" data-i18n="backer_title">成為第一批 ZeroTrace 支持者</h2>
+            <p class="section-desc" data-i18n="backer_desc">
+                您的支持不只是贊助，更是共同打造下一個隱私時代的宣言。
+            </p>
+            <div class="backer-grid">
+                <!-- Pioneer Backer -->
+                <div class="backer-card">
+                    <div class="backer-card-icon">🚀</div>
+                    <h4 data-i18n="pioneer_title">Pioneer Backer</h4>
+                    <p data-i18n="pioneer_desc">成為最早支持 ZeroTrace 的核心社群成員，搶先體驗每一次重大更新。</p>
+                    <ul class="backer-perks">
+                        <li data-i18n="pioneer_perk1">永久免費解密端授權</li>
+                        <li data-i18n="pioneer_perk2">Beta 版本搶先存取資格</li>
+                        <li data-i18n="pioneer_perk3">專屬 Pioneer 徽章顯示於社群</li>
+                        <li data-i18n="pioneer_perk4">開發路線圖投票權</li>
+                        <li data-i18n="pioneer_perk5">每月研發進度內部報告</li>
+                    </ul>
+                    <a href="#donate" class="backer-btn" data-i18n="pioneer_btn">立即支持 →</a>
+                </div>
+                <!-- Investor Portal -->
+                <div class="backer-card">
+                    <div class="backer-card-icon">💼</div>
+                    <h4 data-i18n="investor_title">Investor Portal</h4>
+                    <p data-i18n="investor_desc">我們正在尋找理念一致的早期投資夥伴，共同將 ZeroTrace 帶向企業市場與全球佈局。</p>
+                    <ul class="backer-perks">
+                        <li data-i18n="investor_perk1">企業授權商業合作優先資格</li>
+                        <li data-i18n="investor_perk2">技術白皮書與財務模型存取</li>
+                        <li data-i18n="investor_perk3">創辦團隊一對一簡報機會</li>
+                        <li data-i18n="investor_perk4">產品路線圖與競品分析報告</li>
+                        <li data-i18n="investor_perk5">優先談判早期股權條款</li>
+                    </ul>
+                    <a href="mailto:contact@zerotrace.dev" class="backer-btn" data-i18n="investor_btn">聯絡投資窗口 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ZeroTrace Upcoming Labs === -->
+    <section id="labs" class="labs-section" style="padding:0 20px 70px 20px;">
+        <div style="text-align:center;">
+            <div class="badge" data-i18n="labs_badge">UPCOMING LABS</div>
+        </div>
+        <h2 class="section-title" style="margin-top:14px;" data-i18n="labs_title">我們正在孵化的下一個武器</h2>
+        <p class="section-desc" data-i18n="labs_desc">ZeroTrace 只是開始。以下是正在開發中的隱私防護生態系。</p>
+        <div class="labs-grid" style="max-width:1150px;margin:32px auto 0;">
+            <div class="lab-card">
+                <div class="lab-icon">🧠</div>
+                <h4 data-i18n="lab1_title">ZeroTrace RAM Sandbox</h4>
+                <p data-i18n="lab1_desc">將機密作業完全限制在揮發性記憶體中運行，程序關閉後零殘留於磁碟。</p>
+                <div class="lab-soon-badge">IN DEV</div>
+            </div>
+            <div class="lab-card">
+                <div class="lab-icon">📡</div>
+                <h4 data-i18n="lab2_title">AirDrop‑X</h4>
+                <p data-i18n="lab2_desc">零網路、點對點加密傳輸協定，完全不觸碰任何伺服器即可安全傳送大型檔案。</p>
+                <div class="lab-soon-badge">DESIGN</div>
+            </div>
+            <div class="lab-card">
+                <div class="lab-icon">🖼️</div>
+                <h4 data-i18n="lab3_title">SteganoVault</h4>
+                <p data-i18n="lab3_desc">將機密資料隱寫於圖片像素中，外表是普通圖片，只有金鑰持有者能還原內容。</p>
+                <div class="lab-soon-badge">RESEARCH</div>
+            </div>
+            <div class="lab-card">
+                <div class="lab-icon">🔑</div>
+                <h4 data-i18n="lab4_title">Hardware Key Dongle</h4>
+                <p data-i18n="lab4_desc">物理硬體金鑰驗證模組，金鑰永不離開硬體晶片，抵禦軟體層一切形式的金鑰竊取攻擊。</p>
+                <div class="lab-soon-badge">PLANNED</div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- === ZeroTrace Pioneer Backer & Investor Portal === -->
+    <section id="support" style="padding:70px 20px;">
+        <div class="backer-section">
+            <div style="text-align:center;">
+                <div class="badge" data-i18n="backer_badge">PIONEER SUPPORT</div>
+            </div>
+            <h2 class="section-title" style="margin-top:14px;" data-i18n="backer_title">成為第一批 ZeroTrace 支持者</h2>
+            <p class="section-desc" data-i18n="backer_desc">
+                您的支持不只是贊助，更是共同打造下一個隱私時代的宣言。
+            </p>
+            <div class="backer-grid">
+                <!-- Pioneer Backer -->
+                <div class="backer-card">
+                    <div class="backer-card-icon">🚀</div>
+                    <h4 data-i18n="pioneer_title">Pioneer Backer</h4>
+                    <p data-i18n="pioneer_desc">成為最早支持 ZeroTrace 的核心社群成員，搶先體驗每一次重大更新。</p>
+                    <ul class="backer-perks">
+                        <li data-i18n="pioneer_perk1">永久免費解密端授權</li>
+                        <li data-i18n="pioneer_perk2">Beta 版本搶先存取資格</li>
+                        <li data-i18n="pioneer_perk3">專屬 Pioneer 徽章顯示於社群</li>
+                        <li data-i18n="pioneer_perk4">開發路線圖投票權</li>
+                        <li data-i18n="pioneer_perk5">每月研發進度內部報告</li>
+                    </ul>
+                    <a href="#donate" class="backer-btn" data-i18n="pioneer_btn">立即支持 →</a>
+                </div>
+                <!-- Investor Portal -->
+                <div class="backer-card">
+                    <div class="backer-card-icon">💼</div>
+                    <h4 data-i18n="investor_title">Investor Portal</h4>
+                    <p data-i18n="investor_desc">我們正在尋找理念一致的早期投資夥伴，共同將 ZeroTrace 帶向企業市場與全球佈局。</p>
+                    <ul class="backer-perks">
+                        <li data-i18n="investor_perk1">企業授權商業合作優先資格</li>
+                        <li data-i18n="investor_perk2">技術白皮書與財務模型存取</li>
+                        <li data-i18n="investor_perk3">創辦團隊一對一簡報機會</li>
+                        <li data-i18n="investor_perk4">產品路線圖與競品分析報告</li>
+                        <li data-i18n="investor_perk5">優先談判早期股權條款</li>
+                    </ul>
+                    <a href="mailto:contact@zerotrace.dev" class="backer-btn" data-i18n="investor_btn">聯絡投資窗口 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ZeroTrace Upcoming Labs === -->
+    <section id="labs" class="labs-section" style="padding:0 20px 70px 20px;">
+        <div style="text-align:center;">
+            <div class="badge" data-i18n="labs_badge">UPCOMING LABS</div>
+        </div>
+        <h2 class="section-title" style="margin-top:14px;" data-i18n="labs_title">我們正在孵化的下一個武器</h2>
+        <p class="section-desc" data-i18n="labs_desc">ZeroTrace 只是開始。以下是正在開發中的隱私防護生態系。</p>
+        <div class="labs-grid" style="max-width:1150px;margin:32px auto 0;">
+            <div class="lab-card">
+                <div class="lab-icon">🧠</div>
+                <h4 data-i18n="lab1_title">ZeroTrace RAM Sandbox</h4>
+                <p data-i18n="lab1_desc">將機密作業完全限制在揮發性記憶體中運行，程序關閉後零殘留於磁碟。</p>
+                <div class="lab-soon-badge">IN DEV</div>
+            </div>
+            <div class="lab-card">
+                <div class="lab-icon">📡</div>
+                <h4 data-i18n="lab2_title">AirDrop‑X</h4>
+                <p data-i18n="lab2_desc">零網路、點對點加密傳輸協定，完全不觸碰任何伺服器即可安全傳送大型檔案。</p>
+                <div class="lab-soon-badge">DESIGN</div>
+            </div>
+            <div class="lab-card">
+                <div class="lab-icon">🖼️</div>
+                <h4 data-i18n="lab3_title">SteganoVault</h4>
+                <p data-i18n="lab3_desc">將機密資料隱寫於圖片像素中，外表是普通圖片，只有金鑰持有者能還原內容。</p>
+                <div class="lab-soon-badge">RESEARCH</div>
+            </div>
+            <div class="lab-card">
+                <div class="lab-icon">🔑</div>
+                <h4 data-i18n="lab4_title">Hardware Key Dongle</h4>
+                <p data-i18n="lab4_desc">物理硬體金鑰驗證模組，金鑰永不離開硬體晶片，抵禦軟體層一切形式的金鑰竊取攻擊。</p>
+                <div class="lab-soon-badge">PLANNED</div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>© 2026 J Will Team & CB Tec. All rights reserved. ｜ JBA128G3 Storage Shield</p>
     </footer>
@@ -2381,6 +2769,72 @@
     <script>
         const translations = {
             zh: {
+                // === Backer & Labs ===
+                backer_badge: "先鋒支持",
+                backer_title: "成為第一批 ZeroTrace 支持者",
+                backer_desc: "您的支持不只是贊助，更是共同打造下一個隱私時代的宣言。",
+                pioneer_title: "Pioneer Backer",
+                pioneer_desc: "成為最早支持 ZeroTrace 的核心社群成員，搶先體驗每一次重大更新。",
+                pioneer_perk1: "永久免費解密端授權",
+                pioneer_perk2: "Beta 版本搶先存取資格",
+                pioneer_perk3: "專屬 Pioneer 徽章顯示於社群",
+                pioneer_perk4: "開發路線圖投票權",
+                pioneer_perk5: "每月研發進度內部報告",
+                pioneer_btn: "立即支持 →",
+                investor_title: "Investor Portal",
+                investor_desc: "我們正在尋找理念一致的早期投資夥伴，共同將 ZeroTrace 帶向企業市場與全球佈局。",
+                investor_perk1: "企業授權商業合作優先資格",
+                investor_perk2: "技術白皮書與財務模型存取",
+                investor_perk3: "創辦團隊一對一簡報機會",
+                investor_perk4: "產品路線圖與競品分析報告",
+                investor_perk5: "優先談判早期股權條款",
+                investor_btn: "聯絡投資窗口 →",
+                labs_badge: "未來實驗室",
+                labs_title: "我們正在孵化的下一個武器",
+                labs_desc: "ZeroTrace 只是開始。以下是正在開發中的隱私防護生態系。",
+                lab1_title: "ZeroTrace RAM Sandbox",
+                lab1_desc: "將機密作業完全限制在揮發性記憶體中運行，程序關閉後零殘留於磁碟。",
+                lab2_title: "AirDrop-X",
+                lab2_desc: "零網路、點對點加密傳輸協定，完全不觸碰任何伺服器即可安全傳送大型檔案。",
+                lab3_title: "SteganoVault",
+                lab3_desc: "將機密資料隱寫於圖片像素中，外表是普通圖片，只有金鑰持有者能還原內容。",
+                lab4_title: "Hardware Key Dongle",
+                lab4_desc: "物理硬體金鑰驗證模組，金鑰永不離開硬體晶片，抵禦軟體層一切形式的金鑰竊取攻擊。",
+                nav_support: "支持我們",
+                nav_labs: "未來實驗室",
+                // === Backer & Labs ===
+                backer_badge: "先鋒支持",
+                backer_title: "成為第一批 ZeroTrace 支持者",
+                backer_desc: "您的支持不只是贊助，更是共同打造下一個隱私時代的宣言。",
+                pioneer_title: "Pioneer Backer",
+                pioneer_desc: "成為最早支持 ZeroTrace 的核心社群成員，搶先體驗每一次重大更新。",
+                pioneer_perk1: "永久免費解密端授權",
+                pioneer_perk2: "Beta 版本搶先存取資格",
+                pioneer_perk3: "專屬 Pioneer 徽章顯示於社群",
+                pioneer_perk4: "開發路線圖投票權",
+                pioneer_perk5: "每月研發進度內部報告",
+                pioneer_btn: "立即支持 →",
+                investor_title: "Investor Portal",
+                investor_desc: "我們正在尋找理念一致的早期投資夥伴，共同將 ZeroTrace 帶向企業市場與全球佈局。",
+                investor_perk1: "企業授權商業合作優先資格",
+                investor_perk2: "技術白皮書與財務模型存取",
+                investor_perk3: "創辦團隊一對一簡報機會",
+                investor_perk4: "產品路線圖與競品分析報告",
+                investor_perk5: "優先談判早期股權條款",
+                investor_btn: "聯絡投資窗口 →",
+                labs_badge: "未來實驗室",
+                labs_title: "我們正在孵化的下一個武器",
+                labs_desc: "ZeroTrace 只是開始。以下是正在開發中的隱私防護生態系。",
+                lab1_title: "ZeroTrace RAM Sandbox",
+                lab1_desc: "將機密作業完全限制在揮發性記憶體中運行，程序關閉後零殘留於磁碟。",
+                lab2_title: "AirDrop-X",
+                lab2_desc: "零網路、點對點加密傳輸協定，完全不觸碰任何伺服器即可安全傳送大型檔案。",
+                lab3_title: "SteganoVault",
+                lab3_desc: "將機密資料隱寫於圖片像素中，外表是普通圖片，只有金鑰持有者能還原內容。",
+                lab4_title: "Hardware Key Dongle",
+                lab4_desc: "物理硬體金鑰驗證模組，金鑰永不離開硬體晶片，抵禦軟體層一切形式的金鑰竊取攻擊。",
+                nav_support: "支持我們",
+                nav_labs: "未來實驗室",
                 logo: "JBA128G3 安全盾",
                 nav_features: "產品特色",
                 nav_video: "影音展示",
@@ -2640,6 +3094,72 @@
                 copied_msg: "錢包地址已成功複製！"
             },
             en: {
+                // === Backer & Labs ===
+                backer_badge: "PIONEER SUPPORT",
+                backer_title: "Be Among the First ZeroTrace Supporters",
+                backer_desc: "Your support is more than a donation — it's a declaration to build the next era of privacy together.",
+                pioneer_title: "Pioneer Backer",
+                pioneer_desc: "Join the core community of ZeroTrace's earliest supporters and get first access to every major update.",
+                pioneer_perk1: "Lifetime free decryption license",
+                pioneer_perk2: "Priority beta access",
+                pioneer_perk3: "Exclusive Pioneer badge in community",
+                pioneer_perk4: "Roadmap voting rights",
+                pioneer_perk5: "Monthly internal R&D progress report",
+                pioneer_btn: "Support Now →",
+                investor_title: "Investor Portal",
+                investor_desc: "We are looking for aligned early-stage partners to bring ZeroTrace to enterprise markets and global deployment.",
+                investor_perk1: "Priority enterprise licensing partnership",
+                investor_perk2: "Access to whitepaper & financial model",
+                investor_perk3: "1-on-1 founder briefing session",
+                investor_perk4: "Product roadmap & competitive analysis",
+                investor_perk5: "Preferred early-stage equity terms",
+                investor_btn: "Contact Investor Portal →",
+                labs_badge: "UPCOMING LABS",
+                labs_title: "The Next Weapons We Are Building",
+                labs_desc: "ZeroTrace is just the beginning. Here is the privacy ecosystem currently in development.",
+                lab1_title: "ZeroTrace RAM Sandbox",
+                lab1_desc: "Confines classified operations entirely to volatile memory — zero disk residue after process termination.",
+                lab2_title: "AirDrop-X",
+                lab2_desc: "Zero-network peer-to-peer encrypted transfer protocol. Send large files securely without touching any server.",
+                lab3_title: "SteganoVault",
+                lab3_desc: "Steganographically hides classified data within image pixels. Looks like a normal image; only key holders can recover the content.",
+                lab4_title: "Hardware Key Dongle",
+                lab4_desc: "Physical hardware key authentication module. The key never leaves the hardware chip, defeating all software-layer key-theft attacks.",
+                nav_support: "Support Us",
+                nav_labs: "Future Labs",
+                // === Backer & Labs ===
+                backer_badge: "PIONEER SUPPORT",
+                backer_title: "Be Among the First ZeroTrace Supporters",
+                backer_desc: "Your support is more than a donation — it's a declaration to build the next era of privacy together.",
+                pioneer_title: "Pioneer Backer",
+                pioneer_desc: "Join the core community of ZeroTrace's earliest supporters and get first access to every major update.",
+                pioneer_perk1: "Lifetime free decryption license",
+                pioneer_perk2: "Priority beta access",
+                pioneer_perk3: "Exclusive Pioneer badge in community",
+                pioneer_perk4: "Roadmap voting rights",
+                pioneer_perk5: "Monthly internal R&D progress report",
+                pioneer_btn: "Support Now →",
+                investor_title: "Investor Portal",
+                investor_desc: "We are looking for aligned early-stage partners to bring ZeroTrace to enterprise markets and global deployment.",
+                investor_perk1: "Priority enterprise licensing partnership",
+                investor_perk2: "Access to whitepaper & financial model",
+                investor_perk3: "1-on-1 founder briefing session",
+                investor_perk4: "Product roadmap & competitive analysis",
+                investor_perk5: "Preferred early-stage equity terms",
+                investor_btn: "Contact Investor Portal →",
+                labs_badge: "UPCOMING LABS",
+                labs_title: "The Next Weapons We Are Building",
+                labs_desc: "ZeroTrace is just the beginning. Here is the privacy ecosystem currently in development.",
+                lab1_title: "ZeroTrace RAM Sandbox",
+                lab1_desc: "Confines classified operations entirely to volatile memory — zero disk residue after process termination.",
+                lab2_title: "AirDrop-X",
+                lab2_desc: "Zero-network peer-to-peer encrypted transfer protocol. Send large files securely without touching any server.",
+                lab3_title: "SteganoVault",
+                lab3_desc: "Steganographically hides classified data within image pixels. Looks like a normal image; only key holders can recover the content.",
+                lab4_title: "Hardware Key Dongle",
+                lab4_desc: "Physical hardware key authentication module. The key never leaves the hardware chip, defeating all software-layer key-theft attacks.",
+                nav_support: "Support Us",
+                nav_labs: "Future Labs",
                 logo: "JBA128G3 Shield",
                 nav_features: "Features",
                 nav_video: "Short Video",
@@ -2899,6 +3419,72 @@
                 copied_msg: "Wallet address copied to clipboard!"
             },
             ja: {
+                // === Backer & Labs ===
+                backer_badge: "パイオニア支援",
+                backer_title: "ZeroTrace 最初の支持者になる",
+                backer_desc: "あなたのサポートは単なる寄付ではなく、次のプライバシー時代を共に作る宣言です。",
+                pioneer_title: "Pioneer Backer",
+                pioneer_desc: "ZeroTrace の最初のコアコミュニティメンバーになり、すべての主要アップデートを先行体験できます。",
+                pioneer_perk1: "永久無料復号ライセンス",
+                pioneer_perk2: "ベータ版の優先アクセス",
+                pioneer_perk3: "コミュニティ専用 Pioneer バッジ",
+                pioneer_perk4: "ロードマップ投票権",
+                pioneer_perk5: "毎月の内部開発進捗レポート",
+                pioneer_btn: "今すぐ支援 →",
+                investor_title: "Investor Portal",
+                investor_desc: "理念を共有する早期投資パートナーを募集し、ZeroTrace を企業市場とグローバル展開へ導きます。",
+                investor_perk1: "エンタープライズライセンスの優先パートナーシップ",
+                investor_perk2: "ホワイトペーパー・財務モデルへのアクセス",
+                investor_perk3: "創業チームとの 1 対 1 ブリーフィング",
+                investor_perk4: "製品ロードマップ・競合分析レポート",
+                investor_perk5: "早期株式条件の優先交渉",
+                investor_btn: "投資窓口へのお問い合わせ →",
+                labs_badge: "未来のラボ",
+                labs_title: "次の武器を開発中",
+                labs_desc: "ZeroTrace は始まりに過ぎません。現在開発中のプライバシー保護エコシステムです。",
+                lab1_title: "ZeroTrace RAM Sandbox",
+                lab1_desc: "機密操作を揮発性メモリに完全に限定し、プロセス終了後もディスクに残留しません。",
+                lab2_title: "AirDrop-X",
+                lab2_desc: "ゼロネットワークのP2P暗号化転送プロトコル。サーバーに触れることなく大容量ファイルを安全に転送。",
+                lab3_title: "SteganoVault",
+                lab3_desc: "機密データを画像のピクセルにステガノグラフィで隠します。鍵所有者だけが内容を復元できます。",
+                lab4_title: "Hardware Key Dongle",
+                lab4_desc: "物理ハードウェアキー認証モジュール。鍵はハードウェアチップから出ることなく、あらゆる鍵盗難攻撃を防ぎます。",
+                nav_support: "サポート",
+                nav_labs: "未来のラボ",
+                // === Backer & Labs ===
+                backer_badge: "パイオニア支援",
+                backer_title: "ZeroTrace 最初の支持者になる",
+                backer_desc: "あなたのサポートは単なる寄付ではなく、次のプライバシー時代を共に作る宣言です。",
+                pioneer_title: "Pioneer Backer",
+                pioneer_desc: "ZeroTrace の最初のコアコミュニティメンバーになり、すべての主要アップデートを先行体験できます。",
+                pioneer_perk1: "永久無料復号ライセンス",
+                pioneer_perk2: "ベータ版の優先アクセス",
+                pioneer_perk3: "コミュニティ専用 Pioneer バッジ",
+                pioneer_perk4: "ロードマップ投票権",
+                pioneer_perk5: "毎月の内部開発進捗レポート",
+                pioneer_btn: "今すぐ支援 →",
+                investor_title: "Investor Portal",
+                investor_desc: "理念を共有する早期投資パートナーを募集し、ZeroTrace を企業市場とグローバル展開へ導きます。",
+                investor_perk1: "エンタープライズライセンスの優先パートナーシップ",
+                investor_perk2: "ホワイトペーパー・財務モデルへのアクセス",
+                investor_perk3: "創業チームとの 1 対 1 ブリーフィング",
+                investor_perk4: "製品ロードマップ・競合分析レポート",
+                investor_perk5: "早期株式条件の優先交渉",
+                investor_btn: "投資窓口へのお問い合わせ →",
+                labs_badge: "未来のラボ",
+                labs_title: "次の武器を開発中",
+                labs_desc: "ZeroTrace は始まりに過ぎません。現在開発中のプライバシー保護エコシステムです。",
+                lab1_title: "ZeroTrace RAM Sandbox",
+                lab1_desc: "機密操作を揮発性メモリに完全に限定し、プロセス終了後もディスクに残留しません。",
+                lab2_title: "AirDrop-X",
+                lab2_desc: "ゼロネットワークのP2P暗号化転送プロトコル。サーバーに触れることなく大容量ファイルを安全に転送。",
+                lab3_title: "SteganoVault",
+                lab3_desc: "機密データを画像のピクセルにステガノグラフィで隠します。鍵所有者だけが内容を復元できます。",
+                lab4_title: "Hardware Key Dongle",
+                lab4_desc: "物理ハードウェアキー認証モジュール。鍵はハードウェアチップから出ることなく、あらゆる鍵盗難攻撃を防ぎます。",
+                nav_support: "サポート",
+                nav_labs: "未来のラボ",
                 logo: "JBA128G3 防護シールド",
                 nav_features: "特徴",
                 nav_video: "ショート動画",
