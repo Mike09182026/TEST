@@ -2088,157 +2088,6 @@
         </div>
     </div>
 
-    <section id="features">
-        <h2 class="section-title" data-i18n="features_title">四大硬核防護體系</h2>
-        <p class="section-desc" data-i18n="features_desc">突破傳統加密局限，為個人與企業打造最嚴苛的本機安全壁壘</p>
-        <div class="features-grid">
-            <!-- 體系 1 -->
-            <div class="feature-card" id="featCard1">
-                <div class="feature-icon">🛡️</div>
-                <h3 data-i18n="f1_title">後量子幾何流式加密</h3>
-                <p data-i18n="f1_desc">非公開 AES 家族，由 J Will 團隊與 CB Tec 自研，單機無預留後門，防範未來暴力算力破譯。</p>
-                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard1')">
-                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
-                    <span class="feat-btn-icon">▾</span>
-                </button>
-                <div class="feat-drawer">
-                    <div class="feat-drawer-inner">
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f1_p1_t">幾何流式密碼學架構</strong>
-                                <p data-i18n="f1_p1_d">採用 CB Tec 自研多維幾何狀態轉移演算法，避開傳統公開 AES 分組密碼結構，防範未來量子運算 Shor/Grover 演算法的已知弱點攻擊。</p>
-                            </div>
-                        </div>
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f1_p2_t">100% 單機離線，拒絕金鑰託管</strong>
-                                <p data-i18n="f1_p2_d">密鑰由本機記憶體即時演算法推導，無中繼伺服器、無任何形式的金鑰託管，徹底杜絕伺服器被駭或後門調取風險。</p>
-                            </div>
-                        </div>
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f1_p3_t">防彩虹表與動態混淆</strong>
-                                <p data-i18n="f1_p3_d">整合動態高熵隨機鹽值與多輪非線性位元擴展置換，使任何預先算好的彩虹表或 GPU/FPGA 碰撞叢集完全失效。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 體系 2 -->
-            <div class="feature-card" id="featCard2">
-                <div class="feature-icon">📁</div>
-                <h3 data-i18n="f2_title">20GB 巨型資料夾封裝</h3>
-                <p data-i18n="f2_desc">內建 64MB 零拷貝串流架構，記憶體全程 < 200MB，解密 100% Bit-Perfect 原位還原目錄層級。</p>
-                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard2')">
-                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
-                    <span class="feat-btn-icon">▾</span>
-                </button>
-                <div class="feat-drawer">
-                    <div class="feat-drawer-inner">
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f2_p1_t">64MB 環形零拷貝緩衝</strong>
-                                <p data-i18n="f2_p1_d">獨家零拷貝流式讀寫架構，將記憶體消耗固定在 O(1) 常數級別，無論加密 500MB 或 20GB 大檔，RAM 全程鎖定 < 200MB。</p>
-                            </div>
-                        </div>
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f2_p2_t">遞迴目錄樹無損還原</strong>
-                                <p data-i18n="f2_p2_d">支援海量深層子目錄與 14,000+ 檔案原位封裝為單一 .JBS 密文容器，解密後 100% 原位原貌重建所有資料夾樹狀結構。</p>
-                            </div>
-                        </div>
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f2_p3_t">1~4 多工作通道併發</strong>
-                                <p data-i18n="f2_p3_d">支援智慧循序磁碟通道讀寫，避開傳統壓縮軟體頻繁磁碟搜尋（Disk Thrashing）與高頻快取溢出導致的電腦死機。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 體系 3 -->
-            <div class="feature-card" id="featCard3">
-                <div class="feature-icon">⚙️</div>
-                <h3 data-i18n="f3_title">JBA-Shredder 物理粉碎</h3>
-                <p data-i18n="f3_desc">加密驗證完成後，自動覆寫抹除未加密原檔，頂級資料救援軟體（如 Recuva）亦徹底無效。</p>
-                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard3')">
-                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
-                    <span class="feat-btn-icon">▾</span>
-                </button>
-                <div class="feat-drawer">
-                    <div class="feat-drawer-inner">
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f3_p1_t">告別假刪除（打破作業系統盲區）</strong>
-                                <p data-i18n="f3_p1_d">傳統「刪除」或「清空回收筒」僅移除檔案系統索引指針，磁區平文完好如初。JBA-Shredder 深入實體磁區進行覆寫。</p>
-                            </div>
-                        </div>
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f3_p2_t">多輪隨機數據覆寫</strong>
-                                <p data-i18n="f3_p2_d">加密完成並通過校驗後，自動觸發 3 次隨機高熵二進位位元組反覆覆寫抹除，徹底破壞磁性或電荷殘留痕跡。</p>
-                            </div>
-                        </div>
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f3_p3_t">硬體級快取強制落盤</strong>
-                                <p data-i18n="f3_p3_d">調用底層 FlushFileBuffers 強制穿透硬體快取寫入實體磁盤，Recuva、Disk Drill 等頂級資料救援工具搜尋結果一律為 0 位元組。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 體系 4 -->
-            <div class="feature-card" id="featCard4">
-                <div class="feature-icon">🌟</div>
-                <h3 data-i18n="f4_title">解密永久免費・無限制</h3>
-                <p data-i18n="f4_desc">加密檔案發給客戶或同仁，對方無需付費、無需註冊即可自由解密，打造零阻力協同流轉。</p>
-                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard4')">
-                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
-                    <span class="feat-btn-icon">▾</span>
-                </button>
-                <div class="feat-drawer">
-                    <div class="feat-drawer-inner">
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f4_p1_t">不對稱商務模型</strong>
-                                <p data-i18n="f4_p1_d">傳送端（加密）負責極限保護，接收端（解密）永遠 100% 免費、不限次數、無任何隱藏收費與訂閱牆。</p>
-                            </div>
-                        </div>
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f4_p2_t">SHA-256 二進制零誤差</strong>
-                                <p data-i18n="f4_p2_d">整合 SHA-256 二進位逐位元完整性校驗，確保解密後的檔案與原始檔案二進位位元組 100% 絕對吻合，零遺失、零損壞。</p>
-                            </div>
-                        </div>
-                        <div class="feat-detail-point">
-                            <span class="feat-pt-dot"></span>
-                            <div>
-                                <strong data-i18n="f4_p3_t">免註冊・免聯網・即開即用</strong>
-                                <p data-i18n="f4_p3_d">客戶或合作夥伴下載便攜檔即可離線解密，無須綁定 Email、無個資追蹤、無跨國合規摩擦。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3.5 線上拖曳加密互動模擬器 -->
     <!-- 3.5 真實軟體互動模擬器 (Integrated Real Software Interactive Demo) -->
     <section id="simulator">
         <span id="howitworks" style="display:none;"></span>
@@ -2456,6 +2305,161 @@
             </div>
         </div>
     </section>
+
+
+
+    <!-- 3.5 線上拖曳加密互動模擬器 -->
+    <section id="features">
+        <h2 class="section-title" data-i18n="features_title">四大硬核防護體系</h2>
+        <p class="section-desc" data-i18n="features_desc">突破傳統加密局限，為個人與企業打造最嚴苛的本機安全壁壘</p>
+        <div class="features-grid">
+            <!-- 體系 1 -->
+            <div class="feature-card" id="featCard1">
+                <div class="feature-icon">🛡️</div>
+                <h3 data-i18n="f1_title">後量子幾何流式加密</h3>
+                <p data-i18n="f1_desc">非公開 AES 家族，由 J Will 團隊與 CB Tec 自研，單機無預留後門，防範未來暴力算力破譯。</p>
+                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard1')">
+                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
+                    <span class="feat-btn-icon">▾</span>
+                </button>
+                <div class="feat-drawer">
+                    <div class="feat-drawer-inner">
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f1_p1_t">幾何流式密碼學架構</strong>
+                                <p data-i18n="f1_p1_d">採用 CB Tec 自研多維幾何狀態轉移演算法，避開傳統公開 AES 分組密碼結構，防範未來量子運算 Shor/Grover 演算法的已知弱點攻擊。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f1_p2_t">100% 單機離線，拒絕金鑰託管</strong>
+                                <p data-i18n="f1_p2_d">密鑰由本機記憶體即時演算法推導，無中繼伺服器、無任何形式的金鑰託管，徹底杜絕伺服器被駭或後門調取風險。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f1_p3_t">防彩虹表與動態混淆</strong>
+                                <p data-i18n="f1_p3_d">整合動態高熵隨機鹽值與多輪非線性位元擴展置換，使任何預先算好的彩虹表或 GPU/FPGA 碰撞叢集完全失效。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 體系 2 -->
+            <div class="feature-card" id="featCard2">
+                <div class="feature-icon">📁</div>
+                <h3 data-i18n="f2_title">20GB 巨型資料夾封裝</h3>
+                <p data-i18n="f2_desc">內建 64MB 零拷貝串流架構，記憶體全程 < 200MB，解密 100% Bit-Perfect 原位還原目錄層級。</p>
+                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard2')">
+                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
+                    <span class="feat-btn-icon">▾</span>
+                </button>
+                <div class="feat-drawer">
+                    <div class="feat-drawer-inner">
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f2_p1_t">64MB 環形零拷貝緩衝</strong>
+                                <p data-i18n="f2_p1_d">獨家零拷貝流式讀寫架構，將記憶體消耗固定在 O(1) 常數級別，無論加密 500MB 或 20GB 大檔，RAM 全程鎖定 < 200MB。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f2_p2_t">遞迴目錄樹無損還原</strong>
+                                <p data-i18n="f2_p2_d">支援海量深層子目錄與 14,000+ 檔案原位封裝為單一 .JBS 密文容器，解密後 100% 原位原貌重建所有資料夾樹狀結構。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f2_p3_t">1~4 多工作通道併發</strong>
+                                <p data-i18n="f2_p3_d">支援智慧循序磁碟通道讀寫，避開傳統壓縮軟體頻繁磁碟搜尋（Disk Thrashing）與高頻快取溢出導致的電腦死機。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 體系 3 -->
+            <div class="feature-card" id="featCard3">
+                <div class="feature-icon">⚙️</div>
+                <h3 data-i18n="f3_title">JBA-Shredder 物理粉碎</h3>
+                <p data-i18n="f3_desc">加密驗證完成後，自動覆寫抹除未加密原檔，頂級資料救援軟體（如 Recuva）亦徹底無效。</p>
+                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard3')">
+                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
+                    <span class="feat-btn-icon">▾</span>
+                </button>
+                <div class="feat-drawer">
+                    <div class="feat-drawer-inner">
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f3_p1_t">告別假刪除（打破作業系統盲區）</strong>
+                                <p data-i18n="f3_p1_d">傳統「刪除」或「清空回收筒」僅移除檔案系統索引指針，磁區平文完好如初。JBA-Shredder 深入實體磁區進行覆寫。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f3_p2_t">多輪隨機數據覆寫</strong>
+                                <p data-i18n="f3_p2_d">加密完成並通過校驗後，自動觸發 3 次隨機高熵二進位位元組反覆覆寫抹除，徹底破壞磁性或電荷殘留痕跡。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f3_p3_t">硬體級快取強制落盤</strong>
+                                <p data-i18n="f3_p3_d">調用底層 FlushFileBuffers 強制穿透硬體快取寫入實體磁盤，Recuva、Disk Drill 等頂級資料救援工具搜尋結果一律為 0 位元組。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 體系 4 -->
+            <div class="feature-card" id="featCard4">
+                <div class="feature-icon">🌟</div>
+                <h3 data-i18n="f4_title">解密永久免費・無限制</h3>
+                <p data-i18n="f4_desc">加密檔案發給客戶或同仁，對方無需付費、無需註冊即可自由解密，打造零阻力協同流轉。</p>
+                <button class="feat-toggle-btn" onclick="toggleFeatureCard('featCard4')">
+                    <span class="feat-btn-text" data-i18n="feat_more_btn">技術深度詳解</span>
+                    <span class="feat-btn-icon">▾</span>
+                </button>
+                <div class="feat-drawer">
+                    <div class="feat-drawer-inner">
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f4_p1_t">不對稱商務模型</strong>
+                                <p data-i18n="f4_p1_d">傳送端（加密）負責極限保護，接收端（解密）永遠 100% 免費、不限次數、無任何隱藏收費與訂閱牆。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f4_p2_t">SHA-256 二進制零誤差</strong>
+                                <p data-i18n="f4_p2_d">整合 SHA-256 二進位逐位元完整性校驗，確保解密後的檔案與原始檔案二進位位元組 100% 絕對吻合，零遺失、零損壞。</p>
+                            </div>
+                        </div>
+                        <div class="feat-detail-point">
+                            <span class="feat-pt-dot"></span>
+                            <div>
+                                <strong data-i18n="f4_p3_t">免註冊・免聯網・即開即用</strong>
+                                <p data-i18n="f4_p3_d">客戶或合作夥伴下載便攜檔即可離線解密，無須綁定 Email、無個資追蹤、無跨國合規摩擦。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
 
     
