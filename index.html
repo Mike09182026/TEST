@@ -1780,6 +1780,223 @@
             letter-spacing: 1px;
         }
 
+        
+        /* === 信任數字指標 === */
+        .trust-strip {
+            background: linear-gradient(135deg, rgba(0,240,255,0.06) 0%, rgba(0,255,136,0.04) 100%);
+            border-top: 1px solid rgba(0,240,255,0.15);
+            border-bottom: 1px solid rgba(0,240,255,0.15);
+            padding: 40px 20px;
+        }
+        .trust-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .trust-item {
+            text-align: center;
+        }
+        .trust-number {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00f0ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        .trust-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        /* === 截圖 Gallery === */
+        .gallery-section {
+            padding: 70px 20px;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .gallery-tab-btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            background: rgba(13,21,34,0.8);
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .gallery-tab-btn.active, .gallery-tab-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(0,240,255,0.1);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .gallery-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .gallery-card:hover {
+            border-color: rgba(0,240,255,0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0,240,255,0.12);
+        }
+        .gallery-thumb {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #0a1628, #0d2040);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-thumb-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .gallery-thumb-placeholder span {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+        .gallery-caption {
+            padding: 14px 16px;
+        }
+        .gallery-caption h4 {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .gallery-caption p {
+            color: var(--text-muted);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* === 團隊介紹 === */
+        .team-section {
+            padding: 70px 20px;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            margin-top: 36px;
+        }
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .team-card:hover {
+            border-color: rgba(0,240,255,0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(0,240,255,0.1);
+        }
+        .team-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            border: 2px solid rgba(0,240,255,0.4);
+            overflow: hidden;
+            background: linear-gradient(135deg, #0d2040, #0a1628);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-name {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+        .team-role {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .team-bio {
+            color: var(--text-muted);
+            font-size: 12.5px;
+            line-height: 1.6;
+        }
+        .team-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        .team-skill-tag {
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: rgba(0,240,255,0.08);
+            border: 1px solid rgba(0,240,255,0.2);
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .team-more-card {
+            background: rgba(13,21,34,0.5);
+            border: 2px dashed rgba(0,240,255,0.2);
+            border-radius: 18px;
+            padding: 28px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .team-more-card p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
         </style>
 </head>
 <body>
@@ -1791,14 +2008,11 @@
             <div class="nav-right">
                 <nav class="nav-links">
                     <a href="#features" data-i18n="nav_features">產品特色</a>
-                    <a href="#simulator" data-i18n="nav_simulator">模擬體驗</a>
-                    <a href="#video" data-i18n="nav_video">30秒短影音</a>
                     <a href="#compare" data-i18n="nav_compare">競品對比</a>
                     <a href="#faq" data-i18n="nav_faq">常見問題</a>
-                    <a href="#donate" style="color: var(--accent);" data-i18n="nav_donate">☕ 贊助支持</a>
                     <a href="#download" data-i18n="nav_download">下載專區</a>
-                    <a href="#support" style="color: var(--secondary);" data-i18n="nav_support">🚀 支持我們</a>
-                    <a href="#labs" style="color: var(--primary);" data-i18n="nav_labs">🔬 未來實驗室</a>
+                    <a href="#support" style="color: var(--secondary); font-weight:900;" data-i18n="nav_support">🚀 支持我們</a>
+                    <a href="#labs" style="color: var(--primary); font-weight:900;" data-i18n="nav_labs">🔬 未來實驗室</a>
                 </nav>
                 <select id="languageSelect" class="lang-select" onchange="changeLanguage(this.value)">
                     <option value="en" selected>English</option>
@@ -1826,6 +2040,41 @@
 
     <!-- 3. 特性網格 -->
         <!-- 3. Features Section (四大硬核防護體系 - 支援摺疊技術深度展開) -->
+    
+    <!-- === 信任數字指標 Trust Strip === -->
+    <div class="trust-strip">
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-number" data-i18n="trust_num1">20 GB+</div>
+                <div class="trust-label" data-i18n="trust_label1">單次最大處理容量</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number" data-i18n="trust_num2">0 次</div>
+                <div class="trust-label" data-i18n="trust_label2">VirusTotal 誤報紀錄</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number" data-i18n="trust_num3">3 Pass</div>
+                <div class="trust-label" data-i18n="trust_label3">DoD 5220.22-M 軍規抹除標準</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number" data-i18n="trust_num4">128-bit</div>
+                <div class="trust-label" data-i18n="trust_label4">後量子等效密碼強度</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number" data-i18n="trust_num5">100%</div>
+                <div class="trust-label" data-i18n="trust_label5">單機離線 · 零雲端留痕</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number" data-i18n="trust_num6">&lt; 200 MB</div>
+                <div class="trust-label" data-i18n="trust_label6">20GB 大檔全程記憶體上限</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number" data-i18n="trust_num7">100%</div>
+                <div class="trust-label" data-i18n="trust_label7">Bit-Perfect SHA-256 零誤差還原</div>
+            </div>
+        </div>
+    </div>
+
     <section id="features">
         <h2 class="section-title" data-i18n="features_title">四大硬核防護體系</h2>
         <p class="section-desc" data-i18n="features_desc">突破傳統加密局限，為個人與企業打造最嚴苛的本機安全壁壘</p>
@@ -2196,22 +2445,79 @@
     </section>
 
 
-    <section id="video" style="max-width:1100px;">
-        <h2 class="section-title" data-i18n="video_title">30 秒看懂：為什麼丟垃圾桶不安全？</h2>
-        <p class="section-desc" data-i18n="video_desc">專為 TikTok / Shorts / Reels 量身打造的直式動態短影音播放器</p>
-        <div class="video-box">
-            <div class="phone-mockup">
-                <iframe src="./short_video.html" title="Short Video Player"></iframe>
+    
+    <!-- === 產品截圖 Gallery === -->
+    <section id="gallery" class="gallery-section">
+        <div style="text-align:center;">
+            <div class="badge" data-i18n="gallery_badge">PRODUCT SCREENSHOTS</div>
+        </div>
+        <h2 class="section-title" style="margin-top:14px;" data-i18n="gallery_title">真實軟體介面一覽</h2>
+        <p class="section-desc" data-i18n="gallery_desc">這就是 ZeroTrace 的實際操作畫面，所見即所得，零虛假宣傳。</p>
+
+        <div class="gallery-tabs">
+            <button class="gallery-tab-btn active" onclick="filterGallery('all')" data-i18n="gallery_tab_all">全部</button>
+            <button class="gallery-tab-btn" onclick="filterGallery('encrypt')" data-i18n="gallery_tab_enc">加密流程</button>
+            <button class="gallery-tab-btn" onclick="filterGallery('decrypt')" data-i18n="gallery_tab_dec">解密流程</button>
+            <button class="gallery-tab-btn" onclick="filterGallery('shred')" data-i18n="gallery_tab_shred">物理抹除</button>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- 截圖 1 -->
+            <div class="gallery-card" data-category="encrypt">
+                <div class="gallery-thumb">
+                    <div class="gallery-thumb-placeholder">
+                        <span style="font-size:40px;">🖥️</span>
+                        <span>SCREENSHOT PENDING</span>
+                    </div>
+                </div>
+                <div class="gallery-caption">
+                    <h4 data-i18n="gallery1_title">主介面 — 拖曳加密</h4>
+                    <p data-i18n="gallery1_desc">中央大型光暈 Drop Zone，【加密 Encrypt】分頁下，極簡高科技感初始畫面。</p>
+                </div>
             </div>
-            <div class="video-info">
-                <h3 style="font-size:24px; color:#fff; margin-bottom:12px;" data-i18n="video_h3">高穿透力視覺呈現</h3>
-                <p style="color:var(--text-muted); font-size:15px; margin-bottom:20px;" data-i18n="video_p">
-                    左側短影音內嵌真人中文語音旁白 (TTS)、重低音卡點音效與大字報跳轉。點擊播放即可在線體驗高科技安全護盾震撼效果！
-                </p>
-                <button class="btn-main" onclick="showDemoAlert()" data-i18n="btn_get_shield">立即領取 ZeroTrace</button>
+            <!-- 截圖 2 -->
+            <div class="gallery-card" data-category="encrypt">
+                <div class="gallery-thumb">
+                    <div class="gallery-thumb-placeholder">
+                        <span style="font-size:40px;">⚡</span>
+                        <span>SCREENSHOT PENDING</span>
+                    </div>
+                </div>
+                <div class="gallery-caption">
+                    <h4 data-i18n="gallery2_title">串流進度 — 多通道即時監控</h4>
+                    <p data-i18n="gallery2_desc">螢光藍進度條平滑推進，顯示加密中百分比與多通道高併發吞吐率。</p>
+                </div>
+            </div>
+            <!-- 截圖 3 -->
+            <div class="gallery-card" data-category="decrypt">
+                <div class="gallery-thumb">
+                    <div class="gallery-thumb-placeholder">
+                        <span style="font-size:40px;">🔓</span>
+                        <span>SCREENSHOT PENDING</span>
+                    </div>
+                </div>
+                <div class="gallery-caption">
+                    <h4 data-i18n="gallery3_title">解密端 — 專屬 .JBS 容器格式</h4>
+                    <p data-i18n="gallery3_desc">【解密 Decrypt】分頁，載入 .JBS 密文檔，接收方永久免費，零門檻還原。</p>
+                </div>
+            </div>
+            <!-- 截圖 4 -->
+            <div class="gallery-card" data-category="shred">
+                <div class="gallery-thumb">
+                    <div class="gallery-thumb-placeholder">
+                        <span style="font-size:40px;">💥</span>
+                        <span>SCREENSHOT PENDING</span>
+                    </div>
+                </div>
+                <div class="gallery-caption">
+                    <h4 data-i18n="gallery4_title">JBA-Shredder — DoD 軍規物理粉碎</h4>
+                    <p data-i18n="gallery4_desc">三次覆寫完成顯示「✅ 完成」，實體快取穿透，Recuva / Disk Drill 回傳 0 位元組。</p>
+                </div>
             </div>
         </div>
     </section>
+
+    
 
         <!-- 5. 顛覆傳統認知：互動式對比滑塊 (方向一) + 雙軌真實情境時間軸 (方向四) + 完整對照表 -->
     <section id="compare">
@@ -2415,71 +2721,7 @@
         </div>
     </section>
 
-    <!-- 6. 贊助支持區塊 (保留並升級) -->
-    <section id="donate">
-        <h2 class="section-title" data-i18n="donate_title">☕ 支持與贊助團隊</h2>
-        <p class="section-desc" data-i18n="donate_desc">您的支持是 J Will 團隊持續研發後量子加密與維護更新的最大動力！</p>
-        <div class="donate-box">
-            <h3 data-i18n="donate_box_title" style="color:#fff; margin-bottom:8px;">請開發者喝一杯咖啡</h3>
-            
-            <div class="donate-tabs">
-                <button class="tab-btn active" onclick="switchTab('fiat')" data-i18n="tab_fiat">💳 信用卡 / 美金 (USD)</button>
-                <button class="tab-btn" onclick="switchTab('crypto')" data-i18n="tab_crypto">🪙 虛擬貨幣贊助</button>
-            </div>
-
-            <!-- 法幣 USD -->
-            <div id="fiat-tab" class="tab-content active">
-                <div class="amount-buttons">
-                    <button class="amount-btn" onclick="setAmount(5)">$5 USD</button>
-                    <button class="amount-btn" onclick="setAmount(10)">$10 USD</button>
-                    <button class="amount-btn" onclick="setAmount(25)">$25 USD</button>
-                    <button class="amount-btn" onclick="setAmount(50)">$50 USD</button>
-                    <button class="amount-btn" onclick="setAmount(100)">$100 USD</button>
-                </div>
-                <div>
-                    <input type="number" id="customAmount" class="custom-amount-input" placeholder="Custom Amount ($ USD)" value="10" min="1">
-                </div>
-                <button class="btn-donate" onclick="processDonate()" data-i18n="btn_donate_submit">前往贊助 (USD)</button>
-            </div>
-
-            <!-- 虛擬貨幣 Crypto -->
-            <div id="crypto-tab" class="tab-content">
-                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;" data-i18n="crypto_tip">轉帳時請務必選擇對應的區塊鏈網路！</p>
-                <div class="crypto-list">
-                    <div class="crypto-item">
-                        <div class="crypto-header">
-                            <span style="color:#fff;">USDT</span>
-                            <span style="color: #10b981;">TRC-20 (TRON)</span>
-                        </div>
-                        <div class="crypto-addr-box">
-                            <span class="crypto-addr" id="addr-usdt-trc20">TY1234567890abcdef1234567890SampleTRC20Addr</span>
-                            <button class="btn-copy" onclick="copyAddress('addr-usdt-trc20')" data-i18n="btn_copy">複製</button>
-                        </div>
-                    </div>
-                    <div class="crypto-item">
-                        <div class="crypto-header">
-                            <span style="color:#fff;">USDT / USDC / ETH</span>
-                            <span style="color: #6366f1;">ERC-20 (Ethereum)</span>
-                        </div>
-                        <div class="crypto-addr-box">
-                            <span class="crypto-addr" id="addr-eth">0x1234567890abcdef1234567890SampleERC20Addr</span>
-                            <button class="btn-copy" onclick="copyAddress('addr-eth')" data-i18n="btn_copy">複製</button>
-                        </div>
-                    </div>
-                    <div class="crypto-item">
-                        <div class="crypto-header">
-                            <span style="color:#fff;">Bitcoin (BTC)</span>
-                            <span style="color: #f59e0b;">BTC Network</span>
-                        </div>
-                        <div class="crypto-addr-box">
-                            <span class="crypto-addr" id="addr-btc">bc1q1234567890abcdef1234567890SampleBTCAddr</span>
-                            <button class="btn-copy" onclick="copyAddress('addr-btc')" data-i18n="btn_copy">複製</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- 6.5 常見問題 FAQ 手風琴 -->
     <section id="faq">
@@ -2689,6 +2931,63 @@
         </div>
     </section>
 
+    
+    <!-- === 團隊介紹 Team === -->
+    <section id="team" class="team-section">
+        <div style="text-align:center;">
+            <div class="badge" data-i18n="team_badge">THE TEAM</div>
+        </div>
+        <h2 class="section-title" style="margin-top:14px;" data-i18n="team_title">打造 ZeroTrace 的人</h2>
+        <p class="section-desc" data-i18n="team_desc">我們不只做這個。我們是一支能走更遠的技術團隊。</p>
+
+        <div class="team-grid">
+            <!-- 成員 1（佔位符，等待開發團隊提供資料）-->
+            <div class="team-card">
+                <div class="team-avatar">👨‍💻</div>
+                <div class="team-name" data-i18n="team1_name">J Will</div>
+                <div class="team-role" data-i18n="team1_role">創辦人 / 核心架構師</div>
+                <div class="team-bio" data-i18n="team1_bio">CB Tec 核心技術主導者，CB-GSC-128 幾何流式加密與 PiRAP 引擎設計者。</div>
+                <div class="team-skills">
+                    <span class="team-skill-tag">C / C++</span>
+                    <span class="team-skill-tag">密碼學</span>
+                    <span class="team-skill-tag">系統架構</span>
+                </div>
+            </div>
+            <!-- 成員 2：Alan Lin -->
+            <div class="team-card">
+                <div class="team-avatar">⚙️</div>
+                <div class="team-name" data-i18n="team2_name">Alan Lin</div>
+                <div class="team-role" data-i18n="team2_role">Lead Systems &amp; Client Architect</div>
+                <div class="team-bio" data-i18n="team2_bio">8 年跨平台系統軟體研發經驗，專精底層 C/C++ 串流引擎與高併發非同步 I/O 排程架構。</div>
+                <div class="team-skills">
+                    <span class="team-skill-tag">C / C++</span>
+                    <span class="team-skill-tag">Electron</span>
+                    <span class="team-skill-tag">Systems Architecture</span>
+                    <span class="team-skill-tag">Zero-Copy I/O</span>
+                </div>
+            </div>
+            <!-- 成員 3：Dr. Marcus Chen -->
+            <div class="team-card">
+                <div class="team-avatar">🔬</div>
+                <div class="team-name" data-i18n="team3_name">Dr. Marcus Chen</div>
+                <div class="team-role" data-i18n="team3_role">Senior Cryptography &amp; Security Auditor</div>
+                <div class="team-bio" data-i18n="team3_bio">專注於非對稱幾何混沌密碼體系、後量子計算防禦與二進位防逆向硬化，主導軍規抹除合規驗證。</div>
+                <div class="team-skills">
+                    <span class="team-skill-tag">Post-Quantum Crypto</span>
+                    <span class="team-skill-tag">Anti-Reverse Eng.</span>
+                    <span class="team-skill-tag">DoD 5220.22-M</span>
+                    <span class="team-skill-tag">Binary Hardening</span>
+                </div>
+            </div>
+            <!-- 加入我們 -->
+            <div class="team-more-card">
+                <div style="font-size:32px;">🤝</div>
+                <p data-i18n="team_join_desc">我們的能力不只這些。如果你有興趣合作或投資，歡迎聯繫我們。</p>
+                <a href="#support" class="backer-btn" style="margin-top:8px;" data-i18n="team_join_btn">了解合作機會 →</a>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>© 2026 J Will Team & CB Tec. All rights reserved. ｜ ZeroTrace Storage Shield</p>
     </footer>
@@ -2697,6 +2996,58 @@
     <script>
         const translations = {
             zh: {
+                trust_num6: "< 200 MB",
+                trust_label6: "20GB 大檔全程記憶體上限",
+                trust_num7: "100%",
+                trust_label7: "Bit-Perfect SHA-256 零誤差還原",
+                team2_name: "Alan Lin",
+                team2_role: "首席系統架構師",
+                team2_bio: "8 年跨平台系統軟體研發經驗，專精底層 C/C++ 串流引擎與高併發非同步 I/O 排程架構。",
+                team3_name: "Dr. Marcus Chen",
+                team3_role: "資深密碼學與安全審計員",
+                team3_bio: "專注於幾何混沌密碼體系、後量子防禦與二進位防逆向硬化，主導軍規抹除合規驗證。",
+                // === 信任指標 ===
+                trust_num1: "20 GB+",
+                trust_label1: "單次最大處理容量",
+                trust_num2: "0 次",
+                trust_label2: "VirusTotal 誤報紀錄",
+                trust_num3: "3 Pass",
+                trust_label3: "DoD 軍規物理抹除標準",
+                trust_num4: "128-bit",
+                trust_label4: "後量子等效密碼強度",
+                trust_num5: "100%",
+                trust_label5: "離線運行 · 零雲端依賴",
+                // === Gallery ===
+                gallery_badge: "產品截圖",
+                gallery_title: "真實軟體介面一覽",
+                gallery_desc: "這就是 ZeroTrace 的實際操作畫面，所見即所得，零虛假宣傳。",
+                gallery_tab_all: "全部",
+                gallery_tab_enc: "加密流程",
+                gallery_tab_dec: "解密流程",
+                gallery_tab_shred: "物理抹除",
+                gallery1_title: "主介面 — 拖曳加密",
+                gallery1_desc: "將資料夾直接拖入視窗，一鍵啟動 CB-GSC-128 幾何流式加密。",
+                gallery2_title: "串流進度 — 即時監控",
+                gallery2_desc: "64MB 零拷貝環形緩衝區即時進度條，顯示磁碟吞吐率與剩餘時間。",
+                gallery3_title: "解密端 — 輕量免費版",
+                gallery3_desc: "接收方無需付費，下載僅 1.2MB 的 CLI 或 73MB 桌面版即可還原檔案。",
+                gallery4_title: "JBA-Shredder — 物理粉碎",
+                gallery4_desc: "DoD 三次覆寫完成後，Recuva / Disk Drill 搜尋結果顯示 0 位元組。",
+                // === 團隊 ===
+                team_badge: "核心團隊",
+                team_title: "打造 ZeroTrace 的人",
+                team_desc: "我們不只做這個。我們是一支能走更遠的技術團隊。",
+                team1_name: "J Will",
+                team1_role: "創辦人 / 核心架構師",
+                team1_bio: "CB Tec 核心技術主導者，CB-GSC-128 幾何流式加密與 PiRAP 引擎設計者。",
+                team2_name: "待更新",
+                team2_role: "全端工程師",
+                team2_bio: "負責 GUI 桌面端、Node.js 串流引擎與跨平台相容性開發。",
+                team3_name: "待更新",
+                team3_role: "資安研究員",
+                team3_bio: "負責滲透測試、密碼學驗證與 DoD 抹除標準合規測試。",
+                team_join_desc: "我們的能力不只這些。如果你有興趣合作或投資，歡迎聯繫我們。",
+                team_join_btn: "了解合作機會 →",
                 // === Backer & Labs ===
                 backer_badge: "先鋒支持",
                 backer_title: "成為第一批 ZeroTrace 支持者",
@@ -3022,6 +3373,58 @@
                 copied_msg: "錢包地址已成功複製！"
             },
             en: {
+                trust_num6: "< 200 MB",
+                trust_label6: "RAM Cap for 20GB Large Files",
+                trust_num7: "100%",
+                trust_label7: "Bit-Perfect SHA-256 Zero-Error Restore",
+                team2_name: "Alan Lin",
+                team2_role: "Lead Systems & Client Architect",
+                team2_bio: "8 years of cross-platform system software development. Expert in low-level C/C++ streaming engines and high-concurrency async I/O scheduling.",
+                team3_name: "Dr. Marcus Chen",
+                team3_role: "Senior Cryptography & Security Auditor",
+                team3_bio: "Focused on geometric chaotic cipher systems, post-quantum defense, and binary anti-reverse hardening. Leads DoD erase compliance verification.",
+                // === Trust Indicators ===
+                trust_num1: "20 GB+",
+                trust_label1: "Max Single-Pass Capacity",
+                trust_num2: "0",
+                trust_label2: "VirusTotal False Positive Reports",
+                trust_num3: "3 Pass",
+                trust_label3: "DoD 5220.22-M Military Erase Standard",
+                trust_num4: "128-bit",
+                trust_label4: "Post-Quantum Equivalent Strength",
+                trust_num5: "100%",
+                trust_label5: "Offline Operation · Zero Cloud Dependency",
+                // === Gallery ===
+                gallery_badge: "PRODUCT SCREENSHOTS",
+                gallery_title: "The Real Software Interface",
+                gallery_desc: "What you see is what you get. Zero false advertising.",
+                gallery_tab_all: "All",
+                gallery_tab_enc: "Encryption",
+                gallery_tab_dec: "Decryption",
+                gallery_tab_shred: "Physical Shred",
+                gallery1_title: "Main UI — Drag & Drop Encrypt",
+                gallery1_desc: "Drag a folder into the window and launch CB-GSC-128 geometric stream encryption in one click.",
+                gallery2_title: "Stream Progress — Real-Time Monitor",
+                gallery2_desc: "64MB zero-copy ring buffer real-time progress bar showing disk throughput and time remaining.",
+                gallery3_title: "Decrypt Client — Free Lightweight Edition",
+                gallery3_desc: "Recipients decrypt for free. Download only 1.2MB CLI or 73MB desktop app to restore files.",
+                gallery4_title: "JBA-Shredder — Physical Destruction",
+                gallery4_desc: "After DoD 3-pass overwrite, Recuva and Disk Drill return 0 bytes found.",
+                // === Team ===
+                team_badge: "THE TEAM",
+                team_title: "The People Behind ZeroTrace",
+                team_desc: "We don't just build this. We're a team that can go much further.",
+                team1_name: "J Will",
+                team1_role: "Founder / Core Architect",
+                team1_bio: "Lead of CB Tec core technology, designer of CB-GSC-128 geometric stream cipher and PiRAP engine.",
+                team2_name: "TBD",
+                team2_role: "Full-Stack Engineer",
+                team2_bio: "Responsible for GUI desktop client, Node.js streaming engine, and cross-platform compatibility.",
+                team3_name: "TBD",
+                team3_role: "Security Researcher",
+                team3_bio: "Handles penetration testing, cryptographic validation, and DoD erase standard compliance audits.",
+                team_join_desc: "Our capabilities go beyond this product. Contact us if you're interested in partnership or investment.",
+                team_join_btn: "Explore Collaboration →",
                 // === Backer & Labs ===
                 backer_badge: "PIONEER SUPPORT",
                 backer_title: "Be Among the First ZeroTrace Supporters",
@@ -3347,6 +3750,58 @@
                 copied_msg: "Wallet address copied to clipboard!"
             },
             ja: {
+                trust_num6: "< 200 MB",
+                trust_label6: "20GB大容量ファイルのRAM上限",
+                trust_num7: "100%",
+                trust_label7: "Bit-Perfect SHA-256 ゼロエラー復元",
+                team2_name: "Alan Lin",
+                team2_role: "主任システムアーキテクト",
+                team2_bio: "8年のクロスプラットフォームシステム開発経験。低レベルC/C++ストリームエンジンと高並行非同期I/Oアーキテクチャの専門家。",
+                team3_name: "Dr. Marcus Chen",
+                team3_role: "シニア暗号学・セキュリティ監査員",
+                team3_bio: "幾何カオス暗号システム、耐量子防御、バイナリ逆解析防止を専門とし、DoD消去基準コンプライアンスを主導。",
+                // === 信頼指標 ===
+                trust_num1: "20 GB+",
+                trust_label1: "1回あたりの最大処理容量",
+                trust_num2: "0件",
+                trust_label2: "VirusTotal 誤検知レポート",
+                trust_num3: "3 Pass",
+                trust_label3: "DoD 軍規物理消去基準",
+                trust_num4: "128-bit",
+                trust_label4: "耐量子等価暗号強度",
+                trust_num5: "100%",
+                trust_label5: "オフライン動作・クラウド依存ゼロ",
+                // === Gallery ===
+                gallery_badge: "製品スクリーンショット",
+                gallery_title: "実際のソフトウェア画面",
+                gallery_desc: "見たままが手に入ります。誇大広告はありません。",
+                gallery_tab_all: "すべて",
+                gallery_tab_enc: "暗号化",
+                gallery_tab_dec: "復号化",
+                gallery_tab_shred: "物理消去",
+                gallery1_title: "メイン UI — ドラッグ＆ドロップ暗号化",
+                gallery1_desc: "フォルダをウィンドウにドラッグし、ワンクリックで CB-GSC-128 暗号化を起動。",
+                gallery2_title: "ストリーム進行 — リアルタイム監視",
+                gallery2_desc: "64MB ゼロコピーリングバッファのリアルタイム進行バー。スループットと残り時間を表示。",
+                gallery3_title: "復号クライアント — 無料軽量版",
+                gallery3_desc: "受信者は無料で復号できます。1.2MB の CLI または 73MB のデスクトップ版をダウンロードするだけ。",
+                gallery4_title: "JBA-Shredder — 物理破壊",
+                gallery4_desc: "DoD 3パス上書き後、RecuvaとDisk Drillは0バイトを返します。",
+                // === チーム ===
+                team_badge: "チーム紹介",
+                team_title: "ZeroTrace を作った人々",
+                team_desc: "これだけではありません。私たちはさらに遠くへ進める技術チームです。",
+                team1_name: "J Will",
+                team1_role: "創業者 / コアアーキテクト",
+                team1_bio: "CB Tec コア技術のリーダー。CB-GSC-128 幾何ストリーム暗号と PiRAP エンジンの設計者。",
+                team2_name: "近日更新",
+                team2_role: "フルスタックエンジニア",
+                team2_bio: "GUI デスクトップ、Node.js ストリームエンジン、クロスプラットフォーム対応を担当。",
+                team3_name: "近日更新",
+                team3_role: "セキュリティ研究員",
+                team3_bio: "ペネトレーションテスト、暗号検証、DoD 消去基準コンプライアンス監査を担当。",
+                team_join_desc: "私たちの能力はこの製品だけではありません。パートナーシップや投資にご興味があればぜひご連絡ください。",
+                team_join_btn: "協力機会を探る →",
                 // === Backer & Labs ===
                 backer_badge: "パイオニア支援",
                 backer_title: "ZeroTrace 最初の支持者になる",
@@ -4155,6 +4610,22 @@
             if (selectEl) selectEl.value = currentLang;
             changeLanguage(currentLang);
         };
-    </script>
+    
+// Gallery 篩選
+function filterGallery(category) {
+    const cards = document.querySelectorAll('.gallery-card');
+    const btns = document.querySelectorAll('.gallery-tab-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+</script>
 </body>
 </html>
