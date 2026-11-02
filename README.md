@@ -1,7 +1,7 @@
 <div align="center">
 
-# 🛡️ ZeroTrace (JBA128G3)
-### Ultra-Secure Offline File Encryption & Irreversible Data Erasure
+# 🛡️ Avalon Crypt (JBA128G3)
+### The Ultimate Offline File Encryption & Irreversible Data Sanctuary
 **極致輕量・離線純粹・對抗量子破譯的本地端檔案防護引擎**
 
 [![Release](https://img.shields.io/github/v/release/Mike09182026/TEST?style=for-the-badge&color=00f0ff&logo=github)](https://github.com/Mike09182026/TEST/releases/latest)
@@ -11,7 +11,7 @@
 
 <br/>
 
-<img src="zerotrace_hero.jpg" alt="ZeroTrace Banner" width="850" style="border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 240, 255, 0.2);" />
+<img src="zerotrace_hero.jpg" alt="Avalon Crypt Banner" width="850" style="border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 240, 255, 0.2);" />
 
 <br/><br/>
 
@@ -27,11 +27,11 @@
 ## 🌟 核心理念 / Core Philosophy
 
 在雲端服務遍佈、個資洩漏頻傳的時代，**「真正的安全是讓資料留在你手中」**。  
-ZeroTrace 是一套 100% 運行於本地端的自研加密引擎，專為個人機密檔案、商業機密與極限隱私需求設計。
+**Avalon Crypt** 是一套 100% 運行於本地端的自研加密引擎，猶如數位世界中的世外淨土，專為個人機密檔案、商業機密與極限隱私需求設計。
 
-* **No Cloud, No Telemetry**：零網路呼叫、零遙測回傳、離線即用。
-* **Proprietary Hardware-Grade Cipher**：專利非對稱級混沌對稱加密架構，抵抗量子演算法與硬體碰撞破譯。
-* **Irreversible Erasure**：內建 3 Pass 物理覆寫抹除機制，徹底粉碎資料，防止鑑識取證救援。
+* **No Cloud, No Telemetry（零雲端・零遙測）**：零網路呼叫、零遙測回傳、離線即用。
+* **Proprietary Hardware-Grade Cipher（自研硬體級加密）**：專利對稱混淆加密架構，抵抗量子演算法與硬體碰撞破譯。
+* **Irreversible Erasure（物理級無痕粉碎）**：內建 3 Pass 物理覆寫抹除機制，徹底粉碎資料，防止鑑識取證救援。
 
 ---
 
@@ -64,7 +64,7 @@ ZeroTrace 是一套 100% 運行於本地端的自研加密引擎，專為個人�
 
 ## 🔒 安全性與隱私承諾 / Security & Privacy Pledge
 
-1. **零網路權限**：ZeroTrace 本體不會向任何外部伺服器發送網路請求。
+1. **零網路權限**：Avalon Crypt 本體不會向任何外部伺服器發送網路請求。
 2. **純記憶體運算**：敏感金鑰僅在處理當下存於安全記憶體區段，程序關閉或鎖定後立即清空。
 3. **無後門設計**：沒有主密碼（Master Key），遺失密碼將無法救回檔案，請務必妥善保管金鑰。
 
@@ -76,5 +76,5 @@ ZeroTrace 是一套 100% 運行於本地端的自研加密引擎，專為個人�
 - **商業合作 / 投資諮詢**：歡迎透過專案 Issue 或官方聯絡渠道洽詢。
 
 <div align="center">
-<sub>© 2026 ZeroTrace Security Lab. All rights reserved.</sub>
+<sub>© 2026 Avalon Crypt Security Lab. All rights reserved.</sub>
 </div>
