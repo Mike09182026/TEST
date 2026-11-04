@@ -331,7 +331,7 @@
             display: block;
             border-radius: 10px;
             background: #000;
-            cursor: zoom-in;
+            cursor: default;
         }
 
         .window-tag {
@@ -573,7 +573,7 @@
             display: none;
             height: auto;
             border-radius: 10px;
-            cursor: zoom-in;
+            cursor: default;
         }
 
         .showcase-img.active {
@@ -923,34 +923,7 @@
             gap: 10px;
         }
 
-        /* MODAL FOR ZOOM */
-        .zoom-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            cursor: zoom-out;
-        }
 
-        .zoom-modal.active {
-            display: flex;
-        }
-
-        .zoom-modal img {
-            max-width: 90vw;
-            max-height: 88vh;
-            border-radius: 12px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
-            border: 1px solid var(--card-border);
-        }
 
         /* TOAST NOTIFICATION */
         .toast {
@@ -1051,10 +1024,9 @@
                 <!-- 右欄：裁切純淨的真實實機展示 (黃金尺寸，無多餘桌面背景) -->
                 <div class="hero-visual">
                     <div class="app-window-frame">
-                        <img src="01_app_encrypt_zhtw.png" alt="Avalon Crypt 實機介面" onclick="zoomImage(this.src)">
+                        <img src="01_app_encrypt_zhtw.png" alt="Avalon Crypt 實機介面">
                         <div class="window-tag">
-                            <span>●</span> <span data-i18n="hero_win_caption">JBA128G3 Storage Shield 繁中實機</span>
-                            <span style="opacity:0.6; cursor:pointer;" onclick="zoomImage('01_app_encrypt_zhtw.png')">(點擊放大)</span>
+                            <span>●</span> <span data-i18n="hero_win_caption">Avalon Crypt 繁中實機介面</span>
                         </div>
                     </div>
                 </div>
@@ -1149,10 +1121,10 @@
                 <!-- 右側視窗預覽展示 (純淨黃金比例，無任何粗糙背景與雜質) -->
                 <div class="showcase-viewport">
                     <div class="showcase-preview-frame cyan-glow" id="showcase-frame">
-                        <img id="img-encrypt" class="showcase-img active" src="01_app_encrypt_zhtw.png" alt="加密模式待命畫面 (繁中)" onclick="zoomImage(this.src)">
-                        <img id="img-decrypt" class="showcase-img" src="02_app_decrypt_en.png" alt="解密模式待命畫面 (English)" onclick="zoomImage(this.src)">
+                        <img id="img-encrypt" class="showcase-img active" src="01_app_encrypt_zhtw.png" alt="加密模式待命畫面 (繁中)">
+                        <img id="img-decrypt" class="showcase-img" src="02_app_decrypt_en.png" alt="解密模式待命畫面 (English)">
                         <div class="window-tag">
-                            <span id="showcase-tag-text">● 01_app_encrypt_zhtw.png (點擊放大檢視)</span>
+                            <span id="showcase-tag-text">● 01_app_encrypt_zhtw.png (加密待命介面)</span>
                         </div>
                     </div>
                 </div>
@@ -1170,7 +1142,7 @@
             </div>
 
             <div class="download-box">
-                <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:8px;">JBA128G3 Storage Shield (v1.0.3)</h3>
+                <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:8px;">Avalon Crypt (v1.0.3)</h3>
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom: 24px;">Official Standalone Setup for Windows</p>
 
                 <div class="download-specs-grid">
@@ -1319,10 +1291,7 @@
         </div>
     </footer>
 
-    <!-- 放大展示彈窗 -->
-    <div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
-        <img id="zoomImg" src="" alt="Zoomed Screenshot">
-    </div>
+
 
     <!-- 提示 TOAST -->
     <div id="toast" class="toast">
@@ -1346,7 +1315,7 @@
                 h_item3: "支援中文長短語密碼憑證，無原廠主金鑰後門",
                 hero_btn_dl: "⬇️ 免費下載 Windows 版 (v1.0.3)",
                 hero_btn_donate: "☕ 支持獨立研發 (贊助)",
-                hero_win_caption: "JBA128G3 Storage Shield 繁中實機",
+                hero_win_caption: "Avalon Crypt 繁中實機介面",
                 feat_badge: "CORE ARCHITECTURE",
                 feat_title: "自主研發・四大核心技術防線",
                 feat_desc: "徹底摒棄傳統公開加密庫潛在弱點，以嚴苛幾何數學架構保障極致個人隱私。",
@@ -1417,7 +1386,7 @@
                 h_item3: "Full Support for High-Entropy Passphrases, Zero Vendor Backdoors",
                 hero_btn_dl: "⬇️ Download Windows Client (v1.0.3)",
                 hero_btn_donate: "☕ Back Independent Research",
-                hero_win_caption: "JBA128G3 Storage Shield UI (zh-TW)",
+                hero_win_caption: "Avalon Crypt UI (zh-TW)",
                 feat_badge: "CORE ARCHITECTURE",
                 feat_title: "Autonomous Post-Quantum Defense",
                 feat_desc: "Eliminates vulnerabilities of conventional shared libraries with mathematical spatial geometric permutation.",
@@ -1507,27 +1476,17 @@
                 card.classList.add('active', 'cyan-active');
                 document.getElementById('img-encrypt').classList.add('active');
                 frame.classList.add('cyan-glow');
-                tagText.innerText = "● 01_app_encrypt_zhtw.png (點擊放大檢視)";
+                tagText.innerText = "● 01_app_encrypt_zhtw.png (加密科技青軌)";
             } else if (type === 'decrypt') {
                 const card = document.getElementById('tab-card-decrypt');
                 card.classList.add('active', 'purple-active');
                 document.getElementById('img-decrypt').classList.add('active');
                 frame.classList.add('purple-glow');
-                tagText.innerText = "● 02_app_decrypt_en.png (點擊放大檢視)";
+                tagText.innerText = "● 02_app_decrypt_en.png (解密防護紫軌)";
             }
         }
 
-        // 圖片放大功能
-        function zoomImage(src) {
-            const modal = document.getElementById('zoomModal');
-            const img = document.getElementById('zoomImg');
-            img.src = src;
-            modal.classList.add('active');
-        }
 
-        function closeZoom() {
-            document.getElementById('zoomModal').classList.remove('active');
-        }
 
         // 複製 SHA-256
         function copySHA() {
