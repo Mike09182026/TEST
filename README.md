@@ -1,80 +1,76 @@
 <div align="center">
 
-# 🛡️ Avalon Crypt (JBA128G3)
-### The Ultimate Offline File Encryption & Irreversible Data Sanctuary
-**極致輕量・離線純粹・對抗量子破譯的本地端檔案防護引擎**
+# 🛡️ Avalon Crypt
+### The Sovereign Offline Data Sanctuary in an Insecure Cloud Era
+**混亂雲端時代中，你個人核心機密的世外孤島**
 
-[![Release](https://img.shields.io/github/v/release/Mike09182026/TEST?style=for-the-badge&color=00f0ff&logo=github)](https://github.com/Mike09182026/TEST/releases/latest)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20x64-blue?style=for-the-badge&logo=windows)](https://github.com/Mike09182026/TEST/releases)
-[![License](https://img.shields.io/badge/License-Freeware%20%2F%20Proprietary-yellow?style=for-the-badge)](https://mike09182026.github.io/TEST/)
-[![Live Demo](https://img.shields.io/badge/Official_Website-Online-00ff88?style=for-the-badge&logo=google-chrome)](https://mike09182026.github.io/TEST/)
+[![Version](https://img.shields.io/badge/Release-v1.0.3%20Stable-00f0ff?style=for-the-badge&logo=windows)](https://github.com/Mike09182026/TEST/releases/latest)
+[![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11%20(64--bit)-blue?style=for-the-badge&logo=windows)](https://github.com/Mike09182026/TEST/releases)
+[![License](https://img.shields.io/badge/License-Personal%20Non--Commercial-yellow?style=for-the-badge)](https://mike09182026.github.io/TEST/)
+[![Powered By](https://img.shields.io/badge/Powered%20By-J%20Will%20Team-bf5af2?style=for-the-badge)](#)
 
 <br/>
 
-<img src="zerotrace_hero.jpg" alt="Avalon Crypt Banner" width="850" style="border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 240, 255, 0.2);" />
+<img src="01_app_encrypt_zhtw.png" alt="Avalon Crypt UI" width="850" style="border-radius: 14px; box-shadow: 0 10px 40px rgba(0, 240, 255, 0.25); border: 1px solid rgba(0, 240, 255, 0.3);" />
 
 <br/><br/>
 
 [🌐 官方展示網頁](https://mike09182026.github.io/TEST/) • 
-[⚡ 立即下載 (Latest Release)](https://github.com/Mike09182026/TEST/releases/latest) • 
-[📖 技術白皮書](branding_guide.md) • 
-[🐛 回報問題 (Issues)](https://github.com/Mike09182026/TEST/issues)
+[⚡ 立即下載 (v1.0.3)](https://github.com/Mike09182026/TEST/releases/latest) • 
+[☕ 支持獨立研發 (Buy Me a Coffee)](#-support-independent-research--支持獨立研發) • 
+🔬 CB_Tec 官方開源庫 (即將公開)
 
 </div>
 
 ---
 
-## 🌟 核心理念 / Core Philosophy
+## 🌟 核心設計哲學 / Core Philosophy
 
-在雲端服務遍佈、個資洩漏頻傳的時代，**「真正的安全是讓資料留在你手中」**。  
-**Avalon Crypt** 是一套 100% 運行於本地端的自研加密引擎，猶如數位世界中的世外淨土，專為個人機密檔案、商業機密與極限隱私需求設計。
+在主流軟體皆轉向訂閱制與雲端遙測的今天，**Avalon Crypt** 依然堅持純粹的單機封閉運算。  
+底層依託於 **J Will 團隊** 原創之 **CB Tec 後量子空間幾何串流置換架構**，杜絕雲端洩露，為極限個人隱私打造不可侵犯的世外淨土。
 
-* **No Cloud, No Telemetry（零雲端・零遙測）**：零網路呼叫、零遙測回傳、離線即用。
-* **Proprietary Hardware-Grade Cipher（自研硬體級加密）**：專利對稱混淆加密架構，抵抗量子演算法與硬體碰撞破譯。
-* **Irreversible Erasure（物理級無痕粉碎）**：內建 3 Pass 物理覆寫抹除機制，徹底粉碎資料，防止鑑識取證救援。
-
----
-
-## 🚀 核心功能 / Key Features
-
-| 功能特色 | 說明 |
-| :--- | :--- |
-| **🔐 自研深層對稱加密** | 結合動態金鑰衍生與高階置換演算法，不依賴易受硬體算力加速針對的公開庫。 |
-| **🌪️ 物理級粉碎抹除** | 支援符合嚴格規範的多次覆寫抹除，徹底清除磁碟底層磁性殘留與暫存痕跡。 |
-| **⚡ 毫秒級極致效能** | 採用純 C++ 原生底層編寫，記憶體佔用極低（< 200MB RAM），支援大檔案疾速加解密。 |
-| **🛡️ 100% Bit-Perfect** | 雙重雜湊校驗架構，確保解密後的檔案與原始檔案二進位位元組 100% 精準吻合。 |
-| **🌐 多語系友善支援** | 內建繁體中文、English、日本語界面切換，支援跨語系長短語密碼保護。 |
+* **純地端離線隔離 (Air-Gapped Operation)**：100% 離線封閉運算，無連網通訊組件，遠離網路竊聽。
+* **單機零後門 (Zero-Backdoor Sovereign)**：核心無原廠通用主金鑰（Master Key），無原廠後門，金鑰主權 100% 歸使用者掌控。
+* **零日誌隱私政策 (Zero-Log Policy)**：全程不向磁碟寫入任何操作歷史或金鑰日誌，磁碟達到 0 Byte 暫存殘留，具備高規格反數位鑑識架構。
 
 ---
 
-## 📥 下載與安裝 / Download & Quick Start
+## 🚀 官方四大核心架構規格 / Core Specifications
 
-### 系統需求
-- **OS**: Windows 10 / Windows 11 (64-bit)
-- **RAM**: 最低 200MB 可用記憶體
-- **Network**: 完全無需連網（純離線環境亦可運行）
-
-### 快速開始
-1. 前往 [Releases 發布頁面](https://github.com/Mike09182026/TEST/releases/latest)。
-2. 下載最新的執行檔或安裝包。
-3. （建議）比對 SHA-256 校驗碼以確保檔案未經竄改。
-4. 點擊啟動，立即體驗極致私密的加密防護！
+| 官方中文名詞 (zh-TW) | 官方英文標準名詞 (English) | 技術定義與架構說明 |
+| :--- | :--- | :--- |
+| **幾何串流置換演算法** | **Geometric Stream Permutation Cipher** | 自主非 AES 體系之後量子空間幾何置換架構，具備抗量子運算暴力破譯特性。 |
+| **常數級記憶體消耗 (防爆)** | **O(1) Constant Memory Chunked Streaming** | 單檔最高支援 20GB。分塊流水線置換機制，記憶體消耗維持常數級，杜絕 OOM 閃退。 |
+| **.jbs 專用防護封裝** | **.jbs Secure Encapsulation / Shield Archive** | 專屬安全加密副檔名封裝，支援完整資料夾遞迴加密封裝與目錄結構完整還原。 |
+| **雙軌智慧佇列** | **Dual-Track Concurrent Queue** | 智慧識別明文與密文，支援 1~20 任務批次平行運算池，分流青色加密與紫色解密雙軌。 |
 
 ---
 
-## 🔒 安全性與隱私承諾 / Security & Privacy Pledge
+## 📥 官方發布部署參數 / Deployment Parameters
 
-1. **零網路權限**：Avalon Crypt 本體不會向任何外部伺服器發送網路請求。
-2. **純記憶體運算**：敏感金鑰僅在處理當下存於安全記憶體區段，程序關閉或鎖定後立即清空。
-3. **無後門設計**：沒有主密碼（Master Key），遺失密碼將無法救回檔案，請務必妥善保管金鑰。
+* **發布版本**：v1.0.3 (Stable Release)
+* **目標環境**：Windows 10 / Windows 11 (64-bit)
+* **安裝檔名稱**：`JBA128G3_Setup_v1.0.3.exe`
+* **檔案大小**：`77,136,168 Bytes`（約 73.5 MB）
+* **SHA-256 安全校驗雜湊值**：
+  ```text
+  EE1AB19B2CF1F7CC2D89730EC05DB96209264B7C862AF6C541AE15294207A1B4
+  ```
 
 ---
 
-## 🤝 聯繫與支持 / Connect & Support
+## ☕ Support Independent Research / 支持獨立研發
 
-- **官方展示網站**：[https://mike09182026.github.io/TEST/](https://mike09182026.github.io/TEST/)
-- **商業合作 / 投資諮詢**：歡迎透過專案 Issue 或官方聯絡渠道洽詢。
+Avalon Crypt 堅持無廣告、零後門、無資本收購。您的每一份贊助，都是支持我們持續深耕自主密碼學的最大動力！
 
-<div align="center">
-<sub>© 2026 Avalon Crypt Security Lab. All rights reserved.</sub>
-</div>
+1. ☕ **Buy Me a Coffee（請喝一杯咖啡 - $5 USD）**：支持單機軟體持續純淨更新。
+2. 🚀 **Pioneer Backer（先鋒贊助者 - $29 USD）**：官網永久銘謝名冊、新世代技術白皮書優先閱讀、專屬數位證書。
+3. 🏛️ **Code Guardian（開源守護者 - $99+ USD）**：首頁守護者專屬席位、架構師一對一反饋交流通道。
+
+---
+
+## 📜 版權與授權宣告 / License & Attribution
+
+* **版權宣告**：`Avalon Crypt ｜ Powered by J Will Team. All Rights Reserved.`
+* **授權邊界**：僅限個人非營利使用 (Personal Non-Commercial License)
+* **技術專案生態庫**：[#](#)
