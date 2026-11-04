@@ -1115,24 +1115,24 @@
         </div>
     </section>
 
-    <!-- 4. 實機雙軌展示 Showcase (並列優雅卡片式) -->
+    <!-- 4. 實機雙軌展示 Showcase (旗艦雙軌純粹展示) -->
     <section id="showcase" style="background: rgba(0, 0, 0, 0.2);">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge purple" data-i18n="show_badge">DUAL-TRACK INTERFACE</span>
                 <h2 class="section-title" data-i18n="show_title">真實實機・雙軌主題即時反饋</h2>
-                <p class="section-desc" data-i18n="show_desc">青軌代表加密防護，紫軌代表解密還原。點擊左側檢視各模式之真實介面與功能詳情。</p>
+                <p class="section-desc" data-i18n="show_desc">青軌代表加密防護，紫軌代表解密還原。點擊左側即時切換檢視旗艦雙軌介面。</p>
             </div>
 
             <div class="showcase-split">
-                <!-- 左側控制卡片清單 -->
+                <!-- 左側控制卡片清單 (純粹雙軌) -->
                 <div class="showcase-tabs-vertical">
                     <div class="tab-card active cyan-active" id="tab-card-encrypt" onclick="selectShowcase('encrypt')">
                         <div class="tab-card-header">
                             <span>🛡️</span> <span data-i18n="tab_encrypt_title">加密科技青軌 (繁中介面)</span>
                         </div>
                         <p class="tab-card-desc" data-i18n="tab_encrypt_desc">
-                            沉浸式暗黑標題列與微光待命燈。支援完整資料夾或單檔拖入，即時展開任務佇列與分塊串流流水線。
+                            沉浸式暗黑標題列與微光待命燈。支援 1~20 任務佇列與完整資料夾拖入，自動指派加密軌道，進行 64MB 零拷貝分塊串流置換。
                         </p>
                     </div>
 
@@ -1141,28 +1141,18 @@
                             <span>🔓</span> <span data-i18n="tab_decrypt_title">解密防護紫軌 (English UI)</span>
                         </div>
                         <p class="tab-card-desc" data-i18n="tab_decrypt_desc">
-                            智慧識別 .jbs 安全封裝檔，自動指派解密軌道並切換為高雅紫微光主題反饋，安全無邊框體驗。
-                        </p>
-                    </div>
-
-                    <div class="tab-card" id="tab-card-modal" onclick="selectShowcase('modal')">
-                        <div class="tab-card-header">
-                            <span>ℹ️</span> <span data-i18n="tab_modal_title">原廠規格與個人非營利授權條款</span>
-                        </div>
-                        <p class="tab-card-desc" data-i18n="tab_modal_desc">
-                            內建完整技術與法律授權邊界說明，確保使用者知悉單機零後門與個人非商業用途承諾。
+                            智慧識別 .jbs 專用安全封裝檔，自動切換至高雅資安紫微光主題反饋。憑證驗證通過後，無損還原原始檔案與深層遞迴目錄結構。
                         </p>
                     </div>
                 </div>
 
-                <!-- 右側視窗預覽展示 (純淨黃金比例) -->
+                <!-- 右側視窗預覽展示 (純淨黃金比例，無任何粗糙背景與雜質) -->
                 <div class="showcase-viewport">
                     <div class="showcase-preview-frame cyan-glow" id="showcase-frame">
                         <img id="img-encrypt" class="showcase-img active" src="01_app_encrypt_zhtw.png" alt="加密模式待命畫面 (繁中)" onclick="zoomImage(this.src)">
                         <img id="img-decrypt" class="showcase-img" src="02_app_decrypt_en.png" alt="解密模式待命畫面 (English)" onclick="zoomImage(this.src)">
-                        <img id="img-modal" class="showcase-img" src="03_tech_modal_zhtw.png" alt="技術規格與授權彈窗" onclick="zoomImage(this.src)">
                         <div class="window-tag">
-                            <span id="showcase-tag-text">● 01_app_encrypt_zhtw.png (點擊圖片全螢幕放大)</span>
+                            <span id="showcase-tag-text">● 01_app_encrypt_zhtw.png (點擊放大檢視)</span>
                         </div>
                     </div>
                 </div>
@@ -1503,7 +1493,7 @@
             localStorage.setItem('avalon_lang', lang);
         }
 
-        // Showcase 垂直 Tab 切換
+        // Showcase 雙軌 Tab 切換
         function selectShowcase(type) {
             document.querySelectorAll('.tab-card').forEach(c => c.classList.remove('active', 'cyan-active', 'purple-active'));
             document.querySelectorAll('.showcase-img').forEach(img => img.classList.remove('active'));
@@ -1517,19 +1507,13 @@
                 card.classList.add('active', 'cyan-active');
                 document.getElementById('img-encrypt').classList.add('active');
                 frame.classList.add('cyan-glow');
-                tagText.innerText = "● 01_app_encrypt_zhtw.png (點擊圖片全螢幕放大)";
+                tagText.innerText = "● 01_app_encrypt_zhtw.png (點擊放大檢視)";
             } else if (type === 'decrypt') {
                 const card = document.getElementById('tab-card-decrypt');
                 card.classList.add('active', 'purple-active');
                 document.getElementById('img-decrypt').classList.add('active');
                 frame.classList.add('purple-glow');
-                tagText.innerText = "● 02_app_decrypt_en.png (點擊圖片全螢幕放大)";
-            } else if (type === 'modal') {
-                const card = document.getElementById('tab-card-modal');
-                card.classList.add('active', 'cyan-active');
-                document.getElementById('img-modal').classList.add('active');
-                frame.classList.add('cyan-glow');
-                tagText.innerText = "● 03_tech_modal_zhtw.png (點擊圖片全螢幕放大)";
+                tagText.innerText = "● 02_app_decrypt_en.png (點擊放大檢視)";
             }
         }
 
