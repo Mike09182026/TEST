@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <!-- Google tag (gtag.js) - Google Analytics 4 Official Tracking -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NRX44Z5C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GTM-NRX44Z5C');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avalon Crypt – 超越傳統 AES 體系・數位資產安全防線 | Official Website</title>
@@ -1108,6 +1116,58 @@
                 color: #ffffff !important;
             }
         }
+        /* 懸浮回到頂部按鈕 (右下角精緻發光，避免干擾主畫面) */
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(14, 21, 37, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            color: #00f0ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 240, 255, 0.25);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(16px);
+            z-index: 9999;
+            outline: none;
+        }
+
+        .back-to-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top-btn:hover {
+            background: rgba(0, 240, 255, 0.18);
+            border-color: #00f0ff;
+            box-shadow: 0 6px 25px rgba(0, 240, 255, 0.55);
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+
+        .back-to-top-btn:active {
+            transform: translateY(0) scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 42px;
+                height: 42px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1218,8 +1278,8 @@
 
                         <!-- 軟體實機視窗主體 (青軌英文 / 紫軌繁中，全亮虛線光框，無多餘底標) -->
                         <div class="app-window-frame cyan-glow" id="hero-window-frame">
-                            <img id="hero-img-encrypt" class="hero-screen active" src="01_app_track_cyan_en.png" alt="Avalon Crypt 科技青軌 (English UI)">
-                            <img id="hero-img-decrypt" class="hero-screen" src="02_app_track_purple_zh.png" alt="Avalon Crypt 防護紫軌 (繁中介面)">
+                            <img id="hero-img-encrypt" class="hero-screen active" src="avalon_showcase_cyan_en.png" alt="Avalon Crypt 科技青軌 (English UI)">
+                            <img id="hero-img-decrypt" class="hero-screen" src="avalon_showcase_purple_zhtw.png" alt="Avalon Crypt 防護紫軌 (繁中介面)">
                         </div>
                     </div>
                 </div>
@@ -1733,21 +1793,28 @@
             }, 3500);
         }
 
-                // 滾動監聽：超過 350px 顯示返回頂端按鈕
-        const backToTopBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 350) {
-                backToTopBtn.classList.add('visible');
+                // 滾動監聽：超過 200px 顯示返回頂端按鈕 (全瀏覽器相容)
+        function checkScroll() {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            if (scrollPos > 200) {
+                btn.classList.add('visible');
             } else {
-                backToTopBtn.classList.remove('visible');
+                btn.classList.remove('visible');
             }
-        });
+        }
+
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        window.addEventListener('resize', checkScroll);
 
         function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            try {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (e) {
+                window.scrollTo(0, 0);
+            }
         }
 
         // 初始載入語言
