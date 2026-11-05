@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <!-- Google tag (gtag.js) - Google Analytics 4 Official Tracking -->
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NRX44Z5C"></script>
@@ -1190,8 +1190,8 @@
                     ⬇️ 下載 (v1.0.3)
                 </a>
                 <div class="lang-capsule">
-                    <button class="lang-btn active" id="btn-zh" onclick="setLang('zh')">繁中</button>
-                    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" id="btn-zh" onclick="setLang('zh')">繁體中文</button>
                 </div>
             </div>
         </div>
@@ -1205,41 +1205,41 @@
                 <div class="hero-content">
                     <div class="hero-badge">
                         <span class="status-dot"></span>
-                        <span data-i18n="hero_badge">後量子空間幾何架構 ｜ 100% 純單機離線 ｜ v1.0.3 穩定版</span>
+                        <span data-i18n="hero_badge">Post-Quantum Architecture ｜ 100% Air-Gapped Offline ｜ v1.0.3 Stable</span>
                     </div>
                     <h1 class="hero-title" data-i18n="hero_title">
-                        超越傳統 AES 體系・後量子空間幾何架構的<br><span>數位資產安全防線</span>
+                        Beyond Conventional AES.<br>Next-Gen Defense for Your <span>Digital Assets</span>
                     </h1>
                     <p class="hero-subtitle" data-i18n="hero_subtitle">
-                        基於 CB Tec 後量子幾何置換架構。單機零後門、零日誌政策，支援 20GB 大檔案常數級防爆串流與雙軌智慧佇列。
+                        Engineered on proprietary CB Tec Post-Quantum Geometric Permutation Architecture. Zero backdoors, zero telemetry, constant memory streaming up to 20GB, and intelligent dual-rail queues.
                     </p>
                     <ul class="hero-highlights">
-                        <li data-i18n="h_item1">✦ 100% 離線純淨封閉運算，磁碟 0 Byte 暫存殘留</li>
-                        <li data-i18n="h_item2">✦ 常數級記憶體消耗 (Anti-OOM)，大檔絕不溢位閃退</li>
-                        <li data-i18n="h_item3">✦ 支援中文與高強度長短語密碼憑證，無原廠主金鑰後門</li>
+                        <li data-i18n="h_item1">✦ 100% Offline Air-Gapped Operation, Zero-Disk Residue (0 Byte temp)</li>
+                        <li data-i18n="h_item2">✦ Constant O(1) Memory Consumption (Anti-OOM), Zero crash on massive files</li>
+                        <li data-i18n="h_item3">✦ Full Support for High-Entropy Passphrases, Zero Master-Key Backdoors</li>
                     </ul>
 
                     <!-- 整合型下載面板 (Download Hub) -->
                     <div class="hero-download-card">
                         <div class="hero-download-action">
                             <a href="https://github.com/Mike09182026/TEST/releases/latest" target="_blank" class="btn btn-primary hero-dl-btn" data-i18n="hero_btn_dl">
-                                ⬇️ 立即下載 JBA128G3_Setup_v1.0.3.exe
+                                ⬇️ Download JBA128G3_Setup_v1.0.3.exe
                             </a>
                             <a href="#donate" class="btn btn-donate" data-i18n="hero_btn_donate">
-                                ☕ 支持團隊 (贊助)
+                                ☕ Buy Us a Coffee (Donate)
                             </a>
                         </div>
                         
                         <!-- 檔案微規格標籤列 -->
                         <div class="hero-specs-row">
                             <span class="spec-pill">
-                                <span class="spec-label" data-i18n="spec_os">系統：</span> Windows 10 / 11 (64-bit)
+                                <span class="spec-label" data-i18n="spec_os">OS: </span> Windows 10 / 11 (64-bit)
                             </span>
                             <span class="spec-pill">
-                                <span class="spec-label" data-i18n="spec_size">大小：</span> 約 73.5 MB (77,136,168 Bytes)
+                                <span class="spec-label" data-i18n="spec_size">Size: </span> 約 73.5 MB (77,136,168 Bytes)
                             </span>
                             <span class="spec-pill">
-                                <span class="spec-label" data-i18n="spec_license">授權：</span> 個人非營利免費
+                                <span class="spec-label" data-i18n="spec_license">License: </span> 個人非營利免費
                             </span>
                         </div>
 
@@ -1250,7 +1250,7 @@
                                 <code id="sha-text">EE1AB19B2CF1F7CC2D89730EC05DB96209264B7C862AF6C541AE15294207A1B4</code>
                             </div>
                             <button class="copy-btn" onclick="copySHA()">
-                                <span>📋</span> <span data-i18n="btn_copy_sha">複製校驗碼</span>
+                                <span>📋</span> <span data-i18n="btn_copy_sha">Copy SHA-256</span>
                             </button>
                         </div>
                     </div>
@@ -1261,18 +1261,18 @@
                     <div class="hero-track-container">
                         <!-- 操作引導微文字 (帶動態呼吸光) -->
                         <div class="hero-track-hint" id="hero-track-hint">
-                            <span class="hint-hand">👉</span> <span data-i18n="hero_track_hint">點擊切換實機模式預覽</span> <span class="hint-arrow">▾</span>
+                            <span class="hint-hand">👉</span> <span data-i18n="hero_track_hint">Click to preview interface mode</span> <span class="hint-arrow">▾</span>
                         </div>
 
-                        <!-- 頂部雙軌切換按鈕 (物理手感 Segmented Switcher) -->
+                        <!-- 頂部雙軌切換按鈕 (加密模式 / 解密模式) -->
                         <div class="hero-track-tabs">
                             <button class="hero-track-tab active cyan-tab" id="hero-tab-encrypt" onclick="switchHeroTrack('encrypt')">
                                 <span class="tab-indicator cyan-indicator"></span>
-                                <span data-i18n="hero_tab_encrypt">🛡️ 青軌：英文介面 (English)</span>
+                                <span data-i18n="hero_tab_encrypt">🛡️ Encrypt Mode</span>
                             </button>
                             <button class="hero-track-tab purple-tab" id="hero-tab-decrypt" onclick="switchHeroTrack('decrypt')">
                                 <span class="tab-indicator purple-indicator"></span>
-                                <span data-i18n="hero_tab_decrypt">🔓 紫軌：繁中介面 (繁體中文)</span>
+                                <span data-i18n="hero_tab_decrypt">🔓 Decrypt Mode</span>
                             </button>
                         </div>
 
@@ -1545,21 +1545,21 @@
                 nav_faq: "常見問題",
                 nav_team: "J Will 團隊",
                 nav_dl_pill: "⬇️ 下載 (v1.0.3)",
-                hero_badge: "後量子空間幾何架構 ｜ 100% 純單機離線 ｜ v1.0.3 穩定版",
-                hero_title: "超越傳統 AES 體系・後量子空間幾何架構的<br><span>數位資產安全防線</span>",
-                hero_subtitle: "基於 CB Tec 後量子幾何置換架構。單機零後門、零日誌政策，支援 20GB 大檔案常數級防爆串流與雙軌智慧佇列。",
-                h_item1: "✦ 100% 離線純淨封閉運算，磁碟 0 Byte 暫存殘留",
-                h_item2: "✦ 常數級記憶體消耗 (Anti-OOM)，大檔絕不溢位閃退",
-                h_item3: "✦ 支援中文與高強度長短語密碼憑證，無原廠主金鑰後門",
-                hero_btn_dl: "⬇️ 立即下載 JBA128G3_Setup_v1.0.3.exe",
-                hero_btn_donate: "☕ 支持團隊 (贊助)",
-                spec_os: "系統：",
-                spec_size: "大小：",
-                spec_license: "授權：",
-                btn_copy_sha: "複製校驗碼",
-                hero_track_hint: "點擊切換實機模式預覽",
-                hero_tab_encrypt: "🛡️ 青軌：英文介面 (English)",
-                hero_tab_decrypt: "🔓 紫軌：繁中介面 (繁體中文)",
+                hero_badge: "Post-Quantum Architecture ｜ 100% Air-Gapped Offline ｜ v1.0.3 Stable",
+                hero_title: "Beyond Conventional AES.<br>Next-Gen Defense for Your <span>Digital Assets</span>",
+                hero_subtitle: "Engineered on proprietary CB Tec Post-Quantum Geometric Permutation Architecture. Zero backdoors, zero telemetry, constant memory streaming up to 20GB, and intelligent dual-rail queues.",
+                h_item1: "✦ 100% Offline Air-Gapped Operation, Zero-Disk Residue (0 Byte temp)",
+                h_item2: "✦ Constant O(1) Memory Consumption (Anti-OOM), Zero crash on massive files",
+                h_item3: "✦ Full Support for High-Entropy Passphrases, Zero Master-Key Backdoors",
+                hero_btn_dl: "⬇️ Download JBA128G3_Setup_v1.0.3.exe",
+                hero_btn_donate: "☕ Buy Us a Coffee (Donate)",
+                spec_os: "OS: ",
+                spec_size: "Size: ",
+                spec_license: "License: ",
+                btn_copy_sha: "Copy SHA-256",
+                hero_track_hint: "Click to preview interface mode",
+                hero_tab_encrypt: "🛡️ 加密模式",
+                hero_tab_decrypt: "🔓 解密模式",
                 hero_tag_encrypt: "● 科技青軌模式 (English UI)",
                 hero_tag_decrypt: "● 防護紫軌模式 (繁中介面)",
                 feat_badge: "CORE ARCHITECTURE",
@@ -1609,7 +1609,7 @@
                 nav_faq: "FAQ",
                 nav_team: "J Will Team",
                 nav_dl_pill: "⬇️ Download (v1.0.3)",
-                hero_badge: "後量子空間幾何架構 ｜ 100% 純單機離線 ｜ v1.0.3 穩定版",
+                hero_badge: "Post-Quantum Architecture ｜ 100% Air-Gapped Offline ｜ v1.0.3 Stable",
                 hero_title: "Beyond Conventional AES.<br>Next-Gen Defense for Your <span>Digital Assets</span>",
                 hero_subtitle: "Engineered on proprietary CB Tec Post-Quantum Geometric Permutation Architecture. Zero backdoors, zero telemetry, constant memory streaming up to 20GB, and intelligent dual-rail queues.",
                 h_item1: "✦ 100% Offline Air-Gapped Operation, Zero-Disk Residue (0 Byte temp)",
@@ -1622,8 +1622,8 @@
                 spec_license: "License:",
                 btn_copy_sha: "Copy SHA-256",
                 hero_track_hint: "Click to preview interface mode",
-                hero_tab_encrypt: "🛡️ Cyan: English UI",
-                hero_tab_decrypt: "🔓 Purple: zh-TW UI",
+                hero_tab_encrypt: "🛡️ Encrypt Mode",
+                hero_tab_decrypt: "🔓 Decrypt Mode",
                 hero_tag_encrypt: "● Cyan Track Mode (English UI)",
                 hero_tag_decrypt: "● Purple Track Mode (zh-TW Native UI)",
                 feat_badge: "CORE ARCHITECTURE",
@@ -1669,7 +1669,7 @@
             }
         };
 
-        let currentLang = 'zh';
+        let currentLang = 'en';
         let currentHeroTrack = 'encrypt';
 
         function setLang(lang) {
@@ -1819,7 +1819,7 @@
 
         // 初始載入語言
         window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('avalon_lang') || 'zh';
+            const savedLang = localStorage.getItem('avalon_lang') || 'en';
             setLang(savedLang);
         });
     </script>
