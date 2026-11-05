@@ -595,23 +595,6 @@
             opacity: 1;
         }
 
-        .window-tag {
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--cyan);
-            margin-top: 10px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: color 0.3s ease;
-        }
-
-        .window-tag.purple-tag {
-            color: var(--purple);
-        }
-
         /* --- SECTION BASE STYLING --- */
         section {
             padding: 90px 0;
@@ -1117,6 +1100,14 @@
             .sha-info { justify-content: center; }
             .copy-btn { width: 100%; justify-content: center; }
         }
+            @media print {
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background-color: #0a0e1a !important;
+                color: #ffffff !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1225,13 +1216,10 @@
                             </button>
                         </div>
 
-                        <!-- 軟體實機視窗主體 (青軌英文 / 紫軌繁中，皆帶發光虛線框) -->
+                        <!-- 軟體實機視窗主體 (青軌英文 / 紫軌繁中，全亮虛線光框，無多餘底標) -->
                         <div class="app-window-frame cyan-glow" id="hero-window-frame">
                             <img id="hero-img-encrypt" class="hero-screen active" src="01_app_track_cyan_en.png" alt="Avalon Crypt 科技青軌 (English UI)">
                             <img id="hero-img-decrypt" class="hero-screen" src="02_app_track_purple_zh.png" alt="Avalon Crypt 防護紫軌 (繁中介面)">
-                            <div class="window-tag" id="hero-window-tag">
-                                <span id="hero-tag-text" data-i18n="hero_tag_encrypt">● 科技青軌模式 (English UI)</span>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1475,6 +1463,13 @@
         </div>
     </footer>
 
+        <!-- 右下角深色微光懸浮「返回頂端」按鈕 -->
+    <button id="backToTop" class="back-to-top-btn" onclick="scrollToTop()" aria-label="Back to top" title="回到頂端">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
     <!-- Toast 提示組件 -->
     <div id="toast" class="toast">
         <span id="toast-icon">✓</span>
@@ -1643,7 +1638,7 @@
             localStorage.setItem('avalon_lang', lang);
         }
 
-        // Hero 雙軌即時切換 (青軌英文 / 紫軌繁中，無 .png 檔名，帶呼吸微光)
+        // Hero 雙軌即時切換 (青軌英文 / 紫軌繁中，純粹視窗預覽，連動引導微光)
         function switchHeroTrack(type) {
             currentHeroTrack = type;
             const tabEncrypt = document.getElementById('hero-tab-encrypt');
@@ -1651,8 +1646,6 @@
             const imgEncrypt = document.getElementById('hero-img-encrypt');
             const imgDecrypt = document.getElementById('hero-img-decrypt');
             const frame = document.getElementById('hero-window-frame');
-            const tagText = document.getElementById('hero-tag-text');
-            const winTag = document.getElementById('hero-window-tag');
             const hint = document.getElementById('hero-track-hint');
 
             if (type === 'encrypt') {
@@ -1662,14 +1655,10 @@
                 imgDecrypt.classList.remove('active');
                 frame.classList.add('cyan-glow');
                 frame.classList.remove('purple-glow');
-                winTag.classList.remove('purple-tag');
                 if (hint) {
                     hint.classList.remove('purple-hint');
                     hint.classList.add('cyan-hint');
                 }
-                tagText.innerText = currentLang === 'zh'
-                    ? "● 科技青軌模式 (English UI)"
-                    : "● Cyan Track Mode (English UI)";
             } else {
                 tabDecrypt.classList.add('active');
                 tabEncrypt.classList.remove('active');
@@ -1677,14 +1666,10 @@
                 imgEncrypt.classList.remove('active');
                 frame.classList.add('purple-glow');
                 frame.classList.remove('cyan-glow');
-                winTag.classList.add('purple-tag');
                 if (hint) {
                     hint.classList.add('purple-hint');
                     hint.classList.remove('cyan-hint');
                 }
-                tagText.innerText = currentLang === 'zh'
-                    ? "● 防護紫軌模式 (繁中介面)"
-                    : "● Purple Track Mode (zh-TW Native UI)";
             }
         }
 
@@ -1746,6 +1731,23 @@
             setTimeout(() => {
                 toast.style.display = 'none';
             }, 3500);
+        }
+
+                // 滾動監聽：超過 350px 顯示返回頂端按鈕
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 350) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
 
         // 初始載入語言
