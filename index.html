@@ -423,6 +423,46 @@
         }
 
         /* 物理級手感 Segmented Control 切換器 */
+                /* 操作引導微文字 */
+        .hero-track-hint {
+            font-size: 0.83rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.5px;
+            animation: hintPulse 2.5s infinite ease-in-out;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .hero-track-hint.purple-hint {
+            color: var(--purple);
+            text-shadow: 0 0 12px rgba(191, 90, 242, 0.4);
+        }
+
+        .hero-track-hint.cyan-hint {
+            color: var(--cyan);
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+        }
+
+        @keyframes hintPulse {
+            0%, 100% { opacity: 0.85; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-2px); }
+        }
+
+        .hint-hand {
+            display: inline-block;
+            animation: handWave 2s infinite ease-in-out;
+        }
+
+        @keyframes handWave {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(3px); }
+        }
+
         .hero-track-tabs {
             display: flex;
             width: 100%;
@@ -1054,12 +1094,16 @@
         }
 
         /* Responsive Breakpoints */
-        @media (max-width: 992px) {
-            .hero-layout { grid-template-columns: 1fr; text-align: center; }
-            .hero-content { text-align: center; }
+        @media (max-width: 1080px) {
+            .hero-layout { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .hero-content { text-align: center; max-width: 720px; margin: 0 auto; }
             .hero-highlights { align-items: center; }
             .hero-download-action { justify-content: center; }
             .hero-specs-row { justify-content: center; }
+            .hero-track-container { max-width: 600px; margin: 0 auto; }
+        }
+
+        @media (max-width: 900px) {
             .features-grid { grid-template-columns: 1fr; }
             .donate-grid-amounts { grid-template-columns: repeat(2, 1fr); }
         }
@@ -1161,27 +1205,32 @@
                     </div>
                 </div>
 
-                <!-- 右欄：整合型雙軌即時切換實機視窗 -->
+                <!-- 右欄：整合型雙軌即時切換實機視窗 (青軌英文 / 紫軌繁中) -->
                 <div class="hero-visual">
                     <div class="hero-track-container">
+                        <!-- 操作引導微文字 (帶動態呼吸光) -->
+                        <div class="hero-track-hint" id="hero-track-hint">
+                            <span class="hint-hand">👉</span> <span data-i18n="hero_track_hint">點擊切換實機模式預覽</span> <span class="hint-arrow">▾</span>
+                        </div>
+
                         <!-- 頂部雙軌切換按鈕 (物理手感 Segmented Switcher) -->
                         <div class="hero-track-tabs">
                             <button class="hero-track-tab active cyan-tab" id="hero-tab-encrypt" onclick="switchHeroTrack('encrypt')">
                                 <span class="tab-indicator cyan-indicator"></span>
-                                <span data-i18n="hero_tab_encrypt">🛡️ 青軌：加密模式 (繁中)</span>
+                                <span data-i18n="hero_tab_encrypt">🛡️ 青軌：英文介面 (English)</span>
                             </button>
                             <button class="hero-track-tab purple-tab" id="hero-tab-decrypt" onclick="switchHeroTrack('decrypt')">
                                 <span class="tab-indicator purple-indicator"></span>
-                                <span data-i18n="hero_tab_decrypt">🔓 紫軌：解密模式 (English)</span>
+                                <span data-i18n="hero_tab_decrypt">🔓 紫軌：繁中介面 (繁體中文)</span>
                             </button>
                         </div>
 
-                        <!-- 軟體實機視窗主體 (帶青/紫動態光暈) -->
+                        <!-- 軟體實機視窗主體 (青軌英文 / 紫軌繁中，皆帶發光虛線框) -->
                         <div class="app-window-frame cyan-glow" id="hero-window-frame">
-                            <img id="hero-img-encrypt" class="hero-screen active" src="01_app_encrypt_zhtw.png" alt="Avalon Crypt 加密科技青軌 (繁中)">
-                            <img id="hero-img-decrypt" class="hero-screen" src="02_app_decrypt_en.png" alt="Avalon Crypt 解密防護紫軌 (English)">
+                            <img id="hero-img-encrypt" class="hero-screen active" src="01_app_track_cyan_en.png" alt="Avalon Crypt 科技青軌 (English UI)">
+                            <img id="hero-img-decrypt" class="hero-screen" src="02_app_track_purple_zh.png" alt="Avalon Crypt 防護紫軌 (繁中介面)">
                             <div class="window-tag" id="hero-window-tag">
-                                <span id="hero-tag-text" data-i18n="hero_tag_encrypt">● 01_app_encrypt_zhtw.png (加密科技青軌)</span>
+                                <span id="hero-tag-text" data-i18n="hero_tag_encrypt">● 科技青軌模式 (English UI)</span>
                             </div>
                         </div>
                     </div>
@@ -1453,10 +1502,11 @@
                 spec_size: "大小：",
                 spec_license: "授權：",
                 btn_copy_sha: "複製校驗碼",
-                hero_tab_encrypt: "🛡️ 青軌：加密模式 (繁中)",
-                hero_tab_decrypt: "🔓 紫軌：解密模式 (English)",
-                hero_tag_encrypt: "● 01_app_encrypt_zhtw.png (加密科技青軌)",
-                hero_tag_decrypt: "● 02_app_decrypt_en.png (解密防護紫軌)",
+                hero_track_hint: "點擊切換實機模式預覽",
+                hero_tab_encrypt: "🛡️ 青軌：英文介面 (English)",
+                hero_tab_decrypt: "🔓 紫軌：繁中介面 (繁體中文)",
+                hero_tag_encrypt: "● 科技青軌模式 (English UI)",
+                hero_tag_decrypt: "● 防護紫軌模式 (繁中介面)",
                 feat_badge: "CORE ARCHITECTURE",
                 feat_title: "自主研發・四大核心技術防線",
                 feat_desc: "以嚴苛空間幾何數學架構保障極致個人隱私，點擊卡片下方即可檢視原廠演算法規範。",
@@ -1516,10 +1566,11 @@
                 spec_size: "Size:",
                 spec_license: "License:",
                 btn_copy_sha: "Copy SHA-256",
-                hero_tab_encrypt: "🛡️ Cyan: Encrypt Mode (zh-TW)",
-                hero_tab_decrypt: "🔓 Purple: Decrypt Mode (English)",
-                hero_tag_encrypt: "● 01_app_encrypt_zhtw.png (Cyan Encrypt Track)",
-                hero_tag_decrypt: "● 02_app_decrypt_en.png (Purple Decrypt Track)",
+                hero_track_hint: "Click to preview interface mode",
+                hero_tab_encrypt: "🛡️ Cyan: English UI",
+                hero_tab_decrypt: "🔓 Purple: zh-TW UI",
+                hero_tag_encrypt: "● Cyan Track Mode (English UI)",
+                hero_tag_decrypt: "● Purple Track Mode (zh-TW Native UI)",
                 feat_badge: "CORE ARCHITECTURE",
                 feat_title: "Four Sovereign Layers of Cryptographic Defense",
                 feat_desc: "Built on rigorous spatial geometry to secure absolute personal sovereignty. Click below each card to inspect developer specifications.",
@@ -1592,7 +1643,7 @@
             localStorage.setItem('avalon_lang', lang);
         }
 
-        // Hero 雙軌即時切換 (青軌 / 紫軌)
+        // Hero 雙軌即時切換 (青軌英文 / 紫軌繁中，無 .png 檔名，帶呼吸微光)
         function switchHeroTrack(type) {
             currentHeroTrack = type;
             const tabEncrypt = document.getElementById('hero-tab-encrypt');
@@ -1602,6 +1653,7 @@
             const frame = document.getElementById('hero-window-frame');
             const tagText = document.getElementById('hero-tag-text');
             const winTag = document.getElementById('hero-window-tag');
+            const hint = document.getElementById('hero-track-hint');
 
             if (type === 'encrypt') {
                 tabEncrypt.classList.add('active');
@@ -1611,9 +1663,13 @@
                 frame.classList.add('cyan-glow');
                 frame.classList.remove('purple-glow');
                 winTag.classList.remove('purple-tag');
+                if (hint) {
+                    hint.classList.remove('purple-hint');
+                    hint.classList.add('cyan-hint');
+                }
                 tagText.innerText = currentLang === 'zh'
-                    ? "● 01_app_encrypt_zhtw.png (加密科技青軌)"
-                    : "● 01_app_encrypt_zhtw.png (Cyan Encrypt Track)";
+                    ? "● 科技青軌模式 (English UI)"
+                    : "● Cyan Track Mode (English UI)";
             } else {
                 tabDecrypt.classList.add('active');
                 tabEncrypt.classList.remove('active');
@@ -1622,9 +1678,13 @@
                 frame.classList.add('purple-glow');
                 frame.classList.remove('cyan-glow');
                 winTag.classList.add('purple-tag');
+                if (hint) {
+                    hint.classList.add('purple-hint');
+                    hint.classList.remove('cyan-hint');
+                }
                 tagText.innerText = currentLang === 'zh'
-                    ? "● 02_app_decrypt_en.png (解密防護紫軌)"
-                    : "● 02_app_decrypt_en.png (Purple Decrypt Track)";
+                    ? "● 防護紫軌模式 (繁中介面)"
+                    : "● Purple Track Mode (zh-TW Native UI)";
             }
         }
 
