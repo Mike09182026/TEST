@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avalon Crypt – 混亂雲端時代中，你個人核心機密的世外孤島 | Official Website</title>
-    <meta name="description" content="Avalon Crypt (Powered by J Will Team) 是一套基於 CB Tec 幾何串流置換架構之單機離線安全防護盾。單機零後門、零日誌政策，支援 20GB 大檔分塊串流與雙軌智慧佇列。">
+    <title>Avalon Crypt – 超越傳統 AES 體系・數位資產安全防線 | Official Website</title>
+    <meta name="description" content="Avalon Crypt (Powered by J Will Team) 是一套超越傳統 AES 體系之後量子空間幾何置換單機安全防護盾。純地端隔離運行、零日誌政策、單機零後門，支援 20GB 大檔案常數級防爆串流。">
     <link rel="icon" type="image/svg+xml" href="logo_shield_cyan.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,7 +130,7 @@
             gap: 16px;
         }
 
-        /* 雙色膠囊切換鈕 (1:1 復刻軟體實機體驗) */
+        /* 雙色膠囊切換鈕 */
         .lang-capsule {
             display: inline-flex;
             background: rgba(255, 255, 255, 0.05);
@@ -165,7 +165,7 @@
             padding: 0 24px;
         }
 
-        /* HERO SECTION - 優雅雙欄式佈局 (解決實機圖巨大與排擠問題) */
+        /* HERO SECTION */
         .hero {
             padding: 130px 0 80px;
             position: relative;
@@ -212,10 +212,10 @@
         }
 
         .hero-title {
-            font-size: clamp(2rem, 3.8vw, 3.2rem);
+            font-size: clamp(1.9rem, 3.6vw, 3rem);
             font-weight: 900;
-            letter-spacing: -1px;
-            line-height: 1.2;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
             margin-bottom: 18px;
         }
 
@@ -301,7 +301,6 @@
             transform: translateY(-2px);
         }
 
-        /* 實機視窗展示卡 (限制黃金尺寸，徹底去除粗糙背景) */
         .hero-visual {
             display: flex;
             justify-content: center;
@@ -310,7 +309,7 @@
 
         .app-window-frame {
             width: 100%;
-            max-width: 440px; /* 黃金黃金寬度，不再巨大撐屏 */
+            max-width: 440px;
             border-radius: 14px;
             padding: 8px;
             background: linear-gradient(180deg, rgba(0, 240, 255, 0.25) 0%, rgba(255, 255, 255, 0.03) 100%);
@@ -331,7 +330,6 @@
             display: block;
             border-radius: 10px;
             background: #000;
-            cursor: default;
         }
 
         .window-tag {
@@ -368,13 +366,8 @@
             display: inline-block;
         }
 
-        .section-badge.purple {
-            color: var(--purple);
-        }
-
-        .section-badge.gold {
-            color: var(--gold);
-        }
+        .section-badge.purple { color: var(--purple); }
+        .section-badge.gold { color: var(--gold); }
 
         .section-title {
             font-size: clamp(1.8rem, 3.2vw, 2.4rem);
@@ -388,10 +381,10 @@
             font-size: 1.05rem;
         }
 
-        /* FEATURES GRID */
+        /* FEATURES GRID (兩層次架構：外層直觀白話，內層下拉手風琴) */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             gap: 22px;
         }
 
@@ -399,11 +392,13 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            padding: 32px 26px;
+            padding: 30px 24px;
             backdrop-filter: blur(12px);
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .feature-card::before {
@@ -428,6 +423,15 @@
             opacity: 1;
         }
 
+        .feature-card.purple-theme::before {
+            background: linear-gradient(90deg, transparent, var(--purple), transparent);
+        }
+
+        .feature-card.purple-theme:hover {
+            border-color: rgba(191, 90, 242, 0.4);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(191, 90, 242, 0.15);
+        }
+
         .feature-icon {
             width: 48px;
             height: 48px;
@@ -438,7 +442,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             color: var(--cyan);
         }
 
@@ -448,40 +452,69 @@
             color: var(--purple);
         }
 
-        .feature-card.purple-theme::before {
-            background: linear-gradient(90deg, transparent, var(--purple), transparent);
-        }
-
-        .feature-card.purple-theme:hover {
-            border-color: rgba(191, 90, 242, 0.4);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(191, 90, 242, 0.15);
-        }
-
-        .feature-name-en {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--cyan);
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
-        }
-
-        .feature-card.purple-theme .feature-name-en {
-            color: var(--purple);
-        }
-
         .feature-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
 
-        .feature-text {
-            color: var(--text-muted);
-            font-size: 0.92rem;
+        .feature-simple-text {
+            color: #d1d5db;
+            font-size: 0.95rem;
             line-height: 1.6;
+            margin-bottom: 16px;
         }
 
-        /* SHOWCASE SECTION - 雙欄並列 (左側詳細說明，右側精緻實機) */
+        /* 深入技術手風琴折疊鈕 */
+        .tech-accordion-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 8px 14px;
+            color: var(--cyan);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .feature-card.purple-theme .tech-accordion-btn {
+            color: var(--purple);
+        }
+
+        .tech-accordion-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .tech-accordion-content {
+            display: none;
+            padding-top: 14px;
+            margin-top: 10px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tech-term-title {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--cyan);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .feature-card.purple-theme .tech-term-title {
+            color: var(--purple);
+        }
+
+        /* SHOWCASE SECTION */
         .showcase-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -549,7 +582,7 @@
 
         .showcase-preview-frame {
             width: 100%;
-            max-width: 440px; /* 黃金尺寸 */
+            max-width: 440px;
             border-radius: 14px;
             padding: 8px;
             background: rgba(10, 14, 26, 0.8);
@@ -573,7 +606,6 @@
             display: none;
             height: auto;
             border-radius: 10px;
-            cursor: default;
         }
 
         .showcase-img.active {
@@ -660,7 +692,7 @@
             color: #000;
         }
 
-        /* 🌟 DONATE SECTION (CORE) */
+        /* 🌟 DONATE SECTION (精簡卡片 + 贊助留言框) */
         .donate-section {
             background: radial-gradient(circle at 50% 30%, rgba(245, 158, 11, 0.08) 0%, transparent 60%);
         }
@@ -671,137 +703,145 @@
             border-radius: 16px;
             padding: 24px 30px;
             max-width: 860px;
-            margin: 0 auto 44px;
+            margin: 0 auto 40px;
             text-align: center;
             font-size: 1rem;
             color: #fde68a;
             line-height: 1.7;
         }
 
-        .donate-grid {
+        /* 精簡金額卡片網格 */
+        .donate-quick-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 22px;
-            max-width: 1060px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            max-width: 860px;
+            margin: 0 auto 36px;
         }
 
-        .donate-card {
+        .donate-amount-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 18px;
-            padding: 34px 26px;
-            backdrop-filter: blur(12px);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            border-radius: 14px;
+            padding: 24px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
             position: relative;
-            transition: all 0.3s ease;
         }
 
-        .donate-card.featured {
-            border-color: rgba(245, 158, 11, 0.4);
-            box-shadow: 0 0 30px rgba(245, 158, 11, 0.15);
-            background: linear-gradient(180deg, rgba(245, 158, 11, 0.06) 0%, var(--card-bg) 100%);
-        }
-
-        .donate-card:hover {
-            transform: translateY(-4px);
+        .donate-amount-card:hover, .donate-amount-card.selected {
             border-color: var(--gold);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--gold-glow);
+            background: rgba(245, 158, 11, 0.08);
+            box-shadow: 0 8px 24px rgba(245, 158, 11, 0.2);
+            transform: translateY(-3px);
         }
 
-        .donate-badge-pop {
-            position: absolute;
-            top: -12px;
-            right: 24px;
-            background: var(--gold);
-            color: #070a13;
-            font-size: 0.72rem;
+        .donate-amount-card.featured-card {
+            border-color: rgba(245, 158, 11, 0.35);
+        }
+
+        .amount-icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .amount-num {
+            font-size: 1.6rem;
             font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            box-shadow: 0 0 12px var(--gold-glow);
-        }
-
-        .donate-header {
-            margin-bottom: 20px;
-        }
-
-        .donate-icon {
-            font-size: 2.2rem;
-            margin-bottom: 14px;
-        }
-
-        .donate-plan-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .donate-price {
-            font-size: 1.9rem;
-            font-weight: 900;
             color: #ffd166;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
         }
 
-        .donate-desc {
+        .amount-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .amount-sub {
+            font-size: 0.75rem;
             color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.5;
+            margin-top: 4px;
         }
 
-        .donate-features {
-            list-style: none;
-            margin: 20px 0;
-            border-top: 1px solid var(--card-border);
-            padding-top: 18px;
+        /* 贊助者留言互動框 */
+        .supporter-message-box {
+            max-width: 860px;
+            margin: 0 auto 36px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 26px 28px;
+            backdrop-filter: blur(12px);
         }
 
-        .donate-features li {
-            font-size: 0.88rem;
-            color: #e2e8f0;
-            margin-bottom: 10px;
+        .supporter-msg-header {
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .donate-features li::before {
-            content: '✓';
-            color: var(--gold);
-            font-weight: 800;
-        }
-
-        .btn-donate-card {
-            width: 100%;
-            padding: 12px 18px;
-            border-radius: 8px;
-            font-size: 0.92rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            text-align: center;
-            border: 1px solid rgba(245, 158, 11, 0.4);
-            background: rgba(245, 158, 11, 0.1);
             color: #ffd166;
-            cursor: pointer;
-            transition: all 0.2s;
+            margin-bottom: 12px;
         }
 
-        .btn-donate-card:hover {
-            background: var(--gold);
+        .supporter-textarea {
+            width: 100%;
+            height: 90px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: #fff;
+            font-family: var(--font-main);
+            font-size: 0.92rem;
+            resize: none;
+            outline: none;
+            transition: border-color 0.2s;
+            margin-bottom: 16px;
+        }
+
+        .supporter-textarea:focus {
+            border-color: var(--gold);
+        }
+
+        .supporter-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-send-support {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: #070a13;
-            box-shadow: 0 0 20px var(--gold-glow);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 16px var(--gold-glow);
+        }
+
+        .btn-send-support:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(245, 158, 11, 0.45);
         }
 
         .crypto-box {
             max-width: 860px;
-            margin: 36px auto 0;
+            margin: 0 auto;
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--card-border);
             border-radius: 14px;
-            padding: 18px 24px;
+            padding: 16px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -839,6 +879,55 @@
         .crypto-tag:hover {
             background: rgba(0, 240, 255, 0.15);
             border-color: var(--cyan);
+        }
+
+        /* ❓ FAQ SECTION (常見問題消慮) */
+        .faq-section {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-list {
+            max-width: 820px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 22px 26px;
+            transition: all 0.2s;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .faq-q {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-q::before {
+            content: 'Q.';
+            color: var(--cyan);
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+        }
+
+        .faq-a {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            padding-left: 28px;
         }
 
         /* TEAM & ECOSYSTEM */
@@ -923,8 +1012,6 @@
             gap: 10px;
         }
 
-
-
         /* TOAST NOTIFICATION */
         .toast {
             position: fixed;
@@ -979,6 +1066,7 @@
                 <li><a href="#showcase" data-i18n="nav_showcase">實機雙軌</a></li>
                 <li><a href="#download" data-i18n="nav_download">軟體下載</a></li>
                 <li><a href="#donate" class="nav-highlight" data-i18n="nav_donate">☕ 贊助支持</a></li>
+                <li><a href="#faq" data-i18n="nav_faq">常見問題</a></li>
                 <li><a href="#team" data-i18n="nav_team">J Will 團隊</a></li>
             </ul>
             <div class="nav-actions">
@@ -990,7 +1078,7 @@
         </div>
     </header>
 
-    <!-- 2. Hero 旗艦首頁 (優雅雙欄架構) -->
+    <!-- 2. Hero 旗艦首頁 (正式商業主標：數位資產安全防線) -->
     <div class="hero">
         <div class="container">
             <div class="hero-layout">
@@ -1001,15 +1089,15 @@
                         <span data-i18n="hero_badge">Post-Quantum Ready ｜ Air-Gapped Operation ｜ v1.0.3 Stable</span>
                     </div>
                     <h1 class="hero-title" data-i18n="hero_title">
-                        混亂雲端時代中<br>你個人核心機密的<span>世外孤島</span>
+                        超越傳統 AES 體系・後量子空間幾何架構的<br><span>數位資產安全防線</span>
                     </h1>
                     <p class="hero-subtitle" data-i18n="hero_subtitle">
-                        基於 CB Tec 後量子空間幾何置換架構。單機零後門、零日誌政策，支援 20GB 大檔分塊串流與雙軌智慧佇列。
+                        基於 CB Tec 後量子幾何置換架構。單機零後門、零日誌政策，支援 20GB 大檔案常數級防爆串流與雙軌智慧佇列。
                     </p>
                     <ul class="hero-highlights">
                         <li data-i18n="h_item1">100% 離線純淨封閉運算，磁碟 0 Byte 暫存殘留</li>
                         <li data-i18n="h_item2">常數級記憶體消耗 (Anti-OOM)，大檔絕不溢位閃退</li>
-                        <li data-i18n="h_item3">支援中文長短語密碼憑證，無原廠主金鑰後門</li>
+                        <li data-i18n="h_item3">支援中文與高強度長短語密碼憑證，無原廠主金鑰後門</li>
                     </ul>
                     <div class="hero-cta">
                         <a href="#download" class="btn btn-primary" data-i18n="hero_btn_dl">
@@ -1021,7 +1109,7 @@
                     </div>
                 </div>
 
-                <!-- 右欄：裁切純淨的真實實機展示 (黃金尺寸，無多餘桌面背景) -->
+                <!-- 右欄：裁切純淨的真實實機展示 -->
                 <div class="hero-visual">
                     <div class="app-window-frame">
                         <img src="01_app_encrypt_zhtw.png" alt="Avalon Crypt 實機介面">
@@ -1034,60 +1122,108 @@
         </div>
     </div>
 
-    <!-- 3. 產品介紹與核心特色 Features -->
+    <!-- 3. 產品介紹與核心特色 Features (兩層次架構：直觀白話好處 + 下拉技術手風琴) -->
     <section id="features">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge" data-i18n="feat_badge">CORE ARCHITECTURE</span>
                 <h2 class="section-title" data-i18n="feat_title">自主研發・四大核心技術防線</h2>
-                <p class="section-desc" data-i18n="feat_desc">徹底摒棄傳統公開加密庫潛在弱點，以嚴苛幾何數學架構保障極致個人隱私。</p>
+                <p class="section-desc" data-i18n="feat_desc">以嚴苛空間幾何數學架構保障極致個人隱私，點擊卡片下方即可檢視原廠演算法規範。</p>
             </div>
 
             <div class="features-grid">
-                <!-- 特色 1: 幾何串流置換演算法 -->
+                <!-- 特色 1: 抗量子破譯 -->
                 <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <div class="feature-name-en">Geometric Stream Permutation Cipher</div>
-                    <h3 class="feature-title" data-i18n="f1_title">幾何串流置換演算法</h3>
-                    <p class="feature-text" data-i18n="f1_text">
-                        底層演算法非傳統 AES 家族，採用自主研發之新世代幾何串流置換架構，具備抵禦未來量子運算暴力破譯特性 (Post-Quantum Security Grade)。
-                    </p>
+                    <div>
+                        <div class="feature-icon">🛡️</div>
+                        <h3 class="feature-title" data-i18n="f1_title">抗量子暴力破譯</h3>
+                        <p class="feature-simple-text" data-i18n="f1_simple">
+                            未來的量子超級電腦亦無法破解。自主幾何空間流式置換，徹底摒棄傳統公開加密庫之運算盲點。
+                        </p>
+                    </div>
+                    <div>
+                        <button class="tech-accordion-btn" onclick="toggleTech(this)">
+                            <span data-i18n="tech_btn_expand">深入技術原理 ▼</span>
+                        </button>
+                        <div class="tech-accordion-content">
+                            <div class="tech-term-title">Geometric Stream Permutation Cipher</div>
+                            <p data-i18n="f1_tech">
+                                底層演算法非傳統 AES 家族，採用自主研發之新世代幾何串流置換架構，具備抵禦未來量子運算暴力破譯特性 (Post-Quantum Security Grade)。
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- 特色 2: 常數級記憶體消耗 -->
+                <!-- 特色 2: 20GB 大檔流暢防爆 -->
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <div class="feature-name-en">O(1) Chunked Streaming (Anti-OOM)</div>
-                    <h3 class="feature-title" data-i18n="f2_title">常數級記憶體防爆串流</h3>
-                    <p class="feature-text" data-i18n="f2_text">
-                        支援單檔最高達 20GB 超大檔案。資料採串流流水線分塊處理，記憶體消耗維持為 O(1) 常數級，與檔案大小脫鉤，徹底杜絕記憶體溢位閃退。
-                    </p>
+                    <div>
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title" data-i18n="f2_title">20GB 大檔流暢防爆</h3>
+                        <p class="feature-simple-text" data-i18n="f2_simple">
+                            超大檔案流暢處理不卡頓。無論單檔 500MB 或 20GB，記憶體始終維持極低佔用，絕不溢位閃退。
+                        </p>
+                    </div>
+                    <div>
+                        <button class="tech-accordion-btn" onclick="toggleTech(this)">
+                            <span data-i18n="tech_btn_expand">深入技術原理 ▼</span>
+                        </button>
+                        <div class="tech-accordion-content">
+                            <div class="tech-term-title">O(1) Constant Memory Chunked Streaming</div>
+                            <p data-i18n="f2_tech">
+                                支援單檔最高達 20GB 超大檔案。資料採串流流水線分塊處理，記憶體消耗維持為 O(1) 常數級，與檔案大小脫鉤，徹底杜絕記憶體溢位閃退 (Anti-OOM)。
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- 特色 3: 零日誌與單機零後門 -->
+                <!-- 特色 3: 0 殘留單機零後門 -->
                 <div class="feature-card purple-theme">
-                    <div class="feature-icon">🔒</div>
-                    <div class="feature-name-en">Zero-Log & Zero-Backdoor Sovereign</div>
-                    <h3 class="feature-title" data-i18n="f3_title">零日誌與單機零後門</h3>
-                    <p class="feature-text" data-i18n="f3_text">
-                        全程單機封閉式離線運算，不寫入任何操作歷史或金鑰日誌，磁碟達 0 Byte 殘留。無通用主金鑰 (Master Key)，金鑰主權 100% 歸使用者掌控。
-                    </p>
+                    <div>
+                        <div class="feature-icon">🔒</div>
+                        <h3 class="feature-title" data-i18n="f3_title">0 殘留單機零後門</h3>
+                        <p class="feature-simple-text" data-i18n="f3_simple">
+                            關閉程式後電腦不留任何蛛絲馬跡。完全無原廠後門與通用金鑰，密碼若遺失連原廠亦無法破解。
+                        </p>
+                    </div>
+                    <div>
+                        <button class="tech-accordion-btn" onclick="toggleTech(this)">
+                            <span data-i18n="tech_btn_expand">深入技術原理 ▼</span>
+                        </button>
+                        <div class="tech-accordion-content">
+                            <div class="tech-term-title">Zero-Log Policy & Zero-Backdoor Sovereign</div>
+                            <p data-i18n="f3_tech">
+                                全程單機封閉式離線運算，不寫入任何操作歷史或金鑰日誌，磁碟達 0 Byte 殘留。無通用主金鑰 (Master Key)，金鑰主權 100% 歸使用者掌控。
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- 特色 4: .jbs 專用防護封裝與雙軌佇列 -->
+                <!-- 特色 4: 整包資料夾直接封裝 -->
                 <div class="feature-card purple-theme">
-                    <div class="feature-icon">📦</div>
-                    <div class="feature-name-en">.jbs Encapsulation & Dual Queue</div>
-                    <h3 class="feature-title" data-i18n="f4_title">.jbs 專用封裝與雙軌佇列</h3>
-                    <p class="feature-text" data-i18n="f4_text">
-                        支援整個資料夾遞迴封裝加密與結構還原。內建多 Worker 平行運算工作池，單次支援 1~20 個任務批次拖入，智慧分流加解密軌道。
-                    </p>
+                    <div>
+                        <div class="feature-icon">📦</div>
+                        <h3 class="feature-title" data-i18n="f4_title">整包資料夾直接封裝</h3>
+                        <p class="feature-simple-text" data-i18n="f4_simple">
+                            支援完整資料夾直接拖入封裝。智慧雙軌平行運算，解密時目錄階層原封不動完整還原。
+                        </p>
+                    </div>
+                    <div>
+                        <button class="tech-accordion-btn" onclick="toggleTech(this)">
+                            <span data-i18n="tech_btn_expand">深入技術原理 ▼</span>
+                        </button>
+                        <div class="tech-accordion-content">
+                            <div class="tech-term-title">.jbs Encapsulation & Dual-Track Queue</div>
+                            <p data-i18n="f4_tech">
+                                專用 .jbs 封裝支援整個資料夾遞迴加密與結構還原。內建多 Worker 平行運算工作池，單次支援 1~20 個任務批次拖入，智慧分流加解密軌道。
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. 實機雙軌展示 Showcase (旗艦雙軌純粹展示) -->
+    <!-- 4. 實機雙軌展示 Showcase -->
     <section id="showcase" style="background: rgba(0, 0, 0, 0.2);">
         <div class="container">
             <div class="section-header">
@@ -1097,14 +1233,14 @@
             </div>
 
             <div class="showcase-split">
-                <!-- 左側控制卡片清單 (純粹雙軌) -->
+                <!-- 左側控制卡片清單 -->
                 <div class="showcase-tabs-vertical">
                     <div class="tab-card active cyan-active" id="tab-card-encrypt" onclick="selectShowcase('encrypt')">
                         <div class="tab-card-header">
                             <span>🛡️</span> <span data-i18n="tab_encrypt_title">加密科技青軌 (繁中介面)</span>
                         </div>
                         <p class="tab-card-desc" data-i18n="tab_encrypt_desc">
-                            沉浸式暗黑標題列與微光待命燈。支援 1~20 任務佇列與完整資料夾拖入，自動指派加密軌道，進行 64MB 零拷貝分塊串流置換。
+                            沉浸式暗黑標題列與微光待命燈。支援 1~20 任務佇列與完整資料夾拖入，自動指派加密軌道，進行分塊串流置換。
                         </p>
                     </div>
 
@@ -1113,18 +1249,18 @@
                             <span>🔓</span> <span data-i18n="tab_decrypt_title">解密防護紫軌 (English UI)</span>
                         </div>
                         <p class="tab-card-desc" data-i18n="tab_decrypt_desc">
-                            智慧識別 .jbs 專用安全封裝檔，自動切換至高雅資安紫微光主題反饋。憑證驗證通過後，無損還原原始檔案與深層遞迴目錄結構。
+                            智慧識別 .jbs 專用安全封裝檔，自動切換至高雅資安紫微光主題反饋。憑證驗證通過後，無損還原原始檔案與深層目錄。
                         </p>
                     </div>
                 </div>
 
-                <!-- 右側視窗預覽展示 (純淨黃金比例，無任何粗糙背景與雜質) -->
+                <!-- 右側視窗預覽展示 (純淨黃金比例) -->
                 <div class="showcase-viewport">
                     <div class="showcase-preview-frame cyan-glow" id="showcase-frame">
                         <img id="img-encrypt" class="showcase-img active" src="01_app_encrypt_zhtw.png" alt="加密模式待命畫面 (繁中)">
                         <img id="img-decrypt" class="showcase-img" src="02_app_decrypt_en.png" alt="解密模式待命畫面 (English)">
                         <div class="window-tag">
-                            <span id="showcase-tag-text">● 01_app_encrypt_zhtw.png (加密待命介面)</span>
+                            <span id="showcase-tag-text">● 01_app_encrypt_zhtw.png (加密科技青軌)</span>
                         </div>
                     </div>
                 </div>
@@ -1152,7 +1288,7 @@
                     </div>
                     <div class="spec-item">
                         <div class="spec-label" data-i18n="spec_size">檔案大小</div>
-                        <div class="spec-val">約 73.5 MB</div>
+                        <div class="spec-val">約 73.5 MB (77,136,168 Bytes)</div>
                     </div>
                     <div class="spec-item">
                         <div class="spec-label" data-i18n="spec_license">授權類型</div>
@@ -1173,13 +1309,13 @@
         </div>
     </section>
 
-    <!-- 6. 🌟 最重要的斗內專區 Support / Buy Me a Coffee -->
+    <!-- 6. 🌟 最重要的斗內專區 (純粹咖啡金額卡片 + 贊助留言框) -->
     <section id="donate" class="donate-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge gold" data-i18n="don_badge">SUPPORT INDEPENDENT RESEARCH</span>
                 <h2 class="section-title" data-i18n="don_title">☕ 支持獨立研發・守護純粹隱私</h2>
-                <p class="section-desc" data-i18n="don_desc">不依賴風投資本、不植入商業廣告、絕不販賣用戶隱私。你的每一份心意，都是維護這座世外孤島的堅定基石。</p>
+                <p class="section-desc" data-i18n="don_desc">不依賴風投資本、不植入商業廣告、絕不販賣用戶隱私。你的每一份心意，都是維護這座安全防線的堅定基石。</p>
             </div>
 
             <!-- 獨立開發者宣言 -->
@@ -1187,61 +1323,47 @@
                 「在主流軟體皆轉向訂閱制與雲端遙測的今天，我們依然堅持打造 100% 離線純淨、零日誌殘留、零後門的極限防護工具。我們深信：真正的資料主權，應該永遠握在你自己手中。」
             </div>
 
-            <!-- 3 大贊助層級卡片 (高質感預留位) -->
-            <div class="donate-grid">
-                <!-- 卡片 1: Buy Me a Coffee -->
-                <div class="donate-card">
-                    <div class="donate-header">
-                        <div class="donate-icon">☕</div>
-                        <h3 class="donate-plan-name" data-i18n="d1_name">請喝一杯熱咖啡</h3>
-                        <div class="donate-price">$5 <span style="font-size:1rem; font-weight:400; color:var(--text-muted);">USD</span></div>
-                        <p class="donate-desc" data-i18n="d1_desc">溫暖純粹的心意支持，讓開發團隊在深夜進行演算法調優時保持清醒與專注。</p>
-                    </div>
-                    <ul class="donate-features">
-                        <li data-i18n="d1_f1">支持單機軟體持續純淨更新</li>
-                        <li data-i18n="d1_f2">維護開源 CB_Tec 生態庫健全</li>
-                        <li data-i18n="d1_f3">由衷的開發者感謝信與支持回饋</li>
-                    </ul>
-                    <button class="btn-donate-card" onclick="openDonateModal('Buy Me a Coffee')">
-                        ☕ Buy Me a Coffee <span data-i18n="btn_pending">(即將開放)</span>
-                    </button>
+            <!-- 純粹金額卡片網格 (無繁瑣條目，直覺親切) -->
+            <div class="donate-quick-grid">
+                <div class="donate-amount-card" onclick="selectAmount(5, this)">
+                    <div class="amount-icon">☕</div>
+                    <div class="amount-num">$5 <span style="font-size:0.85rem; font-weight:400;">USD</span></div>
+                    <div class="amount-tag" data-i18n="don_cup1">請喝 1 杯咖啡</div>
+                    <div class="amount-sub" data-i18n="don_cup1_sub">溫暖純粹的心意支持</div>
                 </div>
 
-                <!-- 卡片 2: 先鋒贊助者 Pioneer (推薦) -->
-                <div class="donate-card featured">
-                    <div class="donate-badge-pop" data-i18n="badge_pop">RECOMMENDED</div>
-                    <div class="donate-header">
-                        <div class="donate-icon">🚀</div>
-                        <h3 class="donate-plan-name" data-i18n="d2_name">先鋒贊助者 (Pioneer)</h3>
-                        <div class="donate-price">$29 <span style="font-size:1rem; font-weight:400; color:var(--text-muted);">USD</span></div>
-                        <p class="donate-desc" data-i18n="d2_desc">成為 Avalon Crypt 的創始支持者，名留官方致敬殿堂，獲得新世代技術搶先權。</p>
-                    </div>
-                    <ul class="donate-features">
-                        <li data-i18n="d2_f1">官網永久先鋒贊助者銘謝名冊 (可匿名)</li>
-                        <li data-i18n="d2_f2">新世代 CB Tec 幾何置換架構白皮書</li>
-                        <li data-i18n="d2_f3">專屬先鋒支持者高解析數位榮譽憑證</li>
-                        <li data-i18n="d2_f4">重大版本釋出前之優先封閉測試通道</li>
-                    </ul>
-                    <button class="btn-donate-card" style="background: var(--gold); color: #070a13; border-color: var(--gold);" onclick="openDonateModal('Pioneer Backer')">
-                        🌟 <span data-i18n="btn_pioneer">成為先鋒贊助者 (預留位)</span>
-                    </button>
+                <div class="donate-amount-card featured-card selected" onclick="selectAmount(15, this)">
+                    <div class="amount-icon">☕☕☕</div>
+                    <div class="amount-num">$15 <span style="font-size:0.85rem; font-weight:400;">USD</span></div>
+                    <div class="amount-tag" data-i18n="don_cup3">請喝 3 杯咖啡</div>
+                    <div class="amount-sub" data-i18n="don_cup3_sub">加倍動力深耕算法</div>
                 </div>
 
-                <!-- 卡片 3: 開源守護者 Code Guardian -->
-                <div class="donate-card">
-                    <div class="donate-header">
-                        <div class="donate-icon">🏛️</div>
-                        <h3 class="donate-plan-name" data-i18n="d3_name">開源守護者 (Guardian)</h3>
-                        <div class="donate-price">$99+ <span style="font-size:1rem; font-weight:400; color:var(--text-muted);">USD</span></div>
-                        <p class="donate-desc" data-i18n="d3_desc">面向極限資安追求者、隱私極客與獨立企業，共同推動抗量子自主密碼學之普及。</p>
-                    </div>
-                    <ul class="donate-features">
-                        <li data-i18n="d3_f1">官網首頁「守護者席位」尊榮銘謝展示</li>
-                        <li data-i18n="d3_f2">與核心架構師一對一技術反饋諮詢通道</li>
-                        <li data-i18n="d3_f3">推動次世代離線硬體金鑰 (Hardware Key) 研發</li>
-                    </ul>
-                    <button class="btn-donate-card" onclick="openDonateModal('Code Guardian')">
-                        🤝 <span data-i18n="btn_guardian">深度專案贊助 (預留位)</span>
+                <div class="donate-amount-card" onclick="selectAmount(29, this)">
+                    <div class="amount-icon">🚀</div>
+                    <div class="amount-num">$29 <span style="font-size:0.85rem; font-weight:400;">USD</span></div>
+                    <div class="amount-tag" data-i18n="don_pioneer">先鋒創始支持</div>
+                    <div class="amount-sub" data-i18n="don_pioneer_sub">列入致敬殿堂與白皮書</div>
+                </div>
+
+                <div class="donate-amount-card" onclick="selectAmount('custom', this)">
+                    <div class="amount-icon">✨</div>
+                    <div class="amount-num" data-i18n="don_custom_title">自訂金額</div>
+                    <div class="amount-tag" data-i18n="don_custom">隨心自由贊助</div>
+                    <div class="amount-sub" data-i18n="don_custom_sub">感謝每份專屬信任</div>
+                </div>
+            </div>
+
+            <!-- 贊助者給開發團隊的加油留言框 -->
+            <div class="supporter-message-box">
+                <div class="supporter-msg-header">
+                    <span>✍️</span> <span data-i18n="msg_box_title">留下你想對 J Will 開發團隊說的話（留言板）：</span>
+                </div>
+                <textarea id="supporterMsg" class="supporter-textarea" placeholder="例如：感謝你們堅持做不連網的純粹軟體！守護資料主權加油！" data-i18n-ph="msg_placeholder"></textarea>
+                <div class="supporter-actions">
+                    <span style="font-size:0.82rem; color:var(--text-muted);" data-i18n="msg_box_hint">● 你的留言將隨贊助一併轉達給核心研發團隊</span>
+                    <button class="btn-send-support" onclick="submitDonation()">
+                        <span>☕</span> <span data-i18n="btn_submit_support">送出心意並前往贊助 (Buy Me a Coffee)</span>
                     </button>
                 </div>
             </div>
@@ -1260,7 +1382,44 @@
         </div>
     </section>
 
-    <!-- 7. J Will 研發團隊與生態庫 Team & Ecosystem -->
+    <!-- 7. ❓ FAQ 常見問題消慮專區 -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-i18n="faq_badge">FREQUENTLY ASKED QUESTIONS</span>
+                <h2 class="section-title" data-i18n="faq_title">常見問題與安全承諾</h2>
+                <p class="section-desc" data-i18n="faq_desc">關於單機隱私、演算法機制與使用授權的真實解答。</p>
+            </div>
+
+            <div class="faq-list">
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <div class="faq-q" data-i18n="q1_title">如果我忘記密碼，你們原廠救得回來嗎？</div>
+                    <div class="faq-a" data-i18n="q1_ans">
+                        <strong>完全救不回來。</strong> Avalon Crypt 恪守「單機零後門」承諾，核心內部沒有任何原廠通用金鑰（Master Key）。密碼是解密 .jbs 封裝的唯一憑證，請務必妥善保管你的金鑰。
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <div class="faq-q" data-i18n="q2_title">軟體真的 100% 完全不需要連網嗎？</div>
+                    <div class="faq-a" data-i18n="q2_ans">
+                        <strong>是的，完全無需連網。</strong> 軟體本體零網路依賴、零後台遙測通訊，即使在完全拔掉網路線、開啟飛航模式的純隔離環境下，亦能疾速進行加解密運算。
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <div class="faq-q" data-i18n="q3_title">解密端接收檔案需要付費或授權嗎？</div>
+                    <div class="faq-a" data-i18n="q3_ans">
+                        <strong>完全不需要。</strong> 我們遵循個人非營利免費授權原則，檔案接收方解密永遠免費、無需購買啟用碼，確保高價值機密檔案在持密各方之間安全自由流轉。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. J Will 研發團隊與生態庫 Team & Ecosystem -->
     <section id="team">
         <div class="container">
             <div class="team-box">
@@ -1279,7 +1438,7 @@
         </div>
     </section>
 
-    <!-- 8. 頁尾 Footer -->
+    <!-- 9. 頁尾 Footer -->
     <footer>
         <div class="container footer-content">
             <p style="font-weight:600; color:#fff;" data-i18n="footer_cr">
@@ -1290,8 +1449,6 @@
             </p>
         </div>
     </footer>
-
-
 
     <!-- 提示 TOAST -->
     <div id="toast" class="toast">
@@ -1306,36 +1463,40 @@
                 nav_showcase: "實機雙軌",
                 nav_download: "軟體下載",
                 nav_donate: "☕ 贊助支持",
+                nav_faq: "常見問題",
                 nav_team: "J Will 團隊",
                 hero_badge: "Post-Quantum Ready ｜ Air-Gapped Operation ｜ v1.0.3 Stable",
-                hero_title: "混亂雲端時代中<br>你個人核心機密的<span>世外孤島</span>",
-                hero_subtitle: "基於 CB Tec 後量子空間幾何置換架構。單機零後門、零日誌政策，支援 20GB 大檔分塊串流與雙軌智慧佇列。",
+                hero_title: "超越傳統 AES 體系・後量子空間幾何架構的<br><span>數位資產安全防線</span>",
+                hero_subtitle: "基於 CB Tec 後量子幾何置換架構。單機零後門、零日誌政策，支援 20GB 大檔案常數級防爆串流與雙軌智慧佇列。",
                 h_item1: "100% 離線純淨封閉運算，磁碟 0 Byte 暫存殘留",
                 h_item2: "常數級記憶體消耗 (Anti-OOM)，大檔絕不溢位閃退",
-                h_item3: "支援中文長短語密碼憑證，無原廠主金鑰後門",
+                h_item3: "支援中文與高強度長短語密碼憑證，無原廠主金鑰後門",
                 hero_btn_dl: "⬇️ 免費下載 Windows 版 (v1.0.3)",
                 hero_btn_donate: "☕ 支持獨立研發 (贊助)",
                 hero_win_caption: "Avalon Crypt 繁中實機介面",
                 feat_badge: "CORE ARCHITECTURE",
                 feat_title: "自主研發・四大核心技術防線",
-                feat_desc: "徹底摒棄傳統公開加密庫潛在弱點，以嚴苛幾何數學架構保障極致個人隱私。",
-                f1_title: "幾何串流置換演算法",
-                f1_text: "底層演算法非傳統 AES 家族，採用自主研發之新世代幾何串流置換架構，具備抵禦未來量子運算暴力破譯特性 (Post-Quantum Security Grade)。",
-                f2_title: "常數級記憶體防爆串流",
-                f2_text: "支援單檔最高達 20GB 超大檔案。資料採串流流水線分塊處理，記憶體消耗維持為 O(1) 常數級，與檔案大小脫鉤，徹底杜絕記憶體溢位閃退。",
-                f3_title: "零日誌與單機零後門",
-                f3_text: "全程單機封閉式離線運算，不寫入任何操作歷史或金鑰日誌，磁碟達 0 Byte 殘留。無通用主金鑰 (Master Key)，金鑰主權 100% 歸使用者掌控。",
-                f4_title: ".jbs 專用封裝與雙軌佇列",
-                f4_text: "支援整個資料夾遞迴封裝加密與結構還原。內建多 Worker 平行運算工作池，單次支援 1~20 個任務批次拖入，智慧分流加解密軌道。",
+                feat_desc: "以嚴苛空間幾何數學架構保障極致個人隱私，點擊卡片下方即可檢視原廠演算法規範。",
+                f1_title: "抗量子暴力破譯",
+                f1_simple: "未來的量子超級電腦亦無法破解。自主幾何空間流式置換，徹底摒棄傳統公開加密庫之運算盲點。",
+                f1_tech: "底層演算法非傳統 AES 家族，採用自主研發之新世代幾何串流置換架構，具備抵禦未來量子運算暴力破譯特性 (Post-Quantum Security Grade)。",
+                f2_title: "20GB 大檔流暢防爆",
+                f2_simple: "超大檔案流暢處理不卡頓。無論單檔 500MB 或 20GB，記憶體始終維持極低佔用，絕不溢位閃退。",
+                f2_tech: "支援單檔最高達 20GB 超大檔案。資料採串流流水線分塊處理，記憶體消耗維持為 O(1) 常數級，與檔案大小脫鉤，徹底杜絕記憶體溢位閃退 (Anti-OOM)。",
+                f3_title: "0 殘留單機零後門",
+                f3_simple: "關閉程式後電腦不留任何蛛絲馬跡。完全無原廠後門與通用金鑰，密碼若遺失連原廠亦無法破解。",
+                f3_tech: "全程單機封閉式離線運算，不寫入任何操作歷史或金鑰日誌，磁碟達 0 Byte 殘留。無通用主金鑰 (Master Key)，金鑰主權 100% 歸使用者掌控。",
+                f4_title: "整包資料夾直接封裝",
+                f4_simple: "支援完整資料夾直接拖入封裝。智慧雙軌平行運算，解密時目錄階層原封不動完整還原。",
+                f4_tech: "專用 .jbs 封裝支援整個資料夾遞迴加密與結構還原。內建多 Worker 平行運算工作池，單次支援 1~20 個任務批次拖入，智慧分流加解密軌道。",
+                tech_btn_expand: "深入技術原理 ▼",
                 show_badge: "DUAL-TRACK INTERFACE",
                 show_title: "真實實機・雙軌主題即時反饋",
-                show_desc: "青軌代表加密防護，紫軌代表解密還原。點擊左側檢視各模式之真實介面與功能詳情。",
+                show_desc: "青軌代表加密防護，紫軌代表解密還原。點擊左側即時切換檢視旗艦雙軌介面。",
                 tab_encrypt_title: "加密科技青軌 (繁中介面)",
-                tab_encrypt_desc: "沉浸式暗黑標題列與微光待命燈。支援完整資料夾或單檔拖入，即時展開任務佇列與分塊串流流水線。",
+                tab_encrypt_desc: "沉浸式暗黑標題列與微光待命燈。支援 1~20 任務佇列與完整資料夾拖入，自動指派加密軌道，進行分塊串流置換。",
                 tab_decrypt_title: "解密防護紫軌 (English UI)",
-                tab_decrypt_desc: "智慧識別 .jbs 安全封裝檔，自動指派解密軌道並切換為高雅紫微光主題反饋，安全無邊框體驗。",
-                tab_modal_title: "原廠規格與個人非營利授權條款",
-                tab_modal_desc: "內建完整技術與法律授權邊界說明，確保使用者知悉單機零後門與個人非商業用途承諾。",
+                tab_decrypt_desc: "智慧識別 .jbs 專用安全封裝檔，自動切換至高雅資安紫微光主題反饋。憑證驗證通過後，無損還原原始檔案與深層目錄。",
                 dl_badge: "GET STARTED",
                 dl_title: "立即部署你的專屬防護盾",
                 dl_desc: "綠色便攜、單機即裝即用，無任何背景常駐與連網通訊組件。",
@@ -1345,29 +1506,30 @@
                 btn_dl_now: "立即下載 JBA128G3_Setup_v1.0.3.exe",
                 don_badge: "SUPPORT INDEPENDENT RESEARCH",
                 don_title: "☕ 支持獨立研發・守護純粹隱私",
-                don_desc: "不依賴風投資本、不植入商業廣告、絕不販賣用戶隱私。你的每一份心意，都是維護這座世外孤島的堅定基石。",
+                don_desc: "不依賴風投資本、不植入商業廣告、絕不販賣用戶隱私。你的每一份心意，都是維護這座安全防線的堅定基石。",
                 don_manifesto: "「在主流軟體皆轉向訂閱制與雲端遙測的今天，我們依然堅持打造 100% 離線純淨、零日誌殘留、零後門的極限防護工具。我們深信：真正的資料主權，應該永遠握在你自己手中。」",
-                d1_name: "請喝一杯熱咖啡",
-                d1_desc: "溫暖純粹的心意支持，讓開發團隊在深夜進行演算法調優時保持清醒與專注。",
-                d1_f1: "支持單機軟體持續純淨更新",
-                d1_f2: "維護開源 CB_Tec 生態庫健全",
-                d1_f3: "由衷的開發者感謝信與支持回饋",
-                badge_pop: "最受推薦",
-                d2_name: "先鋒贊助者 (Pioneer)",
-                d2_desc: "成為 Avalon Crypt 的創始支持者，名留官方致敬殿堂，獲得新世代技術搶先權。",
-                d2_f1: "官網永久先鋒贊助者銘謝名冊 (可匿名)",
-                d2_f2: "新世代 CB Tec 幾何置換架構白皮書",
-                d2_f3: "專屬先鋒支持者高解析數位榮譽憑證",
-                d2_f4: "重大版本釋出前之優先封閉測試通道",
-                btn_pioneer: "成為先鋒贊助者 (預留位)",
-                d3_name: "開源守護者 (Guardian)",
-                d3_desc: "面向極限資安追求者、隱私極客與獨立企業，共同推動抗量子自主密碼學之普及。",
-                d3_f1: "官網首頁「守護者席位」尊榮銘謝展示",
-                d3_f2: "與核心架構師一對一技術反饋諮詢通道",
-                d3_f3: "推動次世代離線硬體金鑰 (Hardware Key) 研發",
-                btn_guardian: "深度專案贊助 (預留位)",
-                btn_pending: "(即將開放)",
+                don_cup1: "請喝 1 杯咖啡",
+                don_cup1_sub: "溫暖純粹的心意支持",
+                don_cup3: "請喝 3 杯咖啡",
+                don_cup3_sub: "加倍動力深耕算法",
+                don_pioneer: "先鋒創始支持",
+                don_pioneer_sub: "列入致敬殿堂與白皮書",
+                don_custom_title: "自訂金額",
+                don_custom: "隨心自由贊助",
+                don_custom_sub: "感謝每份專屬信任",
+                msg_box_title: "留下你想對 J Will 開發團隊說的話（留言板）：",
+                msg_box_hint: "● 你的留言將隨贊助一併轉達給核心研發團隊",
+                btn_submit_support: "送出心意並前往贊助 (Buy Me a Coffee)",
                 crypto_title: "加密貨幣隱私贊助預留位 (Crypto Donation)",
+                faq_badge: "FREQUENTLY ASKED QUESTIONS",
+                faq_title: "常見問題與安全承諾",
+                faq_desc: "關於單機隱私、演算法機制與使用授權的真實解答。",
+                q1_title: "如果我忘記密碼，你們原廠救得回來嗎？",
+                q1_ans: "<strong>完全救不回來。</strong> Avalon Crypt 恪守「單機零後門」承諾，核心內部沒有任何原廠通用金鑰（Master Key）。密碼是解密 .jbs 封裝的唯一憑證，請務必妥善保管你的金鑰。",
+                q2_title: "軟體真的 100% 完全不需要連網嗎？",
+                q2_ans: "<strong>是的，完全無需連網。</strong> 軟體本體零網路依賴、零後台遙測通訊，即使在完全拔掉網路線、開啟飛航模式的純隔離環境下，亦能疾速進行加解密運算。",
+                q3_title: "解密端接收檔案需要付費或授權嗎？",
+                q3_ans: "<strong>完全不需要。</strong> 我們遵循個人非營利免費授權原則，檔案接收方解密永遠免費、無需購買啟用碼，確保高價值機密檔案在持密各方之間安全自由流轉。",
                 team_desc: "J Will 團隊深耕於自主非 AES 幾何串流置換演算法、反數位鑑識與後量子密碼體系。Avalon Crypt 所有核心運算皆依託於團隊原創之 CB Tec 幾何架構，堅持單機封閉運算、絕對捍衛用戶個人資料主權。",
                 footer_cr: "Avalon Crypt ｜ Powered by J Will Team・版權所有",
                 footer_license: "授權邊界：僅限個人非營利使用 (Personal Non-Commercial License)"
@@ -1377,27 +1539,33 @@
                 nav_showcase: "Showcase",
                 nav_download: "Download",
                 nav_donate: "☕ Support Us",
+                nav_faq: "FAQ",
                 nav_team: "J Will Team",
                 hero_badge: "Post-Quantum Ready ｜ Air-Gapped Operation ｜ v1.0.3 Stable",
-                hero_title: "Your Personal Offline Sanctuary<br>in an Insecure <span>Cloud Era</span>",
+                hero_title: "Beyond Conventional AES.<br>Next-Gen Defense for Your <span>Digital Assets</span>",
                 hero_subtitle: "Powered by the CB Tec Post-Quantum Geometric Stream Permutation Cipher. Air-Gapped Operation, Zero-Log Policy, and O(1) Memory Chunked Streaming up to 20GB.",
                 h_item1: "100% Air-Gapped Standalone Execution, 0 Byte Disk Residue",
                 h_item2: "O(1) Constant Memory Chunked Streaming, Anti-OOM Guaranteed",
-                h_item3: "Full Support for High-Entropy Passphrases, Zero Vendor Backdoors",
+                h_item3: "Full Support for High-Entropy Passphrases, Zero Master-Key Backdoors",
                 hero_btn_dl: "⬇️ Download Windows Client (v1.0.3)",
                 hero_btn_donate: "☕ Back Independent Research",
                 hero_win_caption: "Avalon Crypt UI (zh-TW)",
                 feat_badge: "CORE ARCHITECTURE",
                 feat_title: "Autonomous Post-Quantum Defense",
-                feat_desc: "Eliminates vulnerabilities of conventional shared libraries with mathematical spatial geometric permutation.",
-                f1_title: "Geometric Stream Permutation Cipher",
-                f1_text: "Non-AES proprietary post-quantum spatial permutation cipher architecture designed to withstand future quantum computing brute-force attacks.",
-                f2_title: "O(1) Constant Memory Chunked Streaming",
-                f2_text: "Supports ultra-large single files up to 20GB. Chunked pipeline streaming decouples memory consumption from file size, preventing OOM crashes.",
+                feat_desc: "Strict spatial geometric permutation protects data sovereignty. Click cards to reveal engineering details.",
+                f1_title: "Quantum Brute-Force Resistance",
+                f1_simple: "Built to withstand future quantum computers. Geometric spatial permutation eliminates vulnerabilities in conventional shared crypto libraries.",
+                f1_tech: "Non-AES proprietary post-quantum spatial permutation cipher architecture designed to withstand future quantum computing brute-force attacks.",
+                f2_title: "20GB Smooth Anti-OOM Streaming",
+                f2_simple: "Handles massive files smoothly. From 500MB to 20GB, memory consumption stays strictly constant, eliminating out-of-memory crashes.",
+                f2_tech: "Supports ultra-large single files up to 20GB. Chunked pipeline streaming decouples memory consumption from file size, preventing OOM crashes.",
                 f3_title: "Zero-Log & Zero-Backdoor Sovereign",
-                f3_text: "Pure air-gapped standalone execution leaves 0 Bytes disk residue. No master keys or vendor backdoors; cryptographic sovereignty remains 100% yours.",
-                f4_title: ".jbs Encapsulation & Dual-Track Queue",
-                f4_text: "Recursive directory encapsulation restores complex directory trees. Multi-worker concurrent pool processes 1 to 20 items with smart auto-routing.",
+                f3_simple: "Leaves zero traces on disk after closing. Zero vendor backdoors or master keys; if lost, even we cannot decrypt your data.",
+                f3_tech: "Pure air-gapped standalone execution leaves 0 Bytes disk residue. No master keys or vendor backdoors; cryptographic sovereignty remains 100% yours.",
+                f4_title: "Recursive Directory Encapsulation",
+                f4_simple: "Drag & drop entire folders directly. Smart dual-track concurrent processing restores complex folder trees intact upon decryption.",
+                f4_tech: "Recursive directory encapsulation restores complex directory trees. Multi-worker concurrent pool processes 1 to 20 items with smart auto-routing.",
+                tech_btn_expand: "Technical Specs ▼",
                 show_badge: "DUAL-TRACK INTERFACE",
                 show_title: "Authentic Dual-Track Interface",
                 show_desc: "Cyan glow indicates Encryption Mode; Purple glow indicates Decryption Mode. Instant, clean visual status.",
@@ -1405,8 +1573,6 @@
                 tab_encrypt_desc: "Immersive dark titlebar with status beacon. Drag & drop files or folders with chunked stream pipeline.",
                 tab_decrypt_title: "Purple Decryption Track (English)",
                 tab_decrypt_desc: "Auto-detects .jbs archives, routes to purple track, and cleanly restores complete folder structures.",
-                tab_modal_title: "Technical Specs & License Modal",
-                tab_modal_desc: "Built-in cryptographic specs and non-commercial license terms protecting user sovereignty.",
                 dl_badge: "GET STARTED",
                 dl_title: "Deploy Your Personal Shield",
                 dl_desc: "Portable, standalone, and ready to protect. Zero telemetry, zero cloud dependencies.",
@@ -1416,29 +1582,30 @@
                 btn_dl_now: "Download JBA128G3_Setup_v1.0.3.exe",
                 don_badge: "SUPPORT INDEPENDENT RESEARCH",
                 don_title: "☕ Support Independent Research",
-                don_desc: "Zero venture capital, zero telemetry, zero ads. Your support keeps this offline sanctuary alive and truly independent.",
+                don_desc: "Zero venture capital, zero telemetry, zero ads. Your support keeps this offline defense line alive and independent.",
                 don_manifesto: "“While the digital world shifts toward invasive cloud telemetry and subscriptions, we stand firm on air-gapped, zero-residue, sovereign encryption. Real data sovereignty must remain in your own hands.”",
-                d1_name: "Buy Me a Coffee",
-                d1_desc: "A warm gesture to fuel midnight algorithmic tuning and keep the codebase pure.",
-                d1_f1: "Keeps standalone binaries ad-free & clean",
-                d1_f2: "Maintains open-source CB_Tec repository",
-                d1_f3: "Heartfelt gratitude from core developers",
-                badge_pop: "RECOMMENDED",
-                d2_name: "Pioneer Backer",
-                d2_desc: "Become a founding supporter of Avalon Crypt with early architectural insights.",
-                d2_f1: "Permanent honor roll on official website (anonymous option)",
-                d2_f2: "Next-gen CB Tec Geometric Architecture Whitepaper",
-                d2_f3: "Exclusive high-resolution Digital Pioneer Certificate",
-                d2_f4: "Priority access to upcoming closed test builds",
-                btn_pioneer: "Become a Pioneer Backer (Reserved)",
-                d3_name: "Code Guardian",
-                d3_desc: "For security purists and independent teams driving sovereign post-quantum cryptography.",
-                d3_f1: "Exclusive Guardian Seat tribute on homepage",
-                d3_f2: "Direct 1-on-1 technical advisory with architects",
-                d3_f3: "Drives upcoming hardware dongle R&D",
-                btn_guardian: "Deep Project Sponsorship (Reserved)",
-                btn_pending: "(Coming Soon)",
+                don_cup1: "1 Cup of Coffee",
+                don_cup1_sub: "Warm, pure appreciation",
+                don_cup3: "3 Cups of Coffee",
+                don_cup3_sub: "Fuels algorithmic deep dive",
+                don_pioneer: "Pioneer Founding Support",
+                don_pioneer_sub: "Whitepaper & Hall of Tribute",
+                don_custom_title: "Custom Amount",
+                don_custom: "Flexible Donation",
+                don_custom_sub: "Grateful for your trust",
+                msg_box_title: "Leave a note for the J Will development team:",
+                msg_box_hint: "● Your message will be forwarded directly to core developers",
+                btn_submit_support: "Send Note & Proceed to Support (Buy Me a Coffee)",
                 crypto_title: "Crypto Privacy Donation (Reserved Slots)",
+                faq_badge: "FREQUENTLY ASKED QUESTIONS",
+                faq_title: "Security Commitments & FAQ",
+                faq_desc: "Direct answers regarding air-gapped privacy, algorithms, and non-commercial licensing.",
+                q1_title: "If I forget my password, can your team recover it?",
+                q1_ans: "<strong>Absolutely not.</strong> Avalon Crypt adheres strictly to zero-backdoor sovereignty. There are no master keys or recovery backdoors built into the binary. Your passphrase is the sole key to decrypt your .jbs archive.",
+                q2_title: "Does the software truly require zero internet connection?",
+                q2_ans: "<strong>Yes, completely air-gapped.</strong> Compiled in native C++, the binary contains zero network libraries and zero telemetry calls. It runs flawlessly on disconnected or airplane-mode systems.",
+                q3_title: "Does decrypting or receiving files require a license fee?",
+                q3_ans: "<strong>Never.</strong> Decryption is permanently free under our Personal Non-Commercial License. File recipients never need to purchase activation keys to access their files.",
                 team_desc: "J Will Team specializes in proprietary non-AES geometric permutation ciphers, anti-forensics, and post-quantum crypto architecture. Avalon Crypt operates exclusively on the team's original CB Tec framework.",
                 footer_cr: "Avalon Crypt ｜ Powered by J Will Team. All Rights Reserved.",
                 footer_license: "License Boundary: Personal Non-Commercial License Only"
@@ -1459,7 +1626,29 @@
                     el.innerHTML = data[key];
                 });
             }
+            
+            const ta = document.getElementById('supporterMsg');
+            if (ta) {
+                ta.placeholder = lang === 'zh' 
+                    ? "例如：感謝你們堅持做不連網的純粹軟體！守護資料主權加油！" 
+                    : "e.g., Thank you for building true air-gapped privacy software! Keep up the great work!";
+            }
+            
             localStorage.setItem('avalon_lang', lang);
+        }
+
+        // 深入技術手風琴折疊展開
+        function toggleTech(btn) {
+            const content = btn.nextElementSibling;
+            const isVisible = content.style.display === 'block';
+            content.style.display = isVisible ? 'none' : 'block';
+            
+            const textEl = btn.querySelector('span');
+            if (isVisible) {
+                textEl.innerText = currentLang === 'zh' ? '深入技術原理 ▼' : 'Technical Specs ▼';
+            } else {
+                textEl.innerText = currentLang === 'zh' ? '收起技術原理 ▲' : 'Collapse Specs ▲';
+            }
         }
 
         // Showcase 雙軌 Tab 切換
@@ -1486,7 +1675,28 @@
             }
         }
 
+        // 贊助金額選擇
+        let selectedDonationAmount = 15;
+        function selectAmount(val, el) {
+            document.querySelectorAll('.donate-amount-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedDonationAmount = val;
+            const ta = document.getElementById('supporterMsg');
+            if (val === 'custom') {
+                showToast(currentLang === 'zh' ? '已選擇自訂金額贊助' : 'Custom donation amount selected');
+            } else {
+                showToast(currentLang === 'zh' ? `已選擇贊助 $${val} USD` : `Selected $${val} USD donation`);
+            }
+        }
 
+        // 送出留言並前往贊助
+        function submitDonation() {
+            const msg = document.getElementById('supporterMsg').value.trim();
+            const toastMsg = currentLang === 'zh'
+                ? (msg ? `感謝您的暖心留言！Buy Me a Coffee 贊助管道即將正式連線。` : `感謝您的支持！Buy Me a Coffee 贊助管道即將正式連線。`)
+                : `Thank you for your warm support! Buy Me a Coffee portal will open shortly.`;
+            showToast(toastMsg);
+        }
 
         // 複製 SHA-256
         function copySHA() {
@@ -1494,14 +1704,6 @@
             navigator.clipboard.writeText(sha).then(() => {
                 showToast(currentLang === 'zh' ? '✓ SHA-256 校驗碼已複製到剪貼簿！' : '✓ SHA-256 Checksum copied!');
             });
-        }
-
-        // 贊助彈窗預留提示
-        function openDonateModal(plan) {
-            const msg = currentLang === 'zh' 
-                ? `感謝您的心意！【${plan}】贊助管道即將正式啟用。` 
-                : `Thank you! [${plan}] donation portal will be live shortly.`;
-            showToast(msg);
         }
 
         function copyCrypto(coin) {
@@ -1517,7 +1719,7 @@
             toast.style.display = 'flex';
             setTimeout(() => {
                 toast.style.display = 'none';
-            }, 3000);
+            }, 3500);
         }
 
         // 初始載入語言

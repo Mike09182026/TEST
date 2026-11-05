@@ -1,8 +1,8 @@
 <div align="center">
 
 # 🛡️ Avalon Crypt
-### The Sovereign Offline Data Sanctuary in an Insecure Cloud Era
-**混亂雲端時代中，你個人核心機密的世外孤島**
+### 超越傳統 AES 體系・後量子空間幾何架構的數位資產安全防線
+**Beyond Conventional AES. Next-Gen Defense for Your Digital Assets**
 
 [![Version](https://img.shields.io/badge/Release-v1.0.3%20Stable-00f0ff?style=for-the-badge&logo=windows)](https://github.com/Mike09182026/TEST/releases/latest)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11%20(64--bit)-blue?style=for-the-badge&logo=windows)](https://github.com/Mike09182026/TEST/releases)
@@ -63,9 +63,10 @@
 
 Avalon Crypt 堅持無廣告、零後門、無資本收購。您的每一份贊助，都是支持我們持續深耕自主密碼學的最大動力！
 
-1. ☕ **Buy Me a Coffee（請喝一杯咖啡 - $5 USD）**：支持單機軟體持續純淨更新。
-2. 🚀 **Pioneer Backer（先鋒贊助者 - $29 USD）**：官網永久銘謝名冊、新世代技術白皮書優先閱讀、專屬數位證書。
-3. 🏛️ **Code Guardian（開源守護者 - $99+ USD）**：首頁守護者專屬席位、架構師一對一反饋交流通道。
+* ☕ **請研發團隊喝杯咖啡（$5 USD / 約 NT$160）**：為深夜編寫抗破譯演算法的工程師注入咖啡因。
+* 🍕 **外送一份雙倍起司披薩（$15 USD / 約 NT$480）**：贊助團隊攻堅關鍵抗量子代碼時的深夜補給。
+* 🚀 **先鋒贊助者（$29 USD / 約 NT$930）**：官網榮譽支持者名冊、新世代演算法白皮書優先體驗。
+* 💖 **自訂金額贊助**：自由填寫心意金額，並可於留言欄留下想對 J Will 開發團隊說的話。
 
 ---
 
