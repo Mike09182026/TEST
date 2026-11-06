@@ -1276,10 +1276,10 @@
                             </button>
                         </div>
 
-                        <!-- 軟體實機視窗主體 (青軌英文 / 紫軌繁中，全亮虛線光框，無多餘底標) -->
+                        <!-- 軟體實機視窗主體 (真實 Windows 4 套原生截圖，語言 100% 獨立純淨) -->
                         <div class="app-window-frame cyan-glow" id="hero-window-frame">
-                            <img id="hero-img-encrypt" class="hero-screen active" src="avalon_showcase_cyan_en.png" alt="Avalon Crypt 科技青軌 (English UI)">
-                            <img id="hero-img-decrypt" class="hero-screen" src="avalon_showcase_purple_zhtw.png" alt="Avalon Crypt 防護紫軌 (繁中介面)">
+                            <img id="hero-img-encrypt" class="hero-screen active" src="app_en_encrypt.png" alt="Avalon Crypt Encrypt Mode">
+                            <img id="hero-img-decrypt" class="hero-screen" src="app_en_decrypt.png" alt="Avalon Crypt Decrypt Mode">
                         </div>
                     </div>
                 </div>
@@ -1672,10 +1672,30 @@
         let currentLang = 'en';
         let currentHeroTrack = 'encrypt';
 
+        function updateHeroImages() {
+            const imgEncrypt = document.getElementById('hero-img-encrypt');
+            const imgDecrypt = document.getElementById('hero-img-decrypt');
+            if (!imgEncrypt || !imgDecrypt) return;
+            
+            if (currentLang === 'zh') {
+                imgEncrypt.src = 'app_zh_encrypt.png';
+                imgEncrypt.alt = 'Avalon Crypt 加密模式 (繁體中文)';
+                imgDecrypt.src = 'app_zh_decrypt.png';
+                imgDecrypt.alt = 'Avalon Crypt 解密模式 (繁體中文)';
+            } else {
+                imgEncrypt.src = 'app_en_encrypt.png';
+                imgEncrypt.alt = 'Avalon Crypt Encrypt Mode (English)';
+                imgDecrypt.src = 'app_en_decrypt.png';
+                imgDecrypt.alt = 'Avalon Crypt Decrypt Mode (English)';
+            }
+        }
+
         function setLang(lang) {
             currentLang = lang;
-            document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            const btnZh = document.getElementById('btn-zh');
+            const btnEn = document.getElementById('btn-en');
+            if (btnZh) btnZh.classList.toggle('active', lang === 'zh');
+            if (btnEn) btnEn.classList.toggle('active', lang === 'en');
             
             const data = i18nData[lang];
             for (let key in data) {
@@ -1691,6 +1711,9 @@
                     ? "例如：感謝你們堅持做不連網的純粹軟體！守護資料主權加油！" 
                     : "e.g., Thank you for building true air-gapped privacy software! Keep up the great work!";
             }
+
+            // 100% 純淨對齊：根據網站語言即時切換實機截圖版本
+            updateHeroImages();
 
             // 同步更新當前 Hero 雙軌標籤語言
             switchHeroTrack(currentHeroTrack);
